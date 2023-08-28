@@ -1,0 +1,91 @@
+//crear servicio
+###
+
+POST http://localhost:3000/api/services HTTP/1.1
+Content-Type: application/json
+
+{
+  "id_usuario": "64e720695970aafb03f2a79c",
+  "nombre": "Asesorías de Redes neuronales",
+  "horarios": [
+    {
+      "dia_semana": "jueves",
+      "hora_de_inicio": 8,
+      "hora_de_finalizacion": 11
+    },
+    {
+      "dia_semana": "viernes",
+      "hora_de_inicio": 13,
+      "hora_de_finalizacion": 16
+    }
+  ],
+  "tipo_servicio": "Asesorías Académicas",
+  "estado": 1,
+  "area_0": "Educación",
+  "tipo_habitacion_1": null,
+  "caracteristicas_habitacion_1": [],
+  "tipo_vehiculo_2": null,
+  "area_otro_servicio_3": null
+}
+
+// consultar servicios
+###
+GET http://localhost:3000/api/services HTTP/1.1
+
+//consultar por id
+###
+GET http://localhost:3000/api/services/64e5aba0fa70daf3b6295115 HTTP/1.1
+
+//borrar servicio
+###
+DELETE http://localhost:3000/api/services/64e5aba0fa70daf3b6295115 HTTP/1.1
+
+//actualizar servicio
+
+###
+PUT http://localhost:3000/api/services/64e5adacfa70daf3b6295126 HTTP/1.1
+Content-Type: application/json
+
+{
+  "id_usuario": "64e53608e4bf33dbbb399c52",
+  "nombre": "Asesorías Académicas de Matemáticas III",
+  "horarios": [
+    {
+      "dia_semana": "Lunes",
+      "hora_de_inicio": 10,
+      "hora_de_finalizacion": 12
+    },
+    {
+      "dia_semana": "Miércoles",
+      "hora_de_inicio": 14,
+      "hora_de_finalizacion": 16
+    }
+  ],
+  "tipo_servicio": "Asesorías Académicas",
+  "estado": 1,
+  "area_0": "Educación",
+  "tipo_habitacion_1": null,
+  "caracteristicas_habitacion_1": [],
+  "tipo_vehiculo_2": null,
+  "area_otro_servicio_3": null
+}
+
+###
+GET http://localhost:3000/api/services?diaSemana=Lunes&horaBusqueda=10&estado=1 HTTP/1.1
+
+{
+    "diaSemana": "Lunes",
+    "horaBusqueda": 10,
+    "estado": 1
+}
+
+// los resultados de las encuentas segun la busqueda
+###
+GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusqueda=10&estado=1&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
+
+{
+    "id_cliente":"64e71f3b5970aafb03f2a796",
+    "diaSemana": "viernes",
+    "horaBusqueda": 13,
+    "estado": 1
+}
