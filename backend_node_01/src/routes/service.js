@@ -1,7 +1,12 @@
 const express = require("express");
-const serviceSchema = require("../models/service"); // Asegúrate de tener el modelo definido en el archivo correcto
+const serviceSchema = require("../models/service"); 
 const userServiceSchema = require("../models/user");
 const matchmakingProcessor = require('../processors/matchmakingProcessor');
+const matchmakingProcessor01 = require('../processors/matchmaking_processor_01');
+const prueba= require('../processors/prueba');
+
+const UserCtrl = require('../controllers/controllers');
+
 
 const router = express.Router();
 
@@ -80,16 +85,44 @@ router.get("/services", (req, res) => {
 
 
 // sin probar
-router.get("/survey-results", (req, res) => {
-  userServiceSchema
+router.get("/survey-results", UserCtrl.procesadorPrueba);
+
+// (req, res) => {
+//   userServiceSchema
+//       .find({}, "resultados_encuesta") // Obtener solo el campo resultados_encuesta
+//       .then(async (users) => {
+//           const surveyResults = users.map(user => user.resultados_encuesta).flat(); // Obtener todos los resultados en un array
+//           const resultado_encuesta_cliente= [
+//             [0, 0, 0, 0, 0.5, 0, 1, 0.5, 0, 1.5, 0, 1, 0.5, 1.5, 0],
+//             [0, 0, 0, 0, 0.5, 0, 1, 0.5, 0, 0, 0, 1, 0.5, 0, 0]
+//             ];
+//           const serviceIds=[ '5f3142928d39f50022400002', '5f3142928d39f50022400001' ]
+//           const querySample= [[1, 0, 0, 0.5, 0, 1.5, 0, 0, 0, 0.5, 1, 0, 0.5, 0, 1.5]]
+//           const  intento= await prueba.procesadorPrueba(resultado_encuesta_cliente, serviceIds,querySample);
+//           //const arrayIntento = Array.from(intento);
+//           //console.log("sapo qlido: ", arrayIntento.tolist());
+//           console.log("sapo qlido: ", intento, typeof intento);
+//           res.json({ surveyResults, intento });
+//       })
+//       .catch((error) => res.status(500).json({ message: error }));
+
+async function getNearestNeighbors() {
+  const surveyResults = await userServiceSchema
       .find({}, "resultados_encuesta") // Obtener solo el campo resultados_encuesta
       .then((users) => {
           const surveyResults = users.map(user => user.resultados_encuesta).flat(); // Obtener todos los resultados en un array
-
-          res.json({ surveyResults });
+          const resultado_encuesta_cliente= [
+            [0, 0, 0, 0, 0.5, 0, 1, 0.5, 0, 1.5, 0, 1, 0.5, 1.5, 0],
+            [0, 0, 0, 0, 0.5, 0, 1, 0.5, 0, 0, 0, 1, 0.5, 0, 0]
+            ];
+          const serviceIds=[ '5f3142928d39f50022400002', '5f3142928d39f50022400001' ]
+          const querySample= [[1, 0, 0, 0.5, 0, 1.5, 0, 0, 0, 0.5, 1, 0, 0.5, 0, 1.5]]
+          const  intento= prueba.procesadorPrueba(resultado_encuesta_cliente, serviceIds,querySample);
+          return intento;
       })
       .catch((error) => res.status(500).json({ message: error }));
-});
+}
+
 
 
 //intento nuevo con array 
@@ -132,8 +165,9 @@ router.get("/survey-results-array", async (req, res) => {
 
     const surveyResultsList = users.map(user => user.resultados_encuesta);
     const resultado_encuesta_cliente = [client.resultados_encuesta];
-    const processedResults = await matchmakingProcessor.processMatchmaking(surveyResultsList, serviceIds, resultado_encuesta_cliente);
-
+    //const processedResults = await matchmakingProcessor01.processMatchmaking(surveyResultsList, serviceIds, resultado_encuesta_cliente);
+    const  processedResults = prueba.procesadorPrueba(resultado_encuesta_cliente,serviceIds);
+    console.log("Vida treinta hpta los servicios: ",processedResults);
     res.json(processedResults);
   } catch (error) {
     res.status(500).json({ message: 'Error processing matchmaking', error });

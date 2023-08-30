@@ -74,8 +74,19 @@ Content-Type: application/json
 GET http://localhost:3000/api/services?diaSemana=Lunes&horaBusqueda=10&estado=1 HTTP/1.1
 
 {
-    "diaSemana": "Lunes",
-    "horaBusqueda": 10,
+    "diaSemana": "viernes",
+    "horaBusqueda": 13,
+    "estado": 1
+}
+
+//para LA PRUEBAAAAAAAAA
+###
+GET http://localhost:3000/api/survey-results?diaSemana=Lunes&horaBusqueda=10&estado=1&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
+
+{
+    "id_cliente":"64e71f3b5970aafb03f2a796",
+    "diaSemana": "viernes",
+    "horaBusqueda": 13,
     "estado": 1
 }
 
