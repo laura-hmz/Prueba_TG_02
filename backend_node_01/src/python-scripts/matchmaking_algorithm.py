@@ -28,7 +28,7 @@ def process_matchmaking(survey_results,ids_vecinos,query_sample):
     ids_vecinos_ordenados = [ids_vecinos[indice] for indice in indices_vecinos_ordenados]
 
     processed_results = ids_vecinos_ordenados
-    # print(processed_results)
+    #print(processed_results)
     return processed_results
 
 def to_dict(ids_vecinos_ordenados):
@@ -47,5 +47,5 @@ if __name__ == "__main__":
     query_sample = json.loads(query_sample_json)  # Cargar la lista de query_sample
 
     processed_results = process_matchmaking(survey_results, ids_vecinos, query_sample)  # Pasar todas las listas como argumentos
-    print(json.dumps(processed_results))
-    #print(json.dumps(to_dict(processed_results)))
+    #print(json.dumps(processed_results))
+    print(json.dumps(to_dict(processed_results)))

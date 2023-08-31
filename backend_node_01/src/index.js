@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 //require("dotenv").config();
-const userRoute = require("./routes/user");
-const serviceRoute = require("./routes/service");
+const userRoute = require("./routes/user.routes");
+const serviceRoute = require("./routes/service.routes");
 const MONGODB_URI='mongodb://localhost:27017/Prueba_TG00'
 
 // settings
