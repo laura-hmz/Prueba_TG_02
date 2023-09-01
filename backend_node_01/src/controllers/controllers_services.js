@@ -35,45 +35,32 @@ const procesadorPrueba = async (req, res) => {
     }
 };
 
-const orderServices = async (services, idsServicios) => {
-//     try{
-//         const orderedServices = services.filter(service => processedResults.hasOwnProperty(service._id));
-//         orderedServices.sort((a, b) => processedResults[a._id] - processedResults[b._id]);
-//         return orderedServices;
-//     } catch(error){
-//         console.log(error);
-//     }
-    const serviciosPorId = services.reduce((acc, servicio, i) => {
-        acc[servicio._id] = servicio;
-        console.log("acc:",acc)
-        return acc;
-    }, {});
 
-    // Crea una lista de servicios ordenados.
-    const serviciosOrdenados = [];
-    for (const idServicio of idsServicios) {
-        if (idServicio in serviciosPorId) {
-        serviciosOrdenados.push(serviciosPorId[idServicio]);
-        } else {
-            console.log("vacio")
-        return [];
-        }
-  }
+const orderServices1 = async (services, idsServicios) => {
+  
+  const serviciosOrdenados = [];
+  const serviciosPorId = services.reduce((acc, servicio, i) => {
+      acc[servicio._id.toString()] = servicio;
+      return acc;
+  }, {});
+  //console.log("serviciosPorId (ACC): ", idsServicios)
 
+  idsServicios.map((ids) => {
+    console.log("ids: ", ids, typeof ids);
+
+    for (const idServicio of ids) {
+        console.log("este es el ide servicio dentro del for",idServicio)
+          if (idServicio in serviciosPorId) {
+              serviciosOrdenados.push(serviciosPorId[idServicio]);
+           } else {
+             console.log("Servicio no encontrado:", idServicio);
+           }
+      }
+
+  });
+  
   return serviciosOrdenados;
-
-    
-  };
-
-const ordenarServicios = async (idsServicios, services) => {
-    try {
-        const serviciosOrdenados = idsServicios.map(id => services.find(servicio => servicio._id.toString() === id));
-        return serviciosOrdenados;
-    } catch (error) {
-        console.log(error)
-    }
-    
-}
+};
 
 const busqueda_servicios = async (req, res) => {
     const { diaSemana, horaBusqueda, estado, id_cliente } = req.query;
@@ -89,8 +76,9 @@ const busqueda_servicios = async (req, res) => {
       if (!services || services.length === 0) {
         return res.status(404).json({ message: "No se encontraron servicios que cumplan con el criterio de búsqueda" });
       }else { 
-        console.log("tipo servicio:", typeof services);
-        console.log("services:",services);
+        //console.log("tipo servicio:", typeof services);
+        //console.log("services:",services);
+        console.log("services OK");
       }
   
       const serviceIds = services.reduce((acc, service) => {
@@ -110,7 +98,8 @@ const busqueda_servicios = async (req, res) => {
       if (!client) {
         return res.status(404).json({ message: "No se encontró el cliente especificado" });
       } else {
-        console.log("client:", client);
+        //console.log("client:", client);
+        console.log("Client ok");
       }
       //const users = await userServiceSchema.findByIds(userIds);
       const users = await userServiceSchema.find(
@@ -118,20 +107,19 @@ const busqueda_servicios = async (req, res) => {
                "resultados_encuesta"
              );
       
-
-  
       const surveyResultsList = users.map(user => user.resultados_encuesta);
       const resultado_encuesta_cliente = [client.resultados_encuesta];
       const processedResults = await processors_matchmaking.procesadorPrueba(surveyResultsList, serviceIds,resultado_encuesta_cliente);
-      console.log("Los servicios: ", processedResults);
-      //const orderedServices = orderServices(services, processedResults);
-      //const orderedServices = Object.values(processedResults).map(id => services.find(servicio => servicio._id.toString() === id));
-      const orderedServices = await ordenarServicios(Object.values(processedResults), services);
-    
-        // const orderedServices = services.filter(service => processedResults.hasOwnProperty(service._id));
-        // orderedServices.sort((a, b) => processedResults[a._id] - processedResults[b._id]);
 
-      console.log("Los servicios ordenados:",orderedServices)
+      // const pruebitaIDS= [
+      //   [
+      //     "64e5adacfa70daf3b6295126",
+      //     "64e5a8c6fa70daf3b629510f"
+          
+      //   ]
+      // ]
+      const orderedServices = await orderServices1(services, processedResults);
+      //console.log("Los servicios ordenados:",orderedServices)
       res.json({processedResults,orderedServices});
     } catch (error) {
       res.status(500).json({ message: 'Error processing matchmaking', error });

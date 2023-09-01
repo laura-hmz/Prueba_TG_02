@@ -90,7 +90,7 @@ GET http://localhost:3000/api/survey-results?diaSemana=Lunes&horaBusqueda=10&est
     "estado": 1
 }
 
-// los resultados de las encuentas segun la busqueda
+// los resultados de las encuentas segun la busqueda (matchmaking)
 ###
 GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusqueda=10&estado=1&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
 
