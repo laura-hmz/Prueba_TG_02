@@ -1,9 +1,5 @@
 const express = require("express");
 const serviceSchema = require("../models/service"); 
-const userServiceSchema = require("../models/user");
-const matchmakingProcessor = require('../processors/matchmakingProcessor');
-const matchmakingProcessor01 = require('../processors/matchmaking_processor_01');
-const prueba= require('../processors/matchmaking_processor_02');
 
 const UserCtrl = require('../controllers/controllers_services');
 
@@ -89,5 +85,6 @@ router.get("/survey-results", UserCtrl.procesadorPrueba);
 
 //intento nuevo con array 
 router.get("/survey-results-array",UserCtrl.busqueda_servicios);
+router.get("/search-services",UserCtrl.searchServices);
 
 module.exports = router;

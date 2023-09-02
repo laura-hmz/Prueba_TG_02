@@ -35,7 +35,6 @@ const procesadorPrueba = async (req, res) => {
     }
 };
 
-
 const orderServices1 = async (services, idsServicios) => {
   
   const serviciosOrdenados = [];
@@ -62,17 +61,90 @@ const orderServices1 = async (services, idsServicios) => {
   return serviciosOrdenados;
 };
 
+
+const searchServices = async (req, res) => {
+    try {
+        const { diaSemana, horaBusquedaInicio, horaBusquedaFinal, estado, nombre,
+           tipo_servicio, nombre_caracteristica, descripcion_caracteristica, area_0, 
+           tipo_habitacion_1, tipo_vehiculo_2, area_otro_servicio_3 } = req.query;
+
+        // Construye la consulta dinámica
+        const query = {};
+
+        if (diaSemana) {
+            query['horarios.dia_semana'] = { $regex: new RegExp(diaSemana, 'i') };
+        }
+        if (horaBusquedaInicio) {
+            query['horarios.hora_de_inicio'] = { $lte: Number(horaBusquedaInicio) };
+        }
+        if(horaBusquedaFinal){
+          query['horarios.hora_de_finalizacion'] = { $gt: Number(horaBusquedaFinal) };
+        }
+
+        if (nombre) {
+          query['nombre'] = { $regex: new RegExp(nombre, 'i') };
+        }
+
+        if (estado) {
+            query['estado'] = Number(estado);
+        }
+
+        if (nombre_caracteristica) {
+            query['caracteristicas_habitacion_1.nombre'] = { $regex: new RegExp(nombre_caracteristica, 'i') };
+        }
+
+        if (descripcion_caracteristica) {
+          query['caracteristicas_habitacion_1.descripcion'] = { $regex: new RegExp(descripcion_caracteristica, 'i') };
+        }
+
+        if (tipo_servicio) {
+            query['tipo_servicio'] = { $regex: new RegExp(tipo_servicio, 'i') };
+        }
+
+        if (area_0) {
+            query['area_0'] = { $regex: new RegExp(area_0, 'i') };
+        }
+
+        if (tipo_habitacion_1) {
+            query['tipo_habitacion_1'] = { $regex: new RegExp(tipo_habitacion_1, 'i') };
+        }
+
+        if (tipo_vehiculo_2) {
+            query['tipo_vehiculo_2'] = { $regex: new RegExp(tipo_vehiculo_2, 'i') };
+        }
+
+        if (area_otro_servicio_3) {
+            query['area_otro_servicio_3'] = { $regex: new RegExp(area_otro_servicio_3, 'i') };
+        }
+
+        // Realiza la búsqueda con la consulta construida
+        const result = await serviceSchema.find(query);
+        //console.log("query: ", query);
+        //console.log("result: ", result);
+
+        //return res.status(200).json(result);
+        return result
+
+    } catch (error) {
+        //return res.status(500).json(error);
+        console.log(error);
+    }
+};
+
+
+
 const busqueda_servicios = async (req, res) => {
-    const { diaSemana, horaBusqueda, estado, id_cliente } = req.query;
+    const {id_cliente} = req.query;
   
     try {
-      const services = await serviceSchema.find({
-        "horarios.dia_semana": diaSemana,
-        "horarios.hora_de_inicio": { $lte: horaBusqueda },
-        "horarios.hora_de_finalizacion": { $gt: horaBusqueda },
-        "estado": estado
-      });
-  
+      // const services = await serviceSchema.find({
+      //   "horarios.dia_semana": diaSemana,
+      //   "horarios.hora_de_inicio": { $lte: horaBusqueda },
+      //   "horarios.hora_de_finalizacion": { $gt: horaBusqueda },
+      //   "estado": estado
+      // });
+      const services= await searchServices(req, res);
+      //console.log("services2: ", services);
       if (!services || services.length === 0) {
         return res.status(404).json({ message: "No se encontraron servicios que cumplan con el criterio de búsqueda" });
       }else { 
@@ -128,5 +200,5 @@ const busqueda_servicios = async (req, res) => {
   };
 
 module.exports = {
-    procesadorPrueba, busqueda_servicios
+    procesadorPrueba, busqueda_servicios, searchServices
 }

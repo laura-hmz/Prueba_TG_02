@@ -90,9 +90,29 @@ GET http://localhost:3000/api/survey-results?diaSemana=Lunes&horaBusqueda=10&est
     "estado": 1
 }
 
+//Probando filtro a bases de datos general (SearchServices)
+###
+GET http://localhost:3000/api/search-services?nombre=Servicio%20de%20limpieza HTTP/1.1
+
+{
+    //diaSemana=Lunes
+    //horaBusquedaInicio=10
+    //horaBusquedaFinal=13
+    //estado=1
+    //nombre=Servicio%20de%20limpieza
+    //tipo_servicio=Limpieza
+    //nombre_caracteristica=Limpieza profunda
+    //descripcion_caracteristica=Desinfeccion
+    //area_0=Hogar
+    //tipo_habitacion_1=cocina
+    //tipo_vehiculo_2=
+    //area_otro_servicio_3=
+
+}
+
 // los resultados de las encuentas segun la busqueda (matchmaking)
 ###
-GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusqueda=10&estado=1&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
+GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusquedaInicio=10&estado=1&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
 
 {
     "id_cliente":"64e71f3b5970aafb03f2a796",
