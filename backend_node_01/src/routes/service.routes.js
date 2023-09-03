@@ -26,4 +26,10 @@ router.get("/survey-results-array",serviceCtrl.busqueda_servicios);
 //Buscar servicios (solo filtro a base de datos) OK
 router.get("/search-services",serviceCtrl.searchServices);
 
+//listar los servicios ofrecidos por un usuario
+router.get("/list-services-user",serviceCtrl.listServicesIdUser);
+
+//Mostrar ultimos servicios añadidos
+router.get("/last-services-added",serviceCtrl.lastServicesAdded);
+
 module.exports = router;

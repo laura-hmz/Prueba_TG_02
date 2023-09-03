@@ -38,6 +38,21 @@ const updateService = async (req, res) => {
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 }
+const listServicesIdUser = async (req, res) => {
+  const { id } = req.query;
+  serviceSchema
+    .find({ "id_usuario": id })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+}
+const lastServicesAdded = async (req, res) => {
+  serviceSchema
+    .find()
+    .sort({ _id: -1 })
+    .limit(1)
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+}
 // PRUEBA MATCHMAKING
 const procesadorPrueba = async (req, res) => {
    
@@ -217,5 +232,5 @@ const busqueda_servicios = async (req, res) => {
 
 module.exports = {
     procesadorPrueba, busqueda_servicios, searchServices, createService, 
-    getServices, getServiceId, deleteService, updateService
+    getServices, getServiceId, deleteService, updateService, listServicesIdUser, lastServicesAdded
 }

@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
   "id_usuario": "64e720695970aafb03f2a79c",
-  "nombre": "Asesorías calculo III",
+  "nombre": "Bases de datos No SQL",
   "horarios": [
     {
       "dia_semana": "martes",
@@ -112,3 +112,11 @@ GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusquedaI
     "horaBusqueda": 13,
     "estado": 1
 }
+
+// mostar ultimos servicios añadidos
+###
+GET http://localhost:3000/api/last-services-added HTTP/1.1
+
+// mostrar servicios ofrecidos por un usuario 
+###
+GET http://localhost:3000/api/list-services-user?id=64e720695970aafb03f2a79c HTTP/1.1
