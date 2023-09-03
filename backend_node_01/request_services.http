@@ -6,15 +6,15 @@ Content-Type: application/json
 
 {
   "id_usuario": "64e720695970aafb03f2a79c",
-  "nombre": "Asesorías de Redes neuronales",
+  "nombre": "Asesorías calculo III",
   "horarios": [
     {
-      "dia_semana": "jueves",
-      "hora_de_inicio": 8,
+      "dia_semana": "martes",
+      "hora_de_inicio": 3,
       "hora_de_finalizacion": 11
     },
     {
-      "dia_semana": "viernes",
+      "dia_semana": "Jueves",
       "hora_de_inicio": 13,
       "hora_de_finalizacion": 16
     }
@@ -34,11 +34,11 @@ GET http://localhost:3000/api/services HTTP/1.1
 
 //consultar por id
 ###
-GET http://localhost:3000/api/services/64e5aba0fa70daf3b6295115 HTTP/1.1
+GET http://localhost:3000/api/services/64e5a8c6fa70daf3b629510f HTTP/1.1
 
 //borrar servicio
 ###
-DELETE http://localhost:3000/api/services/64e5aba0fa70daf3b6295115 HTTP/1.1
+DELETE http://localhost:3000/api/services/64f3c041c4f8afe17072c852 HTTP/1.1
 
 //actualizar servicio
 
@@ -52,13 +52,13 @@ Content-Type: application/json
   "horarios": [
     {
       "dia_semana": "Lunes",
-      "hora_de_inicio": 10,
+      "hora_de_inicio": 11,
       "hora_de_finalizacion": 12
     },
     {
       "dia_semana": "Miércoles",
-      "hora_de_inicio": 14,
-      "hora_de_finalizacion": 16
+      "hora_de_inicio": 15,
+      "hora_de_finalizacion": 17
     }
   ],
   "tipo_servicio": "Asesorías Académicas",
@@ -70,16 +70,8 @@ Content-Type: application/json
   "area_otro_servicio_3": null
 }
 
-###
-GET http://localhost:3000/api/services?diaSemana=Lunes&horaBusqueda=10&estado=1 HTTP/1.1
-
-{
-    "diaSemana": "viernes",
-    "horaBusqueda": 13,
-    "estado": 1
-}
-
-//para LA PRUEBAAAAAAAAA
+//para LA PRUEBAAAAAAAAA (obtiene resultados de encuesta de usuarios prestadores de servicios
+//que cumplan con las condiciones y hago prueba a matchmaking con ejemplo manual de encuatas de usuarios)
 ###
 GET http://localhost:3000/api/survey-results?diaSemana=Lunes&horaBusqueda=10&estado=1&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
 
@@ -90,7 +82,7 @@ GET http://localhost:3000/api/survey-results?diaSemana=Lunes&horaBusqueda=10&est
     "estado": 1
 }
 
-//Probando filtro a bases de datos general (SearchServices)
+//Probando filtro general a bases de datos (SearchServices)
 ###
 GET http://localhost:3000/api/search-services?nombre=Servicio%20de%20limpieza HTTP/1.1
 
@@ -110,7 +102,7 @@ GET http://localhost:3000/api/search-services?nombre=Servicio%20de%20limpieza HT
 
 }
 
-// los resultados de las encuentas segun la busqueda (matchmaking)
+// los resultados de las encuentas segun la busqueda (matchmaking) <3
 ###
 GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusquedaInicio=10&estado=1&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
 

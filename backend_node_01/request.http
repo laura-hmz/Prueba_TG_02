@@ -3,8 +3,8 @@ POST http://localhost:3000/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "correo": "otro@gmail.com",
-    "nombre": "otro",
+    "correo": "Mauk@gmail.com",
+    "nombre": "muak",
     "sexo": "masculino",
     "carrera": "Tecnologia de sistemas",
     "semestre": 4,
@@ -12,7 +12,7 @@ Content-Type: application/json
     "edad": 32,
     "estado": 1,
     "puntuacion": 0,
-    "resultados_encuesta": [1.5, 0, 0, 0.5, 0, 0, 1, 0, 0, 1, 0, 0.5, 0, 0.5, 0]
+    "resultados_encuesta": [1.5, 0, 0, 0.5, 1, 1, 1, 0, 0, 1, 0, 0.5, 0, 0.5, 1]
 }
 
 
@@ -23,7 +23,7 @@ GET http://localhost:3000/api/users HTTP/1.1
 GET http://localhost:3000/api/users/64e71f3b5970aafb03f2a796 HTTP/1.1
 
 ###
-DELETE http://localhost:3000/api/users/64e30531fed5d5347f0c5b29 HTTP/1.1
+DELETE http://localhost:3000/api/users/64f3cbda4181950ab9095843 HTTP/1.1
 
 ###
 PUT http://localhost:3000/api/users/64e30b737f69f295e13b0a4a HTTP/1.1
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 {
     "correo": "pepino@gmail.commm",
-    "nombre": "Pepino saladito",
+    "nombre": "Rick Pepinillo",
     "sexo": "masculino",
     "carrera": "Tecnologia de sistemas",
     "semestre": 5,

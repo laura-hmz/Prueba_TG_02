@@ -1,8 +1,44 @@
 const processors_matchmaking = require('../processors/matchmaking_processor_02');
 const serviceSchema = require("../models/service");
 const userServiceSchema = require("../models/user");
-const User = require("../models/user");
 
+//CRUD BASICO
+const createService = async (req, res) => {
+  const service = serviceSchema(req.body);
+  service
+    .save()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+}
+const getServices = async (req, res) => {
+  serviceSchema
+    .find()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+}
+const getServiceId = async (req, res) => {
+  const { id } = req.params;
+  serviceSchema
+    .findById(id)
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+}
+const deleteService = async (req, res) => {
+  const { id } = req.params;
+  serviceSchema
+    .deleteOne({ _id: id })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+}
+const updateService = async (req, res) => {
+  const { id } = req.params;
+  const { id_usuario, nombre,horarios,tipo_servicio,estado,area_0,tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3} = req.body;
+  serviceSchema
+    .updateOne({ _id: id }, { $set: {id_usuario, nombre,horarios,tipo_servicio,estado,area_0,tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3} })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+}
+// PRUEBA MATCHMAKING
 const procesadorPrueba = async (req, res) => {
    
     try {
@@ -34,7 +70,7 @@ const procesadorPrueba = async (req, res) => {
         console.log(error);
     }
 };
-
+//Funciones generales para matchmaking
 const orderServices1 = async (services, idsServicios) => {
   
   const serviciosOrdenados = [];
@@ -42,7 +78,6 @@ const orderServices1 = async (services, idsServicios) => {
       acc[servicio._id.toString()] = servicio;
       return acc;
   }, {});
-  //console.log("serviciosPorId (ACC): ", idsServicios)
 
   idsServicios.map((ids) => {
     console.log("ids: ", ids, typeof ids);
@@ -60,8 +95,6 @@ const orderServices1 = async (services, idsServicios) => {
   
   return serviciosOrdenados;
 };
-
-
 const searchServices = async (req, res) => {
     try {
         const { diaSemana, horaBusquedaInicio, horaBusquedaFinal, estado, nombre,
@@ -119,9 +152,6 @@ const searchServices = async (req, res) => {
 
         // Realiza la búsqueda con la consulta construida
         const result = await serviceSchema.find(query);
-        //console.log("query: ", query);
-        //console.log("result: ", result);
-
         //return res.status(200).json(result);
         return result
 
@@ -130,40 +160,28 @@ const searchServices = async (req, res) => {
         console.log(error);
     }
 };
-
-
-
+//MATCHMAKING services users
 const busqueda_servicios = async (req, res) => {
     const {id_cliente} = req.query;
   
     try {
-      // const services = await serviceSchema.find({
-      //   "horarios.dia_semana": diaSemana,
       //   "horarios.hora_de_inicio": { $lte: horaBusqueda },
       //   "horarios.hora_de_finalizacion": { $gt: horaBusqueda },
-      //   "estado": estado
-      // });
       const services= await searchServices(req, res);
       //console.log("services2: ", services);
       if (!services || services.length === 0) {
         return res.status(404).json({ message: "No se encontraron servicios que cumplan con el criterio de búsqueda" });
       }else { 
-        //console.log("tipo servicio:", typeof services);
-        //console.log("services:",services);
         console.log("services OK");
       }
-  
       const serviceIds = services.reduce((acc, service) => {
         acc.push(service._id);
         return acc;
       }, []);
-  
       const userIds = services.reduce((acc, service) => {
         acc.push(service.id_usuario);
         return acc;
       }, []);
-
-      
       const client = await userServiceSchema.findOne(
         { _id: id_cliente }
       )
@@ -182,7 +200,6 @@ const busqueda_servicios = async (req, res) => {
       const surveyResultsList = users.map(user => user.resultados_encuesta);
       const resultado_encuesta_cliente = [client.resultados_encuesta];
       const processedResults = await processors_matchmaking.procesadorPrueba(surveyResultsList, serviceIds,resultado_encuesta_cliente);
-
       // const pruebitaIDS= [
       //   [
       //     "64e5adacfa70daf3b6295126",
@@ -191,7 +208,6 @@ const busqueda_servicios = async (req, res) => {
       //   ]
       // ]
       const orderedServices = await orderServices1(services, processedResults);
-      //console.log("Los servicios ordenados:",orderedServices)
       res.json({processedResults,orderedServices});
     } catch (error) {
       res.status(500).json({ message: 'Error processing matchmaking', error });
@@ -200,5 +216,6 @@ const busqueda_servicios = async (req, res) => {
   };
 
 module.exports = {
-    procesadorPrueba, busqueda_servicios, searchServices
+    procesadorPrueba, busqueda_servicios, searchServices, createService, 
+    getServices, getServiceId, deleteService, updateService
 }
