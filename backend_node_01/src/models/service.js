@@ -8,7 +8,7 @@ const horarioSchema = mongoose.Schema({
 
 const caracteristicaSchema = mongoose.Schema({
     nombre: { type: String, required: true },
-    descripcion: String // Puedes agregar más propiedades aquí según tus necesidades
+    descripcion: {String} // Puedes agregar más propiedades aquí según tus necesidades
 });
 
 const serviceSchema = mongoose.Schema({
@@ -19,6 +19,9 @@ const serviceSchema = mongoose.Schema({
   nombre: {
     type: String,
     required: true
+  },
+  descripcion: {
+    type: String,
   },
   horarios: {
       type: [horarioSchema],

@@ -32,9 +32,9 @@ const deleteService = async (req, res) => {
 }
 const updateService = async (req, res) => {
   const { id } = req.params;
-  const { id_usuario, nombre,horarios,tipo_servicio,estado,area_0,tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3} = req.body;
+  const { id_usuario, nombre,descripcion,horarios,tipo_servicio,estado,area_0,tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3} = req.body;
   serviceSchema
-    .updateOne({ _id: id }, { $set: {id_usuario, nombre,horarios,tipo_servicio,estado,area_0,tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3} })
+    .updateOne({ _id: id }, { $set: {id_usuario,nombre,descripcion,horarios,tipo_servicio,estado,area_0,tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3} })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 }

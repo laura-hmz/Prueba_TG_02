@@ -6,7 +6,8 @@ Content-Type: application/json
 
 {
   "id_usuario": "64e720695970aafb03f2a79c",
-  "nombre": "Bases de datos No SQL",
+  "nombre": "Bases de datos SQL",
+  "descripcion": "Excelente clase muak",
   "horarios": [
     {
       "dia_semana": "martes",
@@ -43,12 +44,13 @@ DELETE http://localhost:3000/api/services/64f3c041c4f8afe17072c852 HTTP/1.1
 //actualizar servicio
 
 ###
-PUT http://localhost:3000/api/services/64e5adacfa70daf3b6295126 HTTP/1.1
+PUT http://localhost:3000/api/services/64feb99857b19c24059d8a54 HTTP/1.1
 Content-Type: application/json
 
 {
   "id_usuario": "64e53608e4bf33dbbb399c52",
-  "nombre": "Asesorías Académicas de Matemáticas III",
+  "nombre": "La mejor matria de la vida",
+  "descripcion": "Excelente clase muakKkkkkk",
   "horarios": [
     {
       "dia_semana": "Lunes",
