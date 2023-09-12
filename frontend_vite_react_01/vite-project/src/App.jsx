@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import './components/prueba.css';
+
 import './components/servicios/explorar.jsx';
 import NavBar from './components/navbar/navbar.jsx';
 import Explorar from './components/servicios/explorar.jsx';
@@ -21,14 +21,14 @@ function App() {
     <BrowserRouter>
       <NavBar/>
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Explorar/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/editProfile' element={<EditProfile/>}/>
         <Route path='/searchResults' element={<SearchResults/>}/>
         <Route path='/editService/:id' element={<EditService/>}/>
         <Route path='/savedServices' element={<SavedServices/>}/>
         <Route path='/searchService' element={<SearchService/>}/>
-        <Route path='/serviceDetails' element={<ServiceDetails/>}/>
+        <Route path='/serviceDetails/:id' element={<ServiceDetails/>}/>
         <Route path='/userServices' element={<UserServices/>}/>
       </Routes>
     </BrowserRouter>

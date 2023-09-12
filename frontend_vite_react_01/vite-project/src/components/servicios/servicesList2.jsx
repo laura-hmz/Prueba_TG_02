@@ -1,5 +1,28 @@
+import  { useState } from 'react';
 import { Link } from 'react-router-dom';
-const ServicesList1 = ({services}) => {
+import DeleteConfirmation from '../mensajesAuxliliares/deleteConfirmation'
+const ServicesList2 = ({services, onDeleteService}) => {
+
+    const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+    const [serviceToDelete, setServiceToDelete] = useState(null);
+
+    const handleDeleteClick = (serviceId) => {
+        setServiceToDelete(serviceId);
+        setShowDeleteConfirmation(true);
+    };
+
+    const handleConfirmDelete = () => {
+        if (serviceToDelete) {
+            // Llama a la función onDeleteService para eliminar el servicio
+            onDeleteService(serviceToDelete);
+            // Cierra la ventana emergente de confirmación
+            setShowDeleteConfirmation(false);
+            // Restablece el valor de serviceToDelete
+            setServiceToDelete(null);
+        }
+    };
+
+
   return (
         <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
@@ -23,13 +46,28 @@ const ServicesList1 = ({services}) => {
                         <path d="M5 12h14"></path>
                         <path d="M12 5l7 7-7 7"></path>
                         </svg>
-                      </Link>
+                    </Link>
+
+                    <Link to={{ pathname: `/serviceDetails/${service._id}` }}>
+                        <button>Editar</button>
+                    </Link>
+
+                    {/* Botón Eliminar */}
+                    <button onClick={() => handleDeleteClick(service._id)}>Eliminar</button>
 
                   </div>
                 </div>
               ))}
         </div>
+        {/* Mostrar el componente de confirmación de eliminación si showDeleteConfirmation es true */}
+        {showDeleteConfirmation && (
+                <DeleteConfirmation
+                    isOpen={showDeleteConfirmation}
+                    onClose={() => setShowDeleteConfirmation(false)}
+                    onDelete={handleConfirmDelete}
+                />
+            )}
         </section>
     )
 }
-export default ServicesList1
+export default ServicesList2
