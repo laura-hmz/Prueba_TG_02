@@ -6,8 +6,8 @@ Content-Type: application/json
 
 {
   "id_usuario": "64e720695970aafb03f2a79c",
-  "nombre": "Bases de datos SQL",
-  "descripcion": "Excelente clase muakSI",
+  "nombre": "Calculo II",
+  "descripcion": "Excelente clase, me encanta dar clase porque dando clase de matematatica me siento realizado. Mi especialidad es responder cualquier duda sobre derivadas parciales, le derivo lo que sea. Hlopital se lo explico en un segundo y usted me entiende porque me entiende",
   "horarios": [
     {
       "dia_semana": "martes",

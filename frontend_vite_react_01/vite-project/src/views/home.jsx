@@ -1,6 +1,7 @@
 import  { useState, useEffect } from 'react';
 import {lastServicesAdded } from '../api/servicesApi';
-import ServicesList1 from '../components/servicios/servicesList1';
+//import ServicesList1 from '../components/servicios/servicesList1';
+import CardService3 from '../components/servicios/cardService3';
 
 const Home = () => {
     const [services, setServices] = useState([]);
@@ -21,7 +22,7 @@ const Home = () => {
     }, []);
   
     return (
-      <ServicesList1 services={services} />
+      <CardService3 services={services} />
   ) 
 }
 

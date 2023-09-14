@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getServicesById } from '../../api/servicesApi';
+import CardServiceOnly from '../../components/servicios/cardServiceOnly';
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -22,27 +23,7 @@ const ServiceDetails = () => {
   }, [id]);
 
   return (
-    <div>
-      <h3>Servicio: {service._id}</h3>
-      <h3>Nombre: {service.nombre}</h3>
-      <h3>Tipo de Servicio: {service.tipo_servicio}</h3>
-      <h3>Descripción: {service.descripcion}</h3>
-      <h3>Estado: {service.estado}</h3>
-      <h1>Horarios Disponibles:</h1>
-      <ul>
-        {service.horarios && service.horarios.length > 0 ? (
-          service.horarios.map((horario) => (
-            <li key={horario._id}>
-              <strong>Día:</strong> {horario.dia_semana}<br />
-              <strong>Hora de inicio:</strong> {horario.hora_de_inicio}<br />
-              <strong>Hora de finalización:</strong> {horario.hora_de_finalizacion}<br />
-            </li>
-          ))
-        ) : (
-          <li>No hay horarios disponibles.</li>
-        )}
-      </ul>
-    </div>
+    <CardServiceOnly service={service} />
   );
 };
 

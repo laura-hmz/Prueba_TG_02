@@ -1,6 +1,9 @@
 import  { useState, useEffect } from 'react';
-import { getServices,deleteService } from '../../api/servicesApi';
-import ServicesList2 from './servicesList2';
+import { getServices,deleteService,lastServicesAdded } from '../../api/servicesApi';
+//import CardServices from './cardService';
+//import CardService2 from './cardService2';
+//import CardService3 from './cardService3';
+import CardServiceOnly from './cardServiceOnly';
 
 
 const Explorar = () => {
@@ -33,7 +36,10 @@ const Explorar = () => {
   };
 
   return (
-    <ServicesList2 services={services} onDeleteService={handleDeleteService}></ServicesList2>
+      
+          services.map((service) => (
+            <CardServiceOnly  service={{...service}} key={service._id}></CardServiceOnly>
+    ))
 )
 };
 
