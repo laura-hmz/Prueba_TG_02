@@ -4,7 +4,7 @@
     height: 90px;
     margin: 0 auto;
   }
-  
+ 
   .loader:before {
     content: "";
     position: absolute;

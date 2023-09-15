@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <NavBar/>
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Explorar/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/editProfile' element={<EditProfile/>}/>
         <Route path='/searchResults' element={<SearchResults/>}/>

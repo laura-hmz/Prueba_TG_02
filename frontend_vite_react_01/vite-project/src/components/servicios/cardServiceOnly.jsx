@@ -98,6 +98,10 @@ const CardServiceOnly = ({service}) => {
                       <p className="leading-relaxed mb-3">{service.tipo_vehiculo_2}</p>
                     </>
                   )}
+                  
+                  <div className="text-xs font-bold tracking-widest text-gray-400 mb-3">
+                    Ultima vez actualizado: {service.updatedAt}
+                  </div>
 
                   
 

@@ -1,9 +1,9 @@
 import  { useState, useEffect } from 'react';
 import { getServices,deleteService,lastServicesAdded } from '../../api/servicesApi';
-//import CardServices from './cardService';
 //import CardService2 from './cardService2';
 //import CardService3 from './cardService3';
 import CardServiceOnly from './cardServiceOnly';
+import TransportServiceForm from './transportServiceForm';
 
 
 const Explorar = () => {
@@ -37,9 +37,10 @@ const Explorar = () => {
 
   return (
       
-          services.map((service) => (
-            <CardServiceOnly  service={{...service}} key={service._id}></CardServiceOnly>
-    ))
+    //       services.map((service) => (
+    //         <CardServiceOnly  service={{...service}} key={service._id}></CardServiceOnly>
+    // ))
+    <TransportServiceForm />
 )
 };
 
