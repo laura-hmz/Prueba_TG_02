@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import {lastServicesAdded } from '../api/servicesApi';
+import {lastServicesAdded, getServices } from '../api/servicesApi';
 //import ServicesList1 from '../components/servicios/servicesList1';
 import CardService3 from '../components/servicios/cardService3';
 
@@ -10,7 +10,7 @@ const Home = () => {
       // Realizar una solicitud para obtener los servicios cuando el componente se monta
       const fetchData = async () => {
         try {
-          const data = await lastServicesAdded();
+          const data = await getServices();
           console.log(data);
           setServices(data); 
         } catch (error) {

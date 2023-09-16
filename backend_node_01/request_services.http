@@ -5,8 +5,8 @@ POST http://localhost:3000/api/services HTTP/1.1
 Content-Type: application/json
 
 {
-  "id_usuario": "64e720695970aafb03f2a79c",
-  "nombre": "Calculo II",
+  "id_usuario": "64f3cebf195b15f8bb70c7d5",
+  "nombre": "Calculo Multivariable",
   "descripcion": "Excelente clase, me encanta dar clase porque dando clase de matematatica me siento realizado. Mi especialidad es responder cualquier duda sobre derivadas parciales, le derivo lo que sea. Hlopital se lo explico en un segundo y usted me entiende porque me entiende",
   "horarios": [
     {
@@ -15,7 +15,7 @@ Content-Type: application/json
       "hora_de_finalizacion": 11
     },
     {
-      "dia_semana": "Jueves",
+      "dia_semana": "Lunes",
       "hora_de_inicio": 13,
       "hora_de_finalizacion": 16
     }
@@ -107,7 +107,11 @@ GET http://localhost:3000/api/search-services?nombre=Servicio%20de%20limpieza HT
 // los resultados de las encuentas segun la busqueda (matchmaking) <3
 ###
 GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusquedaInicio=10&estado=1&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
+###
+GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusquedaInicio=&horaBusquedaFinal=&estado=&nombre=&tipo_servicio=&nombre_caracteristica=&descripcion_caracteristica=&area_0=&tipo_habitacion_1=&tipo_vehiculo_2=&area_otro_servicio_3=&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
 
+###
+GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusquedaInicio=&horaBusquedaFinal=&estado=&nombre=&tipo_servicio=&nombre_caracteristica=&descripcion_caracteristica=&area_0=&tipo_habitacion_1=&tipo_vehiculo_2=&area_otro_servicio_3=&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
 {
     "id_cliente":"64e71f3b5970aafb03f2a796",
     "diaSemana": "viernes",

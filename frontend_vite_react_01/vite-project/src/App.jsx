@@ -22,10 +22,11 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path='/' element={<Explorar/>}/>
+        <Route path='/Home' element={<Home/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/editProfile' element={<EditProfile/>}/>
         <Route path='/searchResults' element={<SearchResults/>}/>
-        <Route path='/editService/:id' element={<EditService/>}/>
+        <Route path='/editService/' element={<EditService/>}/>  
         <Route path='/savedServices' element={<SavedServices/>}/>
         <Route path='/searchService' element={<SearchService/>}/>
         <Route path='/serviceDetails/:id' element={<ServiceDetails/>}/>

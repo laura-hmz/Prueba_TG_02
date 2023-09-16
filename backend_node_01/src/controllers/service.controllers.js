@@ -223,7 +223,8 @@ const busqueda_servicios = async (req, res) => {
       //   ]
       // ]
       const orderedServices = await orderServices1(services, processedResults);
-      res.json({processedResults,orderedServices});
+      console.log("Backend -> processedResultsOrder: ", processedResults);
+      res.json({orderedServices});
     } catch (error) {
       res.status(500).json({ message: 'Error processing matchmaking', error });
       console.log(error);

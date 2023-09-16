@@ -16,7 +16,7 @@ const CardService3 = ({services}) => {
     <section className="antialiased bg-gray-200 font-sans">
       <div className="container px-5 py-10 mx-auto">
         <div className="flex flex-wrap -m-4 relative">
-          {services.map((service) => (
+          {Array.isArray(services) && services.map((service) => (
             <div key={service._id} className="p-4 md:w-1/3 relative">
               <div className="bg-white shadow-xl rounded-lg overflow-hidden relative">
                 <img

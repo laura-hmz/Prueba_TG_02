@@ -1,4 +1,4 @@
-import { FaTrash,FaPlus } from 'react-icons/fa';
+import { FaTrash, FaPlus } from 'react-icons/fa';
 import { useState } from 'react';
 
 const TransportServiceForm = () =>{
@@ -19,11 +19,19 @@ const TransportServiceForm = () =>{
       const handleSubmit = (e) => {
         e.preventDefault();
         // Aquí puedes manejar el envío del formulario y enviar los datos
+        console.log('Formulario enviado con exito');
         console.log(horarios);
+
       };
 
-      const labelClassname = ' block uppercase tracking-wide text-gray-700 text-md font-bold mb-4';
+      const optionsHoraInicio = [
+        "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
+        "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00",
+        "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
+      ];
+      const labelClassname = ' block uppercase tracking-wide text-lg text-gray-600 text-md font-bold mb-4';
       const divEspace = "mb-8"
+      const labelClassnameHorario = ' block uppercase tracking-wide text-gray-500 text-sm font-bold mb-2 mt-4';
    
   return (
 
@@ -67,10 +75,17 @@ const TransportServiceForm = () =>{
 
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <h1 className= {labelClassname} style={{ flex: 1 }}>Horarios de atención</h1>
+                <h1 className= {labelClassname} style={{ flex: 1 }}>Agregar horarios :</h1>
                 <button type="button" onClick={agregarHorario} className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full">
-                    Agregar horario
+                    <FaPlus />
                 </button>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h1 className= {labelClassnameHorario} style={{ flex: 1 }}>Día</h1>
+                <h1 className= {labelClassnameHorario} style={{ flex: 1 }}>Hora de inicio</h1>
+                <h1 className= {labelClassnameHorario} style={{ flex: 1 }}>Hora finalización</h1>
+                
             </div>
 
             <div className="w-full ">
@@ -104,32 +119,12 @@ const TransportServiceForm = () =>{
                     setHorarios(nuevosHorarios);
                     }}
                 >
-                    {/* Agrega las opciones de hora de inicio aquí */}
-                    <option value="0">00:00</option>
-                    <option value="1">01:00</option>
-                    <option value="2">02:00</option>
-                    <option value="3">03:00</option>
-                    <option value="4">04:00</option>
-                    <option value="5">05:00</option>
-                    <option value="6">06:00</option>
-                    <option value="7">07:00</option>
-                    <option value="8">08:00</option>
-                    <option value="9">09:00</option>
-                    <option value="10">10:00</option>
-                    <option value="11">11:00</option>
-                    <option value="12">12:00</option>
-                    <option value="13">13:00</option>
-                    <option value="14">14:00</option>
-                    <option value="15">15:00</option>
-                    <option value="16">16:00</option>
-                    <option value="17">17:00</option>
-                    <option value="18">18:00</option>
-                    <option value="19">19:00</option>
-                    <option value="20">20:00</option>
-                    <option value="21">21:00</option>
-                    <option value="22">22:00</option>
-                    <option value="23">23:00</option>
+                    {/* Opciones de hora de inicio aquí */}
+                    {optionsHoraInicio.map((hora, index) => (
+                        <option key={index} value={index}>{hora}</option>
+                    ))}
                 </select>
+                
                 <select
                     className="capitalize shadow-2xl p-3 ex w-full outline-none focus:border-solid focus:border-[1px] border-[#035ec5] placeholder:text-black"
                     name='endTime'
@@ -140,31 +135,11 @@ const TransportServiceForm = () =>{
                     setHorarios(nuevosHorarios);
                     }}
                 >
-                    {/* Agrega las opciones de hora de fin aquí */}
-                    <option value="0">00:00</option>
-                    <option value="1">01:00</option>
-                    <option value="2">02:00</option>
-                    <option value="3">03:00</option>
-                    <option value="4">04:00</option>
-                    <option value="5">05:00</option>
-                    <option value="6">06:00</option>
-                    <option value="7">07:00</option>
-                    <option value="8">08:00</option>
-                    <option value="9">09:00</option>
-                    <option value="10">10:00</option>
-                    <option value="11">11:00</option>
-                    <option value="12">12:00</option>
-                    <option value="13">13:00</option>
-                    <option value="14">14:00</option>
-                    <option value="15">15:00</option>
-                    <option value="16">16:00</option>
-                    <option value="17">17:00</option>
-                    <option value="18">18:00</option>
-                    <option value="19">19:00</option>
-                    <option value="20">20:00</option>
-                    <option value="21">21:00</option>
-                    <option value="22">22:00</option>
-                    <option value="23">23:00</option>
+                    {/* Opciones de hora de fin  */}
+                    {optionsHoraInicio.map((hora, index) => (
+                        <option key={index} value={index}>{hora}</option>
+                    ))}
+                    
                 </select>
                 <button
                     type="button"
@@ -184,7 +159,7 @@ const TransportServiceForm = () =>{
                 <button
                     className=" mt-8 outline-none glass shadow-2xl w-full   p-3 bg-green-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
                     type="submit">
-                    Submit
+                    Enviar
                 </button>
 
                 </div>

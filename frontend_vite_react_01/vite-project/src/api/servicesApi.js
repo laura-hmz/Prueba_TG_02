@@ -37,3 +37,13 @@ export const listServicesIdUser = async (id) => {
     const res = await servicesApi.get(`/list-services-user/${id}`)
     return res.data
 }
+
+export const busquedaMatchmaking = async (searchParams) => {
+    // Convierte el objeto de búsqueda en una cadena de consulta
+    const queryString = new URLSearchParams(searchParams).toString();
+  
+    // Realiza la solicitud GET con la cadena de consulta
+    const res = await servicesApi.get(`/survey-results-array?${queryString}`);
+    console.log(queryString);
+    return res.data;
+  };
