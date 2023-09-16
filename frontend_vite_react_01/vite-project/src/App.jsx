@@ -3,12 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './components/servicios/explorar.jsx';
 import NavBar from './components/navbar/navbar.jsx';
+import NavBar2 from './components/navbar/navbar2.jsx';
 import Explorar from './components/servicios/explorar.jsx';
 //importar las vistas
 import Home from './views/home.jsx';
 import Profile from './views/users/profile.jsx';
 import EditProfile from './views/users/editProfile.jsx';
-import SearchResults from './views/services/searchResults.jsx';
+import Especialsearch from './views/services/especialSearch.jsx';
 import EditService from './views/services/editService.jsx';
 import SavedServices from './views/services/savedServices.jsx';
 import SearchService from './views/services/searchService.jsx';
@@ -19,13 +20,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar/>
+      <NavBar2/>
       <Routes>
         <Route path='/' element={<Explorar/>}/>
         <Route path='/Home' element={<Home/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/editProfile' element={<EditProfile/>}/>
-        <Route path='/searchResults' element={<SearchResults/>}/>
+        <Route path='/especialsearch' element={<Especialsearch/>}/>
         <Route path='/editService/' element={<EditService/>}/>  
         <Route path='/savedServices' element={<SavedServices/>}/>
         <Route path='/searchService' element={<SearchService/>}/>

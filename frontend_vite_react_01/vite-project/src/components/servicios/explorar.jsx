@@ -6,7 +6,6 @@ import CardService3 from './cardService3';
 //import CardServiceOnly from './cardServiceOnly';
 //import TransportServiceForm from './forms/transportServiceForm';
 import SearchForm from './forms/searchForm';
-import SearchResults from './forms/searchResults';
 import ServicesList1 from './servicesList1';
 
 
