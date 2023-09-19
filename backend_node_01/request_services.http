@@ -5,26 +5,21 @@ POST http://localhost:3000/api/services HTTP/1.1
 Content-Type: application/json
 
 {
-  "id_usuario": "64f3cebf195b15f8bb70c7d5",
-  "nombre": "Calculo Multivariable",
-  "descripcion": "Excelente clase, me encanta dar clase porque dando clase de matematatica me siento realizado. Mi especialidad es responder cualquier duda sobre derivadas parciales, le derivo lo que sea. Hlopital se lo explico en un segundo y usted me entiende porque me entiende",
-  "horarios": [
+  "id_usuario": "64e2ff80fed5d5347f0c5b24",
+  "nombre": "Arriendo habitación barrio principe",
+  "descripcion": "Espacio amplio y tranquilo",
+  
+  "tipo_servicio": "Servicio de habitaciones",
+  "estado": 1,
+  "area_0": null,
+  "tipo_habitacion_1": "habitacion",
+  "caracteristicas_habitacion_1": 
+  [
     {
-      "dia_semana": "martes",
-      "hora_de_inicio": 3,
-      "hora_de_finalizacion": 11
-    },
-    {
-      "dia_semana": "Lunes",
-      "hora_de_inicio": 13,
-      "hora_de_finalizacion": 16
+    "nombre":"permite mascota",
+    "descripcion": "Espacio suficiente para un perro grande" 
     }
   ],
-  "tipo_servicio": "Asesorías Académicas",
-  "estado": 1,
-  "area_0": "Educación",
-  "tipo_habitacion_1": null,
-  "caracteristicas_habitacion_1": [],
   "tipo_vehiculo_2": null,
   "area_otro_servicio_3": null
 }

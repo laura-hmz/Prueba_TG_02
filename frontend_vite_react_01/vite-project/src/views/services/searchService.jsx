@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {busquedaMatchmaking} from '../../api/servicesApi';
 import SearchForm from '../../components/servicios/forms/searchForm';
 import CardService3 from '../../components/servicios/cardService3';
+
 const SearchService = () => {
 
 const [searchResults, setSearchResults] = useState([]);
@@ -48,7 +49,8 @@ const [searchResults, setSearchResults] = useState([]);
             <h1>Buscador Especializado</h1>
             <SearchForm onSearch={handleSearch} isLoading={isLoading} />
             {isLoading ? (
-            <p>Cargando...</p>
+            <h1>Cargando...</h1>
+            
             ) : (
             
             

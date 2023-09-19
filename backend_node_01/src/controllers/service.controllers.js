@@ -113,7 +113,7 @@ const orderServices1 = async (services, idsServicios) => {
 const searchServices = async (req, res) => {
     try {
         const { diaSemana, horaBusquedaInicio, horaBusquedaFinal, estado, nombre,
-           tipo_servicio, nombre_caracteristica, descripcion_caracteristica, area_0, 
+           tipo_servicio, parqueadero_carro, parqueadero_moto, permite_mascota, area_0, 
            tipo_habitacion_1, tipo_vehiculo_2, area_otro_servicio_3 } = req.query;
 
         // Construye la consulta dinámica
@@ -137,18 +137,20 @@ const searchServices = async (req, res) => {
             query['estado'] = Number(estado);
         }
 
-        if (nombre_caracteristica) {
-            query['caracteristicas_habitacion_1.nombre'] = { $regex: new RegExp(nombre_caracteristica, 'i') };
-        }
-
-        if (descripcion_caracteristica) {
-          query['caracteristicas_habitacion_1.descripcion'] = { $regex: new RegExp(descripcion_caracteristica, 'i') };
-        }
+        
 
         if (tipo_servicio) {
             query['tipo_servicio'] = { $regex: new RegExp(tipo_servicio, 'i') };
         }
-
+        if(parqueadero_carro){
+          query['caracteristicas_habitacion_1.nombre'] = { $regex: new RegExp(parqueadero_carro, 'i') };
+        }
+        if(parqueadero_moto){
+          query['caracteristicas_habitacion_1.nombre'] = { $regex: new RegExp(parqueadero_moto, 'i') };
+        }
+        if(permite_mascota){
+          query['caracteristicas_habitacion_1.nombre'] = { $regex: new RegExp(permite_mascota, 'i') };
+        }
         if (area_0) {
             query['area_0'] = { $regex: new RegExp(area_0, 'i') };
         }

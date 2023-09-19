@@ -2,11 +2,11 @@ import  { useState, useEffect } from 'react';
 import { getServices,deleteService,lastServicesAdded } from '../../api/servicesApi';
 import {busquedaMatchmaking} from '../../api/servicesApi';
 //import CardService2 from './cardService2';
-import CardService3 from './cardService3';
+//import CardService3 from './cardService3';
 //import CardServiceOnly from './cardServiceOnly';
-//import TransportServiceForm from './forms/transportServiceForm';
-import SearchForm from './forms/searchForm';
-import ServicesList1 from './servicesList1';
+import TransportServiceForm from './forms/transportServiceForm';
+//import SearchForm from './forms/searchForm';
+//import ServicesList1 from './servicesList1';
 
 
 const Explorar = () => {
@@ -85,18 +85,12 @@ const Explorar = () => {
     //       services.map((service) => (
     //         <CardServiceOnly  service={{...service}} key={service._id}></CardServiceOnly>
     // ))
-    <div>
-    <h1>Buscador Especializado</h1>
-    <SearchForm onSearch={handleSearch} isLoading={isLoading} />
-    {isLoading ? (
-      <p>Cargando...</p>
-    ) : (
+    
      
       
-      <CardService3 services={searchResults.orderedServices} />
+      <TransportServiceForm  />
       
-    )}
-  </div>
+
 
 )
 };

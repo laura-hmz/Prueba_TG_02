@@ -1,3 +1,10 @@
+.loader-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  min-height: 100vh; /* Establece la altura mínima al 100% de la ventana gráfica */
+}
+
 .loader {
     position: relative;
     width: 120px;

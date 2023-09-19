@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {busquedaMatchmaking} from '../../api/servicesApi';
 import SearchForm from '../../components/servicios/forms/searchForm';
 import CardService3 from '../../components/servicios/cardService3';
+import "../../components/loader1.css";
 const EspecialSearch = () => {
 
 const [searchResults, setSearchResults] = useState([]);
@@ -12,8 +13,8 @@ const [searchResults, setSearchResults] = useState([]);
   
     try {
       const { diaSemana, horaBusquedaInicio, horaBusquedaFinal, estado, nombre,
-        tipo_servicio, nombre_caracteristica, descripcion_caracteristica, area_0,
-        tipo_habitacion_1, tipo_vehiculo_2, area_otro_servicio_3,id_cliente } = searchParams;
+        tipo_servicio, parqueadero_carro, parqueadero_moto, permite_mascota, 
+        area_0,tipo_habitacion_1, tipo_vehiculo_2, area_otro_servicio_3,id_cliente } = searchParams;
   
       // Llama a tu función de búsqueda en el backend
       const results = await busquedaMatchmaking({
@@ -23,8 +24,9 @@ const [searchResults, setSearchResults] = useState([]);
         estado,
         nombre,
         tipo_servicio,
-        nombre_caracteristica,
-        descripcion_caracteristica,
+        parqueadero_carro, 
+        parqueadero_moto, 
+        permite_mascota,
         area_0,
         tipo_habitacion_1,
         tipo_vehiculo_2,
@@ -48,7 +50,15 @@ const [searchResults, setSearchResults] = useState([]);
             <h1>Buscador Especializado</h1>
             <SearchForm onSearch={handleSearch} isLoading={isLoading} />
             {isLoading ? (
-            <p>Cargando...</p>
+              <div className="loader-container relative bg-gray-200">
+              <h1 className="text-center absolute top-0 left-0 w-full bg-transparent text-black text-2xl">
+                Cargando...
+              </h1>
+              <div className="loader"></div>
+            </div>
+   
+          
+          
             ) : (
             
             
