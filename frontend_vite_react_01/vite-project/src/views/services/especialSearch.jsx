@@ -46,24 +46,17 @@ const [searchResults, setSearchResults] = useState([]);
     }
   };
     return (
-        <div>
-            <h1>Buscador Especializado</h1>
+        <div >
             <SearchForm onSearch={handleSearch} isLoading={isLoading} />
             {isLoading ? (
-              <div className="loader-container relative bg-gray-200">
-              <h1 className="text-center absolute top-0 left-0 w-full bg-transparent text-black text-2xl">
+              <div className="loader-container relative ">
+              <h1 className="text-center absolute top-5 left-0 w-full bg-transparent text-black text-2xl">
                 Cargando...
               </h1>
               <div className="loader"></div>
             </div>
-   
-          
-          
             ) : (
-            
-            
             <CardService3 services={searchResults.orderedServices} />
-            
             )}
         </div>
     )

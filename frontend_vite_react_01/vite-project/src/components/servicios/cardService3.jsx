@@ -13,7 +13,7 @@ const CardService3 = ({services}) => {
   };
 
   return (
-    <section className="antialiased bg-gray-200 font-sans">
+    <section className="antialiased  font-sans">
       <div className="container px-5 py-10 mx-auto">
         <div className="flex flex-wrap -m-4 relative">
           {Array.isArray(services) && services.map((service) => (
