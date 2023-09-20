@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 const CardServiceOnly = ({service}) => {
     //const {service} = useParams();
     //Ordenar la logica del boton
@@ -114,11 +115,11 @@ const CardServiceOnly = ({service}) => {
                     </div>
                     <div className="flex items-center pt-2">
                       <div
-                        className="bg-cover bg-center w-10 h-10 rounded-full mr-3"
-                        style={{
-                          backgroundImage: 'url(./src/images/profileUserImage.png)',
-                        }}
-                      ></div>
+                        className="bg-cover bg-center  rounded-full mr-3"
+                        
+                      >
+                        <FaUserCircle className="text-4xl"/> 
+                      </div>
                       <div>
                         <p className="text-m font-bold text-gray-600">
                           Miguel Angel Burro

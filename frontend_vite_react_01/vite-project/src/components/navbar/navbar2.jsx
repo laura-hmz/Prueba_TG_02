@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 
 const Navbar2 = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const linksDesing = "font-poppins font-normal mr-5 hover:text-gray-900 cursor-pointer text-[16px] text-gray-600"
+  const linksDesing = "font-poppins font-normal mr-5 hover:text-gray-900 cursor-pointer text-[16px] text-gray-800"
 
   return (
     <nav className="w-full flex py-4 justify-between bg-blue-500 items-center navbar relative">
       {/* Logo */}
       
       <Link to="/Home"className="flex title-font font-medium items-center mr-5 ml-12 text-gray-900  ">
-        <FaSmileWink size={25} className="white-icon"/>
-        <span className="ml-5 text-xl text-gray-800 cursor-pointer ">Explorar</span>
+        <FaRegGem size={25} className="white-icon"/>
+        <span className="ml-5  text-xl text-white cursor-pointer ">Explorar</span>
         
       </Link>
 

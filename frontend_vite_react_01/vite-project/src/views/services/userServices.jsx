@@ -1,6 +1,8 @@
 import  { useState, useEffect } from 'react';
 import { getServices,deleteService } from '../../api/servicesApi';
-import ServicesList2 from '../../components/servicios/servicesList2';
+//import ServicesList2 from '../../components/servicios/servicesList2';
+import CardServiceModify from '../../components/servicios/cardServiceModify';
+
 const UserServices = () => {
     const [services, setServices] = useState([]);
 
@@ -31,7 +33,7 @@ const UserServices = () => {
     };
   
     return (
-      <ServicesList2 services={services} onDeleteService={handleDeleteService}></ServicesList2>
+      <CardServiceModify services={services} onDeleteService={handleDeleteService}></CardServiceModify>
   )
   };
   
