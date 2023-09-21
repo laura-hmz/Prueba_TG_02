@@ -15,6 +15,7 @@ import SavedServices from './views/services/savedServices.jsx';
 import SearchService from './views/services/searchService.jsx';
 import ServiceDetails from './views/services/serviceDetails.jsx';
 import UserServices from './views/services/userServices.jsx';
+import OfferService from './views/services/offerService.jsx';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path='/searchService' element={<SearchService/>}/>
         <Route path='/serviceDetails/:id' element={<ServiceDetails/>}/>
         <Route path='/userServices' element={<UserServices/>}/>
+        <Route path='/offerService' element={<OfferService/>}/>
       </Routes>
     </BrowserRouter>
   )

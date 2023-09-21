@@ -4,9 +4,10 @@ import {busquedaMatchmaking} from '../../api/servicesApi';
 //import CardService2 from './cardService2';
 //import CardService3 from './cardService3';
 //import CardServiceOnly from './cardServiceOnly';
-import TransportServiceForm from './forms/transportServiceForm';
+import TransportServiceForm2 from './forms/transportServiceForm2';
 //import SearchForm from './forms/searchForm';
 //import ServicesList1 from './servicesList1';
+import RegisterForm from './forms/registerForm';
 
 
 const Explorar = () => {
@@ -88,7 +89,7 @@ const Explorar = () => {
     
      
       
-      <TransportServiceForm  />
+      <TransportServiceForm2  />
       
 
 

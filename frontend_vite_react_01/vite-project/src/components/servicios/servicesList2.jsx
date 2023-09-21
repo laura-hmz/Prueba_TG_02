@@ -1,5 +1,6 @@
 import  { useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import DeleteConfirmation from '../mensajesAuxliliares/deleteConfirmation'
 const ServicesList2 = ({services, onDeleteService}) => {
 
@@ -69,5 +70,9 @@ const ServicesList2 = ({services, onDeleteService}) => {
             )}
         </section>
     )
+}
+ServicesList2.propTypes = {
+    services: PropTypes.array,
+    onDeleteService: PropTypes.func
 }
 export default ServicesList2

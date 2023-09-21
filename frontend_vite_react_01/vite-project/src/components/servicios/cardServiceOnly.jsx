@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
+
 const CardServiceOnly = ({service}) => {
     //const {service} = useParams();
     //Ordenar la logica del boton
@@ -139,5 +141,7 @@ const CardServiceOnly = ({service}) => {
   );
   
 };
-
+CardServiceOnly.propTypes = {
+  service: PropTypes.object.isRequired
+}
 export default CardServiceOnly;

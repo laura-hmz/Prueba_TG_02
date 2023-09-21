@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import DeleteConfirmation from '../mensajesAuxliliares/deleteConfirmation'
@@ -22,15 +23,7 @@ const CardServiceModify = ({services, onDeleteService}) => {
         }
     }
 
-    //Ordenar la logica del boton
-    const [buttonClicked, setButtonClicked] = useState(false);
-
-  const handleClick = () => {
-    // Puedes agregar tu lógica aquí.
-
-    // Deshabilita el botón después de hacer clic.
-    setButtonClicked(true);
-  };
+ 
 
   return (
     <section className="antialiased  font-sans">
@@ -101,5 +94,10 @@ const CardServiceModify = ({services, onDeleteService}) => {
   );
   
 };
+
+CardServiceModify.propTypes = {
+  services: PropTypes.array.isRequired,
+  onDeleteService: PropTypes.func.isRequired
+}
 
 export default CardServiceModify;

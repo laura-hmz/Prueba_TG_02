@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import  { useState } from 'react';
+import FormsComponentsStyle from '../servicesComponentesStyle/formsComponentsStyle';
 
-const SearchForm = ({ onSearch, isLoading }) => {
+const RegisterForm = ({ onSearch, isLoading }) => {
   const [searchParams, setSearchParams] = useState({
     diaSemana: '',
     horaBusquedaInicio: '',
@@ -25,14 +26,14 @@ const SearchForm = ({ onSearch, isLoading }) => {
     "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
   ];
 
-  const labelClassname = 'ml-4 block mt-3 mb-2 tracking-wide text-gray-500 text-md font-bold ';
-  const selectDesing='capitalize shadow-2xl p-2 border w-full outline-none focus:border-solid focus:border-[2px] focus:border-[#93c5fd] placeholder:text-black'
-  const inputDesing=" shadow-2xl p-2 ex mb-4 w-full outline-none border focus:border-solid focus:border-[2px] focus:border-[#93c5fd]   placeholder-gray-400"
-  const divDesing = "text-center mb-4"
-  const divGrid =" md:flex md:flex-row md:space-y-0 md:space-x-4"
-  const divGridSub =" md:flex-1 flex-col "
-  const buttonDesing = "ouDesingtline-none  rounded-lg mt-2 p-2 bg-green-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold" 
-  const labelCheckBox= "ml-7 block text-black text-md "
+  const labelClassname = FormsComponentsStyle.labelClassname;
+  const selectDesing=FormsComponentsStyle.selectDesing;
+  const inputDesing=FormsComponentsStyle.inputDesing;
+  const divDesing=FormsComponentsStyle.divDesing;
+  const divGrid=FormsComponentsStyle.divGrid;
+  const divGridSub=FormsComponentsStyle.divGridSub;
+  const buttonDesing=FormsComponentsStyle.buttonDesing;
+  const labelCheckBox=FormsComponentsStyle.labelCheckBox;
 
 
   const handleChange = (e) => {
@@ -455,8 +456,8 @@ const SearchForm = ({ onSearch, isLoading }) => {
     </div>
   );
 };
-SearchForm.propTypes = {
-  onSearch: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired
+RegisterForm.propTypes = {
+  onSearch: PropTypes.func,
+  isLoading: PropTypes.bool
 }
-export default SearchForm;
+export default RegisterForm;

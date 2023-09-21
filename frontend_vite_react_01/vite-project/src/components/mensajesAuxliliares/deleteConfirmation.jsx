@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import "./styleModal.css";
 import { Modal } from 'react-responsive-modal';
 
@@ -26,6 +27,11 @@ const DeleteConfirmation = ({ isOpen, onClose, onDelete }) => {
 
   );
 };
+DeleteConfirmation.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
+}
 
 export default DeleteConfirmation;
 

@@ -1,41 +1,54 @@
 import { FaTrash, FaPlus } from 'react-icons/fa';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const TransportServiceForm = () =>{
+
+    const optionsHoraInicio = [
+        "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
+        "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00",
+        "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
+    ];
+
     const [horarios, setHorarios] = useState([
-        { day: 'Lunes', startTime: '0', endTime: '0' } // Puedes agregar un horario inicial si lo deseas
-      ]);
+        { day: 'Lunes', startTime: '0', endTime: '0' } 
+    ]);
     
-      const agregarHorario = () => {
+    const agregarHorario = () => {
         setHorarios([...horarios, { day: 'Lunes', startTime: '0', endTime: '0' }]);
-      };
-    
-      const eliminarHorario = (index) => {
+    };
+
+    const [modoEdicion, setModoEdicion] = useState(false);
+
+    const eliminarHorario = (index) => {
         const nuevosHorarios = [...horarios];
         nuevosHorarios.splice(index, 1);
         setHorarios(nuevosHorarios);
-      };
-    
-      const handleSubmit = (e) => {
+    };
+
+    const handleSubmit = (e) => {
         e.preventDefault();
         // Aquí puedes manejar el envío del formulario y enviar los datos
         console.log('Formulario enviado con exito');
         console.log(horarios);
+    };
 
-      };
+    
 
-      const optionsHoraInicio = [
-        "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
-        "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00",
-        "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
-      ];
-      const labelClassname = ' block uppercase tracking-wide text-lg text-gray-600 text-md font-bold mb-4';
-      const divEspace = "mb-8"
-      const labelClassnameHorario = ' block uppercase tracking-wide text-gray-500 text-sm font-bold mb-2 mt-4';
+     //Diseño para el formulario
+    const labelClassname = ' block uppercase tracking-wide text-lg text-gray-600 text-md font-bold mb-4';
+    const divEspace = "mb-8"
+    const labelClassnameHorario = ' block uppercase tracking-wide text-gray-500 text-sm font-bold mb-2 mt-4';
+
+    useEffect(() => {
+        if (modoEdicion) {
+          // Lógica para cargar los datos existentes en el formulario
+          // Puedes usar el estado o los datos de tu aplicación para esto.
+        }
+      }, [modoEdicion]);
    
   return (
 
-    <form className="bg-gray-200 p-4 md:p-8 lg:p-12 rounded-lg" onSubmit={handleSubmit}>
+    <form className="mx-auto max-w-5xl mb-4 mt-4 py-10 md:p-4 lg:p-6 rounded-lg border border-gray-300 border-solid" onSubmit={handleSubmit}>
       
         <div className="w-full md:w-2/3 mx-auto space-y-4 " id="form">
 
@@ -152,14 +165,11 @@ const TransportServiceForm = () =>{
             ))}
             
             </div>
-
-
-
                 <div >
                 <button
                     className=" mt-8 outline-none glass shadow-2xl w-full   p-3 bg-green-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
                     type="submit">
-                    Enviar
+                    {modoEdicion ? "Guardar cambios" : "Crear"}
                 </button>
 
                 </div>

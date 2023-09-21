@@ -24,6 +24,9 @@ const Navbar2 = () => {
                 <Link to='/especialsearch'>Buscar Servicios</Link>
             </li>
             <li className={linksDesing}>
+                <Link to='/offerService'>Ofrecer Servicios</Link>
+            </li>
+            <li className={linksDesing}>
                 <Link to='/userServices'>Mis Servicios</Link>
             </li>
             <li className={linksDesing}>

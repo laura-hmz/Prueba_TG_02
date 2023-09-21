@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 const ServicesList1 = ({services}) => {
   return (
@@ -31,5 +32,8 @@ const ServicesList1 = ({services}) => {
         </div>
         </section>
     )
+}
+ServicesList1.propTypes = {
+  services: PropTypes.array
 }
 export default ServicesList1

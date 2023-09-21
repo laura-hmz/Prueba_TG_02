@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
@@ -86,5 +87,8 @@ const CardService3 = ({services}) => {
   );
   
 };
+CardService3.propTypes = {
+  services: PropTypes.array
+}
 
 export default CardService3;
