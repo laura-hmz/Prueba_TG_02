@@ -110,7 +110,7 @@ const SearchForm = ({ onSearch, isLoading }) => {
             <option value="" disabled>Selecciona una categoría</option>
             <option value="Asesorías Académicas">Asesorías Académicas</option>
             <option value="Servicio de habitaciones">Servicio de habitaciones</option>
-            <option value="Servicio de Transporte">Servicio de Transporte</option>
+            <option value="Servicio de transporte">Servicio de Transporte</option>
             <option value="Otros servicios">Otros servicios</option>
           </select>
         </div>
@@ -308,7 +308,7 @@ const SearchForm = ({ onSearch, isLoading }) => {
 
         {/*------------------------------------------- SERVICIOS DE TRANSPORTE -----------------------------*/}
 
-        {searchParams.tipo_servicio === 'Servicio de Transporte' && (
+        {searchParams.tipo_servicio === 'Servicio de transporte' && (
                 <>
                   <div className={divGrid}>
                     {/*Columna izquierda*/}
@@ -398,9 +398,9 @@ const SearchForm = ({ onSearch, isLoading }) => {
                       <label className={labelClassname} htmlFor="area_otro_servicio_3">Área del servicio:</label>
                       <select
                         className={selectDesing}
-                        id="tipo_habitacion_1"
-                        name="tipo_habitacion_1"
-                        value={searchParams.tipo_habitacion_1}
+                        id="area_otro_servicio_3"
+                        name="area_otro_servicio_3"
+                        value={searchParams.area_otro_servicio_3}
                         onChange={handleChange}
                         disabled={isLoading}
                       >

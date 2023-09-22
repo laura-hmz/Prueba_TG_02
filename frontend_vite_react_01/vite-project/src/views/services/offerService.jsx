@@ -1,6 +1,7 @@
+import RegisterCategory from "../../components/servicios/registerCategory"
 const OfferService = () => {
     return (
-        <div>OfferService</div>
+        <RegisterCategory />
     )
 }
 export default OfferService

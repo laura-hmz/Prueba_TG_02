@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { updateService, createService } from '../../../api/servicesApi';
 
 
-const TransportServiceForm2 = ({service, option}) =>{
+const RoomServiceForm2 = ({service, option}) =>{
     
     const [currentOption, setCurrentOption] = useState(option);
     const setOption = (newOption) => {
@@ -18,10 +18,10 @@ const TransportServiceForm2 = ({service, option}) =>{
         nombre: '',
         descripcion: '',
         horarios:[],
-        tipo_servicio: "Servicio de transporte",
+        tipo_servicio: "servicio de habitaciones",
         estado: 1,
         area_0: '',
-        tipo_habitacion_1: '',
+        
         caracteristicas_habitacion_1: [],
         tipo_vehiculo_2: '',
         area_otro_servicio_3: '',
@@ -143,12 +143,12 @@ const TransportServiceForm2 = ({service, option}) =>{
                 </div>
 
                 <div className={divEspace}>
-                    <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio de transporte' : 'Registrar servicio de transporte'} </h1>
+                    <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio de habitación' : 'Registrar servicio de habitación'} </h1>
                     <label className={labelClassname} htmlFor="nombre">Nombre del servicio:</label>
                       <input
                         className={inputDesing}
                         type="text"
-                        placeholder="Ejemplo: Servicio de moto"
+                        placeholder="Ejemplo: Arriendo apartamento en Aguaclara" 
                         id="nombre"
                         name="nombre"
                         value={serviceData.nombre || ''}
@@ -180,6 +180,26 @@ const TransportServiceForm2 = ({service, option}) =>{
                 )}
 
                 <div className={divEspace}>
+                    <label className={labelClassname} htmlFor="tipo_habitacion_1">Tipo de inmueble:</label>
+                    <select
+                    className={selectDesing}
+                    id="tipo_habitacion_1"
+                    name="tipo_habitacion_1"
+                    value={serviceData.tipo_habitacion_1}
+                    onChange={handleChange}
+                    disabled={currentOption === 'show'}
+                    required
+                    >
+                    <option value="">----</option> 
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Habitacion">Habitación</option>
+                    <option value="Hospedaje">Hospedaje</option>
+                    <option value="Roomie">Roomie</option>
+                </select>
+
+                </div>
+
+                <div className={divEspace}>
                     <label htmlFor="descripcion" className={labelClassname}>Descripción del servicio:</label>
                     <textarea
                         className={inputDesing}
@@ -196,20 +216,29 @@ const TransportServiceForm2 = ({service, option}) =>{
                 </div>
 
                 <div className={divEspace}>
-                    <label className={labelClassname} htmlFor="tipo_vehiculo_2">Tipo de vehículo:</label>
-                    <select
-                        className={selectDesing}
-                        id="tipo_vehiculo_2"
-                        name="tipo_vehiculo_2"
-                        value={serviceData.tipo_vehiculo_2 || ''} 
-                        onChange={handleChange}
-                        disabled={currentOption === 'show'}
-                        required
+                    <label className={labelClassname} htmlFor="area_otro_servicio_3">Área del servicio:</label>
+                        <select
+                            className={selectDesing}
+                            id="area_otro_servicio_3"
+                            name="area_otro_servicio_3"
+                            value={serviceData.area_otro_servicio_3 || ''}
+                            onChange={handleChange}
+                            disabled={currentOption === 'show'}
+                            required
                         >
-                        <option value="">----</option> 
-                        <option value="carro">Carro</option>
-                        <option value="moto">Moto</option>
-                    </select>
+                            <option value="">----</option>
+                            <option value="Administrativos y finanzas">Administrativos y finanzas</option>
+                            <option value="Atención al cliente">Atención al cliente</option>
+                            <option value="Gastronomia">Gastronomía</option>
+                            <option value="Artes u oficios">Artes u oficios</option>
+                            <option value="Tecnologia e informatica">Tecnología e informática</option>
+                            <option value="Belleza">Belleza</option>
+                            <option value="Mensajeria">Mensajería</option>
+                            <option value="Deporte">Deporte</option>
+                            <option value="Vestuario">Vestuario</option>
+                            <option value="Servicios generales">Servicios generales</option>
+                            <option value="Mascotas">Mascotas</option>
+                        </select>
                 </div>
 
                 <div className='mb-3'>
@@ -300,7 +329,7 @@ const TransportServiceForm2 = ({service, option}) =>{
                             className="outline-none glass shadow-2xl w-full rounded p-3 bg-green-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
                             type="submit"
                         >
-                            {currentOption === 'edit' ? 'Guardar cambios' : currentOption === 'register' ? 'Registrar nuevo servicio' : ''}
+                            {currentOption === 'edit' ? 'Guardar cambios' : currentOption === 'register' ? 'Registrar servicio de habilitación' : ''}
                         </button>
                     )}
 
@@ -313,10 +342,10 @@ const TransportServiceForm2 = ({service, option}) =>{
   );
 }
 
-TransportServiceForm2.propTypes = {
+RoomServiceForm2.propTypes = {
   option: PropTypes.string.isRequired,
   service: PropTypes.object
 }
 
 
-export default TransportServiceForm2;
+export default RoomServiceForm2;

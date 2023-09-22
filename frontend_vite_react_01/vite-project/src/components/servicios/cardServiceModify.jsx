@@ -38,7 +38,7 @@ const CardServiceModify = ({services, onDeleteService}) => {
                   alt={service._id}
                 />
                <div className='absolute top-4 right-4'>
-                    <Link to={{ pathname: `/serviceDetails/${service._id}` }}>
+                    <Link to={{ pathname: `/editService/${service._id}` }}>
                                     <button className={'focus:outline-none bg-indigo-500 text-white hover:bg-indigo-600 py-2 px-4 rounded-full'}
                                     ><FaPen/></button>
                                 </Link>
@@ -66,7 +66,7 @@ const CardServiceModify = ({services, onDeleteService}) => {
                   </div>
                   <div className="flex pb-4 items-center flex-wrap">
                         <Link to={{ pathname: `/serviceDetails/${service._id}` }} className="text-indigo-500 inline-flex items-center cursor-pointer md:mb-2 lg:mb-0">
-                                Ver detalles
+                                Vista previa
                                 <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M5 12h14"></path>
                                     <path d="M12 5l7 7-7 7"></path>
