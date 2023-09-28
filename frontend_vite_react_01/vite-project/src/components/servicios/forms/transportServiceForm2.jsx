@@ -6,13 +6,13 @@ import { updateService, createService } from '../../../api/servicesApi';
 
 
 const TransportServiceForm2 = ({service, option, updatedServiceData}) =>{
-    
+    //manejo del formuario
     const [currentOption, setCurrentOption] = useState(option);
     const [isUpdated, setIsUpdated] = useState(false);
     const setOption = (newOption) => {
         setCurrentOption(newOption);
     };
-
+    // inicialización de datos
     const [serviceData, setServiceData] = useState({
        
         id_usuario: '64e2ff80fed5d5347f0c5b24',
@@ -28,7 +28,7 @@ const TransportServiceForm2 = ({service, option, updatedServiceData}) =>{
         area_otro_servicio_3: '',
 
     });
-
+    //manejo de los horarios
     const optionsHoraInicio = [
         "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
         "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00",
@@ -50,8 +50,20 @@ const TransportServiceForm2 = ({service, option, updatedServiceData}) =>{
         setHorarios(nuevosHorarios);
     };
     
+    const handleHorarioChange = (e, index) => {
+        const { name, value } = e.target;
+        const newHorarios = [...horarios];
+        newHorarios[index][name] = value;
+        setHorarios(newHorarios);
+        
+        setServiceData({
+            ...serviceData,
+            horarios: newHorarios,
+          });
+      };
 
-    const handleChange = (e) => {
+      //cambios (checkbox que no estoy usando acá)
+      const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
           if (type === 'checkbox') {
             // Verificamos si el checkbox está marcado y asignamos el valor correspondiente
@@ -66,22 +78,8 @@ const TransportServiceForm2 = ({service, option, updatedServiceData}) =>{
               [name]: value,
             });
           }
-        
       };
-
-    const handleHorarioChange = (e, index) => {
-        const { name, value } = e.target;
-        const newHorarios = [...horarios];
-        newHorarios[index][name] = value;
-        setHorarios(newHorarios);
-        
-        setServiceData({
-            ...serviceData,
-            horarios: newHorarios,
-          });
-      };
-    
-
+      //Los eventos de submit
       const handleUpdateService = async () => {
         try {
           if (currentOption === 'register') {
@@ -110,9 +108,8 @@ const TransportServiceForm2 = ({service, option, updatedServiceData}) =>{
         e.preventDefault();
         console.log('Esto es lo que se va a guardar',serviceData);
         handleUpdateService();
-    };
+    }; 
     
-  
     useEffect(() => {
         if (currentOption === 'edit' ) {
             setServiceData(service);
@@ -127,19 +124,19 @@ const TransportServiceForm2 = ({service, option, updatedServiceData}) =>{
             setServiceData(service);
             setHorarios(service.horarios || []);
         }
-      }, [service, currentOption, isUpdated, updatedServiceData]);
+    }, [service, currentOption, isUpdated, updatedServiceData]);
 
-   const {
-    labelClassname,
-    selectDesing,
-    inputDesing,
-    divDesing,
-    divEspace,
-    labelClassnameHorario,
-    selectDesingHorario,
-    tituloServicio,
-    contenedor,
-  } = FormsComponentsStyle;
+    const {
+        labelClassname,
+        selectDesing,
+        inputDesing,
+        divDesing,
+        divEspace,
+        labelClassnameHorario,
+        selectDesingHorario,
+        tituloServicio,
+        contenedor,
+    } = FormsComponentsStyle;
 
   return (
 

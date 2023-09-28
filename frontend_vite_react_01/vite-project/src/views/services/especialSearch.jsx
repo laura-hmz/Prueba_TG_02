@@ -3,10 +3,12 @@ import {busquedaMatchmaking} from '../../api/servicesApi';
 import SearchForm from '../../components/servicios/forms/searchForm';
 import CardService3 from '../../components/servicios/cardService3';
 import "../../components/loader1.css";
+import Loader2 from '../../components/loaders/loader2';
 const EspecialSearch = () => {
 
-const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const[errorSearch, setErrorSearch] = useState(false);
 
   const handleSearch = async (searchParams) => {
     setIsLoading(true);
@@ -39,10 +41,13 @@ const [searchResults, setSearchResults] = useState([]);
       // Actualiza los resultados y el estado de carga
       setSearchResults(results);
       setIsLoading(false);
+      setErrorSearch(false);
     } catch (error) {
       // Maneja cualquier error que pueda ocurrir durante la búsqueda
-      console.error('Error en la búsqueda:', error);
+      console.error('No se encontraron servicios con los criterios de búsqueda:', error);
       setIsLoading(false);
+      setErrorSearch(true);
+      
     }
   };
     return (
@@ -55,10 +60,17 @@ const [searchResults, setSearchResults] = useState([]);
               </h1>
               <div className="loader"></div>
             </div>
+            ) : errorSearch? (
+              <div className=" loader-container relative ">
+                <h1 className="text-center absolute top-5 left-0 w-full bg-transparent text-black text-2xl">No se encontraron servicios con los criterios de búsqueda</h1>
+                <br />
+                <Loader2 />
+              </div>
             ) : (
-            <CardService3 services={searchResults.orderedServices} />
+              <CardService3 services={searchResults.orderedServices} />
             )}
-        </div>
-    )
-}
+            {console.log('Estos son los servicios: ', searchResults.orderedServices)}
+          </div>
+        );
+      }
 export default EspecialSearch
