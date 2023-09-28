@@ -215,31 +215,7 @@ const RoomServiceForm2 = ({service, option}) =>{
                     />
                 </div>
 
-                <div className={divEspace}>
-                    <label className={labelClassname} htmlFor="area_otro_servicio_3">Área del servicio:</label>
-                        <select
-                            className={selectDesing}
-                            id="area_otro_servicio_3"
-                            name="area_otro_servicio_3"
-                            value={serviceData.area_otro_servicio_3 || ''}
-                            onChange={handleChange}
-                            disabled={currentOption === 'show'}
-                            required
-                        >
-                            <option value="">----</option>
-                            <option value="Administrativos y finanzas">Administrativos y finanzas</option>
-                            <option value="Atención al cliente">Atención al cliente</option>
-                            <option value="Gastronomia">Gastronomía</option>
-                            <option value="Artes u oficios">Artes u oficios</option>
-                            <option value="Tecnologia e informatica">Tecnología e informática</option>
-                            <option value="Belleza">Belleza</option>
-                            <option value="Mensajeria">Mensajería</option>
-                            <option value="Deporte">Deporte</option>
-                            <option value="Vestuario">Vestuario</option>
-                            <option value="Servicios generales">Servicios generales</option>
-                            <option value="Mascotas">Mascotas</option>
-                        </select>
-                </div>
+                
 
                 <div className='mb-3'>
                     <h1 className={labelClassname}>

@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 import { updateService, createService } from '../../../api/servicesApi';
 
 
-const TransportServiceForm2 = ({service, option}) =>{
+const TransportServiceForm2 = ({service, option, updatedServiceData}) =>{
     
     const [currentOption, setCurrentOption] = useState(option);
+    const [isUpdated, setIsUpdated] = useState(false);
     const setOption = (newOption) => {
         setCurrentOption(newOption);
     };
@@ -26,7 +27,7 @@ const TransportServiceForm2 = ({service, option}) =>{
         tipo_vehiculo_2: '',
         area_otro_servicio_3: '',
 
-      });
+    });
 
     const optionsHoraInicio = [
         "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
@@ -48,6 +49,7 @@ const TransportServiceForm2 = ({service, option}) =>{
         nuevosHorarios.splice(index, 1);
         setHorarios(nuevosHorarios);
     };
+    
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -88,7 +90,14 @@ const TransportServiceForm2 = ({service, option}) =>{
 
           } else if (currentOption === 'edit') {
             console.log('Actualizando servicio existente:', serviceData);
-            updateService(serviceData);
+            console.log('los horarios obtenidos:', horarios);
+            const updatedServiceData = {
+                ...serviceData,
+                horarios: horarios,
+            }; 
+            updateService(updatedServiceData);
+            //updatedServiceData();
+            setIsUpdated(true);
             setCurrentOption('show');
           }
         } catch (error) {
@@ -102,15 +111,23 @@ const TransportServiceForm2 = ({service, option}) =>{
         console.log('Esto es lo que se va a guardar',serviceData);
         handleUpdateService();
     };
+    
   
     useEffect(() => {
-        if (currentOption === 'edit' || currentOption === 'show') {
-          setServiceData(service);
-          setHorarios(service.horarios || []);
-        } else if (currentOption === 'register') {
-            console.log('ñejeje');
+        if (currentOption === 'edit' ) {
+            setServiceData(service);
+            setHorarios(service.horarios || []);
+        } else if (currentOption === 'show'&& isUpdated) {
+            updatedServiceData();
+            setServiceData(service);
+            setHorarios(service.horarios || []);
+            setIsUpdated(false);
+            
+        } else if(currentOption === 'show') {
+            setServiceData(service);
+            setHorarios(service.horarios || []);
         }
-      }, [service, currentOption]);
+      }, [service, currentOption, isUpdated, updatedServiceData]);
 
    const {
     labelClassname,
@@ -315,7 +332,9 @@ const TransportServiceForm2 = ({service, option}) =>{
 
 TransportServiceForm2.propTypes = {
   option: PropTypes.string.isRequired,
-  service: PropTypes.object
+  service: PropTypes.object,
+  updatedServiceData: PropTypes.func
+
 }
 
 
