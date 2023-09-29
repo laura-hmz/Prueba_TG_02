@@ -18,6 +18,9 @@ router.delete("/users/:id",userCtrl.deleteUser);
 // update a user OK
 router.put("/users/:id", userCtrl.updateUser);
 
+// get a user by email
+router.get("/users/email/:email", userCtrl.getUserByEmail);
+
 module.exports = router;
 
 

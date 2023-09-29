@@ -1,10 +1,14 @@
 import { useState } from "react";
-import {FaSmileWink, FaGripLinesVertical,FaRegGem,FaBars,FaTimes} from 'react-icons/fa';
+import { useAuth0 } from "@auth0/auth0-react";
+import { FaGripLinesVertical,FaRegGem,FaBars,FaTimes} from 'react-icons/fa';
 import './navbar.css';
 import { Link } from 'react-router-dom';
 
+
 const Navbar2 = () => {
+  
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { logout } = useAuth0();
   const linksDesing = "font-poppins font-normal mr-5 hover:text-gray-900 cursor-pointer text-[16px] text-gray-800"
 
   return (
@@ -35,6 +39,10 @@ const Navbar2 = () => {
             <li className={linksDesing}>
                 <Link to="/profile">Mi Perfil</Link>
             </li>
+
+            <button onClick={() => logout({ returnTo: window.location.origin })} 
+            className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+              Cerrar sesión</button>
         </ul>
 
       {/* Mobile Navigation */}
