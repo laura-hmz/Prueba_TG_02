@@ -2,24 +2,24 @@ import  { useState, useEffect } from 'react';
 import { getServices,deleteService,lastServicesAdded,listServicesIdUser } from '../../api/servicesApi';
 import {busquedaMatchmaking} from '../../api/servicesApi';
 //import CardService2 from './cardService2';
-import CardServiceModify from './cardServiceModify';
+import CardService3 from './cardService3';
 //import CardServiceOnly from './cardServiceOnly';
-import TransportServiceForm2 from './forms/transportServiceForm2';
-//import SearchForm from './forms/searchForm';
+//import TransportServiceForm2 from './forms/transportServiceForm2';
+import SearchForm from './forms/searchForm';
 //import ServicesList1 from './servicesList1';
-import RegisterForm from './forms/registerForm';
+//import RegisterForm from './forms/registerForm';
 import { UserContext } from '../../contexts/userContext';
 import { useContext } from 'react';
-
+import Loader2 from '../../components/loaders/loader2'
 
 const Explorar = () => {
   const [services, setServices] = useState([]);
   // intento para obtener los serviciosmatchmaking
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+  const[errorSearch, setErrorSearch] = useState(false);
   const { userData, userEmail, isAuthenticated } = useContext(UserContext);
-
+  const [idUser, setIdUser] = useState([]);
   const handleSearch = async (searchParams) => {
     setIsLoading(true);
   
@@ -72,6 +72,7 @@ const Explorar = () => {
 
     if(userData !== null){
       fetchData();
+      setIdUser(userData._id);
     }
 
   }, [userData]);
@@ -89,16 +90,27 @@ const Explorar = () => {
   };
 
   return (
-    <>
-      <h1>Home {userEmail}</h1>
-  
-      {/* Verifica si services es un arreglo antes de pasarlo a CardService3 */}
-      {Array.isArray(services) && services.length > 0 ? (
-        <CardServiceModify services={services} onDeleteService={handleDeleteService}></CardServiceModify>
-      ) : (
-        <p>No has registrado ningún servicio para ofrecer </p>
-      )}
-    </>
+    <div >
+    <h1>El mugroso id: {idUser}</h1>
+    <SearchForm onSearch={handleSearch} isLoading={isLoading} idUser={idUser}  />
+    {isLoading ? (
+      <div className="loader-container relative ">
+      <h1 className="text-center absolute top-5 left-0 w-full bg-transparent text-black text-2xl">
+        Cargando...
+      </h1>
+      <div className="loader"></div>
+    </div>
+    ) : errorSearch? (
+      <div className=" loader-container relative ">
+        <h1 className="text-center absolute top-5 left-0 w-full bg-transparent text-black text-2xl">No se encontraron servicios con los criterios de búsqueda</h1>
+        <br />
+        <Loader2 />
+      </div>
+    ) : (
+      <CardService3 services={searchResults.orderedServices} />
+    )}
+    {console.log('Estos son los servicios: ', searchResults.orderedServices)}
+  </div>
   );
 };
 

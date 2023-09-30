@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState,useContext } from 'react';
 import {busquedaMatchmaking} from '../../api/servicesApi';
+import { UserContext } from '../../contexts/userContext';
 import SearchForm from '../../components/servicios/forms/searchForm';
 import CardService3 from '../../components/servicios/cardService3';
 import "../../components/loader1.css";
 import Loader2 from '../../components/loaders/loader2';
+
 const EspecialSearch = () => {
 
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const[errorSearch, setErrorSearch] = useState(false);
+  const { userData} = useContext(UserContext);
+  const [idUser, setIdUser] = useState('');
 
   const handleSearch = async (searchParams) => {
     setIsLoading(true);
@@ -49,10 +53,18 @@ const EspecialSearch = () => {
       setErrorSearch(true);
       
     }
+    
   };
+
+  useEffect(() => {
+    
+    if(userData !== null){
+      setIdUser(userData._id);
+    }
+  } , [userData]);
     return (
         <div >
-            <SearchForm onSearch={handleSearch} isLoading={isLoading} />
+            <SearchForm onSearch={handleSearch} isLoading={isLoading} idUser={idUser} />
             {isLoading ? (
               <div className="loader-container relative ">
               <h1 className="text-center absolute top-5 left-0 w-full bg-transparent text-black text-2xl">

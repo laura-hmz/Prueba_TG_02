@@ -2,14 +2,14 @@ import { UserContext } from '../../contexts/userContext';
 import { useContext } from 'react';
 
 const Profile = () => {
-    const { userData, isLoading, isAuthenticated } = useContext(UserContext);
+    const { userData, isAuthenticated } = useContext(UserContext);
    
     return (
         <div>
             <h1>Mi Perfil</h1>
             {isAuthenticated ? (
                 <>
-                    <h2>{userData ? userData.nombre : 'Cargando...'}</h2>
+                    <h2>{userData ? '¡Hola!, ' + userData.nombre : 'Cargando...'}</h2>
                     {/* Mostrar otros datos del usuario aquí */}
                 </>
             ) : (

@@ -1,10 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
 import { useContext } from 'react';
-//importo contexto
-
 import { UserContext } from './contexts/userContext.jsx';
-
 
 import './components/servicios/explorar.jsx';
 import NavBar2 from './components/navbar/navbar2.jsx';
@@ -30,7 +26,6 @@ import RoomServiceForm2 from './components/servicios/forms/roomServiceForm2.jsx'
 
 function App() {
 
-  //const { isAuthenticated, user, isLoading } = useAuth0();
   const { userEmail, userData, isAuthenticated, isLoading, user} = useContext(UserContext);
   console.log('userEmail APP',userEmail);
   console.log('UserData en APP',userData);
@@ -39,8 +34,6 @@ function App() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
-  
 
   return (
     

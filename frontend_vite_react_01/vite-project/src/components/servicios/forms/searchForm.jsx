@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import  { useState } from 'react';
 
-const SearchForm = ({ onSearch, isLoading }) => {
+const SearchForm = ({ onSearch, isLoading, idUser }) => {
   const [searchParams, setSearchParams] = useState({
     diaSemana: '',
     horaBusquedaInicio: '',
@@ -16,9 +16,9 @@ const SearchForm = ({ onSearch, isLoading }) => {
     permite_mascota:false,
     tipo_vehiculo_2: '',
     area_otro_servicio_3: '',
-    id_cliente: '64e71f3b5970aafb03f2a796', // Agrega el campo id_cliente aquí
+    id_cliente: idUser, // Agrega el campo id_cliente aquí
   });
-
+  
   const optionsHora = [
     "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
     "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00",
@@ -53,7 +53,7 @@ const SearchForm = ({ onSearch, isLoading }) => {
         permite_mascota: false,
         tipo_vehiculo_2: '',
         area_otro_servicio_3: '',
-        id_cliente: '64e71f3b5970aafb03f2a796',
+        id_cliente: idUser,
         [name]: value,
       });
     } else {
@@ -88,6 +88,8 @@ const SearchForm = ({ onSearch, isLoading }) => {
   
     // Envía la solicitud de búsqueda al servidor con los parámetros actualizados
     console.log('Nuevos parámetros:', sanitizedSearchParams);
+    console.log('idUser EN form', idUser);
+    console.log('El id del cliente', sanitizedSearchParams.id_cliente);
     onSearch(sanitizedSearchParams);
   };
   
@@ -457,6 +459,8 @@ const SearchForm = ({ onSearch, isLoading }) => {
 };
 SearchForm.propTypes = {
   onSearch: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
+  idUser: PropTypes.string.isRequired
+  
 }
 export default SearchForm;

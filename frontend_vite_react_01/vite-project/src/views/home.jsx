@@ -8,10 +8,6 @@ import { useContext } from 'react';
 const Home = () => {
     const [services, setServices] = useState([]);
     const { userEmail, userData} = useContext(UserContext);
-    
-
-    
-    
 
     useEffect(() => {
       // Realizar una solicitud para obtener los servicios cuando el componente se monta
@@ -27,7 +23,6 @@ const Home = () => {
       };
       
       fetchData();
-      console.log('home user data33: ',userData);
     }, [userData]);
   
     return (
