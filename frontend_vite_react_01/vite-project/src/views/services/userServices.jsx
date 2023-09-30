@@ -1,24 +1,33 @@
-import  { useState, useEffect } from 'react';
-import { getServices,deleteService } from '../../api/servicesApi';
+import  { useState, useEffect, useContext} from 'react';
+import { deleteService,listServicesIdUser } from '../../api/servicesApi';
 //import ServicesList2 from '../../components/servicios/servicesList2';
 import CardServiceModify from '../../components/servicios/cardServiceModify';
+import { UserContext } from '../../contexts/userContext';
+
 
 const UserServices = () => {
     const [services, setServices] = useState([]);
+    const { userData } = useContext(UserContext);
+    //const [nombre, setNombre] = useState('');
 
     useEffect(() => {
       // Realizar una solicitud para obtener los servicios cuando el componente se monta
       const fetchData = async () => {
         try {
-          const data = await getServices();
+          const data = await listServicesIdUser(userData._id);
           setServices(data); 
         } catch (error) {
           console.error('Error al obtener los servicios:', error);
         }
       };
   
-      fetchData();
-    }, []);
+      if(userData !== null){
+
+        fetchData();
+        //setNombre(userData.nombre)
+      }
+
+    }, [ userData ]);
   
       const handleDeleteService = async (serviceId) => {
       try {
@@ -33,11 +42,26 @@ const UserServices = () => {
     };
   
     return (
-      <CardServiceModify services={services} onDeleteService={handleDeleteService}></CardServiceModify>
+      <>
+        {/* 
+        <h1>NOMBRE {nombre}</h1>
+       {isAuthenticated ? (
+        <>
+          <h2>{userData ? '¡Hola!, ' + userData.nombre : 'Cargando...'}</h2>
+        </>) :
+        (
+          <p>No estás autenticado</p>
+        )}
+        */}
+
+        {/* Verifica si services es un arreglo antes de pasarlo a CardService3 */}
+        {Array.isArray(services) && services.length > 0 ? (
+        <CardServiceModify services={services} onDeleteService={handleDeleteService}></CardServiceModify>
+        ) : (
+        <p>No has registrado ningún servicio para ofrecer </p>
+      )}
+    </>
   )
   };
-  
-///ME falta hacer la consulta con el id del usuario para traer sus servicios, pero lo más importante
-//El fomulario para editar y crear un nuevo servicio, en ese caso en esta vista poner un boton para agregar
-//Buscar un componente para eso MUAK
+
 export default UserServices

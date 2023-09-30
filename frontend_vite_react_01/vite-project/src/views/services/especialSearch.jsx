@@ -18,7 +18,7 @@ const EspecialSearch = () => {
         tipo_servicio, parqueadero_carro, parqueadero_moto, permite_mascota, 
         area_0,tipo_habitacion_1, tipo_vehiculo_2, area_otro_servicio_3,id_cliente } = searchParams;
   
-      // Llama a tu función de búsqueda en el backend
+
       const results = await busquedaMatchmaking({
         diaSemana,
         horaBusquedaInicio,

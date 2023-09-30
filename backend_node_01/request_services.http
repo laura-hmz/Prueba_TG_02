@@ -29,9 +29,9 @@ POST http://localhost:3000/api/services HTTP/1.1
 Content-Type: application/json
 
 {
-  "id_usuario": "64e2ff80fed5d5347f0c5b24",
-  "nombre": "Servicio de moto BUENISIMA",
-  "descripcion": "Lo llevo donde quiera,te voy a dar mi numero telefonico, me llamas a mi, recuerdo que yo estoy para ti a todas horas",
+  "id_usuario": "651674b633267be566fce1ff",
+  "nombre": "Servicio de carro",
+  "descripcion": "Llameme y cuadramos :D",
   
   "tipo_servicio": "Servicio de transporte",
   "estado": 1,
@@ -49,7 +49,7 @@ Content-Type: application/json
       "hora_de_finalizacion": 20
     }
   ],
-  "tipo_vehiculo_2": "moto",
+  "tipo_vehiculo_2": "carro",
   "area_otro_servicio_3": null
 }
 
@@ -178,3 +178,6 @@ GET http://localhost:3000/api/last-services-added HTTP/1.1
 // mostrar servicios ofrecidos por un usuario 
 ###
 GET http://localhost:3000/api/list-services-user?id=64e720695970aafb03f2a79c HTTP/1.1
+
+###
+GET http://localhost:3000/api/list-services-user?id=651674b633267be566fce1ff HTTP/1.1

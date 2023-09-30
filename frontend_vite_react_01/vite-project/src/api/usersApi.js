@@ -8,7 +8,7 @@ const usersApi = axios.create({
 })
 
 export const getUserByEmail = async (email) => {
-    const res = await usersApi.get(`/user/${email}`)
+    const res = await usersApi.get(`/users/email/${email}`)
     console.log(res.data);
     return res.data;
 }

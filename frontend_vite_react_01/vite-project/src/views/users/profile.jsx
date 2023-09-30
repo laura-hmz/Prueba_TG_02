@@ -1,14 +1,21 @@
-//import "../../components/prueba.css";
-import Perfil from "../../components/usuarios/perfil"
+import { UserContext } from '../../contexts/userContext';
+import { useContext } from 'react';
+
 const Profile = () => {
+    const { userData, isLoading, isAuthenticated } = useContext(UserContext);
+   
     return (
         <div>
             <h1>Mi Perfil</h1>
-            <div className="mx-auto max-w-5xl">
-            <Perfil></Perfil>
-            </div>
-            
+            {isAuthenticated ? (
+                <>
+                    <h2>{userData ? userData.nombre : 'Cargando...'}</h2>
+                    {/* Mostrar otros datos del usuario aquí */}
+                </>
+            ) : (
+                <p>No estás autenticado</p>
+            )}
         </div>
     )
 }
-export default Profile
+export default Profile;

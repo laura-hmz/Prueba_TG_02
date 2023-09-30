@@ -9,7 +9,7 @@ const servicesApi = axios.create({
 
 export const getServices = async () => {
     const res = await servicesApi.get("/services")
-    console.log(res.data);
+    //console.log(res.data);
     return res.data;
 }
 
@@ -48,7 +48,7 @@ export const deleteService = async (id) => {
     return res.data
 }
 export const listServicesIdUser = async (id) => {
-    const res = await servicesApi.get(`/list-services-user/${id}`)
+    const res = await servicesApi.get(`/list-services-user?id=${id}`)
     console.log(res.data);
     return res.data
 }

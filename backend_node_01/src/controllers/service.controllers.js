@@ -39,12 +39,23 @@ const updateService = async (req, res) => {
     .catch((error) => res.json({ message: error }));
 }
 const listServicesIdUser = async (req, res) => {
-  const { id } = req.query;
-  serviceSchema
-    .find({ "id_usuario": id })
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-}
+  try {
+    const { id } = req.query;
+    const data = await serviceSchema.find({ "id_usuario": id });
+
+    if (data.length === 0) {
+      // No se encontraron servicios para el usuario
+      return res.json({ message: "No se encontraron servicios para este usuario." });
+    }
+
+    return res.json(data);
+  } catch (error) {
+    // Manejar errores
+    console.error("Error al buscar servicios:", error);
+    return res.status(500).json({ message: "Hubo un error al buscar servicios." });
+  }
+};
+
 const lastServicesAdded = async (req, res) => {
   serviceSchema
     .find()
