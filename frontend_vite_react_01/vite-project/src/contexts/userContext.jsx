@@ -10,17 +10,20 @@ export const UserProvider = ({ children }) => {
   const [userEmail, setUserEmail] = useState('');
   const [userData, setUserData] = useState(null);
   const { isAuthenticated, user, isLoading } = useAuth0();
+  //const [userExists, setUserExists] = useState(false);
 
   const getUserData = useCallback(async () => {
     try {
       if (isAuthenticated) {
         setUserEmail(user.email);
-
         // Obtén los datos del usuario desde la base de datos utilizando el correo electrónico
         const userDataFromDatabase = await getUserByEmail(user.email);
+        // if (userDataFromDatabase ) {
+        //   setUserExists(true);
+        // }
         setUserData(userDataFromDatabase);
-        
         console.log("userData", userDataFromDatabase);
+        console.log("userExists", userExists);
       }
     } catch (error) {
       console.error('Error al obtener los datos del usuario:', error);

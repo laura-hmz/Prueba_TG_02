@@ -15,7 +15,7 @@ const Home = () => {
         try {
           const data = await getServices();
           //console.log(data);
-          console.log('home user data: ',userData);
+          //console.log('home user data: ',userData);
           setServices(data); 
         } catch (error) {
           console.error('Error al obtener los servicios:', error);

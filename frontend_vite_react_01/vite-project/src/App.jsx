@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserContext } from './contexts/userContext.jsx';
 
 import './components/servicios/explorar.jsx';
@@ -26,14 +26,22 @@ import RoomServiceForm2 from './components/servicios/forms/roomServiceForm2.jsx'
 
 function App() {
 
-  const { userEmail, userData, isAuthenticated, isLoading, user} = useContext(UserContext);
-  console.log('userEmail APP',userEmail);
+  const {userData, isAuthenticated, isLoading} = useContext(UserContext);
+ 
   console.log('UserData en APP',userData);
-  console.log('Auth0 usar APPP ',user);
+  //console.log('Auth0 usar APPP ',user);
+
+  // useEffect(() => {
+  //   if (userData?)  {
+  //     <div>Usuario no encontrado</div>
+  //   }  
+    
+  // })[userData]
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
+  
 
   return (
     
