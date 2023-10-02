@@ -29,24 +29,51 @@ const PreguntasForm = () => {
         "13. ¿Prefieres la música pop a la música popular o de despecho?",
         "14. ¿Prefieres el vallenato a la música Hip-hop/rap?",
         "15. ¿Prefieres la música bailable (salsa, bachata, merengue, etc.) a la música cristiana?"
-      ];
+    ];
       
     const handleResponseChange = (questionIndex, value) => {
         const updatedResponses = [...userDataAux.resultados_encuesta];
+        const updatedResponsesHabitaciones= [...userDataAux.resultados_encuesta_habitaciones];
+        const updatedResponsesAsesorias= [...userDataAux.resultados_encuesta_asesorias];
+        const updatedResponsesTransporte= [...userDataAux.resultados_encuesta_transporte];
+        console.log('Estoy en handleResponseChange' );
         updatedResponses[questionIndex] = value;
-        setUserDataAux({
-          ...userDataAux,
-          resultados_encuesta: updatedResponses,
-        });
-      };
     
-      const handleSubmit = () => {
+        if (value==1 && (questionIndex === 0 || questionIndex === 1)) {
+            updatedResponsesHabitaciones[questionIndex] = 1.5;
+        }else updatedResponsesHabitaciones[questionIndex] = value;
+
+        if (value==1 && (questionIndex === 1 || questionIndex === 2||questionIndex === 7)) {
+            updatedResponsesAsesorias[questionIndex] = 1.5;
+        }else updatedResponsesAsesorias[questionIndex] = value;
+
+        if (value==1 && (questionIndex === 0 || questionIndex === 1 || questionIndex === 2 
+            || questionIndex === 5 || questionIndex === 7  || questionIndex === 11 
+            || questionIndex === 12 || questionIndex === 13 || questionIndex === 14)) {
+            updatedResponsesTransporte[questionIndex] = 1.5;
+        }else updatedResponsesTransporte[questionIndex] = value;
+
+        setUserDataAux({
+            ...userDataAux,
+            resultados_encuesta: updatedResponses,
+            resultados_encuesta_habitaciones: updatedResponsesHabitaciones,
+            resultados_encuesta_asesorias: updatedResponsesAsesorias,
+            resultados_encuesta_transporte: updatedResponsesTransporte,
+        });
+        
+        console.log('otros', updatedResponses);
+        console.log('habitaciones', updatedResponsesHabitaciones);
+        console.log('asesorias', updatedResponsesAsesorias);
+        console.log('transporte', updatedResponsesTransporte);
+    };
+    
+    const handleSubmit = () => {
         // Puedes acceder a userDataAux.resultados_encuesta para enviar las respuestas al servidor o realizar otras acciones.
         console.log("Respuestas:", userDataAux.resultados_encuesta);
         console.log("userDataAux FINAL:", userDataAux);
         registerUser();
         
-      };
+    };
 
      
     return (

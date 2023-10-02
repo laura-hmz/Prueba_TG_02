@@ -29,9 +29,13 @@ const deleteUser = async (req, res) => {
 }
 const updateUser = async (req, res) => {
     const { id } = req.params;
-    const { correo, nombre,sexo,carrera,semestre,ciudad_residencia,edad,estado,puntuacion,resultados_encuesta} = req.body;
+    const { correo, nombre,sexo,carrera,semestre,ciudad_residencia,edad,estado,puntuacion,
+        resultados_encuesta, resultados_encuesta_habitaciones, resultados_encuesta_asesorias, 
+        resultados_encuesta_transporte} = req.body;
     userSchema
-        .updateOne({ _id: id }, { $set: {correo, nombre,sexo,carrera,semestre,ciudad_residencia,edad,estado,puntuacion,resultados_encuesta} })
+        .updateOne({ _id: id }, { $set: {correo, nombre,sexo,carrera,semestre,ciudad_residencia,
+            edad,estado,puntuacion,resultados_encuesta,resultados_encuesta_habitaciones, 
+            resultados_encuesta_transporte,resultados_encuesta_asesorias } })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 }

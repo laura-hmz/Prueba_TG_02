@@ -25,6 +25,9 @@ const [paginaRegistro, setPaginaRegistro] = useState('1');
     estado: 1,
     puntuacion: 0,
     resultados_encuesta: [],
+    resultados_encuesta_habitaciones: [],
+    resultados_encuesta_asesorias: [],
+    resultados_encuesta_transporte: [],
 
   });
 
@@ -53,6 +56,8 @@ const [paginaRegistro, setPaginaRegistro] = useState('1');
     try {
       console.log('registrando usuario');
       createUser(userDataAux);
+      //creo los arrays que faltan MUAK antes de registrar
+
       setUserData(userDataAux);
       userExists(true);
     } catch (error) {
