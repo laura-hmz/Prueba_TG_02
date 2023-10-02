@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext} from 'react';
 import { UserContext } from './contexts/userContext.jsx';
 
 import './components/servicios/explorar.jsx';
 import NavBar2 from './components/navbar/navbar2.jsx';
 import Explorar from './components/servicios/explorar.jsx';
-
+//import EncuestaForm from './components/encuesta/encuestaForm.jsx';
+//import PreguntasForm from './components/encuesta/preguntas.jsx';
 //importar las vistas
+import UserRegister from './views/users/userRegister.jsx';
 import Home from './views/home.jsx';
 import Home2 from './components/login/home2.jsx'
 import Profile from './views/users/profile.jsx';
@@ -26,49 +28,51 @@ import RoomServiceForm2 from './components/servicios/forms/roomServiceForm2.jsx'
 
 function App() {
 
-  const {userData, isAuthenticated, isLoading} = useContext(UserContext);
+  const {userData, isAuthenticated, isLoading, userExists, userDataAux} = useContext(UserContext);
  
   console.log('UserData en APP',userData);
-  //console.log('Auth0 usar APPP ',user);
-
-  // useEffect(() => {
-  //   if (userData?)  {
-  //     <div>Usuario no encontrado</div>
-  //   }  
-    
-  // })[userData]
+  console.log('userExists en APP',userExists);
+  console.log('resultados APP',userDataAux.resultados_encuesta);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  
 
+  function getReturn(component) {
+    if (isAuthenticated) {
+      if (userExists) {
+        return component;
+      } else {
+        return <UserRegister />;
+      }
+    } else {
+      return <Home2 />;
+    }
+  }
+ 
   return (
     
       <BrowserRouter>
         {isAuthenticated && <NavBar2 />}
         <Routes>
-        <Route path='/' element={isAuthenticated ? <Navigate to="/Home" />  : <Home2 />} />
+        <Route path='/' element={isAuthenticated ? <Navigate to="/Home" /> : <Home2/>} />
           
-         
-          <Route path='/explorar' element={isAuthenticated ? <Explorar/> : <Home2/> }/>
-          <Route path='/Home' element={isAuthenticated ? <Home/> : <Home2/>}/>
-          <Route path='/profile' element={ isAuthenticated ?<Profile/> : <Home2/> }/>
-          <Route path='/editProfile'  element={isAuthenticated ? <EditProfile/> : <Home2/> }/>
-          <Route path='/especialsearch' element={isAuthenticated ?<Especialsearch/> : <Home2/>}/>
-          <Route path='/editService/:id' element={ isAuthenticated ?<EditService/> : <Home2/>}/>
-          <Route path="/register/transport" element={isAuthenticated ?<TransportServiceForm2 option='register'/> : <Home2/>} />
-          <Route path="/register/academic-advising" element={isAuthenticated ?<AcademyServiceForm option='register'/> : <Home2/>} />
-          <Route path="/register/room" element={isAuthenticated ? <RoomServiceForm2 option='register'/> : <Home2/>} />
-          <Route path="/register/other" element={<OtherServiceForm option='register'/>} />    
-          <Route path='/savedServices' element={isAuthenticated ?<SavedServices/> : <Home2/>} />
-          <Route path='/searchService' element={ isAuthenticated ? <SearchService/> : <Home2/>}/>
-          <Route path='/serviceDetails/:id' element={isAuthenticated ?<ServiceDetails/> : <Home2/>}/>
-          <Route path='/userServices' element={isAuthenticated ?<UserServices/> : <Home2/>} />
-          <Route path='/offerService' element={isAuthenticated ? <OfferService/> : <Home2/>}/>
-         
-       
-        
+          <Route path='/explorar' element={isAuthenticated && userExists ? <Explorar/> :  <Home2/> }/>
+          <Route path='/UserRegister' element={isAuthenticated ? <UserRegister/> : <Home2/> }/>
+          <Route path='/Home' element={getReturn(<Home/>) }/>
+          <Route path='/profile' element={getReturn(<Profile/>)}/>
+          <Route path='/editProfile'  element={getReturn(<EditProfile/>) }/>
+          <Route path='/especialsearch' element={getReturn(<Especialsearch/>)}/>
+          <Route path='/editService/:id' element={getReturn(<EditService/>)}/>
+          <Route path="/register/transport" element={getReturn(<TransportServiceForm2 option='register'/>)}/>
+          <Route path="/register/academic-advising" element={getReturn(<AcademyServiceForm option='register'/>) } />
+          <Route path="/register/room" element={getReturn(<RoomServiceForm2 option='register'/>)} />
+          <Route path="/register/other" element={getReturn(<OtherServiceForm option='register'/>)} />    
+          <Route path='/savedServices' element={getReturn(<SavedServices/>)} />
+          <Route path='/searchService' element={ getReturn(<SearchService/>)}/>
+          <Route path='/serviceDetails/:id' element={getReturn(<ServiceDetails/>)}/>
+          <Route path='/userServices' element={getReturn(<UserServices/>)} />
+          <Route path='/offerService' element={getReturn(<OfferService/>)}/>
 
         </Routes>
       </BrowserRouter>

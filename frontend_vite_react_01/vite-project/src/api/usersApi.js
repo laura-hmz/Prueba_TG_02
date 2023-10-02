@@ -12,3 +12,9 @@ export const getUserByEmail = async (email) => {
     console.log(res.data);
     return res.data;
 }
+
+export const createUser = async (user) => {
+    const res = await usersApi.post('/users', user)
+    console.log(res.data);
+    return res.data;
+}
