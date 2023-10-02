@@ -190,11 +190,9 @@ const searchServices = async (req, res) => {
 };
 //MATCHMAKING services users
 const busqueda_servicios = async (req, res) => {
-    const {id_cliente} = req.query;
+    const {id_cliente,tipo_servicio} = req.query;
   
     try {
-      //   "horarios.hora_de_inicio": { $lte: horaBusqueda },
-      //   "horarios.hora_de_finalizacion": { $gt: horaBusqueda },
       const services= await searchServices(req, res);
       //console.log("services2: ", services);
       if (!services || services.length === 0) {
@@ -221,20 +219,50 @@ const busqueda_servicios = async (req, res) => {
       }
       //const users = await userServiceSchema.findByIds(userIds);
       const users = await userServiceSchema.find(
-               { _id: { $in: userIds } },
-               "resultados_encuesta"
-             );
+        {
+          _id: { $in: userIds },
+        },
+        {
+          resultados_encuesta: 1,
+          resultados_encuesta_asesorias: 1,
+          resultados_encuesta_transporte: 1,
+          resultados_encuesta_habitaciones: 1,
+        }
+      );
+      //console.log("users:", users);   
+
+      //const surveyResultsList = users.map(user => user.resultados_encuesta);
       
-      const surveyResultsList = users.map(user => user.resultados_encuesta);
-      const resultado_encuesta_cliente = [client.resultados_encuesta];
+      const surveyResultsList = users.map(user => {
+        switch (tipo_servicio) {
+          case "Asesorías Académicas":
+            return user.resultados_encuesta_asesorias;
+          case "Servicio de transporte":
+            return user.resultados_encuesta_transporte;
+          case "Servicio de habitaciones":
+            return user.resultados_encuesta_habitaciones;
+          default:
+            return user.resultados_encuesta;
+        }
+      });
+      
+      //console.log('estos son los resultados BACKENNNDD',surveyResultsList)
+
+      let resultado_encuesta_cliente;
+      if (tipo_servicio === "Asesorías Académicas") {
+        resultado_encuesta_cliente = [client.resultados_encuesta_asesorias];
+      } else if (tipo_servicio === "Servicio de transporte") {
+        resultado_encuesta_cliente = [client.resultados_encuesta_transporte];
+      } else if (tipo_servicio === "Servicio de habitaciones") {
+        resultado_encuesta_cliente = [client.resultados_encuesta_habitaciones];
+      } else {
+        resultado_encuesta_cliente = [client.resultados_encuesta];
+      }
+      //console.log('estos son los resultados CLIENTE', resultado_encuesta_cliente)
+      
+      //const resultado_encuesta_cliente = [client.resultados_encuesta_habitaciones];
       const processedResults = await processors_matchmaking.procesadorPrueba(surveyResultsList, serviceIds,resultado_encuesta_cliente);
-      // const pruebitaIDS= [
-      //   [
-      //     "64e5adacfa70daf3b6295126",
-      //     "64e5a8c6fa70daf3b629510f"
-          
-      //   ]
-      // ]
+  
       const orderedServices = await orderServices1(services, processedResults);
       console.log("Backend -> processedResultsOrder: ", processedResults);
       res.json({orderedServices});
