@@ -9,15 +9,16 @@ const Navbar2 = () => {
   
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { logout } = useAuth0();
-  const linksDesing = "font-poppins font-normal mr-5 hover:text-gray-900 cursor-pointer text-[16px] text-gray-800"
+  const linksDesing = "font-poppins font-normal mr-5 text-[16px] text-gray-100 transition-all hover:text-white hover:font-semibold  cursor-pointer";
+
 
   return (
-    <nav className="w-full flex py-4 justify-between bg-blue-500 items-center navbar relative">
+    <nav className="w-full flex py-4 justify-between bg-gradient-to-r from-blue-700 to-blue-400 items-center navbar relative">
       {/* Logo */}
       
-      <Link to="/Home"className="flex title-font font-medium items-center mr-5 ml-12 text-gray-900  ">
+      <Link to="/Home"className="flex title-font font-medium  hover:bold items-center mr-5 ml-12 text-gray-900  ">
         <FaRegGem size={25} className="white-icon"/>
-        <span className="ml-5  text-xl text-white cursor-pointer ">Explorar</span>
+        <span className="ml-5  text-xl text-white cursor-pointer hover:text-white hover:font-bold ">Explorar</span>
         
       </Link>
 
@@ -40,11 +41,18 @@ const Navbar2 = () => {
                 <Link to="/profile">Mi Perfil</Link>
             </li>
 
-            <button onClick={() => logout({ returnTo: window.location.origin })} 
-            className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-              Cerrar sesión</button>
         </ul>
+        <div className="hidden sm:flex">
+  <button
+    onClick={() => logout({ returnTo: window.location.origin })}
+    className="inline-flex items-center hover:scale-105 bg-gray-100 border-0 mr-10 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-gray-600 mt-4 md:mt-0"
+  >
+    Cerrar sesión
+  </button>
+</div>
 
+        
+        
       {/* Mobile Navigation */}
       <div className="sm:hidden flex flex-1 justify-end items-center mr-8 relative">
         <button
@@ -71,6 +79,13 @@ const Navbar2 = () => {
               <li className="font-poppins font-medium cursor-pointer text-[16px] text-white">
                     <Link to="/profile">Mi Perfil</Link>
               </li>
+              <button
+                onClick={() => logout({ returnTo: window.location.origin })}
+                className="sm:hidden inline-flex items-center hover:scale-105 bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-gray-600 mt-4 md:mt-0"
+              >
+                Cerrar sesión
+              </button>
+      
             </ul>
           </div>
         )}

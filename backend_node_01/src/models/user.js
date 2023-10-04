@@ -43,14 +43,17 @@ const userSchema = mongoose.Schema({
   },
   resultados_encuesta_habitaciones: {
       type: [Number],
+      required: true
       
   },
   resultados_encuesta_asesorias: {
       type: [Number],
+      required: true
       
   },
   resultados_encuesta_transporte: {
       type: [Number],
+      required: true
   }
 
 },

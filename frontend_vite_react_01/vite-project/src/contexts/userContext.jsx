@@ -56,8 +56,6 @@ const [paginaRegistro, setPaginaRegistro] = useState('1');
     try {
       console.log('registrando usuario');
       createUser(userDataAux);
-      //creo los arrays que faltan MUAK antes de registrar
-
       setUserData(userDataAux);
       userExists(true);
     } catch (error) {

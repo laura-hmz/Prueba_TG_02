@@ -61,15 +61,10 @@ const PreguntasForm = () => {
             resultados_encuesta_transporte: updatedResponsesTransporte,
         });
         
-        console.log('otros', updatedResponses);
-        console.log('habitaciones', updatedResponsesHabitaciones);
-        console.log('asesorias', updatedResponsesAsesorias);
-        console.log('transporte', updatedResponsesTransporte);
     };
     
     const handleSubmit = () => {
         // Puedes acceder a userDataAux.resultados_encuesta para enviar las respuestas al servidor o realizar otras acciones.
-        console.log("Respuestas:", userDataAux.resultados_encuesta);
         console.log("userDataAux FINAL:", userDataAux);
         registerUser();
         
@@ -134,19 +129,15 @@ const PreguntasForm = () => {
                                 </div>
                             </div>
                         ))}
-
                     </div>
-
    
                     <div >
-                    
                             <button
                                 className="outline-none glass shadow-2xl w-full rounded p-3 bg-green-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
                                 type="submit"
                             >
                                 Terminar registro 
                             </button>
-    
                     </div>
     
                 </div>
