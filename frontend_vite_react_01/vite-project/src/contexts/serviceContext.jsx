@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { UserContext } from './userContext';
 import {getServicesById} from '../api/servicesApi';
 
-
 export const ServiceContext = createContext(null);
 
 export const ServiceProvider = ({ children }) => {
@@ -16,7 +15,7 @@ export const ServiceProvider = ({ children }) => {
     nombre: '',
     descripcion: '',
     horarios: [],
-    tipo_servicio: '', ///este es de trasnporte
+    tipo_servicio: '', 
     estado: 1,
     area_0: '',
     tipo_habitacion_1: '',
@@ -29,6 +28,11 @@ export const ServiceProvider = ({ children }) => {
     "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00",
     "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
   ];
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+
+  const openSuccessModal = () => {
+    setIsSuccessModalOpen(true);
+  };
 
   const fetchData = useCallback(async (id) => {
     try {
@@ -59,7 +63,7 @@ export const ServiceProvider = ({ children }) => {
         id_usuario: userData._id,
       }));
     }
-    console.log('serviceData', serviceData);
+    
   }, [userData]);
 
   useEffect(() => {
@@ -79,7 +83,10 @@ export const ServiceProvider = ({ children }) => {
     optionsHoraInicio,
     handleChange,
     horarios,
-    setHorarios
+    setHorarios,
+    openSuccessModal,
+    isSuccessModalOpen,
+    setIsSuccessModalOpen
 
   };
 

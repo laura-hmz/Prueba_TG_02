@@ -18,17 +18,6 @@ const EncuestaForm = () => {
       const handleChange = (e) => {
         const { name, value } = e.target;
       
-        // if (type === 'checkbox') {
-        //   // Verificamos si el checkbox está marcado y asignamos el valor correspondiente
-        //   const checkboxValue = checked ? name.replace(/_/g, ' ') : '';
-          
-        //   // Actualizamos el estado global con la nueva información
-        //   setUserDataAux((prevUserData) => ({
-        //     ...prevUserData,
-        //     [name]: checkboxValue,
-        //   }));
-        // } else {
-          // Actualizamos el estado global con la nueva información
           setUserDataAux((prevUserData) => ({
             ...prevUserData,
             [name]: value,

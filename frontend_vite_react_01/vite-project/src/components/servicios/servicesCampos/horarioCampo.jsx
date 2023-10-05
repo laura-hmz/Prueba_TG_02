@@ -1,4 +1,4 @@
-import { useContext,useState,useEffect } from 'react';
+import { useContext,useEffect } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
 import FormsComponentsStyle from '../servicesComponentesStyle/formsComponentsStyle';
 import { FaTrash, FaPlus } from 'react-icons/fa';
@@ -46,6 +46,7 @@ const HorarioCampo = () => {
             //console.log('horarios:', horarios);
             //console.log('serviceData:', serviceData);
         }
+        console.log('horarios:',serviceData.horarios );
     }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated, setHorarios]);
 
     return (
