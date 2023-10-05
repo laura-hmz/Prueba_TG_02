@@ -4,7 +4,7 @@ import SuccessMessage from '../../../components/mensajesAuxliliares/successRegis
 import { updateService, createService } from '../../../api/servicesApi';
 import { useContext } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
-import CamposBase from '../servicesCampos/estadoCampo';
+import EstadoCampo from '../servicesCampos/estadoCampo';
 import BotonEditar from '../servicesCampos/botonEditar';
 import NombreCampo from '../servicesCampos/nombreCampo';
 import DescripcionCampo from '../servicesCampos/descripcionCampo';
@@ -45,7 +45,7 @@ const TransportServiceForm3 = () =>{
       
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Esto es lo que se va a guardar',serviceData);
+        //console.log('Esto es lo que se va a guardar',serviceData);
         handleUpdateService();
     }; 
     
@@ -55,7 +55,7 @@ const TransportServiceForm3 = () =>{
             setIsUpdated(false);}
 
         else if (currentOption === 'register') {
-            console.log('Data en register:', serviceData);
+            //console.log('Data en register:', serviceData);
 
         }
     }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated]);
@@ -76,10 +76,10 @@ const TransportServiceForm3 = () =>{
                 <BotonCancelar />
                 <BotonEditar />
                 <div className={divEspace}>
-                    <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio de transporte' : 'Registrar servicio de transporte'} </h1>
+                    <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio de transporte' : currentOption=== 'register'?'Registrar servicio de transporte': 'Servicio de transporte'} </h1>
                 </div>
                 <NombreCampo />
-                <CamposBase />
+                <EstadoCampo />
                 <DescripcionCampo />
                 <VehiculoCampo />
                 <HorarioCampo />

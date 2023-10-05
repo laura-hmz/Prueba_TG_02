@@ -10,6 +10,7 @@ export const ServiceProvider = ({ children }) => {
   const [currentOption, setCurrentOption] = useState('show');
   const [isUpdated, setIsUpdated] = useState(false);
   const [service, setService] = useState(null);
+  const [tipoServicio, setTipoServicio] = useState('');
   const [serviceData, setServiceData] = useState({
     id_usuario: '', // Inicializar id_usuario como una cadena vacía
     nombre: '',
@@ -23,6 +24,29 @@ export const ServiceProvider = ({ children }) => {
     tipo_vehiculo_2: '',
     area_otro_servicio_3: '',
   });
+
+  const resetServiceData = useCallback(() => {
+    setServiceData({
+      id_usuario: '',
+      nombre: '',
+      descripcion: '',
+      horarios: [],
+      tipo_servicio: '',
+      estado: 1,
+      area_0: '',
+      tipo_habitacion_1: '',
+      caracteristicas_habitacion_1: [],
+      tipo_vehiculo_2: '',
+      area_otro_servicio_3: '',
+    });
+    setHorarios([]);
+    setServiceData((prevData) => ({
+      ...prevData,
+      id_usuario: userData._id,
+    }));
+
+  }, [setServiceData, userData]);
+
   const optionsHoraInicio = [
     "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
     "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00",
@@ -38,18 +62,30 @@ export const ServiceProvider = ({ children }) => {
     try {
       const data = await getServicesById(id);
       setServiceData(data);
+      setTipoServicio(data.tipo_servicio);
     } catch (error) {
       console.error('Error al obtener los servicios:', error);
     }
   }, []);
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value , type, checked} = e.target;
+    if (type === 'checkbox') {
+      // Verificamos si el checkbox está marcado y asignamos el valor correspondiente
+      const checkboxValue = checked ? name.replace(/_/g, ' ') : '';
+      setServiceData({
+        ...serviceData,
+        [name]: checkboxValue,
+      });
+    } else {
+      setServiceData({
+        ...serviceData,
+        [name]: value,
+      });
+    }
     setServiceData((prevServiceData) => ({
         ...prevServiceData,
         [name]: value,
-      }));
-
-      
+      }));   
   };
   const [horarios, setHorarios] = useState([
     { dia_semana: '', hora_de_inicio: '', hora_de_finalizacion: '' } 
@@ -64,7 +100,7 @@ export const ServiceProvider = ({ children }) => {
       }));
     }
     
-  }, [userData]);
+  }, [userData,resetServiceData]);
 
   useEffect(() => {
     
@@ -86,7 +122,10 @@ export const ServiceProvider = ({ children }) => {
     setHorarios,
     openSuccessModal,
     isSuccessModalOpen,
-    setIsSuccessModalOpen
+    setIsSuccessModalOpen,
+    tipoServicio,
+    setTipoServicio,
+    resetServiceData
 
   };
 

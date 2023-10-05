@@ -46,7 +46,7 @@ const HorarioCampo = () => {
             //console.log('horarios:', horarios);
             //console.log('serviceData:', serviceData);
         }
-        console.log('horarios:',serviceData.horarios );
+        //console.log('horarios:',serviceData.horarios );
     }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated, setHorarios]);
 
     return (

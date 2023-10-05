@@ -29,11 +29,6 @@ import RoomServiceForm2 from './components/servicios/forms/roomServiceForm2.jsx'
 function App() {
 
   const {isAuthenticated, isLoading, userExists} = useContext(UserContext);
- 
-  //console.log('UserData en APP',userData);
-  //console.log('userExists en APP',userExists);
-  //console.log('resultados APP',userDataAux.resultados_encuesta);
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -65,8 +60,8 @@ function App() {
             <Route path='/especialsearch' element={getReturn(<Especialsearch/>)}/>
             <Route path='/editService/:id' element={getReturn(<EditService/>)}/>
             <Route path="/register/transport" element={getReturn(<TransportServiceForms3 />)}/>
-            <Route path="/register/academic-advising" element={getReturn(<AcademyServiceForm option='register'/>) } />
-            <Route path="/register/room" element={getReturn(<RoomServiceForm2 option='register'/>)} />
+            <Route path="/register/academic-advising" element={getReturn(<AcademyServiceForm />) } />
+            <Route path="/register/room" element={getReturn(<RoomServiceForm2 />)} />
             <Route path="/register/other" element={getReturn(<OtherServiceForm option='register'/>)} />    
             <Route path='/savedServices' element={getReturn(<SavedServices/>)} />
             <Route path='/searchService' element={ getReturn(<SearchService/>)}/>

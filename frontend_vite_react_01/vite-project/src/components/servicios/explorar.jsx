@@ -12,12 +12,11 @@ import TransportServiceForm3 from './forms/trasnportServiceForms3';
 import  {  useEffect, useContext } from 'react';
 import { ServiceContext } from '../../contexts/serviceContext';
 //import Loader2 from '../../components/loaders/loader2'
-import CamposBase from './servicesCampos/estadoCampo';
 
 const Explorar = () => {
   //const { userData, userEmail, isAuthenticated } = useContext(UserContext);
   //const [idUser, setIdUser] = useState([]);
-  const id = '6518004f9d0c36e7de53935c';
+  //const id = '6518004f9d0c36e7de53935c';
 
   const {fetchData,setCurrentOption } = useContext(ServiceContext);
   
