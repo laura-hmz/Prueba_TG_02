@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 
-const CardServiceOnly = ({service}) => {
+const CardServiceOnly = ({service, userData}) => {
     //const {service} = useParams();
     //Ordenar la logica del boton
     const [buttonClicked, setButtonClicked] = useState(false);
@@ -16,7 +16,7 @@ const CardServiceOnly = ({service}) => {
   };
 
   return (
-    <section className="antialiased bg-gray-200 font-sans">
+    <section className="antialiased  font-sans">
       <div className="container px-5 py-5 mx-auto">
         <div className="flex flex-wrap -m-4 relative justify-center">
         
@@ -124,7 +124,7 @@ const CardServiceOnly = ({service}) => {
                       </div>
                       <div>
                         <p className="text-m font-bold text-gray-600">
-                          Miguel Angel Burro
+                        {userData.nombre || 'Nombre Desconocido'}
                         </p>
                         <p className="text-sm text-gray-700">
                           3217223465
@@ -142,6 +142,8 @@ const CardServiceOnly = ({service}) => {
   
 };
 CardServiceOnly.propTypes = {
-  service: PropTypes.object.isRequired
+  service: PropTypes.object.isRequired,
+  userData: PropTypes.object,
+
 }
 export default CardServiceOnly;

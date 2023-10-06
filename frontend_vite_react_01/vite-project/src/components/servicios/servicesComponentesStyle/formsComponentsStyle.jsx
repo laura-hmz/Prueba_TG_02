@@ -11,7 +11,7 @@ const divEspace = "mb-8"
 const labelClassnameHorario = ' block uppercase tracking-wide text-gray-500 text-sm font-bold mb-2 mt-4'
 const selectDesingHorario='capitalize shadow-2xl p-2 border w-full outline-none focus:border-solid focus:border-[2px] focus:border-[#93c5fd] placeholder:text-black'
 const tituloServicio='block uppercase tracking-wide text-lg text-gray-700 mb-10 font-bold'
-const contenedor="mx-auto max-w-6xl mt-8 mb-8 p-2 md:p-4 lg:p-6 rounded-lg border border-gray-300 border-solid "
+const contenedor="mx-auto max-w-5xl mt-8 mb-8 p-2 md:p-4 lg:p-6 rounded-lg border border-gray-300 border-solid "
 
 export default {
     labelClassname,

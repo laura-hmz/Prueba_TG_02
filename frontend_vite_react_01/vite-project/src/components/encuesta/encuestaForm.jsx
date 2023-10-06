@@ -95,21 +95,21 @@ const EncuestaForm = () => {
                             className={selectDesing}
                             id="carrera"
                             name="carrera"
-                            value={userDataAux.carrera}
+                            value={userDataAux.carrera || ''}
                             onChange={handleChange}
                             
                             required
                             >
                             <option value="">----</option> 
-                            <option value="Ingenieria de sistemas">Ingeniería de sistemas</option>
-                            <option value="Administracion de empresas">Administración de empresas</option>
-                            <option value="Ingenieria de alimentos">Ingeniería de alimentos</option>
-                            <option value="Construccion">Construcción</option>
-                            <option value="Trabajo social">Trabajo social</option>
-                            <option value="Contaduria publica">Contaduría pública</option>
-                            <option value="Tecnologia en desarrollo de software">Tecnología en desarrollo de software</option>
-                            <option value="Tecnologia en electronica">Tecnología en electrónica</option>
-                            <option value="Tecnologia en alimentos">Tecnología en alimentos</option>
+                            <option value="ingenieria de sistemas">Ingeniería de sistemas</option>
+                            <option value="administracion de empresas">Administración de empresas</option>
+                            <option value="ingenieria de alimentos">Ingeniería de alimentos</option>
+                            <option value="construccion">Construcción</option>
+                            <option value="trabajo social">Trabajo social</option>
+                            <option value="contaduria publica">Contaduría pública</option>
+                            <option value="tecnologia en desarrollo de software">Tecnología en desarrollo de software</option>
+                            <option value="tecnologia en electronica">Tecnología en electrónica</option>
+                            <option value="tecnologia en alimentos">Tecnología en alimentos</option>
                         </select>
     
                     </div>
@@ -147,7 +147,7 @@ const EncuestaForm = () => {
                             <option value="Cali">Cali</option>
                             <option value="Buenaventura">Buenaventura</option>
                             <option value="Palmira">Palmira</option>
-                            <option value="Tuluá">Tuluá</option>
+                            <option value="tuluá">Tuluá</option>
                             <option value="Cartago">Cartago</option>
                             <option value="Buga">Buga</option>
                             <option value="Jamundí">Jamundí</option>

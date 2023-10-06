@@ -1,9 +1,8 @@
 import { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getUserByEmail, createUser } from '../api/usersApi.js';
+import { getUserByEmail, createUser, updateUser } from '../api/usersApi.js';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useCallback } from 'react';
-
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
@@ -12,6 +11,7 @@ export const UserProvider = ({ children }) => {
   const { isAuthenticated, user, isLoading } = useAuth0();
   const [userExists, setUserExists] = useState(false);
 const [paginaRegistro, setPaginaRegistro] = useState('1');
+const [currentOption, setCurrentOption] = useState('show');
 
   const [userDataAux, setUserDataAux] = useState({
        
@@ -62,6 +62,24 @@ const [paginaRegistro, setPaginaRegistro] = useState('1');
       console.error('Error al registrarbusuario:', error);
     }
   }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+  
+      setUserDataAux((prevUserData) => ({
+        ...prevUserData,
+        [name]: value,
+      }));
+    //}
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Esto es lo que se va a guardar',userDataAux);
+    userDataAux.correo=userEmail;
+    updateUser(userDataAux);
+    setCurrentOption('show');
+    console.log('currrentOption',currentOption);
+  }
 
   useEffect(() => {
     // ...
@@ -82,7 +100,11 @@ const [paginaRegistro, setPaginaRegistro] = useState('1');
     setUserDataAux,
     registerUser,
     paginaRegistro,
-    setPaginaRegistro
+    setPaginaRegistro,
+    handleChange,
+    handleSubmit,
+    currentOption,
+    setCurrentOption
   };
 
   return (

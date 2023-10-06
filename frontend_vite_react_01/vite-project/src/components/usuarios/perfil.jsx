@@ -1,44 +1,239 @@
+import { UserContext } from '../../contexts/userContext';
+import { useContext } from 'react';
+import FormsComponentsStyle from '../../components/servicios/servicesComponentesStyle/formsComponentsStyle';
+import BotonEditar from './usuariosCampos/botonEditar';
+import BotonCancelarU from './usuariosCampos/botonCancelarU';
 const Perfil = () => {
+    const {userDataAux, handleChange,handleSubmit, currentOption} = useContext(UserContext);
+    const {
+        labelClassname,
+        selectDesing,
+        inputDesing,
+        divEspace,
+        tituloServicio,
+        contenedor,
+        divGrid,
+        divGridSub
+      } = FormsComponentsStyle;
     return (
-      
-<htmlForm>
-  <div className="relative z-0 w-full mb-6 group">
-      <input type="email" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-      <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
-  </div>
-  <div className="relative z-0 w-full mb-6 group">
-      <input type="password" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-      <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
-  </div>
-  <div className="relative z-0 w-full mb-6 group">
-      <input type="password" name="repeat_password" id="floating_repeat_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-      <label htmlFor="floating_repeat_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
-  </div>
-  <div className="grid md:grid-cols-2 md:gap-6">
-    <div className="relative z-0 w-full mb-6 group">
-        <input type="text" name="floating_first_name" id="floating_first_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label htmlFor="floating_first_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
-    </div>
-    <div className="relative z-0 w-full mb-6 group">
-        <input type="text" name="floating_last_name" id="floating_last_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label htmlFor="floating_last_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
-    </div>
-  </div>
-  <div className="grid md:grid-cols-2 md:gap-6">
-    <div className="relative z-0 w-full mb-6 group">
-        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label htmlFor="floating_phone" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (123-456-7890)</label>
-    </div>
-    <div className="relative z-0 w-full mb-6 group">
-        <input type="text" name="floating_company" id="floating_company" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label htmlFor="floating_company" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company (Ex. Google)</label>
-    </div>
-  </div>
-  <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-</htmlForm>
+        <div className={contenedor}>
+            <form  onSubmit={handleSubmit}>
+                <div className='px-7' >
+                    <BotonEditar />
+                    <BotonCancelarU />
+                    <div className='text-center'>
+                        <div className={divEspace}>
+                            <h1 className={tituloServicio}> Información de usuario </h1>
 
+                        </div>
 
+                    </div>
+                    
 
-    )
+                    <div className={divGrid}>
+                        <div className={divGridSub}>
+                            
+                            <label className={labelClassname} htmlFor="nombre">Nombre:</label>
+                            <input
+                            className={inputDesing}
+                            type="text"
+                            placeholder="Ingresa tu nombre" 
+                            id="nombre"
+                            name="nombre"
+                            value={userDataAux.nombre || ''}
+                            onChange={handleChange}
+                            disabled={currentOption=== 'show'}
+                            required
+                          />
+
+                        </div>
+                        <div className={divGridSub}>
+                        <label className={labelClassname} htmlFor="correo">Correo:</label>
+                            <input
+                            className={inputDesing}
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            value={userDataAux.correo || ''}
+                            onChange={handleChange}
+                            disabled
+                            required
+                          />
+                        </div>
+
+                    </div>
+
+                    <div className={divGrid}>
+                        <div className={divGridSub}>
+                            
+                        <label className={labelClassname} htmlFor="edad">Edad:</label>
+                          <input
+                            className={inputDesing}
+                            type="number"
+                            placeholder="Ingresa tu edad" 
+                            id="edad"
+                            name="edad"
+                            value={userDataAux.edad || ''}
+                            onChange={handleChange}
+                            min="0"
+                            max="100" 
+                            required
+                            disabled={currentOption=== 'show'}
+                            
+                          />
+
+                        </div>
+                        <div className={divGridSub}>
+                            <label className={labelClassname} htmlFor="sexo">Sexo:</label>
+                            <select
+                                className={selectDesing}
+                                id="sexo"
+                                name="sexo"
+                                value={userDataAux.sexo}
+                                onChange={handleChange}
+                                disabled={currentOption=== 'show'}
+                                
+                                required
+                                >
+                                <option value="">----</option> 
+                                <option value="masculino">M</option>
+                                <option value="femenino">F</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div className={divGrid}>
+                        <div className={divGridSub}>
+                            
+                            <label className={labelClassname} htmlFor="carrera">Carrera:</label>
+                            <select
+                                className={selectDesing}
+                                id="carrera"
+                                name="carrera"
+                                value={userDataAux.carrera}
+                                onChange={handleChange}
+                                disabled={currentOption=== 'show'}
+                                
+                                required
+                                >
+                                <option value="">----</option> 
+                                <option value="ingenieria de sistemas">Ingeniería de sistemas</option>
+                                <option value="administracion de empresas">Administración de empresas</option>
+                                <option value="ingenieria de alimentos">Ingeniería de alimentos</option>
+                                <option value="construccion">Construcción</option>
+                                <option value="trabajo social">Trabajo social</option>
+                                <option value="contaduria publica">Contaduría pública</option>
+                                <option value="tecnologia en desarrollo de software">Tecnología en desarrollo de software</option>
+                                <option value="tecnologia en electronica">Tecnología en electrónica</option>
+                                <option value="tecnologia en alimentos">Tecnología en alimentos</option>
+                            </select>
+
+                        </div>
+                        <div className={divGridSub}>
+                            <label className={labelClassname} htmlFor="semestre">Semestre:</label>
+                            <input
+                                className={inputDesing}
+                                type="number"
+                                placeholder="ingresa tu semestre" 
+                                id="semestre"
+                                name="semestre"
+                                value={userDataAux.semestre || ''}
+                                onChange={handleChange}
+                                min="1"
+                                max="14" 
+                                disabled={currentOption=== 'show'}
+                                required
+                                
+                          />
+                        </div>
+
+                    </div>
+
+                    <div className={divGrid}>
+                        <div className={divGridSub}>
+                            
+                        <label className={labelClassname} htmlFor="ciudad_residencia">Ciudad de residencia:</label>
+                        <select
+                            className={selectDesing}
+                            id="ciudad_residencia"
+                            name="ciudad_residencia"
+                            value={userDataAux.ciudad_residencia}
+                            onChange={handleChange}
+                            disabled={currentOption=== 'show'}
+                            required
+                            >
+                            <option value="">----</option>
+                            <option value="">Selecciona una ciudad</option>
+                            <option value="Cali">Cali</option>
+                            <option value="Buenaventura">Buenaventura</option>
+                            <option value="Palmira">Palmira</option>
+                            <option value="tuluá">Tuluá</option>
+                            <option value="Cartago">Cartago</option>
+                            <option value="Buga">Buga</option>
+                            <option value="Jamundí">Jamundí</option>
+                            <option value="Yumbo">Yumbo</option>
+                            <option value="Candelaria">Candelaria</option>
+                            <option value="Florida">Florida</option>
+                            <option value="El Cerrito">El Cerrito</option>
+                            <option value="Pradera">Pradera</option>
+                            <option value="Sevilla">Sevilla</option>
+                            <option value="Zarzal">Zarzal</option>
+                            <option value="Dagua">Dagua</option>
+                            <option value="Roldanillo">Roldanillo</option>
+                            <option value="La Unión">La Unión</option>
+                            <option value="Guacarí">Guacarí</option>
+                            <option value="Caicedonia">Caicedonia</option>
+                            <option value="Bugalagrande">Bugalagrande</option>
+                            <option value="Ansermanuevo">Ansermanuevo</option>
+                            <option value="Ginebra">Ginebra</option>
+                            <option value="Trujillo">Trujillo</option>
+                            <option value="Andalucía">Andalucía</option>
+                            <option value="San Pedro">San Pedro</option>
+                            <option value="Riofrío">Riofrío</option>
+                            <option value="Toro">Toro</option>
+                            <option value="Yotoco">Yotoco</option>
+                            <option value="Darién">Darién</option>
+                            <option value="Bolívar">Bolívar</option>
+                            <option value="Obando">Obando</option>
+                            <option value="Restrepo">Restrepo</option>
+                            <option value="La Victoria">La Victoria</option>
+                            <option value="Alcalá">Alcalá</option>
+                            <option value="La Cumbre">La Cumbre</option>
+                            <option value="Vijes">Vijes</option>
+                            <option value="El Águila">El Águila</option>
+                            <option value="El Cairo">El Cairo</option>
+                            <option value="El Dovio">El Dovio</option>
+                            <option value="Versalles">Versalles</option>
+                            <option value="Argelia">Argelia</option>
+                            <option value="Ulloa">Ulloa</option>
+                            
+                        </select>
+                        </div>
+                        <div className={divGridSub}>
+                            
+                        </div>
+
+                    </div>
+
+   
+                    <div className='flex justify-end mt-8 mb-2'>
+                        {currentOption !== 'show' && (
+                            <button
+                                className="outline-none glass shadow-2xl  rounded p-3 bg-green-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
+                                type="submit"
+                            >
+                                Guardar cambios 
+                            </button>
+                        ) }
+    
+                    </div>
+    
+                </div>
+            
+            </form>
+        </div>
+  );
+    
 }
 export default Perfil

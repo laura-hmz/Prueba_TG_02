@@ -18,3 +18,13 @@ export const createUser = async (user) => {
     console.log(res.data);
     return res.data;
 }
+export const updateUser = async (user) => {
+    const res = await usersApi.put(`/users/${user._id}`, user)
+    console.log(res.data);
+    return res.data;
+}
+export const getUserId = async (id) => {
+    const res = await usersApi.get(`/users/${id}`)
+    //console.log(res.data);
+    return res.data
+}

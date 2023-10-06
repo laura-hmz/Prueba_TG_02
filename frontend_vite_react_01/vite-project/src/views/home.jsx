@@ -4,10 +4,26 @@ import {lastServicesAdded, getServices } from '../api/servicesApi';
 import CardService3 from '../components/servicios/cardService3';
 import { UserContext } from '../contexts/userContext';
 import { useContext } from 'react';
+import ImageCarousel from '../components/carrusel/imageCarrusel';
+import imagen1 from '../images/prueba.jpeg';
+import imagen2 from '../images/copia.png';
+
+
 
 const Home = () => {
     const [services, setServices] = useState([]);
-    const { userEmail, userData} = useContext(UserContext);
+    const { userData} = useContext(UserContext);
+
+    const images = [
+      //imagen1,
+      imagen2,
+      imagen2,
+      imagen2,
+      imagen2,
+
+      
+      // Agrega más URL de imágenes según sea necesario
+    ];
 
     useEffect(() => {
       // Realizar una solicitud para obtener los servicios cuando el componente se monta
@@ -27,7 +43,7 @@ const Home = () => {
   
     return (
       <>
-      <h1>Home { userEmail }</h1>
+      
       <CardService3 services={services} />
       </>
       

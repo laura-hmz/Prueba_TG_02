@@ -1,21 +1,30 @@
 import { UserContext } from '../../contexts/userContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import Perfil from '../../components/usuarios/perfil';
 
 const Profile = () => {
-    const { userData, isAuthenticated } = useContext(UserContext);
+    const { userData, isAuthenticated,setUserDataAux } = useContext(UserContext);
+    //const [userDataAux, setUserDataAux] = useState({});
+
+    useEffect(() => { 
+      setUserDataAux(userData);
+    
+      }, [userData, isAuthenticated, setUserDataAux]);
    
     return (
-        <div>
-            <h1>Mi Perfil</h1>
+            <>
             {isAuthenticated ? (
                 <>
-                    <h2>{userData ? '¡Hola!, ' + userData.nombre : 'Cargando...'}</h2>
-                    {/* Mostrar otros datos del usuario aquí */}
+                    <Perfil />
                 </>
             ) : (
                 <p>No estás autenticado</p>
             )}
-        </div>
+            
+            
+            
+            </>
+            
     )
 }
 export default Profile;
