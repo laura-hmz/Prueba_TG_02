@@ -12,7 +12,7 @@ const ImageCarousel = ({ images }) => {
     autoplay: true,
     autoplaySpeed: 5000,
     speed: 3000,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
    
     
@@ -24,7 +24,7 @@ const ImageCarousel = ({ images }) => {
         {images.map((image, index) => (
           <div key={index} className=' flex'>
             <img src={image} alt={`Slide ${index + 1}`} 
-            className="h-1/10 w-1/4 "/>
+            className="h-1/10 w-full "/>
           </div>
         ))}
       </Slider>

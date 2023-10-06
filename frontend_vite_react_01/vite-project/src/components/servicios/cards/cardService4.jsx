@@ -1,43 +1,12 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
-import {getUserId} from '../../api/usersApi';
-const CardService3 = ({services}) => {
-
-    //Ordenar la logica del boton
-  const [savedServiceIds, setSavedServiceIds] = useState(new Set());
-  const [userDetails, setUserDetails] = useState({});
-  
-  useEffect(() => {
-    // Función para obtener los datos de un usuario por su ID
-    const getUser = async (id) => {
-      try {
-        const userData = await getUserId(id);
-        return userData; // Devuelve todos los datos del usuario
-      } catch (error) {
-        console.error('Error al obtener los datos del usuario:', error);
-        return null; // Devuelve null en caso de error
-      }
-    };
-  
-    // Verifica si services es un arreglo antes de intentar iterarlo
-    if (Array.isArray(services)) {
-      // Obtiene y almacena los datos de usuario para cada servicio
-      const fetchUserDetails = async () => {
-        const userDetails = {};
-        for (const service of services) {
-          const userData = await getUser(service.id_usuario);
-          userDetails[service._id] = userData;
-        }
-        setUserDetails(userDetails); // Almacena los detalles del usuario
-      };
-  
-      fetchUserDetails(); // Llama a la función para obtener los detalles del usuario
-    }
-  }, [services]);
-  
-  
+//import {getUserId} from '../../../api/usersApi';
+import { CardServiceContext } from '../../../contexts/cardServiceContext';
+const CardService4 = () => {
+  const {services, userDetails,setSavedServiceIds, savedServiceIds } = useContext(CardServiceContext);
+ 
   const handleClick = (serviceId) => {
     // Verifica si el servicio ya está guardado
     if (savedServiceIds.has(serviceId)) {
@@ -53,6 +22,10 @@ const CardService3 = ({services}) => {
     console.log(savedServiceIds);
   };
 
+ 
+      
+ 
+
   return (
     <section className="antialiased  font-sans">
       <div className="container px-7 py-9 mx-auto">
@@ -60,7 +33,7 @@ const CardService3 = ({services}) => {
           {Array.isArray(services) && services.map((service) => (
             <div key={service._id} className="p-4 md:w-1/3 relative">
               <div className="bg-white shadow-xl rounded-lg overflow-hidden relative">
-              {service.tipo_servicio === 'Servicio de transporte' ? 
+                {service.tipo_servicio === 'Servicio de transporte' ? 
                     <img
                         className="lg:h-48 md:h-36 w-full object-cover object-center"
                         src={"https://img.freepik.com/free-photo/taxi-car-smartphone-with-reminder-popup-bell-notification-alert-bubble-chat-online-transportation-service-concept-web-banner-cartoon-icon-symbol-background-3d-illustration_56104-1995.jpg?w=740&t=st=1696590613~exp=1696591213~hmac=2b3b6902a893a0ad2029fbcb520b23052e0f2531802438457ea2edaec7baa04a"}
@@ -84,6 +57,7 @@ const CardService3 = ({services}) => {
                         alt={service._id}
                     />  
                 }
+                
                 <button
                   className={`absolute top-4 right-4 px-3 py-1 rounded focus:outline-none ${
                     savedServiceIds.has(service._id)
@@ -146,8 +120,8 @@ const CardService3 = ({services}) => {
   );
   
 };
-CardService3.propTypes = {
+CardService4.propTypes = {
   services: PropTypes.array
 }
 
-export default CardService3;
+export default CardService4;

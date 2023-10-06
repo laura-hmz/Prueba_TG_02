@@ -5,7 +5,7 @@ import CardService3 from '../components/servicios/cardService3';
 import { UserContext } from '../contexts/userContext';
 import { useContext } from 'react';
 import ImageCarousel from '../components/carrusel/imageCarrusel';
-import imagen1 from '../images/prueba.jpeg';
+import imagen1 from '../images/muak.jpeg';
 import imagen2 from '../images/copia.png';
 
 
@@ -15,14 +15,13 @@ const Home = () => {
     const { userData} = useContext(UserContext);
 
     const images = [
-      //imagen1,
-      imagen2,
-      imagen2,
-      imagen2,
-      imagen2,
+      imagen1,
+      //imagen2,
+      imagen1,
+      //imagen2,
+      imagen1,
 
-      
-      // Agrega más URL de imágenes según sea necesario
+    
     ];
 
     useEffect(() => {
@@ -43,7 +42,7 @@ const Home = () => {
   
     return (
       <>
-      
+    
       <CardService3 services={services} />
       </>
       

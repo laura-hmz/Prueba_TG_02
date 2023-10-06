@@ -1,12 +1,17 @@
 import "../../components/loader1.css";
+import CardService4 from "../../components/servicios/cards/cardService4";
+import { CardServiceContext } from "../../contexts/cardServiceContext";
+import { useContext } from "react";
 const SavedServices = () => {
+  const {services, mostrarGuardados, setMostrarGuardados} = useContext(CardServiceContext);
+  //setMostrarGuardados(true);
+  console.log('Estoy en savedServices');
+
     return (
-        <div className="loader-container relative ">
-              <h1 className="text-center absolute top-8 left-0 w-full bg-transparent text-black text-2xl">
-                Mis servicios guardados: espera la implementación :D
-              </h1>
-              <div className="loader"></div>
-            </div>
+        <>
+        {services? <CardService4 />:
+        <h1>No has guardado ningun servicio,¡No esperes más para explorar!</h1>}
+        </>
     )
 }
 export default SavedServices

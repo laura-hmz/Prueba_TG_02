@@ -23,6 +23,7 @@ import TransportServiceForms3 from './components/servicios/forms/trasnportServic
 import AcademyServiceForm from './components/servicios/forms/academyServiceForm.jsx';
 import OtherServiceForm from './components/servicios/forms/otherServiceForm.jsx';
 import RoomServiceForm2 from './components/servicios/forms/roomServiceForm2.jsx';
+import { CardServiceProvider } from './contexts/cardServiceContext.jsx';
 //import { ServiceContext } from './contexts/serviceContext.jsx';
 
 
@@ -47,6 +48,7 @@ function App() {
  
   return (
     <ServiceProvider>
+      <CardServiceProvider>
         <BrowserRouter>
           {isAuthenticated && <NavBar2 />}
           <Routes>
@@ -71,6 +73,7 @@ function App() {
 
           </Routes>
         </BrowserRouter>
+        </CardServiceProvider>
       </ServiceProvider>
   
   )
