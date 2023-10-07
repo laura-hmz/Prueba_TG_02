@@ -22,14 +22,22 @@ const SavedServices = () => {
     };
     fetchData();
 
-   }, [userData, services, setServices]);
+   }, [userData, services, setServices, setIsSearch]);
   
 
     return (
         <>
-        {services? <CardService4 />:
-        <h1>No has guardado ningun servicio,¡No esperes más para explorar!</h1>}
+
+        {/* Verifica si services es un arreglo antes de pasarlo a CardService3 */}
+       {Array.isArray(services) && services.length > 0 ? (
+        <CardService4 />
+        ) : (
+        <h1>No has guardado ningun servicio,¡No esperes más para explorar!</h1>
+      )}
         </>
+
+       
+
     )
 }
 export default SavedServices
