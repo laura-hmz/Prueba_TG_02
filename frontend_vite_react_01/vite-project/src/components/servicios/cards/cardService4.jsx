@@ -15,9 +15,7 @@ const CardService4 = () => {
       // Si ya está guardado, elimínalo del conjunto
       savedServiceIds.delete(serviceId);
       deleteServiceSaved2(userData._id, serviceId);
-      console.log('user id', userData._id);
-      console.log('service id', serviceId);
-
+  
     } else {
       // Si no está guardado, agrégalo al conjunto
       savedServiceIds.add(serviceId);
@@ -26,12 +24,9 @@ const CardService4 = () => {
         id_servicio: serviceId,
       };
       createServiceSaved(savedServiceData);
-      console.log('lo que se crea', savedServiceIds);
     }
-
     // Actualiza el estado local con el conjunto actualizado
     setSavedServiceIds(new Set(savedServiceIds));
-    console.log(savedServiceIds);
   };
 
   return (

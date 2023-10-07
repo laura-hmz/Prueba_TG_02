@@ -1,33 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useEffect,useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getServicesById } from '../../api/servicesApi';
 import { getUserId } from '../../api/usersApi';
+import { CardServiceContext } from "../../contexts/cardServiceContext";
 import CardServiceOnly from '../../components/servicios/cardServiceOnly';
 
 const ServiceDetails = () => {
   const { id } = useParams();
-  const [service, setService] = useState({});
-  const [userData, setUserData] = useState({});
+  const {setOnlyService,setUserDataOnlyService,setButtonClick,savedServiceIds} = useContext(CardServiceContext);
 
   useEffect(() => {
     // Realizar una solicitud para obtener los servicios cuando el componente se monta
     const fetchData = async () => {
       try {
         const data = await getServicesById(id);
-        console.log(data);
-        setService(data);
+        setOnlyService(data);
         const userId = await getUserId(data.id_usuario);
-        setUserData(userId);
+        setUserDataOnlyService(userId);
+        if (savedServiceIds.has(data._id)){
+          setButtonClick(true);
+        }else{
+          setButtonClick(false);
+        }
+
       } catch (error) {
         console.error('Error al obtener los servicios:', error);
       }
     };
 
     fetchData();
-  }, [id]);
+  }, [id, setOnlyService,setUserDataOnlyService,setButtonClick,savedServiceIds]);
 
   return (
-    <CardServiceOnly service={service} userData={userData} />
+    <CardServiceOnly />
   );
 };
 

@@ -2,7 +2,7 @@ import { createContext, useState, useEffect, useContext,useCallback } from 'reac
 import PropTypes from 'prop-types';
 import { UserContext } from './userContext';
 import {getUserId} from '../api/usersApi';
-import {getSavedServiceList} from '../api/savedServicesApi';
+import {getSavedServiceList,deleteServiceSaved2,createServiceSaved} from '../api/savedServicesApi';
 //import {getServices} from '../api/servicesApi';
 
 export const CardServiceContext = createContext(null);
@@ -14,12 +14,10 @@ export const CardServiceProvider = ({ children }) => {
   const [services, setServices] = useState([]);
   const [userDetails, setUserDetails] = useState({});
   const [isSearch, setIsSearch] = useState(false);
-  
   const [savedServiceIds, setSavedServiceIds] = useState(new Set());
-
-  //const [savedServices, setSavedServices] = useState([]);
-
-
+  const [onlyService, setOnlyService] = useState({});
+  const [userDataOnlyService, setUserDataOnlyService] = useState({});
+  const [buttonClick, setButtonClick] = useState(false);
 
   const getSavedServices = useCallback(async () => {
     try {
@@ -36,8 +34,7 @@ export const CardServiceProvider = ({ children }) => {
   useEffect(() => {
     if (userData) {
       getSavedServices();
-      
-      console.log(userData._id, 'MUAK MU MUAK');
+ 
     }
   }, [userData, getSavedServices]);
   
@@ -70,9 +67,31 @@ export const CardServiceProvider = ({ children }) => {
     }
   }, [services, setUserDetails]);
 
-  const CardServiceContextValue = {
+  const handleClick = (serviceId) => {
+    // Verifica si el servicio ya está guardado
+    if (savedServiceIds.has(serviceId)) {
+      // Si ya está guardado, elimínalo del conjunto
+      savedServiceIds.delete(serviceId);
+      deleteServiceSaved2(userData._id, serviceId);
+      setButtonClick(false);
+      console.log('user id', userData._id);
+      console.log('service id', serviceId);
+      console.log('buton click', buttonClick);
 
-    //getSavedServices,
+    } else {
+      // Si no está guardado, agrégalo al conjunto
+      savedServiceIds.add(serviceId);
+      const savedServiceData = {
+        id_usuario: userData._id,
+        id_servicio: serviceId,
+      };
+      createServiceSaved(savedServiceData);
+      setButtonClick(true);
+      console.log('lo que se crea', savedServiceIds);
+    }
+  }
+
+  const CardServiceContextValue = {
     userDetails,
     setUserDetails,
     services,
@@ -81,8 +100,13 @@ export const CardServiceProvider = ({ children }) => {
     setSavedServiceIds,
     getSavedServices,
     isSearch,
-    setIsSearch
-
+    setIsSearch,
+    handleClick, 
+    onlyService,
+    setOnlyService,
+    userDataOnlyService,
+    setUserDataOnlyService,
+    buttonClick, setButtonClick
   };
 
   return (

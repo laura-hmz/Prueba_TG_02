@@ -1,10 +1,9 @@
+import "../../components/loader1.css";
+import Loader2 from '../../components/loaders/loader2';
 import { useEffect, useState,useContext } from 'react';
 import {busquedaMatchmaking} from '../../api/servicesApi';
 import { UserContext } from '../../contexts/userContext';
 import SearchForm from '../../components/servicios/forms/searchForm';
-import "../../components/loader1.css";
-import Loader2 from '../../components/loaders/loader2';
-
 import { CardServiceContext } from "../../contexts/cardServiceContext";
 import CardService4 from '../../components/servicios/cards/cardService4';
 
