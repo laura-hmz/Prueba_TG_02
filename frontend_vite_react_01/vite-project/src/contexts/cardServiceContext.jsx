@@ -2,37 +2,45 @@ import { createContext, useState, useEffect, useContext,useCallback } from 'reac
 import PropTypes from 'prop-types';
 import { UserContext } from './userContext';
 import {getUserId} from '../api/usersApi';
+import {getSavedServiceList} from '../api/savedServicesApi';
+//import {getServices} from '../api/servicesApi';
 
 export const CardServiceContext = createContext(null);
 
 export const CardServiceProvider = ({ children }) => {
   const { userData } = useContext(UserContext);
-  const [mostrarGuardados, setMostrarGuardados] = useState(false);
 
-  const [userId, setUserId] = useState('');
+  //const [userId, setUserId] = useState('');
   const [services, setServices] = useState([]);
   const [userDetails, setUserDetails] = useState({});
+  const [isSearch, setIsSearch] = useState(false);
+  
   const [savedServiceIds, setSavedServiceIds] = useState(new Set());
 
-  const fetchData = useCallback(async () => {
+  //const [savedServices, setSavedServices] = useState([]);
+
+
+
+  const getSavedServices = useCallback(async () => {
     try {
-      //const data = await getServicesById(id);
-      //setTipoServicio(data.tipo_servicio);
+      const savedServicesIdList = await getSavedServiceList(userData._id);
+      setSavedServiceIds(new Set (savedServicesIdList));
+
+      // Mueve el console.log aquí para acceder a serviceSaved después de que se haya establecido
+      console.log('Los servicios guardados son', savedServicesIdList);
     } catch (error) {
       console.error('Error al obtener los servicios:', error);
     }
-  }, []);
-
-  // Efecto para actualizar id_usuario cuando userData cambie
+  }, [userData ]);
+  
   useEffect(() => {
     if (userData) {
-      setUserId(userData._id);
-
-    //   if (mostrarGuardados){
-
-    //   }
+      getSavedServices();
+      
+      console.log(userData._id, 'MUAK MU MUAK');
     }
-  }, [userData]);
+  }, [userData, getSavedServices]);
+  
 
   useEffect(() => {
     // Función para obtener los datos de un usuario por su ID
@@ -64,16 +72,17 @@ export const CardServiceProvider = ({ children }) => {
 
   const CardServiceContextValue = {
 
-    fetchData,
+    //getSavedServices,
     userDetails,
     setUserDetails,
-    userId,
     services,
     setServices,
     savedServiceIds,
     setSavedServiceIds,
-    mostrarGuardados,
-    setMostrarGuardados
+    getSavedServices,
+    isSearch,
+    setIsSearch
+
   };
 
   return (

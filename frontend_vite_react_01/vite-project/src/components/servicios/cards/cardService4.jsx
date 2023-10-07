@@ -1,30 +1,38 @@
 import PropTypes from 'prop-types';
-import { useContext, useEffect, useState } from 'react';
+import { useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
-//import {getUserId} from '../../../api/usersApi';
+import {deleteServiceSaved2, createServiceSaved} from '../../../api/savedServicesApi';
 import { CardServiceContext } from '../../../contexts/cardServiceContext';
+import { UserContext } from '../../../contexts/userContext';
 const CardService4 = () => {
   const {services, userDetails,setSavedServiceIds, savedServiceIds } = useContext(CardServiceContext);
+  const { userData } = useContext(UserContext);
  
   const handleClick = (serviceId) => {
     // Verifica si el servicio ya está guardado
     if (savedServiceIds.has(serviceId)) {
       // Si ya está guardado, elimínalo del conjunto
       savedServiceIds.delete(serviceId);
+      deleteServiceSaved2(userData._id, serviceId);
+      console.log('user id', userData._id);
+      console.log('service id', serviceId);
+
     } else {
       // Si no está guardado, agrégalo al conjunto
       savedServiceIds.add(serviceId);
+      const savedServiceData = {
+        id_usuario: userData._id,
+        id_servicio: serviceId,
+      };
+      createServiceSaved(savedServiceData);
+      console.log('lo que se crea', savedServiceIds);
     }
 
     // Actualiza el estado local con el conjunto actualizado
     setSavedServiceIds(new Set(savedServiceIds));
     console.log(savedServiceIds);
   };
-
- 
-      
- 
 
   return (
     <section className="antialiased  font-sans">

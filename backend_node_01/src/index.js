@@ -4,6 +4,7 @@ const cors = require('cors');
 //require("dotenv").config();
 const userRoute = require("./routes/user.routes");
 const serviceRoute = require("./routes/service.routes");
+const savedServicesRoute = require("./routes/savedServices.routes");
 const MONGODB_URI='mongodb://localhost:27017/Prueba_TG00'
 
 // settings
@@ -19,7 +20,7 @@ app.use(cors(corsOptions));
 
 // middlewares
 app.use(express.json());
-app.use("/api", userRoute, serviceRoute);
+app.use("/api", userRoute, serviceRoute,savedServicesRoute);
 
 // routes
 app.get("/", (req, res) => {

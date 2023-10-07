@@ -1,0 +1,36 @@
+
+
+###
+POST http://localhost:3000/api/saved-services HTTP/1.1
+Content-Type: application/json
+
+{
+    "id_usuario": "64e2ff80fed5d5347f0c5b24",
+    "id_servicio": "6513f2f96d55f6a868335060"
+
+}
+
+###
+POST http://localhost:3000/api/saved-services HTTP/1.1
+Content-Type: application/json
+
+{
+    "id_usuario": "651674b633267be566fce1ff",
+    "id_servicio": "650d0389965ca709a0fb84b0"
+
+}
+
+
+###
+GET http://localhost:3000/api/saved-services2/651674b633267be566fce1ff HTTP/1.1
+
+###
+GET http://localhost:3000/api/saved-servicesIdList/651674b633267be566fce1ff HTTP/1.1
+
+
+
+###
+DELETE http://localhost:3000/api/saved-services/6521045b41ca57f4b35082bd HTTP/1.1
+
+###
+DELETE http://localhost:3000/api/saved-services/651674b633267be566fce1ff/65017ee0d3bc06d42ea7a987 HTTP/1.1

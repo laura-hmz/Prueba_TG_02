@@ -16,23 +16,17 @@ import CardService4 from './cards/cardService4';
 //import Loader2 from '../../components/loaders/loader2'
 
 const Explorar = () => {
-  //const { userData, userEmail, isAuthenticated } = useContext(UserContext);
-  //const [idUser, setIdUser] = useState([]);
-  //const id = '6518004f9d0c36e7de53935c';
-
-  //const {fetchData,setCurrentOption } = useContext(ServiceContext);
-  //const [services, setServices] = useState([]);
   const { userData} = useContext(UserContext);
-  const {setServices, services, setMostrarGuardados} = useContext(CardServiceContext);
+  const {setServices, services, setIsSearch} = useContext(CardServiceContext);
 
   
   useEffect(() => {
-    // Realizar una solicitud para obtener los servicios cuando el componente se monta
     const fetchData = async () => {
       try {
         const data = await getServices();
         setServices(data);
-        setMostrarGuardados(false);
+        setIsSearch(false);
+        
       
       } catch (error) {
         console.error('Error al obtener los servicios:', error);
@@ -40,12 +34,14 @@ const Explorar = () => {
     };
     
     fetchData();
-  }, [userData, setServices, setMostrarGuardados]);
+
+   }, [userData, setServices, setIsSearch]);
+
   
 
   return (
     <div >
-     <CardService4  />
+      {services? <CardService4  />: <h1>AYUDAME DIOS</h1>}
     </div>
   );
 };

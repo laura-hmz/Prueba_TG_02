@@ -1,11 +1,29 @@
 import "../../components/loader1.css";
 import CardService4 from "../../components/servicios/cards/cardService4";
 import { CardServiceContext } from "../../contexts/cardServiceContext";
-import { useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
+import { useContext, useEffect } from "react";
+import {getSavedServicesByUserId} from '../../api/savedServicesApi'
 const SavedServices = () => {
-  const {services, mostrarGuardados, setMostrarGuardados} = useContext(CardServiceContext);
-  //setMostrarGuardados(true);
-  console.log('Estoy en savedServices');
+  const { userData} = useContext(UserContext);
+  const {services,setServices,setIsSearch } = useContext(CardServiceContext);
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const data = await getSavedServicesByUserId(userData._id);
+        setServices(data);
+        setIsSearch(false);
+        
+      
+      } catch (error) {
+        console.error('Error al obtener los servicios:', error);
+      }
+    };
+    fetchData();
+
+   }, [userData, services, setServices]);
+  
 
     return (
         <>
