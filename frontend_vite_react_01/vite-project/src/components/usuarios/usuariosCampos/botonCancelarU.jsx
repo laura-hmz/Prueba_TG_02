@@ -2,10 +2,9 @@ import { useContext } from 'react';
 import { UserContext } from '../../../contexts/userContext'
 
 const BotonCancelarU = () => {
-    const {serviceData, currentOption, setCurrentOption,fetchData} = useContext(UserContext);
+    const {currentOption, setCurrentOption} = useContext(UserContext);
     const setOption = (newOption) => {
         setCurrentOption(newOption);
-        fetchData(serviceData._id);
     };
    
     return (

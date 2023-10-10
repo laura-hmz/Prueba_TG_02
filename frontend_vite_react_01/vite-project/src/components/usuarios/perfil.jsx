@@ -211,7 +211,16 @@ const Perfil = () => {
                         </select>
                         </div>
                         <div className={divGridSub}>
-                            
+                            <label className={labelClassname} htmlFor="telefono">Telefono:</label>
+                            <input className={inputDesing} 
+                                type="number" 
+                                placeholder="Ingresa tu telefono" 
+                                id="telefono" name="telefono" 
+                                value={userDataAux.telefono || ''} 
+                                onChange={handleChange} 
+                                disabled={currentOption=== 'show'} 
+                                required
+                            />
                         </div>
 
                     </div>

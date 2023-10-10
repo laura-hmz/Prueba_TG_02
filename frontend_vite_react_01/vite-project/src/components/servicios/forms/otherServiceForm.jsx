@@ -11,6 +11,7 @@ import DescripcionCampo from '../servicesCampos/descripcionCampo';
 import BotonSubmit from '../servicesCampos/botonSubmit';
 import BotonCancelar from '../servicesCampos/botonCancelar';
 import HorarioCampo from '../servicesCampos/horarioCampo';
+import Precio from '../servicesCampos/precioCampo';
 
 
 const OtherServiceForm = () =>{
@@ -96,6 +97,7 @@ const OtherServiceForm = () =>{
                       />
                 </div>
                 <EstadoCampo />
+                <Precio />
                 <DescripcionCampo />
                 <div className={divEspace}>
                     <label className={labelClassname} htmlFor="area_otro_servicio_3">Área del servicio:</label>

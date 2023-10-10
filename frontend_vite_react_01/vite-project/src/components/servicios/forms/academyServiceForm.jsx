@@ -10,6 +10,7 @@ import DescripcionCampo from '../servicesCampos/descripcionCampo';
 import HorarioCampo from '../servicesCampos/horarioCampo';
 import BotonSubmit from '../servicesCampos/botonSubmit';
 import BotonCancelar from '../servicesCampos/botonCancelar';
+import Precio from '../servicesCampos/precioCampo';
 
 
 const AcademyServiceForm = () =>{
@@ -95,6 +96,7 @@ const AcademyServiceForm = () =>{
                 </div>
 
                 <EstadoCampo />
+                <Precio />
 
                 <DescripcionCampo />
 

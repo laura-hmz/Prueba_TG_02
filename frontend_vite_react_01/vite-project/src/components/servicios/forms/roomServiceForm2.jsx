@@ -10,6 +10,7 @@ import DescripcionCampo from '../servicesCampos/descripcionCampo';
 //import HorarioCampo from '../servicesCampos/horarioCampo';
 import BotonSubmit from '../servicesCampos/botonSubmit';
 import BotonCancelar from '../servicesCampos/botonCancelar';
+import Precio from '../servicesCampos/precioCampo';
 
 
 const RoomServiceForm2 = () =>{
@@ -96,6 +97,7 @@ const RoomServiceForm2 = () =>{
                 </div>
 
                 <EstadoCampo />
+                <Precio />
 
                 <div className={divEspace}>
                     <label className={labelClassname} htmlFor="tipo_habitacion_1">Tipo de inmueble:</label>

@@ -57,7 +57,7 @@ const CardServiceOnly = () => {
                   <h1 className="text-2xl uppercase font-semibold text-gray-800 mb-3">
                     {onlyService.nombre}
                   </h1>
-                  <p className="text-3xl text-gray-900 mb-3">$3000 COP</p>
+                  <p className="text-3xl text-gray-900 mb-3">$ {onlyService.precio} COP</p>
                   <h1 className="title-font text-lg font-medium text-gray-900">Estado:</h1>
                   <p className="leading-relaxed mb-3">
                     {onlyService.estado === 1 ? "Disponible" : "No disponible"}
@@ -138,7 +138,7 @@ const CardServiceOnly = () => {
                         {userDataOnlyService.nombre || 'Nombre Desconocido'}
                         </p>
                         <p className="text-sm text-gray-700">
-                          3217223465
+                        {userDataOnlyService.telefono || 'Telefono desconocido'}
                         </p>
                       </div>
                     </div>

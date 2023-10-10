@@ -79,7 +79,7 @@ const CardService4 = () => {
                   <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
                     {service.nombre}
                   </h1>
-                  <p className="text-xl text-gray-900 mb-3">$3000 COP</p>
+                  <p className="text-xl text-gray-900 mb-3">$ {service.precio} COP</p>
                   <p className="leading-relaxed mb-3">{service.descripcion}</p>
                   <div className="flex pb-4 items-center flex-wrap">
                   <Link to={{ pathname: `/serviceDetails/${service._id}` }} className="text-indigo-500 inline-flex items-center cursor-pointer md:mb-2 lg:mb-0">
@@ -108,7 +108,7 @@ const CardService4 = () => {
 
                         </p>
                         <p className="text-sm text-gray-700">
-                          3217223465
+                          {userDetails[service._id]?.telefono || 'Teléfono desconocido'}
                         </p>
                       </div>
                     </div>

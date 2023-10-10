@@ -23,6 +23,7 @@ export const ServiceProvider = ({ children }) => {
     caracteristicas_habitacion_1: [],
     tipo_vehiculo_2: '',
     area_otro_servicio_3: '',
+    precio: 0,
   });
 
   const resetServiceData = useCallback(() => {
@@ -38,6 +39,7 @@ export const ServiceProvider = ({ children }) => {
       caracteristicas_habitacion_1: [],
       tipo_vehiculo_2: '',
       area_otro_servicio_3: '',
+      precio: 0,
     });
     setHorarios([]);
     setServiceData((prevData) => ({

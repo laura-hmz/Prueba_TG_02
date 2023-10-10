@@ -55,6 +55,9 @@ const serviceSchema = mongoose.Schema({
   area_otro_servicio_3: {
       type: String,
       required: false
+  },
+  precio: {
+    type: Number
   }
 },
 {

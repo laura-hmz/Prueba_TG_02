@@ -54,6 +54,9 @@ const userSchema = mongoose.Schema({
   resultados_encuesta_transporte: {
       type: [Number],
       required: true
+  },
+  telefono: {
+      type: Number,
   }
 
 },

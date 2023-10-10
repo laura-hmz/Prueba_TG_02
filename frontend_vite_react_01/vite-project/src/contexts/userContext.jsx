@@ -28,6 +28,7 @@ const [currentOption, setCurrentOption] = useState('show');
     resultados_encuesta_habitaciones: [],
     resultados_encuesta_asesorias: [],
     resultados_encuesta_transporte: [],
+    telefono: '',
 
   });
 

@@ -23,8 +23,6 @@ const CardServiceModify = ({services, onDeleteService}) => {
         }
     }
 
- 
-
   return (
     <section className="antialiased  font-sans">
       <div className="container px-5 py-10 mx-auto">
@@ -66,10 +64,6 @@ const CardServiceModify = ({services, onDeleteService}) => {
                     onClick={() => handleDeleteClick(service._id)}><FaTrash /> </button>
 
                </div>
-                
-
-                        
-
 
                 <div className="p-6">
                   <h2 className="tracking-widest  uppercase text-xs title-font font-medium text-gray-400 mb-1">
@@ -78,7 +72,7 @@ const CardServiceModify = ({services, onDeleteService}) => {
                   <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
                     {service.nombre}
                   </h1>
-                  <p className="text-xl text-gray-900 mb-3">$3000 COP</p>
+                  <p className="text-xl text-gray-900 mb-3"> $ {service.precio} COP</p>
                   <p className="leading-relaxed mb-3">{service.descripcion}</p>
                   <div className="text-xs font-bold tracking-widest text-gray-400 mb-3">
                     Ultima vez actualizado: {service.updatedAt}

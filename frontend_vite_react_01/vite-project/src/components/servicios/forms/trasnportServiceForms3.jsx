@@ -12,6 +12,7 @@ import VehiculoCampo from '../servicesCampos/vehiculoCampo';
 import HorarioCampo from '../servicesCampos/horarioCampo';
 import BotonSubmit from '../servicesCampos/botonSubmit';
 import BotonCancelar from '../servicesCampos/botonCancelar';
+import Precio from '../servicesCampos/precioCampo';
 
 
 const TransportServiceForm3 = () =>{
@@ -80,6 +81,7 @@ const TransportServiceForm3 = () =>{
                 </div>
                 <NombreCampo />
                 <EstadoCampo />
+                <Precio />
                 <DescripcionCampo />
                 <VehiculoCampo />
                 <HorarioCampo />

@@ -190,9 +190,19 @@ const EncuestaForm = () => {
                         </select>
     
                     </div>
-   
+                    <div className={divEspace}>
+                    <label className={labelClassname} htmlFor="telefono">Telefono:</label>
+                            <input className={inputDesing} 
+                                type="number" 
+                                placeholder="Ingresa tu telefono" 
+                                id="telefono" name="telefono" 
+                                value={userDataAux.telefono || ''} 
+                                onChange={handleChange} 
+                                required
+                            />
+
+                    </div>
                     <div >
-                    
                             <button
                                 className="outline-none glass shadow-2xl w-full rounded p-3 bg-green-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
                                 type="submit"

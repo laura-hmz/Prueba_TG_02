@@ -32,9 +32,11 @@ const deleteService = async (req, res) => {
 }
 const updateService = async (req, res) => {
   const { id } = req.params;
-  const { id_usuario, nombre,descripcion,horarios,tipo_servicio,estado,area_0,tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3} = req.body;
+  const { id_usuario, nombre,descripcion,horarios,tipo_servicio,estado,
+    area_0,tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3,precio} = req.body;
   serviceSchema
-    .updateOne({ _id: id }, { $set: {id_usuario,nombre,descripcion,horarios,tipo_servicio,estado,area_0,tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3} })
+    .updateOne({ _id: id }, { $set: {id_usuario,nombre,descripcion,horarios,tipo_servicio,estado,area_0,
+      tipo_habitacion_1,caracteristicas_habitacion_1,tipo_vehiculo_2,area_otro_servicio_3,precio} })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 }
@@ -125,7 +127,7 @@ const searchServices = async (req, res) => {
     try {
         const { diaSemana, horaBusquedaInicio, horaBusquedaFinal, estado, nombre,
            tipo_servicio, parqueadero_carro, parqueadero_moto, permite_mascota, area_0, 
-           tipo_habitacion_1, tipo_vehiculo_2, area_otro_servicio_3 } = req.query;
+           tipo_habitacion_1, tipo_vehiculo_2, area_otro_servicio_3, precioMinimo, precioMaximo } = req.query;
 
         // Construye la consulta dinámica
         const query = {};
@@ -139,17 +141,12 @@ const searchServices = async (req, res) => {
         if(horaBusquedaFinal){
           query['horarios.hora_de_finalizacion'] = { $gt: Number(horaBusquedaFinal) };
         }
-
         if (nombre) {
           query['nombre'] = { $regex: new RegExp(nombre, 'i') };
         }
-
         if (estado) {
             query['estado'] = Number(estado);
         }
-
-        
-
         if (tipo_servicio) {
             query['tipo_servicio'] = { $regex: new RegExp(tipo_servicio, 'i') };
         }
@@ -165,19 +162,27 @@ const searchServices = async (req, res) => {
         if (area_0) {
             query['area_0'] = { $regex: new RegExp(area_0, 'i') };
         }
-
         if (tipo_habitacion_1) {
             query['tipo_habitacion_1'] = { $regex: new RegExp(tipo_habitacion_1, 'i') };
         }
-
         if (tipo_vehiculo_2) {
             query['tipo_vehiculo_2'] = { $regex: new RegExp(tipo_vehiculo_2, 'i') };
         }
-
         if (area_otro_servicio_3) {
             query['area_otro_servicio_3'] = { $regex: new RegExp(area_otro_servicio_3, 'i') };
         }
 
+        if (typeof precioMinimo === 'number' && typeof precioMaximo === 'number') {
+          // El usuario proporcionó tanto un valor mínimo como uno máximo.
+          query['precio'] = { $gte: precioMinimo, $lte: precioMaximo };
+        } else if (typeof precioMinimo === 'number') {
+          // El usuario proporcionó solo un valor mínimo.
+          query['precio'] = { $gte: precioMinimo };
+        } else if (typeof precioMaximo === 'number') {
+          // El usuario proporcionó solo un valor máximo.
+          query['precio'] = { $lte: precioMaximo };
+        }
+      
         // Realiza la búsqueda con la consulta construida
         const result = await serviceSchema.find(query);
         //return res.status(200).json(result);
