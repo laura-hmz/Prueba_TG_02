@@ -4,6 +4,7 @@ import SuccessMessage from '../../../components/mensajesAuxliliares/successRegis
 import { updateService, createService } from '../../../api/servicesApi';
 import { useContext } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
+import PropTypes from 'prop-types';
 import EstadoCampo from '../servicesCampos/estadoCampo';
 import BotonEditar from '../servicesCampos/botonEditar';
 import DescripcionCampo from '../servicesCampos/descripcionCampo';
@@ -13,7 +14,7 @@ import BotonCancelar from '../servicesCampos/botonCancelar';
 import Precio from '../servicesCampos/precioCampo';
 
 
-const AcademyServiceForm = () =>{
+const AcademyServiceForm = ({option}) =>{
     
     const {serviceData,isUpdated, setIsUpdated,
         currentOption,setCurrentOption, fetchData,horarios,setIsSuccessModalOpen,
@@ -54,11 +55,12 @@ const AcademyServiceForm = () =>{
            fetchData(serviceData._id);
            setIsUpdated(false);}
 
-       else if (currentOption === 'register') {
+       else if (option === 'register') {
            //console.log('Data en register:', serviceData);
+          setCurrentOption('register');
 
        }
-   }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated]);
+   }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated, option, setCurrentOption]);
 
    const {
        divDesing,
@@ -137,5 +139,7 @@ const AcademyServiceForm = () =>{
     </div>
   );
 }
-
+AcademyServiceForm.propTypes = {
+  option: PropTypes.string,
+}
 export default AcademyServiceForm;

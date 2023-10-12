@@ -69,25 +69,49 @@ export const ServiceProvider = ({ children }) => {
       console.error('Error al obtener los servicios:', error);
     }
   }, []);
-  const handleChange = (e) => {
-    const { name, value , type, checked} = e.target;
-    if (type === 'checkbox') {
-      // Verificamos si el checkbox está marcado y asignamos el valor correspondiente
-      const checkboxValue = checked ? name.replace(/_/g, ' ') : '';
-      setServiceData({
-        ...serviceData,
-        [name]: checkboxValue,
-      });
+  // const handleChange = (e) => {
+  //   const { name, value , type, checked} = e.target;
+   
+  //   setServiceData((prevServiceData) => ({
+  //       ...prevServiceData,
+  //       [name]: value,
+  //     }));   
+  // };
+
+
+  const handleChange= (e) => {
+    const { name, value, type, checked } = e.target;
+    const updatedValue = type === 'checkbox' ? checked : value;
+
+    if (name.startsWith('caracteristicas_habitacion_1')) {
+      // Si se trata de un checkbox de características
+      const caracteristicNombre = name.split('.')[1];
+      if (checked) {
+        // Si el checkbox se marcó, agregamos el objeto a la lista
+        const characteristic = {
+          nombre: caracteristicNombre,
+        };
+        setServiceData((prevServiceData) => ({
+          ...prevServiceData,
+          caracteristicas_habitacion_1: [...prevServiceData.caracteristicas_habitacion_1, characteristic],
+        }));
+        console.log('Caracteristica agregada:', characteristic);
+      } else {
+        // Si el checkbox se desmarcó, lo eliminamos de la lista
+        setServiceData((prevServiceData) => ({
+          ...prevServiceData,
+          caracteristicas_habitacion_1: prevServiceData.caracteristicas_habitacion_1.filter((c) => c.nombre !== caracteristicNombre),
+        }));
+        console.log('Caracteristica eliminada:', caracteristicNombre);
+      }
     } else {
-      setServiceData({
-        ...serviceData,
-        [name]: value,
-      });
-    }
-    setServiceData((prevServiceData) => ({
+      // Para otros campos que no sean características
+      setServiceData((prevServiceData) => ({
         ...prevServiceData,
-        [name]: value,
-      }));   
+        [name]: updatedValue,
+      }));
+    }
+
   };
   const [horarios, setHorarios] = useState([
     { dia_semana: '', hora_de_inicio: '', hora_de_finalizacion: '' } 
@@ -127,7 +151,7 @@ export const ServiceProvider = ({ children }) => {
     setIsSuccessModalOpen,
     tipoServicio,
     setTipoServicio,
-    resetServiceData
+    resetServiceData,
 
   };
 

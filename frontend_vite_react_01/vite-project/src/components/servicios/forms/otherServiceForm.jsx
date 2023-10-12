@@ -4,6 +4,7 @@ import SuccessMessage from '../../../components/mensajesAuxliliares/successRegis
 import { updateService, createService } from '../../../api/servicesApi';
 import { useContext } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
+import PropTypes from 'prop-types';
 import EstadoCampo from '../servicesCampos/estadoCampo';
 import BotonEditar from '../servicesCampos/botonEditar';
 import DescripcionCampo from '../servicesCampos/descripcionCampo';
@@ -14,7 +15,7 @@ import HorarioCampo from '../servicesCampos/horarioCampo';
 import Precio from '../servicesCampos/precioCampo';
 
 
-const OtherServiceForm = () =>{
+const OtherServiceForm = ({option}) =>{
     
     const {serviceData,isUpdated, setIsUpdated,
         currentOption,setCurrentOption, fetchData,horarios,setIsSuccessModalOpen,
@@ -55,11 +56,12 @@ const OtherServiceForm = () =>{
            fetchData(serviceData._id);
            setIsUpdated(false);}
 
-       else if (currentOption === 'register') {
+       else if (option === 'register') {
            //console.log('Data en register:', serviceData);
+           setCurrentOption('register');
 
        }
-   }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated]);
+   }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated, setCurrentOption, option]);
 
    const {
        divDesing,
@@ -135,5 +137,9 @@ const OtherServiceForm = () =>{
     </div>
   );
 }
+
+OtherServiceForm.propTypes = {
+    option: PropTypes.string,
+};
 
 export default OtherServiceForm;

@@ -4,6 +4,7 @@ import SuccessMessage from '../../../components/mensajesAuxliliares/successRegis
 import { updateService, createService } from '../../../api/servicesApi';
 import { useContext } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
+import PropTypes from 'prop-types';
 import EstadoCampo from '../servicesCampos/estadoCampo';
 import BotonEditar from '../servicesCampos/botonEditar';
 import DescripcionCampo from '../servicesCampos/descripcionCampo';
@@ -11,9 +12,10 @@ import DescripcionCampo from '../servicesCampos/descripcionCampo';
 import BotonSubmit from '../servicesCampos/botonSubmit';
 import BotonCancelar from '../servicesCampos/botonCancelar';
 import Precio from '../servicesCampos/precioCampo';
+import CaracteristicasHabitacion from '../servicesCampos/caracteristicasHabitacion';
 
 
-const RoomServiceForm2 = () =>{
+const RoomServiceForm2 = ({option}) =>{
     
     const {serviceData,isUpdated, setIsUpdated,
         currentOption,setCurrentOption, fetchData,horarios,setIsSuccessModalOpen,
@@ -54,11 +56,12 @@ const RoomServiceForm2 = () =>{
            fetchData(serviceData._id);
            setIsUpdated(false);}
 
-       else if (currentOption === 'register') {
-           //console.log('Data en register:', serviceData);
-
-       }
-   }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated]);
+        else if (option === 'register') {
+            //console.log('Data en register:', serviceData);
+            setCurrentOption('register');
+ 
+        }
+   }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated, setCurrentOption, option]);
 
    const {
        divDesing,
@@ -119,6 +122,10 @@ const RoomServiceForm2 = () =>{
 
                 </div>
 
+                <div className={divEspace}>
+                    <CaracteristicasHabitacion />
+                </div>
+
                 <DescripcionCampo />
                
                 <BotonSubmit />
@@ -132,6 +139,9 @@ const RoomServiceForm2 = () =>{
         </form>
     </div>
   );
+}
+RoomServiceForm2.propTypes = {
+    option: PropTypes.string,
 }
 
 
