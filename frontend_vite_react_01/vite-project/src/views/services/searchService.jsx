@@ -5,7 +5,7 @@ import CardService3 from '../../components/servicios/cardService3';
 
 const SearchService = () => {
 
-const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = async (searchParams) => {

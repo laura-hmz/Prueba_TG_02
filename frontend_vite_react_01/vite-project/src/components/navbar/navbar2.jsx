@@ -76,12 +76,15 @@ const Navbar2 = () => {
               <li className="font-poppins font-medium cursor-pointer text-[16px] text-white mb-4">
                     <Link to="/savedServices">Servicios Guardados</Link>
               </li>
+              <li className="font-poppins font-medium cursor-pointer text-[16px] text-white mb-4">
+                    <Link to='/offerService'>Ofrecer Servicios</Link>
+              </li>
               <li className="font-poppins font-medium cursor-pointer text-[16px] text-white">
                     <Link to="/profile">Mi Perfil</Link>
               </li>
               <button
                 onClick={() => logout({ returnTo: window.location.origin })}
-                className="sm:hidden inline-flex items-center hover:scale-105 bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-gray-600 mt-4 md:mt-0"
+                className="sm:hidden inline-flex  hover:scale-105 bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-gray-600 mt-4 md:mt-0"
               >
                 Cerrar sesión
               </button>

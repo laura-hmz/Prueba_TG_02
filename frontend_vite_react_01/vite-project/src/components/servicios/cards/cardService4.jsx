@@ -34,7 +34,7 @@ const CardService4 = () => {
       <div className="container px-7 py-9 mx-auto">
         <div className="flex flex-wrap -m-3 relative">
           {Array.isArray(services) && services.map((service) => (
-            <div key={service._id} className="p-4 md:w-1/3 relative">
+            <div key={service._id} className="p-4 md:w-1/3 w-full relative">
               <div className="bg-white shadow-xl rounded-lg overflow-hidden relative">
                 {service.tipo_servicio === 'Servicio de transporte' ? 
                     <img
@@ -76,11 +76,18 @@ const CardService4 = () => {
                   <h2 className="tracking-widest  uppercase text-xs title-font font-medium text-gray-400 mb-1">
                     {service.tipo_servicio}
                   </h2>
-                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+                  <h1 className="title-font text-xl capitalize truncate md:text-xl  overflow-hidden font-medium text-gray-700 mb-1">
                     {service.nombre}
                   </h1>
-                  <p className="text-xl text-gray-900 mb-3">$ {service.precio} COP</p>
-                  <p className="leading-relaxed mb-3">{service.descripcion}</p>
+                  <p className="text-xl text-gray-900 mb-1">$ {service.precio} COP</p>
+                  <div className="h-16 md:h-16">
+                    <p className="text-lg text-gray-800 overflow-hidden md:text-lg">
+                      <span className="line-clamp-2">
+                        {service.descripcion || 'Descripción vacía'}
+                      </span>
+                    </p>
+                  </div>
+                  
                   <div className="flex pb-4 items-center flex-wrap">
                   <Link to={{ pathname: `/serviceDetails/${service._id}` }} className="text-indigo-500 inline-flex items-center cursor-pointer md:mb-2 lg:mb-0">
                         Más información
