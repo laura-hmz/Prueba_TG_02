@@ -52,8 +52,8 @@ const Perfil = () => {
                             <input
                             className={inputDesing}
                             type="text"
-                            id="nombre"
-                            name="nombre"
+                            id="correo"
+                            name="correo"
                             value={userDataAux.correo || ''}
                             onChange={handleChange}
                             disabled

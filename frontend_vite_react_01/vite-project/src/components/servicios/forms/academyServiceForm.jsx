@@ -69,7 +69,9 @@ const AcademyServiceForm = ({option}) =>{
        contenedor,
        labelClassname,
        inputDesing,
-       selectDesing
+       selectDesing,
+       divGrid,
+       divGridSub,
    } = FormsComponentsStyle;
 
   return (
@@ -98,33 +100,40 @@ const AcademyServiceForm = ({option}) =>{
                 </div>
 
                 <EstadoCampo />
-                <Precio />
 
                 <DescripcionCampo />
-
-                <div className={divEspace}>
-                <label className={labelClassname} htmlFor="area_0">Área:</label>
-                    <select
-                        className={selectDesing}
-                        id="area_0"
-                        name="area_0"
-                        value={serviceData.area_0 || ''}
-                        onChange={handleChange}
-                        disabled={currentOption === 'show'}
-                        required
-                    >
-                        <option value="">----</option>
-                        <option value="Ingenieria de sistemas">Ingeniería de sistemas</option>
-                        <option value="Administracion de empresas">Administración de empresas</option>
-                        <option value="Ingenieria de alimentos">Ingeniería de alimentos</option>
-                        <option value="Construccion">Construcción</option>
-                        <option value="Trabajo social">Trabajo social</option>
-                        <option value="Contaduria publica">Contaduría pública</option>
-                        <option value="Tecnologia en desarrollo de software">Tecnología en desarrollo de software</option>
-                        <option value="Tecnologia en electronica">Tecnología en electrónica</option>
-                        <option value="Tecnologia en alimentos">Tecnología en alimentos</option>
-                    </select>
+                <div className={divGrid}>
+                  <div className={divGridSub}> 
+                    <Precio />
+                  </div>
+                  <div className={divGridSub}>
+                    <div className={divEspace}>
+                      <label className={labelClassname} htmlFor="area_0">Área:</label>
+                      <select
+                          className={selectDesing}
+                          id="area_0"
+                          name="area_0"
+                          value={serviceData.area_0 || ''}
+                          onChange={handleChange}
+                          disabled={currentOption === 'show'}
+                          required
+                      >
+                          <option value="">----</option>
+                          <option value="Ingenieria de sistemas">Ingeniería de sistemas</option>
+                          <option value="Administracion de empresas">Administración de empresas</option>
+                          <option value="Ingenieria de alimentos">Ingeniería de alimentos</option>
+                          <option value="Construccion">Construcción</option>
+                          <option value="Trabajo social">Trabajo social</option>
+                          <option value="Contaduria publica">Contaduría pública</option>
+                          <option value="Tecnologia en desarrollo de software">Tecnología en desarrollo de software</option>
+                          <option value="Tecnologia en electronica">Tecnología en electrónica</option>
+                          <option value="Tecnologia en alimentos">Tecnología en alimentos</option>
+                      </select>
+                  </div>
+                  </div>
                 </div>
+
+                
 
                 <HorarioCampo />
                 <BotonSubmit />

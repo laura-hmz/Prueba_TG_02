@@ -68,6 +68,8 @@ const TransportServiceForm3 = ({option}) =>{
         divEspace,
         tituloServicio,
         contenedor,
+        divGrid,
+        divGridSub,
     } = FormsComponentsStyle;
 
   return (
@@ -83,9 +85,15 @@ const TransportServiceForm3 = ({option}) =>{
                 </div>
                 <NombreCampo />
                 <EstadoCampo />
-                <Precio />
                 <DescripcionCampo />
-                <VehiculoCampo />
+                <div className={divGrid}>
+                  <div className={divGridSub}> 
+                    <Precio />
+                  </div>
+                  <div className={divGridSub}>
+                    <VehiculoCampo />
+                  </div>
+                </div>
                 <HorarioCampo />
                 <BotonSubmit />
 

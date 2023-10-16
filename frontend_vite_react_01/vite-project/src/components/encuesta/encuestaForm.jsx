@@ -9,10 +9,11 @@ const EncuestaForm = () => {
         labelClassname,
         selectDesing,
         inputDesing,
-        divDesing,
         divEspace,
         tituloServicio,
         contenedor,
+        divGrid,
+        divGridSub,
       } = FormsComponentsStyle;
 
       const handleChange = (e) => {
@@ -36,9 +37,14 @@ const EncuestaForm = () => {
 
         <div className={contenedor}>
             <form  onSubmit={handleSubmit}>
-                <div className={divDesing}>
+                <div className='px-10 mt-14 mb-14'>
+                  <div className='text-center'>
                     <div className={divEspace}>
-                        <h1 className={tituloServicio}> Completa tu información de usuario </h1>
+                      <h1 className={tituloServicio}> Completa tu información de usuario </h1>
+                    </div>
+                  </div>
+                  <div className={divGrid}>
+                      <div className={divGridSub}>
                         <label className={labelClassname} htmlFor="nombre">Nombre:</label>
                           <input
                             className={inputDesing}
@@ -48,14 +54,11 @@ const EncuestaForm = () => {
                             name="nombre"
                             value={userDataAux.nombre || ''}
                             onChange={handleChange}
-                            
                             required
-                            
                           />
-                    </div>
-
-                    <div className={divEspace}>
-                        <label className={labelClassname} htmlFor="edad">Edad:</label>
+                      </div>
+                      <div className={divGridSub}>
+                      <label className={labelClassname} htmlFor="edad">Edad:</label>
                           <input
                             className={inputDesing}
                             type="number"
@@ -66,72 +69,28 @@ const EncuestaForm = () => {
                             onChange={handleChange}
                             min="0"
                             max="100" 
-                            required
-                            
+                            required                   
                           />
+                      </div>
                     </div>
-                    
-    
-                    <div className={divEspace}>
-                        <label className={labelClassname} htmlFor="sexo">Sexo:</label>
+                    <div className={divGrid}>
+                      <div className={divGridSub}>
+                      <label className={labelClassname} htmlFor="sexo">Sexo:</label>
                         <select
                             className={selectDesing}
                             id="sexo"
                             name="sexo"
                             value={userDataAux.sexo}
                             onChange={handleChange}
-                            
                             required
                             >
                             <option value="">----</option> 
                             <option value="masculino">M</option>
                             <option value="femenino">F</option>
+                            <option value="otro">Otro</option>
                         </select>
-                    </div>
-
-                    <div className={divEspace}>
-                        <label className={labelClassname} htmlFor="carrera">carrera:</label>
-                        <select
-                            className={selectDesing}
-                            id="carrera"
-                            name="carrera"
-                            value={userDataAux.carrera || ''}
-                            onChange={handleChange}
-                            
-                            required
-                            >
-                            <option value="">----</option> 
-                            <option value="ingenieria de sistemas">Ingeniería de sistemas</option>
-                            <option value="administracion de empresas">Administración de empresas</option>
-                            <option value="ingenieria de alimentos">Ingeniería de alimentos</option>
-                            <option value="construccion">Construcción</option>
-                            <option value="trabajo social">Trabajo social</option>
-                            <option value="contaduria publica">Contaduría pública</option>
-                            <option value="tecnologia en desarrollo de software">Tecnología en desarrollo de software</option>
-                            <option value="tecnologia en electronica">Tecnología en electrónica</option>
-                            <option value="tecnologia en alimentos">Tecnología en alimentos</option>
-                        </select>
-    
-                    </div>
-
-                    <div className={divEspace}>
-                        <label className={labelClassname} htmlFor="semestre">Semestre:</label>
-                          <input
-                            className={inputDesing}
-                            type="number"
-                            placeholder="ingresa tu semestre" 
-                            id="semestre"
-                            name="semestre"
-                            value={userDataAux.semestre || ''}
-                            onChange={handleChange}
-                            min="1"
-                            max="14" 
-                            required
-                            
-                          />
-                    </div>
-
-                    <div className={divEspace}>
+                      </div>
+                      <div className={divGridSub}>
                         <label className={labelClassname} htmlFor="ciudad_residencia">Ciudad de residencia:</label>
                         <select
                             className={selectDesing}
@@ -139,7 +98,6 @@ const EncuestaForm = () => {
                             name="ciudad_residencia"
                             value={userDataAux.ciudad_residencia}
                             onChange={handleChange}
-                            
                             required
                             >
                             <option value="">----</option>
@@ -186,34 +144,74 @@ const EncuestaForm = () => {
                             <option value="Versalles">Versalles</option>
                             <option value="Argelia">Argelia</option>
                             <option value="Ulloa">Ulloa</option>
-                            
                         </select>
-    
+                      </div> 
                     </div>
-                    <div className={divEspace}>
-                    <label className={labelClassname} htmlFor="telefono">Telefono:</label>
-                            <input className={inputDesing} 
-                                type="number" 
-                                placeholder="Ingresa tu telefono" 
-                                id="telefono" name="telefono" 
-                                value={userDataAux.telefono || ''} 
-                                onChange={handleChange} 
-                                required
-                            />
+                    <div className={divGrid}>
+                      <div className={divGridSub}>
+                      <label className={labelClassname} htmlFor="carrera">Carrera:</label>
+                        <select
+                            className={selectDesing}
+                            id="carrera"
+                            name="carrera"
+                            value={userDataAux.carrera || ''}
+                            onChange={handleChange}
+                            required
+                            >
+                            <option value="">----</option> 
+                            <option value="ingenieria de sistemas">Ingeniería de sistemas</option>
+                            <option value="administracion de empresas">Administración de empresas</option>
+                            <option value="ingenieria de alimentos">Ingeniería de alimentos</option>
+                            <option value="construccion">Construcción</option>
+                            <option value="trabajo social">Trabajo social</option>
+                            <option value="contaduria publica">Contaduría pública</option>
+                            <option value="tecnologia en desarrollo de software">Tecnología en desarrollo de software</option>
+                            <option value="tecnologia en electronica">Tecnología en electrónica</option>
+                            <option value="tecnologia en alimentos">Tecnología en alimentos</option>
+                        </select>
+                      </div>
+                      <div className={divGridSub}>
+                        <label className={labelClassname} htmlFor="semestre">Semestre:</label>
+                        <input
+                          className={inputDesing}
+                          type="number"
+                          placeholder="ingresa tu semestre" 
+                          id="semestre"
+                          name="semestre"
+                          value={userDataAux.semestre || ''}
+                          onChange={handleChange}
+                          min="1"
+                          max="14" 
+                          required
+                        />
+                      </div> 
+                    </div>
 
+                    <div className={divGrid}>
+                      <div className={divGridSub}>
+                        <label className={labelClassname} htmlFor="telefono">Teléfono:</label>
+                        <input className={inputDesing} 
+                          type="number" 
+                          placeholder="Ingresa tu telefono" 
+                          id="telefono" name="telefono" 
+                          value={userDataAux.telefono || ''} 
+                          onChange={handleChange} 
+                          required
+                        />
+                      </div>
+                      <div className={divGridSub}>
+                      </div> 
                     </div>
-                    <div >
+
+                    <div className='mt-7' >
                             <button
                                 className="outline-none glass shadow-2xl w-full rounded p-3 bg-green-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
                                 type="submit"
                             >
                                 Siguente 
                             </button>
-    
                     </div>
-    
                 </div>
-            
             </form>
         </div>
       );

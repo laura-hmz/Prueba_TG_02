@@ -12,7 +12,7 @@ const CaracteristicasHabitacion = () => {
     } = FormsComponentsStyle;
     return (
         <>
-                <h1 className={labelClassname}>¿Qué caracteristicas buscas?:</h1>
+                <h1 className={labelClassname}>¿Qué caracteristicas ofrece?:</h1>
                 {[
                   { nombre: 'permite mascotas' },
                   { nombre: 'parqueadero carro' },

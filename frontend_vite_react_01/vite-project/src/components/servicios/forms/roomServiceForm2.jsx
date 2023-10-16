@@ -70,7 +70,9 @@ const RoomServiceForm2 = ({option}) =>{
        contenedor,
        labelClassname,
        inputDesing,
-       selectDesing
+       selectDesing,
+       divGrid,
+       divGridSub
    } = FormsComponentsStyle;
     
 
@@ -98,11 +100,11 @@ const RoomServiceForm2 = ({option}) =>{
                         
                       />
                 </div>
-
                 <EstadoCampo />
-                <Precio />
-
-                <div className={divEspace}>
+                <DescripcionCampo />
+                <div className={divGrid}>
+                    <div className={divGridSub}>
+                       <div className={divEspace}>
                     <label className={labelClassname} htmlFor="tipo_habitacion_1">Tipo de inmueble:</label>
                     <select
                     className={selectDesing}
@@ -119,14 +121,23 @@ const RoomServiceForm2 = ({option}) =>{
                     <option value="Hospedaje">Hospedaje</option>
                     <option value="Roomie">Roomie</option>
                 </select>
-
+                </div>
+                    </div>
+                    <div className={divGridSub}>
+                        <Precio />
+                    </div>
+                </div>
+                <div className={divGrid}>
+                    <div className={divGridSub}>
+                        <div className={divEspace}>
+                        <CaracteristicasHabitacion />
+                        </div>
+                    </div>
+                    <div className={divGridSub}>
+                    </div>
                 </div>
 
-                <div className={divEspace}>
-                    <CaracteristicasHabitacion />
-                </div>
-
-                <DescripcionCampo />
+                
                
                 <BotonSubmit />
 

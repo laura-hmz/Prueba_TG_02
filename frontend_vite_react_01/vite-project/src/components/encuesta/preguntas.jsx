@@ -4,31 +4,30 @@ import FormsComponentsStyle from '../../components/servicios/servicesComponentes
 const PreguntasForm = () => {
     const {userDataAux, setUserDataAux, registerUser,setPaginaRegistro} = useContext(UserContext);
     const {
-        labelClassname,
-        divDesing,
         divEspace,
         tituloServicio,
         contenedor,
+        radioButton
         
       } = FormsComponentsStyle;
 
       //preguntas
       const questions = [
-        "1. ¿Te gusta la cerveza u otro tipo de bebidas alcohólicas? ¿Tienes el hábito de fumar?",
-        "2. Responsabilidad y organización, puntualidad",
-        "3. ¿Tienes alguna creencia religiosa?",
-        "4. ¿Te gustan los videojuegos y temas relacionados con la tecnología?",
-        "5. ¿Te gusta leer?",
-        "6. ¿Te gusta debatir sobre temas políticos?",
+        "1. ¿Consumes bebidas alcohólicas, cigarrillos u otras sustancias, o toleras que alguien con quien compartes espacio las consuma? ",
+        "2. ¿Le das importancia a la puntualidad, la responsabilidad y la organización en tu vida y en las personas que te rodean?",
+        "3. ¿Estás dispuesto/a a escuchar y respetar las creencias de otras personas, incluso si difieren de las tuyas?",
+        "4. ¿Te gustan los videojuegos o temas relacionados con la tecnología?",
+        "5. ¿Te gusta la leer o escribir?",
+        "6. ¿Te interesa debatir sobre temas políticos?",
         "7. ¿Te interesan los deportes/disciplinas o las actividades al aire libre?",
-        "8. ¿Te sientes cómodo entablando conversaciones con gente nueva? Habilidades comunicativas",
-        "9. ¿Te interesa el arte y la cultura?",
-        "10. ¿Prefieres las películas o series de comedia a las de terror?",
-        "11. ¿Prefieres las películas o series de acción a las de drama?",
-        "12. ¿Prefieres el reguetón antes que el rock y otro tipo de música alternativa?",
-        "13. ¿Prefieres la música pop a la música popular o de despecho?",
-        "14. ¿Prefieres el vallenato a la música Hip-hop/rap?",
-        "15. ¿Prefieres la música bailable (salsa, bachata, merengue, etc.) a la música cristiana?"
+        "8. ¿Te sientes cómodo entablando conversaciones con gente nueva o consideras que tienes buenas habilidades comunicativas?",
+        "9. ¿Te interesa el arte, el teatro, la danza u otras actividades culturales?",
+        "10. ¿Prefieres las películas o series de comedia en lugar de las de terror?",
+        "11. ¿Prefieres las películas o series de acción en lugar de las de drama?",
+        "12. ¿Prefieres el reguetón en lugar del rock y otros géneros de música alternativa?",
+        "13. ¿Prefieres la música pop en lugar la música de despecho?",
+        "14. ¿Prefieres el vallenato en lugar del género Hip-hop o rap?",
+        "15. ¿Prefieres la música tropical, que incluye géneros como la salsa, la bachata, el merengue, etc., en lugar de la música evangélica u otras expresiones religiosas?"
     ];
       
     const handleResponseChange = (questionIndex, value) => {
@@ -70,27 +69,29 @@ const PreguntasForm = () => {
         
     };
 
-     
     return (
 
         <div className={contenedor}>
-            <form  onSubmit={handleSubmit}>
-                <div className={divDesing}>
+            <div className="flex  mt-4 ml-4">
                     <button
-                        className="outline-none glass shadow-2xl rounded p-3 bg-yellow-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
-                        onClick={() => setPaginaRegistro('1')} // Cambiar a la opción de edición
-                    >
-                        Volver
-                    </button>
+                            className="outline-none glass shadow-2xl rounded p-3 bg-yellow-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
+                            onClick={() => setPaginaRegistro('1')} // Cambiar a la opción de edición
+                        >
+                            Volver
+                        </button>
+                    </div>
 
-                    <div className={divEspace}>
-                        <h1 className={tituloServicio}> Completa tu información de usuario con las siguientes preguntas </h1>
+            <form  onSubmit={handleSubmit}>
+                <div className='md:px-20 px-8 md:mt-6 mt-8 mb-14'>
+                    
+                    <div className='text-center mb-2'>
+                        <h1 className={tituloServicio}> Completa tu información de usuario respondiendo las siguientes preguntas </h1>
                     </div>
                     <div className={divEspace} > 
                         {questions.map((question, index) => (
-                            <div key={index}>
-                                <p className={labelClassname} >{question}</p>
-                                <div className="items-center space-x-4 mb-10">    
+                            <div key={index} >
+                                <p className='tracking-wide text-gray-600 text-lg ' >{question}</p>
+                                <div className=" md:ml-16 ml-5 space-x-4 mb-10 mt-4 text-gray-700  ">    
                                     <label>
                                     <input
                                         type="radio"
@@ -99,6 +100,8 @@ const PreguntasForm = () => {
                                         onChange={() => handleResponseChange(index, "1")}
                                         checked={userDataAux.resultados_encuesta[index] === "1"}
                                         required
+                                        className={radioButton}
+                                        
                                     />
                                     <span className="ml-2">Sí </span>
                                     </label>
@@ -111,8 +114,9 @@ const PreguntasForm = () => {
                                         onChange={() => handleResponseChange(index, "0.5")}
                                         checked={userDataAux.resultados_encuesta[index] === "0.5"}
                                         required
+                                        className={radioButton}
                                     />
-                                    <span className="ml-2">Indiferente </span>
+                                    <span className="ml-2">Neutral </span>
                                     </label>
 
                                     <label>
@@ -123,6 +127,7 @@ const PreguntasForm = () => {
                                         onChange={() => handleResponseChange(index, "0")}
                                         checked={userDataAux.resultados_encuesta[index] === "0"}
                                         required
+                                        className={radioButton}
                                     />
                                     <span className="ml-2">No </span>
                                     </label>
@@ -131,7 +136,7 @@ const PreguntasForm = () => {
                         ))}
                     </div>
    
-                    <div >
+                    <div className='mt-16'>
                             <button
                                 className="outline-none glass shadow-2xl w-full rounded p-3 bg-green-400 hover:border-white hover:border-solid hover:border-[1px] hover:text-white font-bold"
                                 type="submit"

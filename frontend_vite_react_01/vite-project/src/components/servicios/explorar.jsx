@@ -14,6 +14,8 @@ import  {  useEffect, useContext } from 'react';
 import { CardServiceContext } from '../../contexts/cardServiceContext';
 import CardService4 from './cards/cardService4';
 //import Loader2 from '../../components/loaders/loader2'
+import EncuestaForm from "../encuesta/encuestaForm";
+import PreguntasForm from "../encuesta/preguntas";
 
 const Explorar = () => {
   const { userData} = useContext(UserContext);
@@ -41,7 +43,8 @@ const Explorar = () => {
 
   return (
     <div >
-      {services? <CardService4  />: <h1>AYUDAME DIOS</h1>}
+      <PreguntasForm />
+      
     </div>
   );
 };
