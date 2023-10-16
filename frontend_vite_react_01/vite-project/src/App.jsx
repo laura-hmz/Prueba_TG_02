@@ -6,6 +6,7 @@ import { ServiceProvider } from './contexts/serviceContext';
 import './components/servicios/explorar.jsx';
 import NavBar2 from './components/navbar/navbar2.jsx';
 import Explorar from './components/servicios/explorar.jsx';
+import LoaderInit from './components/loaders/loaderInit.jsx';
 //importar las vistas
 import UserRegister from './views/users/userRegister.jsx';
 import Home from './views/home.jsx';
@@ -31,7 +32,7 @@ function App() {
 
   const {isAuthenticated, isLoading, userExists} = useContext(UserContext);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoaderInit />;
   }
 
   function getReturn(component) {
@@ -50,6 +51,7 @@ function App() {
     <ServiceProvider>
       <CardServiceProvider>
         <BrowserRouter>
+        <div className="">
           {isAuthenticated && <NavBar2 />}
           <Routes>
           <Route path='/' element={isAuthenticated ? <Navigate to="/Home" /> : <Home2/>} />
@@ -72,6 +74,7 @@ function App() {
             <Route path='/offerService' element={getReturn(<OfferService/>)}/>
 
           </Routes>
+          </div>
         </BrowserRouter>
         </CardServiceProvider>
       </ServiceProvider>
