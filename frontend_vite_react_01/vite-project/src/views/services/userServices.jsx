@@ -1,8 +1,9 @@
 import  { useState, useEffect, useContext} from 'react';
 import { deleteService,listServicesIdUser } from '../../api/servicesApi';
-//import ServicesList2 from '../../components/servicios/servicesList2';
 import CardServiceModify from '../../components/servicios/cardServiceModify';
 import { UserContext } from '../../contexts/userContext';
+import FolderLoader from '../../components/loaders/notFoundLoaders/folderLoader';
+import PageHeader from '../../components/headers/pageHeader';
 
 
 const UserServices = () => {
@@ -43,22 +44,12 @@ const UserServices = () => {
   
     return (
       <>
-        {/* 
-        <h1>NOMBRE {nombre}</h1>
-       {isAuthenticated ? (
-        <>
-          <h2>{userData ? '¡Hola!, ' + userData.nombre : 'Cargando...'}</h2>
-        </>) :
-        (
-          <p>No estás autenticado</p>
-        )}
-        */}
-
+        <PageHeader title="Mis Servicios"/>
         {/* Verifica si services es un arreglo antes de pasarlo a CardService3 */}
         {Array.isArray(services) && services.length > 0 ? (
         <CardServiceModify services={services} onDeleteService={handleDeleteService}></CardServiceModify>
         ) : (
-        <p>No has registrado ningún servicio para ofrecer </p>
+          <FolderLoader />
       )}
     </>
   )

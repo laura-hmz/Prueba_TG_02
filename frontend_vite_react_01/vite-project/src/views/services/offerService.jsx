@@ -12,10 +12,7 @@ const OfferService = () => {
     
       }, [setCurrentOption, currentOption, resetServiceData]);
     return (
-       
             <RegisterCategory />
-        
-        
     )
 }
 export default OfferService

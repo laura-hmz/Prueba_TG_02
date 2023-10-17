@@ -7,6 +7,7 @@ import ImageCarousel from '../components/carrusel/imageCarrusel';
 import imagen1 from '../images/muak.jpeg';
 import imagen2 from '../images/copia.png';
 import { CardServiceContext } from '../contexts/cardServiceContext';
+import HomeAnimation from '../components/loaders/animation/homeAnimation';
 
 const Home = () => {
   const { userData} = useContext(UserContext);
@@ -33,7 +34,7 @@ const Home = () => {
 
     return (
       <>
-      <ImageCarousel images={images} />
+      <HomeAnimation />
       {services? <CardService4  />: <h1>AYUDAME DIOS</h1>}
       </>
   ) 

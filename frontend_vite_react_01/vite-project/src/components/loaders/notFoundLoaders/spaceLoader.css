@@ -9,7 +9,7 @@
   .rocket .rocket-body {
     width: 80px;
     left: calc(50% - 50px);
-    animation: bounce 0.5s infinite;
+    animation: bounce 1.0s infinite;
   }
   
   .rocket .rocket-body .body {
@@ -99,7 +99,7 @@
     height: 150px;
     left: -120px;
     top: 260px;
-    animation: fumes 3.2s infinite;
+    animation: fumes 4.2s infinite;
   }
   
   .rocket .exhaust-fumes li:nth-child(3) {
@@ -107,14 +107,14 @@
     height: 120px;
     left: -40px;
     top: 330px;
-    animation: fumes 3s 1s infinite;
+    animation: fumes 5s 1s infinite;
   }
   
   .rocket .exhaust-fumes li:nth-child(4) {
     width: 100px;
     height: 100px;
     left: -170px;
-    animation: fumes 4s 2s infinite;
+    animation: fumes 5s 2s infinite;
     top: 380px;
   }
   
@@ -123,7 +123,7 @@
     height: 130px;
     left: -120px;
     top: 350px;
-    animation: fumes 5s infinite;
+    animation: fumes 6s infinite;
   }
   
   .rocket .exhaust-fumes li:nth-child(6) {
@@ -131,7 +131,7 @@
     height: 200px;
     left: -60px;
     top: 280px;
-    animation: fumes2 10s infinite;
+    animation: fumes2 14s infinite;
   }
   
   .rocket .exhaust-fumes li:nth-child(7) {
@@ -153,7 +153,7 @@
     height: 90px;
     left: 200px;
     top: 380px;
-    animation: fumes 20s infinite;
+    animation: fumes 24s infinite;
   }
   
   .star li {

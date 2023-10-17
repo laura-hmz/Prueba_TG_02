@@ -5,6 +5,7 @@ import { UserContext } from "../../contexts/userContext";
 import { useContext, useEffect } from "react";
 import {getSavedServicesByUserId} from '../../api/savedServicesApi'
 import SpaceLoader from "../../components/loaders/notFoundLoaders/spaceLoader";
+import PageHeader from "../../components/headers/pageHeader";
 const SavedServices = () => {
   const { userData} = useContext(UserContext);
   const {services,setServices,setIsSearch } = useContext(CardServiceContext);
@@ -24,22 +25,16 @@ const SavedServices = () => {
     fetchData();
 
    }, [userData, services, setServices, setIsSearch]);
-  
-
     return (
-        <>
-
+      <>
+      <PageHeader title="Servicios Guardados"/>
         {/* Verifica si services es un arreglo antes de pasarlo a CardService3 */}
        {Array.isArray(services) && services.length > 0 ? (
         <CardService4 />
         ) : (
           <SpaceLoader />
-        
       )}
-        </>
-
-       
-
+      </>
     )
 }
 export default SavedServices

@@ -1,0 +1,67 @@
+.container2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.folder .top {
+    background-color: #FF8F56;
+    border-top-right-radius: 10px;
+    width: 60px;
+    height: 12px;
+}
+
+.folder .bottom {
+    background-color: #FFCE63;
+    box-shadow: 5px 5px 0 0 #283149;
+    border-top-right-radius: 8px;
+    width: 100px;
+    height: 70px;
+}
+
+/* Estilos para dispositivos móviles (pantallas pequeñas) */
+@media (max-width: 767px) {
+    .folder {
+        animation: float 3s infinite linear;
+        transform: translateY(50px);
+    }
+}
+
+/* Estilos para escritorio (pantallas más grandes) */
+@media (min-width: 768px) {
+    .container2 {
+        height: 80vh;
+        width: 90vh;
+    }
+
+    .folder {
+        animation: float 2s infinite linear;
+        transform: scale(1.5);
+    }
+
+    .folder .top {
+        width: 90px;
+        height: 18px;
+    }
+
+    .folder .bottom {
+        width: 150px;
+        height: 105px;
+    }
+}
+
+/* Resto de tu código CSS */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

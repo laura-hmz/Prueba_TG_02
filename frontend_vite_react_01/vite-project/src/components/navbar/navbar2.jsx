@@ -13,7 +13,7 @@ const Navbar2 = () => {
 
 
   return (
-    <nav className="w-full flex py-4 justify-between bg-gradient-to-r from-blue-700 to-blue-400 items-center navbar relative">
+    <nav className="w-full flex py-4 justify-between bg-gradient-to-r from-red-700 to-red-400 items-center navbar relative">
       {/* Logo */}
       
       <Link to="/Home"className="flex title-font font-medium  hover:bold items-center mr-5 ml-12 text-gray-900  ">

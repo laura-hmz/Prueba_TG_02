@@ -9,10 +9,12 @@ const LoaderInit = () => {
                 <span className="word">user</span>
                 <span className="word">settings</span>
                 <span className="word">services</span>
-                
+                <span className="word">user</span>
+                <span className="word">settings</span>
                 </div>
             </div>
         </div>
     )
 }
 export default LoaderInit
+
