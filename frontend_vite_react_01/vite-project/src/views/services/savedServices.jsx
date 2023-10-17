@@ -4,6 +4,7 @@ import { CardServiceContext } from "../../contexts/cardServiceContext";
 import { UserContext } from "../../contexts/userContext";
 import { useContext, useEffect } from "react";
 import {getSavedServicesByUserId} from '../../api/savedServicesApi'
+import SpaceLoader from "../../components/loaders/notFoundLoaders/spaceLoader";
 const SavedServices = () => {
   const { userData} = useContext(UserContext);
   const {services,setServices,setIsSearch } = useContext(CardServiceContext);
@@ -32,7 +33,8 @@ const SavedServices = () => {
        {Array.isArray(services) && services.length > 0 ? (
         <CardService4 />
         ) : (
-        <h1>No has guardado ningun servicio,¡No esperes más para explorar!</h1>
+          <SpaceLoader />
+        
       )}
         </>
 
