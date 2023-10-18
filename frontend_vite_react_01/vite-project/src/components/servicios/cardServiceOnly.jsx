@@ -42,8 +42,8 @@ const CardServiceOnly = () => {
                   className={`absolute top-4 right-4 px-3 py-1 rounded focus:outline-none ${
                     
                     buttonClick
-                      ? 'bg-gray-400 text-gray-600 cursor-not-allowed'  
-                      : 'bg-indigo-500 text-white hover:bg-indigo-600'
+                      ? 'bg-gray-400 text-gray-600'
+                      : 'bg-[#f0434f] text-white hover:bg-[#ba162d]'
                   }`}
                   onClick={() => handleClick(onlyService._id)}
                   style={{ zIndex: 2 }}

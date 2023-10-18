@@ -98,6 +98,7 @@ const Perfil = () => {
                                 <option value="">----</option> 
                                 <option value="masculino">M</option>
                                 <option value="femenino">F</option>
+                                <option value="otro">Otro</option>
                             </select>
                         </div>
 

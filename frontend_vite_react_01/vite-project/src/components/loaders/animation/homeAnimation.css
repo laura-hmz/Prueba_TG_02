@@ -1,11 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Chewy);
+@import url(https://fonts.googleapis.com/css?family=Bangers);
 .container3 {
     margin:0;
     padding:0;
-    font-family: 'Arvo';
-    background: linear-gradient(to bottom, #F2F3F7 30%, #FFFFFF );
+    font-family: 'Chewy';
+    background-color: #283149;
+  
   }
 .main2{
-    height:29vh;
+    height:40vh;
     width:100%;  
     display:flex;
     align-items:center;
@@ -15,9 +18,10 @@
   .t1{
     text-align:center;
     text-transform: uppercase;
-    color: #F1FAEE; 
-    font-size: 3rem;
+    color: whitesmoke; 
+    font-size: 3.125rem;
     font-weight: bold;
+    letter-spacing: 0.2rem;
   }
   
   .roller{
@@ -30,16 +34,16 @@
     justify-content: center;
     align-items: center;
     
-    color: #1D3557;
+    color: #ba162d;
   }
   
   
   #spare-time{
     font-size: 1rem;
     font-style: italic;
-    letter-spacing: 1rem;
+    letter-spacing: 0.5rem;
     margin-top: 0;
-    color: #A8DADC;
+    color: #f0fafb;
     
   }
   
@@ -65,10 +69,13 @@
   }
   
   @media screen and (max-width: 600px){
+    .main2{
+      height:30vh;
+
+    }
     .t1{
     text-align:center;
     text-transform: uppercase;
-    color: #F1FAEE; 
     font-size: 2.125rem;
   }
     
@@ -101,3 +108,4 @@
     }
   }
   }
+  
