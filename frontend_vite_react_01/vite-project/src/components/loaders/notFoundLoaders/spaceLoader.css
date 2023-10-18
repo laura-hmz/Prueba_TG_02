@@ -306,7 +306,7 @@
   /* Consulta de medios para pantallas más grandes */
   @media (min-width: 1200px) {
     .rocket {
-        transform: translateX(300%) scale(0.7); /* Tamaño normal para pantallas más grandes */
+        transform: translateX(300%) translateY(30%) scale(0.6); /* Tamaño normal para pantallas más grandes */
     }
   }
    

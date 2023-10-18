@@ -2,10 +2,10 @@
     margin:0;
     padding:0;
     font-family: 'Arvo';
-    background: linear-gradient(to right,#BA1D1D, #F87171);
+    background: linear-gradient(to bottom, #F2F3F7 30%, #FFFFFF );
   }
 .main2{
-    height:30vh;
+    height:29vh;
     width:100%;  
     display:flex;
     align-items:center;
@@ -16,7 +16,7 @@
     text-align:center;
     text-transform: uppercase;
     color: #F1FAEE; 
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bold;
   }
   
@@ -73,7 +73,7 @@
   }
     
     .roller{
-    height: 2.6rem; 
+    height: 2.3rem; 
     line-height: 2.125rem;  
     }
     
@@ -83,7 +83,7 @@
     }
     
     .roller #rolltext {  
-    animation: slide-mob 1.9s infinite;  
+    animation: slide-mob 3.5s infinite;  
   }
     
     @keyframes slide-mob {

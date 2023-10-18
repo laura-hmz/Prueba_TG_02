@@ -9,7 +9,7 @@ const HomeAnimation = () => {
                         Asesorías<br/>
                         Transporte<br/>
                         Habitaciones<br/>
-                            <span id="spare-time">Todo en un solo lugar</span><br/>
+                            <span id="spare-time">¡Ofrece los tuyos!</span><br/>
                         </span>
                     </div>
                 </h1>

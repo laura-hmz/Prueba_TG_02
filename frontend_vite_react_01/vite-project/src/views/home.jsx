@@ -8,6 +8,7 @@ import imagen1 from '../images/muak.jpeg';
 import imagen2 from '../images/copia.png';
 import { CardServiceContext } from '../contexts/cardServiceContext';
 import HomeAnimation from '../components/loaders/animation/homeAnimation';
+import PageHeader from '../components/headers/pageHeader';
 
 const Home = () => {
   const { userData} = useContext(UserContext);
@@ -34,7 +35,9 @@ const Home = () => {
 
     return (
       <>
+      <PageHeader title="Últimos servicios agregados"/>
       <HomeAnimation />
+      
       {services? <CardService4  />: <h1>AYUDAME DIOS</h1>}
       </>
   ) 
