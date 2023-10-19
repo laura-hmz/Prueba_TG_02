@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useContext} from 'react';
 import { UserContext } from './contexts/userContext.jsx';
 import { ServiceProvider } from './contexts/serviceContext';
+import { SearchContextProvider } from './contexts/searchContext.jsx';
 
 import './components/servicios/explorar.jsx';
 import NavBar2 from './components/navbar/navbar2.jsx';
@@ -50,6 +51,7 @@ function App() {
   return (
     <ServiceProvider>
       <CardServiceProvider>
+      <SearchContextProvider>
         <BrowserRouter>
         <div className="">
           {isAuthenticated && <NavBar2 />}
@@ -76,6 +78,7 @@ function App() {
           </Routes>
           </div>
         </BrowserRouter>
+        </SearchContextProvider>
         </CardServiceProvider>
       </ServiceProvider>
   

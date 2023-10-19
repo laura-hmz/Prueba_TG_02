@@ -163,6 +163,8 @@ GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusquedaI
 GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusquedaInicio=&horaBusquedaFinal=&estado=&nombre=&tipo_servicio=&nombre_caracteristica=&descripcion_caracteristica=&area_0=&tipo_habitacion_1=&tipo_vehiculo_2=&area_otro_servicio_3=&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
 
 ###
+GET http://localhost:3000/api/survey-results-array?precioMinimo=0&precioMaximo=&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
+###
 GET http://localhost:3000/api/survey-results-array?diaSemana=Lunes&horaBusquedaInicio=&horaBusquedaFinal=&estado=&nombre=&tipo_servicio=&nombre_caracteristica=&descripcion_caracteristica=&area_0=&tipo_habitacion_1=&tipo_vehiculo_2=&area_otro_servicio_3=&id_cliente=64e71f3b5970aafb03f2a796 HTTP/1.1
 {
     "id_cliente":"64e71f3b5970aafb03f2a796",

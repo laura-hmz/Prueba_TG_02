@@ -172,16 +172,17 @@ const searchServices = async (req, res) => {
             query['area_otro_servicio_3'] = { $regex: new RegExp(area_otro_servicio_3, 'i') };
         }
 
-        if (typeof precioMinimo === 'number' && typeof precioMaximo === 'number') {
-          // El usuario proporcionó tanto un valor mínimo como uno máximo.
-          query['precio'] = { $gte: precioMinimo, $lte: precioMaximo };
-        } else if (typeof precioMinimo === 'number') {
-          // El usuario proporcionó solo un valor mínimo.
-          query['precio'] = { $gte: precioMinimo };
-        } else if (typeof precioMaximo === 'number') {
-          // El usuario proporcionó solo un valor máximo.
-          query['precio'] = { $lte: precioMaximo };
+        if (typeof precioMinimo === 'string' && !isNaN(Number(precioMinimo)) && typeof precioMaximo === 'string' && !isNaN(Number(precioMaximo))) {
+          // Ambos valores son cadenas que se pueden convertir a números válidos.
+          query['precio'] = { $gte: Number(precioMinimo), $lte: Number(precioMaximo) };
+        } else if (typeof precioMinimo === 'string' && !isNaN(Number(precioMinimo))) {
+          // Solo precioMinimo es una cadena que se puede convertir a número válido.
+          query['precio'] = { ...query['precio'], $gte: Number(precioMinimo) };
+        } else if (typeof precioMaximo === 'string' && !isNaN(Number(precioMaximo))) {
+          // Solo precioMaximo es una cadena que se puede convertir a número válido.
+          query['precio'] = { ...query['precio'], $lte: Number(precioMaximo) };
         }
+        
       
         // Realiza la búsqueda con la consulta construida
         const result = await serviceSchema.find(query);
