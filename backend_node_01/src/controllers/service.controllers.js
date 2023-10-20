@@ -172,13 +172,13 @@ const searchServices = async (req, res) => {
             query['area_otro_servicio_3'] = { $regex: new RegExp(area_otro_servicio_3, 'i') };
         }
 
-        if (typeof precioMinimo === 'string' && !isNaN(Number(precioMinimo)) && typeof precioMaximo === 'string' && !isNaN(Number(precioMaximo))) {
+        if (precioMinimo && precioMaximo) {
           // Ambos valores son cadenas que se pueden convertir a números válidos.
           query['precio'] = { $gte: Number(precioMinimo), $lte: Number(precioMaximo) };
-        } else if (typeof precioMinimo === 'string' && !isNaN(Number(precioMinimo))) {
+        } else if (precioMinimo) {
           // Solo precioMinimo es una cadena que se puede convertir a número válido.
           query['precio'] = { ...query['precio'], $gte: Number(precioMinimo) };
-        } else if (typeof precioMaximo === 'string' && !isNaN(Number(precioMaximo))) {
+        } else if (precioMaximo) {
           // Solo precioMaximo es una cadena que se puede convertir a número válido.
           query['precio'] = { ...query['precio'], $lte: Number(precioMaximo) };
         }

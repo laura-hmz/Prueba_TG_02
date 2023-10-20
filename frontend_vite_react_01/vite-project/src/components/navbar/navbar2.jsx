@@ -19,26 +19,26 @@ const Navbar2 = () => {
       
       <Link to="/Home"className="flex title-font font-medium  hover:bold items-center mr-5 ml-12 text-gray-900  ">
         <FaRegGem size={25} className="white-icon"/>
-        <span className={`ml-5 text-xl text-white cursor-pointer ${location.pathname === '/Home' ? ' font-bold' : 'hover:font-bold'}`}>Explorar</span>
+        <span className={`ml-5 text-xl text-white cursor-pointer ${location.pathname === '/Home' ? ' font-bold underline' : 'hover:font-bold'}`}>Explorar</span>
         
       </Link>
 
       {/* Desktop Navigation */}
       <ul className="list-none sm:flex hidden justify-start items-center flex-1 ml-10">
             <FaGripLinesVertical size={20} className="white-icon mr-5"/>
-            <li className={`${linksDesing} ${location.pathname === '/especialsearch' ? 'font-semibold text-white' : 'font-normal'}`}>
+            <li className={`${linksDesing} ${location.pathname === '/especialsearch' ? 'font-semibold text-white underline' : 'font-normal'}`}>
                 <Link to='/especialsearch'>Buscar Servicios</Link>
             </li>
-            <li className={`${linksDesing} ${location.pathname === '/offerService' ? 'font-semibold text-white' : 'font-normal'}`}>
+            <li className={`${linksDesing} ${location.pathname === '/offerService' ? 'font-semibold text-white underline' : 'font-normal'}`}>
                 <Link to='/offerService'>Ofrecer Servicios</Link>
             </li>
-            <li className={`${linksDesing} ${location.pathname === '/userServices' ? 'font-semibold text-white' : 'font-normal'}`}>
+            <li className={`${linksDesing} ${location.pathname === '/userServices' ? 'font-semibold text-white underline' : 'font-normal'}`}>
                 <Link to='/userServices'>Mis Servicios</Link>
             </li>
-            <li className={`${linksDesing} ${location.pathname === '/savedServices' ? 'font-semibold text-white' : 'font-normal'}`}>
+            <li className={`${linksDesing} ${location.pathname === '/savedServices' ? 'font-semibold text-white underline' : 'font-normal'}`}>
                 <Link to="/savedServices">Servicios Guardados</Link>
             </li>
-            <li className={`${linksDesing} ${location.pathname === '/profile' ? 'font-semibold text-white' : 'font-normal'}`}>
+            <li className={`${linksDesing} ${location.pathname === '/profile' ? 'font-semibold text-white underline' : 'font-normal'}`}>
                 <Link to="/profile">Mi Perfil</Link>
             </li>
 

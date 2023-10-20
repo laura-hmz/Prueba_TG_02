@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { SearchContext } from '../../../contexts/searchContext';
 import SearchFormsStyle from '../servicesComponentesStyle/searchFormsStyle';
+import FiltroPrecio from './filtroPrecio';
 
 const Ttransporte = () => {
     const {searchParams, handleChange, isLoading, optionsHora} = useContext(SearchContext);
@@ -92,6 +93,7 @@ const Ttransporte = () => {
 
                     
                   </div>
+                  <FiltroPrecio/>
                 </>
               )}
         </>

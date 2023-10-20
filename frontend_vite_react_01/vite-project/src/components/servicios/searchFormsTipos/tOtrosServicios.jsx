@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { SearchContext } from '../../../contexts/searchContext';
 import SearchFormsStyle from '../servicesComponentesStyle/searchFormsStyle';
+import FiltroPrecio from './filtroPrecio';
 
 const TotrosServicios = () => {
     const {searchParams, handleChange, isLoading} = useContext(SearchContext);
@@ -60,6 +61,7 @@ const TotrosServicios = () => {
                     </div>
   
                   </div>
+                  <FiltroPrecio/>
                 </>
               )}
         </>
