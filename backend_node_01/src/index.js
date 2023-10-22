@@ -2,9 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
 //require("dotenv").config();
+const cloudinaryConfig = require('../cloudinaryConfig'); 
 const userRoute = require("./routes/user.routes");
 const serviceRoute = require("./routes/service.routes");
 const savedServicesRoute = require("./routes/savedServices.routes");
+const imageRoute = require("./routes/image.routes");
 const MONGODB_URI='mongodb://localhost:27017/Prueba_TG00'
 
 // settings
@@ -18,9 +20,15 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+// Configuración de la ruta para obtener la configuración de Cloudinary
+app.get('/cloudinary-config', (req, res) => {
+  // Enviar la configuración de Cloudinary al frontend
+  res.json(cloudinaryConfig);
+});
+
 // middlewares
 app.use(express.json());
-app.use("/api", userRoute, serviceRoute,savedServicesRoute);
+app.use("/api", userRoute, serviceRoute,savedServicesRoute,imageRoute);
 
 // routes
 app.get("/", (req, res) => {
