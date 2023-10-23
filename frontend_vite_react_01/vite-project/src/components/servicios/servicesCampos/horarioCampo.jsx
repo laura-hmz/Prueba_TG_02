@@ -57,7 +57,7 @@ const HorarioCampo = () => {
                     </h1>
                     <button type="button"
                         disabled={currentOption === 'show'} 
-                        onClick={agregarHorario} className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-3 mt-1 rounded">
+                        onClick={agregarHorario} className="disabled:bg-blue-300 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-3 mt-1 rounded">
                         <FaPlus /> 
                     </button>
                 </div>
@@ -121,7 +121,7 @@ const HorarioCampo = () => {
                             </select>
                             <button
                                 type="button"
-                                className="eliminarHorario bg-red-400 hover:bg-red-500 text-white font-bold py-1  px-3 rounded "
+                                className="eliminarHorario bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white font-bold py-1  px-3 rounded "
                                 onClick={() => eliminarHorario(index)}
                                 disabled={currentOption === 'show' || horarios.length <= 1}
                             >

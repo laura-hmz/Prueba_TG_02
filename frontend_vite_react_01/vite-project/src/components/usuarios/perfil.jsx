@@ -1,10 +1,10 @@
 import { UserContext } from '../../contexts/userContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import FormsComponentsStyle from '../../components/servicios/servicesComponentesStyle/formsComponentsStyle';
 import BotonEditar from './usuariosCampos/botonEditar';
 import BotonCancelarU from './usuariosCampos/botonCancelarU';
 const Perfil = () => {
-    const {userDataAux, handleChange,handleSubmit, currentOption} = useContext(UserContext);
+    const {userDataAux, handleChange,handleSubmit, currentOption,userData} = useContext(UserContext);
     const {
         labelClassname,
         selectDesing,
@@ -15,6 +15,11 @@ const Perfil = () => {
         divGrid,
         divGridSub
       } = FormsComponentsStyle;
+      
+      useEffect(() => {
+   
+      }, []);
+
     return (
         <div className={contenedor}>
             <form  onSubmit={handleSubmit}>

@@ -13,6 +13,8 @@ import BotonSubmit from '../servicesCampos/botonSubmit';
 import BotonCancelar from '../servicesCampos/botonCancelar';
 import HorarioCampo from '../servicesCampos/horarioCampo';
 import Precio from '../servicesCampos/precioCampo';
+import SubirImg from '../../imageCloudinary/subirImg';
+import ImageGallery from '../../imageCloudinary/imageGalery';
 
 
 const OtherServiceForm = ({option}) =>{
@@ -135,7 +137,17 @@ const OtherServiceForm = ({option}) =>{
                         </div>
                     </div>
                 </div>
+                
+                <div className={divEspace }>
+                    <SubirImg />
+                    <ImageGallery />
+                </div>
+
+                <div className={divEspace + ' mt-14'}>
                 <HorarioCampo />
+                </div>
+
+                
                 <BotonSubmit />
             </div>
             <SuccessMessage

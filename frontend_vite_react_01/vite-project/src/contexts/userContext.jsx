@@ -10,8 +10,8 @@ export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const { isAuthenticated, user, isLoading } = useAuth0();
   const [userExists, setUserExists] = useState(false);
-const [paginaRegistro, setPaginaRegistro] = useState('1');
-const [currentOption, setCurrentOption] = useState('show');
+  const [paginaRegistro, setPaginaRegistro] = useState('1');
+  const [currentOption, setCurrentOption] = useState('show');
 
   const [userDataAux, setUserDataAux] = useState({
        
@@ -73,11 +73,12 @@ const [currentOption, setCurrentOption] = useState('show');
     //}
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Esto es lo que se va a guardar',userDataAux);
     userDataAux.correo=userEmail;
-    updateUser(userDataAux);
+    setUserData(userDataAux);
+    await updateUser(userDataAux);
     setCurrentOption('show');
     console.log('currrentOption',currentOption);
   }
