@@ -12,6 +12,7 @@ import { UserContext } from '../../contexts/userContext';
 import  {  useEffect, useContext,useState } from 'react';
 //import { ServiceContext } from '../../contexts/serviceContext';
 import { CardServiceContext } from '../../contexts/cardServiceContext';
+import { ServiceContext } from '../../contexts/serviceContext';
 //import CardService4 from './cards/cardService4';
 //import Loader2 from '../../components/loaders/loader2'
 //import EncuestaForm from "../encuesta/encuestaForm";
@@ -21,7 +22,8 @@ import ImageGallery from '../imageCloudinary/imageGalery';
 const Explorar = () => {
   const { userData} = useContext(UserContext);
   const {setServices, services, setIsSearch} = useContext(CardServiceContext);
-  const [ideService, setIdeService] = useState('');
+  const {images, setImages, getImages } = useContext(ServiceContext);
+  //const [ideService, setIdeService] = useState('');
   
   useEffect(() => {
     const fetchData = async () => {
@@ -37,17 +39,18 @@ const Explorar = () => {
     };
     
     
-    setIdeService('64e5a8c6fa70daf3b629510f')
+  
     fetchData();
 
-   }, [userData, setServices, setIsSearch]);
+   }, [userData, setServices, setIsSearch, getImages, setImages]);
 
   
 
   return (
-    <div className='mt-60 bg-yellow'>
-      <ImageGallery serviceId={ideService}/>
+    <div className='mt-60 '>
       <SubirImg />
+      <ImageGallery />
+      
       
     </div>
   );

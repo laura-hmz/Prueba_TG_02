@@ -19,7 +19,7 @@ import Precio from '../servicesCampos/precioCampo';
 const TransportServiceForm3 = ({option}) =>{
     const {serviceData,isUpdated, setIsUpdated,
          currentOption,setCurrentOption, fetchData,horarios,setIsSuccessModalOpen,
-         isSuccessModalOpen,openSuccessModal} = useContext(ServiceContext);
+         isSuccessModalOpen,openSuccessModal,getImages} = useContext(ServiceContext);
 
     const handleUpdateService = async () => {
         try {

@@ -7,8 +7,9 @@ const SuccessRegister = ({ isOpen, onClose }) => {
     <div>
       <Modal open={isOpen} onClose={onClose} center>
         <div className="text-center">
-          <h2 className="mb-4 text-lg md:text-xl lg:text-2xl">Servicio registrado con éxito</h2>
-          <p className="mb-4 text-sm md:text-base lg:text-lg">¡El servicio se ha registrado correctamente!</p>
+          <h2 className="mb-4 text-lg md:text-xl lg:text-2xl">¡Servicio registrado con éxito!</h2>
+          <p className="mb-4 text-sm md:text-base lg:text-md">Puedes verlo en la sección de *Mis servicios* y realizar ajustes</p>
+
         </div>
         <div className="modal-content flex justify-center mt-4">
           <button

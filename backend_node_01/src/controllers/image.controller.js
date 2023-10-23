@@ -5,6 +5,7 @@ const Image = require('../models/imageModel'); // Importa el modelo de datos de 
 const subirImagen = async (req, res) => {
   try {
 
+    console.log(req.file)
     const resultadoSubida = await cloudinary.uploader.upload(req.file.path);
     console.log('public_id',resultadoSubida.public_id)
     // Crea un nuevo documento de imagen en MongoDB
@@ -12,6 +13,8 @@ const subirImagen = async (req, res) => {
       url: resultadoSubida.secure_url, // La URL de Cloudinary
       servicioId: req.body.servicioId, // ID del servicio relacionado
       public_id: resultadoSubida.public_id, // ID de la imagen en Cloudinary
+      title: req.file.originalname, // El nombre original del archivo
+      
     });
 
     // Guarda la imagen en la base de datos

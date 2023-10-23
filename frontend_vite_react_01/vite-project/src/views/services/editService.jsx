@@ -10,17 +10,16 @@ import OtherServiceForm from '../../components/servicios/forms/otherServiceForm'
 const EdithService = () => {
   console.log('EdithService');
   const { id } = useParams();
-  const {fetchData, setCurrentOption, tipoServicio } = useContext(ServiceContext);
+  const {fetchData, setCurrentOption, tipoServicio, setIdServiceForImg,getImages } = useContext(ServiceContext);
   const [tipoServicioAux, setTipoServicioAux] = useState('');
   useEffect(() => {
     fetchData(id);
+    setIdServiceForImg(id);
+    getImages(id);
     setCurrentOption('show');
     setTipoServicioAux(tipoServicioAux);
-  
 
-  
-
-  }, [fetchData, id, setCurrentOption, tipoServicio, tipoServicioAux]);
+  }, [fetchData, id, setCurrentOption, tipoServicio, tipoServicioAux, setIdServiceForImg, getImages]);
   
 
   return (

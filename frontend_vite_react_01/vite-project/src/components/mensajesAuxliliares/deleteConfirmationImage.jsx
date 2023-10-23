@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import "./styleModal.css";
 import { Modal } from 'react-responsive-modal';
 
-const DeleteConfirmation = ({ isOpen, onClose, onDelete }) => {
+const DeleteConfirmationImg = ({ isOpen, onClose, onDelete }) => {
   return (
 
     <div>
   <Modal open={isOpen} onClose={onClose} center>
     <div className="text-center">
-      <h2 className="mb-4 text-xl md:text-xl lg:text-2xl font-semibold">Eliminar servicio</h2>
-      <p className="mb-4 text-md  lg:text-lg">Una vez eliminado, no podrás recuperarlo. ¿Estás seguro de que quieres eliminar este servicio?</p>
+      <h2 className="mb-4 text-xl md:text-xl lg:text-2xl font-semibold">Eliminar imagen</h2>
+      <p className="mb-4 text-md  lg:text-lg">Una vez eliminada, no podrás recuperarla. ¿Estás seguro de que deseas eliminar esta imagen?</p>
     </div>
       <div className="modal-content flex flex-col md:flex-row justify-center mt-4">
       <button
@@ -27,13 +27,13 @@ const DeleteConfirmation = ({ isOpen, onClose, onDelete }) => {
 
   );
 };
-DeleteConfirmation.propTypes = {
+DeleteConfirmationImg.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired
 }
 
-export default DeleteConfirmation;
+export default DeleteConfirmationImg;
 
 
 

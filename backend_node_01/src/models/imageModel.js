@@ -9,6 +9,9 @@ const imageSchema = new mongoose.Schema({
     public_id:{ 
         type: String,
         required: true}, // Almacena el ID de la imagen en Cloudinary
+    title: {
+        type: String,
+    }
 },
 {
     timestamps: true

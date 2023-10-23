@@ -13,6 +13,8 @@ import BotonSubmit from '../servicesCampos/botonSubmit';
 import BotonCancelar from '../servicesCampos/botonCancelar';
 import Precio from '../servicesCampos/precioCampo';
 import CaracteristicasHabitacion from '../servicesCampos/caracteristicasHabitacion';
+import SubirImg from '../../imageCloudinary/subirImg';
+import ImageGallery from '../../imageCloudinary/imageGalery';
 
 
 const RoomServiceForm2 = ({option}) =>{
@@ -127,18 +129,16 @@ const RoomServiceForm2 = ({option}) =>{
                         <Precio />
                     </div>
                 </div>
-                <div className={divGrid}>
-                    <div className={divGridSub}>
-                        <div className={divEspace}>
-                        <CaracteristicasHabitacion />
-                        </div>
-                    </div>
-                    <div className={divGridSub}>
-                    </div>
+                
+                <div className={divEspace}>
+                    <CaracteristicasHabitacion />   
                 </div>
 
-                
-               
+                <div className={divEspace + ' mt-10'}>
+                    <SubirImg />
+                    <ImageGallery />
+                </div>
+
                 <BotonSubmit />
 
             </div>

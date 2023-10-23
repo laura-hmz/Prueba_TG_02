@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useContext,useCallback } from 'reac
 import PropTypes from 'prop-types';
 import { UserContext } from './userContext';
 import {getServicesById} from '../api/servicesApi';
+import {obtenerImagenesPorServicio} from '../api/cloudinaryApi';
 
 export const ServiceContext = createContext(null);
 
@@ -11,6 +12,10 @@ export const ServiceProvider = ({ children }) => {
   const [isUpdated, setIsUpdated] = useState(false);
   const [service, setService] = useState(null);
   const [tipoServicio, setTipoServicio] = useState('');
+  //para las imagenes
+  const [images, setImages] = useState([]);
+  const [idServiceForImg, setIdServiceForImg] = useState('');
+
   const [serviceData, setServiceData] = useState({
     id_usuario: '', // Inicializar id_usuario como una cadena vacía
     nombre: '',
@@ -69,14 +74,17 @@ export const ServiceProvider = ({ children }) => {
       console.error('Error al obtener los servicios:', error);
     }
   }, []);
-  // const handleChange = (e) => {
-  //   const { name, value , type, checked} = e.target;
-   
-  //   setServiceData((prevServiceData) => ({
-  //       ...prevServiceData,
-  //       [name]: value,
-  //     }));   
-  // };
+
+  const getImages = useCallback(async (servicioId) => {
+    try {
+      const imagenes = await obtenerImagenesPorServicio(servicioId);
+      console.log('Imagenes', imagenes);
+      setImages(imagenes);
+    } catch (error) {
+      console.error('Error al obtener las imagenes del servicio:', error);
+    }
+  }, []);
+  
 
 
   const handleChange= (e) => {
@@ -152,6 +160,11 @@ export const ServiceProvider = ({ children }) => {
     tipoServicio,
     setTipoServicio,
     resetServiceData,
+    setImages,
+    images,
+    getImages,
+    idServiceForImg,
+    setIdServiceForImg
 
   };
 

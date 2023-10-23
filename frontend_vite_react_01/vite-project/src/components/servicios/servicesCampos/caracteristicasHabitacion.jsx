@@ -8,16 +8,22 @@ const CaracteristicasHabitacion = () => {
     const {
         labelClassname,
         labelCheckBox,
+        divGridSub,
+        divGrid,
+       
 
     } = FormsComponentsStyle;
     return (
         <>
-                <h1 className={labelClassname}>¿Qué caracteristicas ofrece?:</h1>
+        
+                <h1 className={labelClassname}>¿Qué características ofrece?</h1>
+                <div className={divGrid }>
                 {[
                   { nombre: 'permite mascotas' },
                   { nombre: 'parqueadero carro' },
                   { nombre: 'parqueadero moto' },
                 ].map((caracteristica) => (
+                  <div className={divGridSub} key={caracteristica.nombre}> 
                   <label className={labelCheckBox} key={caracteristica.nombre}>
                     <input
                       type="checkbox"
@@ -32,7 +38,10 @@ const CaracteristicasHabitacion = () => {
                     />
                     <span className="ml-2 mr-4">{caracteristica.nombre}</span>
                   </label>
+                  </div>
                 ))}
+              </div>
+          
         </>
     )
 }
