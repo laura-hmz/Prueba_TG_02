@@ -16,7 +16,7 @@ const CardServiceOnly = () => {
     <section className="antialiased  font-sans">
       <div className="container px-7 mt-10 py-9 mx-auto">
         <div className="flex flex-wrap  relative">
-            <div key={onlyService._id} className="  p-4  md:w-5/6 w-full mx-auto relative">
+            <div key={onlyService._id} className="  p-4 lg:w-4/5 md:w-4/5 w-full mx-auto relative">
               <div className="bg-white  shadow-xl rounded-lg overflow-hidden relative">
               {onlyService.tipo_servicio === 'Servicio de transporte' ? 
                     <img
@@ -55,7 +55,7 @@ const CardServiceOnly = () => {
                   {savedServiceIds.has(onlyService._id) ? '¡Guardado!' : 'Guardar servicio'}
                 </button>
 
-                <div className="p-6 ml-2 mr-2 lg:p-12 lg:ml-8 lg:mr-8">
+                <div className="p-6 ml-2 mr-2 lg:p-10 lg:ml-6 lg:mr-6">
                   <h2 className="tracking-widest lg:text-xl md:text-xl uppercase text-md title-font font-medium text-gray-400 mb-1">
                     {onlyService.tipo_servicio}
                   </h2>
@@ -91,7 +91,7 @@ const CardServiceOnly = () => {
                   {onlyService.tipo_vehiculo_2 && (
                     <>
                       <h1 className={titulo}>Tipo de vehículo:</h1>
-                      <p className={ 'text-sm lg:text-lg md:text-md capitalize  mb-3'}>{onlyService.tipo_vehiculo_2}</p>
+                      <p className={ 'text-md lg:text-lg md:text-md capitalize mb-3'}>{onlyService.tipo_vehiculo_2}</p>
                     </>
                   )}
 
