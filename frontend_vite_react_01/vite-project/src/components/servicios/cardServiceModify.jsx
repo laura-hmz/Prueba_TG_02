@@ -6,6 +6,7 @@ import { FaTrash, FaPlus,FaPen } from 'react-icons/fa';
 const CardServiceModify = ({services, onDeleteService}) => {
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
     const [serviceToDelete, setServiceToDelete] = useState(null);
+    
 
     const handleDeleteClick = (serviceId) => {
         setServiceToDelete(serviceId);
