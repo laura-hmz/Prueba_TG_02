@@ -1,6 +1,7 @@
 const processors_matchmaking = require('../processors/matchmaking_processor_02');
 const serviceSchema = require("../models/service");
 const userServiceSchema = require("../models/user");
+const removeAccents = require('remove-accents');
 
 //CRUD BASICO
 const createService = async (req, res) => {
@@ -125,12 +126,14 @@ const orderServices1 = async (services, idsServicios) => {
 };
 const searchServices = async (req, res) => {
     try {
-        const { diaSemana, horaBusquedaInicio, horaBusquedaFinal, estado, nombre,
+        const { diaSemana, horaBusquedaInicio, horaBusquedaFinal, estado, nombre,id_cliente,
            tipo_servicio, parqueadero_carro, parqueadero_moto, permite_mascota, area_0, 
            tipo_habitacion_1, tipo_vehiculo_2, area_otro_servicio_3, precioMinimo, precioMaximo } = req.query;
 
-        // Construye la consulta dinámica
+        // consulta dinámica
         const query = {};
+
+        query['id_usuario'] = { $ne: id_cliente };
 
         if (diaSemana) {
             query['horarios.dia_semana'] = { $regex: new RegExp(diaSemana, 'i') };
@@ -142,8 +145,10 @@ const searchServices = async (req, res) => {
           query['horarios.hora_de_finalizacion'] = { $gt: Number(horaBusquedaFinal) };
         }
         if (nombre) {
-          query['nombre'] = { $regex: new RegExp(nombre, 'i') };
+          const nombreNormalizado = removeAccents(nombre.toLowerCase());
+          query['nombre'] = { $regex: new RegExp(nombreNormalizado.replace(/\s+/g, '\\s*'), 'gi') };
         }
+
         if (estado) {
             query['estado'] = Number(estado);
         }
@@ -183,7 +188,6 @@ const searchServices = async (req, res) => {
           query['precio'] = { ...query['precio'], $lte: Number(precioMaximo) };
         }
         
-      
         // Realiza la búsqueda con la consulta construida
         const result = await serviceSchema.find(query);
         //return res.status(200).json(result);

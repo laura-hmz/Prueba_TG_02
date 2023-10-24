@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const removeAccents = require('remove-accents');
 
 const horarioSchema = mongoose.Schema({
     dia_semana: { type: String, required: true },
@@ -65,5 +66,9 @@ const serviceSchema = mongoose.Schema({
 }
 );
 
+serviceSchema.pre('save', function (next) {
+    this.nombre = removeAccents(this.nombre.toLowerCase());
+    next();
+  });
 
 module.exports = mongoose.model('Service', serviceSchema);
