@@ -43,7 +43,7 @@ const TasesoriasAcademicas = () => {
                     onChange={handleChange}
                     disabled={isLoading}
                     >
-                    <option value="">----</option>
+                    <option value="">- Ninguna -</option>
                     <option value="Ingenieria de sistemas">Ingeniería de sistemas</option>
                     <option value="Administracion de empresas">Administración de empresas</option>
                     <option value="Ingenieria de alimentos">Ingeniería de alimentos</option>
@@ -65,7 +65,7 @@ const TasesoriasAcademicas = () => {
                     onChange={handleChange}
                     disabled={isLoading}
                   >
-                    <option value="">----</option> 
+                    <option value="">- Ninguno -</option> 
                     <option value="Lunes">Lunes</option>
                     <option value="Martes">Martes</option>
                     <option value="Miercoles">Miércoles</option>
@@ -92,7 +92,7 @@ const TasesoriasAcademicas = () => {
                       onChange={handleChange}
                       disabled={isLoading}
                     >
-                      <option value="">----</option> 
+                      <option value="">- Ninguna -</option> 
                       {optionsHora.map((hora, index) => (
                                 <option key={index} value={index}>{hora}</option>
                             ))}
@@ -110,7 +110,7 @@ const TasesoriasAcademicas = () => {
                       onChange={handleChange}
                       disabled={isLoading}
                     >
-                      <option value="">----</option> 
+                      <option value="">- Ninguna -</option> 
                       {optionsHora.map((hora, index) => (
                                 <option key={index} value={index}>{hora}</option>
                             ))}

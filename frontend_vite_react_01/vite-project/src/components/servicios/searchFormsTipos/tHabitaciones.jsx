@@ -30,7 +30,7 @@ const Thabitaciones = () => {
                   onChange={handleChange}
                   disabled={isLoading}
                 >
-                  <option value="">----</option> 
+                  <option value="">- Sin especificar -</option> 
                   <option value="Apartamento">Apartamento</option>
                   <option value="Habitacion">Habitación</option>
                   <option value="Hospedaje">Hospedaje</option>

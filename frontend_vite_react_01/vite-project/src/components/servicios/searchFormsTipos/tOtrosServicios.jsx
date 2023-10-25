@@ -36,48 +36,40 @@ const TotrosServicios = () => {
                         </div>
                         <div className={divGridSub}>
                         <FiltroPrecio/>
-                          
                         </div>
-                      </div>
-                     
+                      </div>   
                     </div>
-
-                    
                   </div>
               
-                      <div className={divGrid}>
-                        <div className={divGridSub}>
-                        <label className={labelClassname} htmlFor="area_otro_servicio_3">Área del servicio:</label>
-                          <select
-                            className={selectDesing}
-                            id="area_otro_servicio_3"
-                            name="area_otro_servicio_3"
-                            value={searchParams.area_otro_servicio_3}
-                            onChange={handleChange}
-                            disabled={isLoading}
+                  <div className={divGrid}>
+                    <div className={divGridSub}>
+                      <label className={labelClassname} htmlFor="area_otro_servicio_3">Área del servicio:</label>
+                      <select
+                          className={selectDesing}
+                          id="area_otro_servicio_3"
+                          name="area_otro_servicio_3"
+                          value={searchParams.area_otro_servicio_3}
+                          onChange={handleChange}
+                          disabled={isLoading}
                           >
-                            <option value="">----</option>
-                            <option value="Administrativos y finanzas">Administrativos y finanzas</option>
-                            <option value="Atención al cliente">Atención al cliente</option>
-                            <option value="Gastronomia">Gastronomía</option>
-                            <option value="Artes u oficios">Artes u oficios</option>
-                            <option value="Tecnologia e informatica">Tecnología e informática</option>
-                            <option value="Belleza">Belleza</option>
-                            <option value="Mensajeria">Mensajería</option>
-                            <option value="Deporte">Deporte</option>
-                            <option value="Vestuario">Vestuario</option>
-                            <option value="Servicios generales">Servicios generales</option>
-                            <option value="Mascotas">Mascotas</option>
-                          </select>
-                         
-                        </div>
-                        <div className={divGridSub}></div>
-                        <div className={divGridSub}></div>
-                        <div className={divGridSub}></div>
-
-                      </div>
-                    
-            
+                          <option value="">- Ninguna -</option>
+                          <option value="Administrativos y finanzas">Administrativos y finanzas</option>
+                          <option value="Atención al cliente">Atención al cliente</option>
+                          <option value="Gastronomia">Gastronomía</option>
+                          <option value="Artes u oficios">Artes u oficios</option>
+                          <option value="Tecnologia e informatica">Tecnología e informática</option>
+                          <option value="Belleza">Belleza</option>
+                          <option value="Mensajeria">Mensajería</option>
+                          <option value="Deporte">Deporte</option>
+                          <option value="Vestuario">Vestuario</option>
+                          <option value="Servicios generales">Servicios generales</option>
+                          <option value="Mascotas">Mascotas</option>
+                      </select>
+                    </div>
+                    <div className={divGridSub}></div>
+                    <div className={divGridSub}></div>
+                    <div className={divGridSub}></div>
+                  </div>
                 </>
               )}
         </>

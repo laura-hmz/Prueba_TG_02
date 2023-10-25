@@ -29,7 +29,7 @@ const Ttransporte = () => {
                         onChange={handleChange}
                         disabled={isLoading}
                       >
-                        <option value="">----</option> 
+                        <option value="">- Sin especificar -</option> 
                         <option value="carro">Carro</option>
                         <option value="moto">Moto</option>
                       </select>
@@ -46,7 +46,7 @@ const Ttransporte = () => {
                         onChange={handleChange}
                         disabled={isLoading}
                       >
-                        <option value="">----</option> 
+                        <option value="">- Ninguno -</option> 
                         <option value="Lunes">Lunes</option>
                         <option value="Martes">Martes</option>
                         <option value="Miercoles">Miércoles</option>
@@ -74,7 +74,7 @@ const Ttransporte = () => {
                             onChange={handleChange}
                             disabled={isLoading}
                           >
-                            <option value="">----</option> 
+                            <option value="">- Ninguna -</option> 
                             {optionsHora.map((hora, index) => (
                                       <option key={index} value={index}>{hora}</option>
                                   ))}
@@ -91,7 +91,7 @@ const Ttransporte = () => {
                             onChange={handleChange}
                             disabled={isLoading}
                           >
-                            <option value="">----</option> 
+                            <option value="">- Ninguna -</option> 
                             {optionsHora.map((hora, index) => (
                                       <option key={index} value={index}>{hora}</option>
                                   ))}
