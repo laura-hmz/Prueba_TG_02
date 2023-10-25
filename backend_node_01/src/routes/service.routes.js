@@ -18,6 +18,12 @@ router.delete("/services/:id", serviceCtrl.deleteService);
 // update a service OK
 router.put("/services/:id", serviceCtrl.updateService);
 
+//listar los servicios ofrecidos por un usuario
+router.get("/list-services-user",serviceCtrl.listServicesIdUser);
+
+//Mostrar ultimos servicios añadidos
+router.get("/last-services-added",serviceCtrl.lastServicesAdded);
+
 // Prueba 01 funcionamiento de matchmaking OK
 router.get("/survey-results", matchCtrl.procesadorPrueba);
 
@@ -26,11 +32,5 @@ router.get("/survey-results-array",matchCtrl.busqueda_servicios);
 
 //Buscar servicios (solo filtro a base de datos) OK
 router.get("/search-services",matchCtrl.searchServices);
-
-//listar los servicios ofrecidos por un usuario
-router.get("/list-services-user",serviceCtrl.listServicesIdUser);
-
-//Mostrar ultimos servicios añadidos
-router.get("/last-services-added",serviceCtrl.lastServicesAdded);
 
 module.exports = router;
