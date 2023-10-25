@@ -209,7 +209,7 @@ const busqueda_servicios = async (req, res) => {
         const services= await searchServices(req, res);
 
         if (!services || services.length === 0) {
-            return res.status(404).json({ message: "No se encontraron servicios que cumplan con los criterios de búsqueda" });
+            return res.json({ message: "No se encontraron servicios que cumplan con los criterios de búsqueda" });
         }
         if (services.length === 1) {
             orderedServices = services;

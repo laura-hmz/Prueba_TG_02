@@ -33,8 +33,11 @@ const Ttransporte = () => {
                         <option value="carro">Carro</option>
                         <option value="moto">Moto</option>
                       </select>
-                      <label className={labelClassname} htmlFor="diaSemana">Día de la semana:</label>
+                      
 
+                    </div>
+                    <div className={divGridSub}>
+                    <label className={labelClassname} htmlFor="diaSemana">Día de la semana:</label>
                       <select
                         className={selectDesing}
                         id="diaSemana"
@@ -53,47 +56,54 @@ const Ttransporte = () => {
                         <option value="Domingo">Domingo</option>
                       </select>
 
-                    </div>
-
-                    {/*Columna derecha*/}
-                    <div className={divGridSub}>
-                      <label className={labelClassname} htmlFor="horaBusquedaInicio">Hora inicio:</label>
-                      <select
-                        className={selectDesing}
-                        id="horaBusquedaInicio"
-                        name="horaBusquedaInicio"
-                        value={searchParams.horaBusquedaInicio}
-                        onChange={handleChange}
-                        disabled={isLoading}
-                      >
-                        <option value="">----</option> 
-                        {optionsHora.map((hora, index) => (
-                                  <option key={index} value={index}>{hora}</option>
-                              ))}
-                        
-                      </select>
-
-                      <label className={labelClassname} htmlFor="horaBusquedaFinal">Hora finalización:</label>
-
-                      <select
-                        className={selectDesing}
-                        id="horaBusquedaFinal"
-                        name="horaBusquedaFinal"
-                        value={searchParams.horaBusquedaFinal}
-                        onChange={handleChange}
-                        disabled={isLoading}
-                      >
-                        <option value="">----</option> 
-                        {optionsHora.map((hora, index) => (
-                                  <option key={index} value={index}>{hora}</option>
-                              ))}
-                      </select>
 
                     </div>
 
                     
                   </div>
-                  <FiltroPrecio/>
+                  <div className={divGrid}>
+                    <div className={divGridSub}>
+                      <div className={divGrid}>
+                        <div className={divGridSub}>
+                          <label className={labelClassname} htmlFor="horaBusquedaInicio">Hora inicio:</label>
+                          <select
+                            className={selectDesing}
+                            id="horaBusquedaInicio"
+                            name="horaBusquedaInicio"
+                            value={searchParams.horaBusquedaInicio}
+                            onChange={handleChange}
+                            disabled={isLoading}
+                          >
+                            <option value="">----</option> 
+                            {optionsHora.map((hora, index) => (
+                                      <option key={index} value={index}>{hora}</option>
+                                  ))}
+                            
+                          </select>
+                        </div>
+                        <div className={divGridSub}>
+                          <label className={labelClassname} htmlFor="horaBusquedaFinal">Hora finalización:</label>
+                          <select
+                            className={selectDesing}
+                            id="horaBusquedaFinal"
+                            name="horaBusquedaFinal"
+                            value={searchParams.horaBusquedaFinal}
+                            onChange={handleChange}
+                            disabled={isLoading}
+                          >
+                            <option value="">----</option> 
+                            {optionsHora.map((hora, index) => (
+                                      <option key={index} value={index}>{hora}</option>
+                                  ))}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={divGridSub}>
+                      <FiltroPrecio />
+                    </div>
+                  </div>
+                 
                 </>
               )}
         </>

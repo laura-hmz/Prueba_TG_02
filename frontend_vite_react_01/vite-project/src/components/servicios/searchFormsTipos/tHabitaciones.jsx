@@ -17,7 +17,7 @@ const Thabitaciones = () => {
         <>
          {searchParams.tipo_servicio === 'Servicio de habitaciones' && (
           <>
-            <FiltroPrecio></FiltroPrecio>
+            
             <div className={divGrid}>
                {/*Columna izquierda*/}
               <div className={divGridSub}>
@@ -41,21 +41,27 @@ const Thabitaciones = () => {
 
                {/*Columna derecha*/}
                 <div className={divGridSub}>
-                  <h1 className={labelClassname}>¿Qué caracteristicas buscas?:</h1>
-                
-                  <label className={labelCheckBox} htmlFor="parqueadero_carro">
-                    <input
+                  <FiltroPrecio></FiltroPrecio>  
+                </div>
+              
+            </div>
+            <h1 className={labelClassname}>¿Qué caracteristicas buscas?:</h1>
+            <div className={divGrid}>
+              <div className={divGridSub}>
+                <label className={labelCheckBox} htmlFor="parqueadero_carro">
+                  <input
                       type="checkbox"
                       id="parqueadero_carro"
                       name="parqueadero_carro"
                       checked={searchParams.parqueadero_carro}
                       onChange={handleChange}
                       disabled={isLoading}
-                    />
-                      <span className="ml-2 mr-4">Parqueadero de carro</span>
-                  </label>
-
-                  <label className={labelCheckBox} htmlFor="parqueadero_moto">
+                  />
+                  <span className="ml-2 mr-4">Parqueadero de carro</span>
+                </label>
+              </div>
+              <div className={divGridSub}>
+              <label className={labelCheckBox} htmlFor="parqueadero_moto">
                     <input
                       type="checkbox"
                       id="parqueadero_moto"
@@ -66,8 +72,9 @@ const Thabitaciones = () => {
                     />
                      <span className="ml-2 mr-4">Parqueadero moto</span>
                   </label>
-
-                  <label className={labelCheckBox} htmlFor="permite_mascota">
+              </div>
+              <div className={divGridSub}>
+              <label className={labelCheckBox} htmlFor="permite_mascota">
                     <input
                       type="checkbox"
                       id="permite_mascota"
@@ -78,8 +85,9 @@ const Thabitaciones = () => {
                     />
                       <span className="ml-2 mr-4">Permiten mascotas</span>
                   </label>
-
-                  <label className={labelCheckBox} htmlFor="ninguno">
+              </div>
+              <div className={divGridSub}>
+              <label className={labelCheckBox} htmlFor="ninguno">
                     <input
                       type="checkbox"
                       id="ninguno"
@@ -89,10 +97,8 @@ const Thabitaciones = () => {
                     />
                       <span className="ml-2 mr-4">Ninguno</span>
                   </label>
-
-                </div>
-              
-            </div>
+              </div>
+            </div>        
           </>
         )}
         </>

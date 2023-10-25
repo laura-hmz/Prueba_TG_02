@@ -7,16 +7,15 @@ import SearchForm from '../../components/servicios/forms/searchForm';
 import { CardServiceContext } from "../../contexts/cardServiceContext";
 import { SearchContext } from "../../contexts/searchContext";
 import CardService4 from '../../components/servicios/cards/cardService4';
+import PageHeaderHome from "../../components/headers/pageHerderHome";
 
 const EspecialSearch = () => {
 
   const {setServices, setIsSearch, isSearch, services} = useContext(CardServiceContext);
   const {isLoading, setIsLoading} = useContext(SearchContext);
-  //const [isLoading, setIsLoading] = useState(false);
   const[errorSearch, setErrorSearch] = useState(false);
   const { userData} = useContext(UserContext);
   const [idUser, setIdUser] = useState('');
-
   const handleSearch = async (searchParams) => {
     setIsLoading(true);
   
@@ -46,10 +45,14 @@ const EspecialSearch = () => {
       });
       console.log(results);
       // Actualiza los resultados y el estado de carga
-      setServices(results.orderedServices);
-      setIsSearch(true);
+      if(results.message){
+        setErrorSearch(true);
+      } else {
+        setServices(results.orderedServices);
+        setIsSearch(true);
+        setErrorSearch(false);
+      }
       setIsLoading(false);
-      setErrorSearch(false);
 
     } catch (error) {
       console.error('No se encontraron servicios con los criterios de búsqueda:', error);
@@ -57,17 +60,16 @@ const EspecialSearch = () => {
       setErrorSearch(true);
     }
   };
-
   useEffect(() => {
     if(userData !== null){
       setIdUser(userData._id);
-     
     }
   } , [userData,setIsSearch]);
 
     return (
         <div >
             <SearchForm onSearch={handleSearch} isLoading={isLoading} idUser={idUser} />
+            <PageHeaderHome title="Resultados de búsqueda" />
             {isLoading ? (
               <div className="loader-container relative ">
               <h1 className="text-center absolute top-5 left-0 w-full bg-transparent text-black text-2xl">
