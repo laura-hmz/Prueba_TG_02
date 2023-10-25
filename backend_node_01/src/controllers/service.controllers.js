@@ -1,6 +1,4 @@
-const processors_matchmaking = require('../processors/matchmaking_processor_02');
 const serviceSchema = require("../models/service");
-const userServiceSchema = require("../models/user");
 
 //CRUD BASICO
 const createService = async (req, res) => {
@@ -59,12 +57,19 @@ const listServicesIdUser = async (req, res) => {
 };
 
 const lastServicesAdded = async (req, res) => {
-  serviceSchema
-    .find()
-    .sort({ _id: -1 })
-    .limit(1)
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+  try {
+    const { id } = req.params; //  usuario a excluir
+    console.log(req.body)
+    const services = await serviceSchema
+      .find({ id_usuario: { $ne: id } }) // Excluye servicios del usuario específico
+      .sort({ createdAt: -1 }) // Ordenar por createdAt en orden descendente
+      .limit(8) // Limitar a un máximo
+      .exec();
+
+    res.json(services);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 }
 
 module.exports = {

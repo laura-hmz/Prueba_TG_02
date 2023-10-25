@@ -15,11 +15,11 @@ const Navbar2 = () => {
   return (
     <div className="fixed top-0 w-full z-50">
       <nav className="w-full flex py-4 justify-between  bg-[#CC1F33] items-center navbar relative">
-      {/* Logo */}
       
       <Link to="/Home"className="flex title-font font-medium  hover:bold items-center mr-5 ml-12 text-gray-900  ">
         <FaRegGem size={25} className="white-icon"/>
-        <span className={`ml-5 text-xl text-white cursor-pointer ${location.pathname === '/Home' ? ' font-bold underline' : 'hover:font-bold'}`}>Explorar</span>
+        <span className={`ml-5 text-xl text-white cursor-pointer ${location.pathname === '/Home' ? ' font-bold underline' : 'hover:font-bold'}`}>
+          Home</span>
         
       </Link>
 

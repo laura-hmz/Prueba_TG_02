@@ -22,7 +22,7 @@ router.put("/services/:id", serviceCtrl.updateService);
 router.get("/list-services-user",serviceCtrl.listServicesIdUser);
 
 //Mostrar ultimos servicios añadidos
-router.get("/last-services-added",serviceCtrl.lastServicesAdded);
+router.get("/last-services-added/:id",serviceCtrl.lastServicesAdded);
 
 // Prueba 01 funcionamiento de matchmaking OK
 router.get("/survey-results", matchCtrl.procesadorPrueba);

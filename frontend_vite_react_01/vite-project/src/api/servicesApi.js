@@ -13,8 +13,8 @@ export const getServices = async () => {
     return res.data;
 }
 
-export const lastServicesAdded = async () => {
-    const res = await servicesApi.get("/last-services-added")
+export const lastServicesAdded = async (id) => {
+    const res = await servicesApi.get(`/last-services-added/${id}`)
     console.log(res.data);
     return res.data;
 }
