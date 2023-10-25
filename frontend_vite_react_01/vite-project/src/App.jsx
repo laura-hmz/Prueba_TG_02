@@ -26,6 +26,7 @@ import AcademyServiceForm from './components/servicios/forms/academyServiceForm.
 import OtherServiceForm from './components/servicios/forms/otherServiceForm.jsx';
 import RoomServiceForm2 from './components/servicios/forms/roomServiceForm2.jsx';
 import { CardServiceProvider } from './contexts/cardServiceContext.jsx';
+import UserDetails from './views/users/userDetails.jsx';
 //import { ServiceContext } from './contexts/serviceContext.jsx';
 
 
@@ -74,6 +75,8 @@ function App() {
             <Route path='/serviceDetails/:id' element={getReturn(<ServiceDetails/>)}/>
             <Route path='/userServices' element={getReturn(<UserServices/>)} />
             <Route path='/offerService' element={getReturn(<OfferService/>)}/>
+            <Route path='/userDetails/:id' element={getReturn(<UserDetails/>)}/>
+            
 
           </Routes>
           </div>

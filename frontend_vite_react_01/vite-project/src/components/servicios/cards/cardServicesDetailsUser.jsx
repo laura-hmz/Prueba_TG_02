@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 import { useContext} from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';
 import {deleteServiceSaved2, createServiceSaved} from '../../../api/savedServicesApi';
 import { CardServiceContext } from '../../../contexts/cardServiceContext';
 import { UserContext } from '../../../contexts/userContext';
-const CardService4 = () => {
-  const {services, userDetails,setSavedServiceIds, savedServiceIds } = useContext(CardServiceContext);
+const CardServicesDetailsUser = () => {
+  const {servicesUserDetails,setSavedServiceIds, savedServiceIds } = useContext(CardServiceContext);
   const { userData } = useContext(UserContext);
  
   const handleClick = (serviceId) => {
@@ -33,7 +32,7 @@ const CardService4 = () => {
     <section className="antialiased  font-sans">
       <div className="container px-7 py-9 mx-auto">
         <div className="flex flex-wrap -m-3 relative">
-          {Array.isArray(services) && services.map((service) => (
+          {Array.isArray(servicesUserDetails) && servicesUserDetails.map((service) => (
             <div key={service._id} className="p-4 md:w-1/3 w-full relative">
               <div className="bg-white shadow-xl rounded-lg overflow-hidden relative">
                 {service.tipo_servicio === 'Servicio de transporte' ? 
@@ -97,32 +96,7 @@ const CardService4 = () => {
                         </svg>
                       </Link>
                   </div>
-                  <div className="pt-3 pb-4 border-t border-gray-300">
-                    <div className="text-xs font-bold tracking-widest text-gray-400">
-                      CONTACTO
-                    </div>
-                    <div className="flex items-center pt-2">
-                      <div
-                        className="bg-cover bg-center  rounded-full mr-3"
-                        
-                      >
-                        <FaUserCircle className="text-4xl"/> 
-                      </div>
-                      
-                      <div>
-                        {console.log(userDetails[service._id])}
-                      <Link to={{ pathname: `/userDetails/${userDetails[service._id]?._id}` }}>
-                        <p className="text-m font-bold text-gray-600">
-                        {userDetails[service._id]?.nombre || 'Nombre Desconocido'}
-                        </p>
-                      </Link>
-                        <p className="text-sm text-gray-700">
-                          {userDetails[service._id]?.telefono || 'Teléfono desconocido'}
-                        </p>
-                      </div>
-
-                    </div>
-                  </div>
+                 
                 </div>
               </div>
             </div>
@@ -133,8 +107,8 @@ const CardService4 = () => {
   );
   
 };
-CardService4.propTypes = {
+CardServicesDetailsUser.propTypes = {
   services: PropTypes.array
 }
 
-export default CardService4;
+export default CardServicesDetailsUser;

@@ -22,13 +22,14 @@ import { CardServiceContext } from '../../contexts/cardServiceContext';
 //import ImageGallery from '../imageCloudinary/imageGalery';
 import CardUser from '../usuarios/cardUser/cardUser';
 import PageHeaderHome from '../headers/pageHerderHome';
-import CardService4 from './cards/cardService4';
+//import CardService4 from './cards/cardService4';
+import CardServicesDetailsUser from './cards/cardServicesDetailsUser';
 const Explorar = () => {
   //const { userData} = useContext(UserContext);
   //const {setServices, services, setIsSearch} = useContext(CardServiceContext);
   //const {images, setImages, getImages } = useContext(ServiceContext);
   //const [ideService, setIdeService] = useState('');
-  const {setUserDataOnlyService, setServices} = useContext(CardServiceContext);
+  const {setUserDataOnlyService, setServicesUserDetails} = useContext(CardServiceContext);
   const id= '64e2ff80fed5d5347f0c5b24'
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const Explorar = () => {
         setUserDataOnlyService(userId);
 
         const data = await listServicesIdUser(id);
-        setServices(data);
+        setServicesUserDetails(data);
 
 
         
@@ -51,13 +52,13 @@ const Explorar = () => {
     };
 
     fetchData();
-  }, [ setUserDataOnlyService, setServices ]);
+  }, [ setUserDataOnlyService, setServicesUserDetails ]);
 
   return (
     <>
       <CardUser/>
       <PageHeaderHome title="Servicios ofrecidos por el usuario"/>
-      <CardService4/>
+      <CardServicesDetailsUser/>
     </>
     
   );

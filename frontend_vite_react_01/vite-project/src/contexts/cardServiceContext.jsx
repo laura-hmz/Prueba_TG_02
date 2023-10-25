@@ -18,6 +18,7 @@ export const CardServiceProvider = ({ children }) => {
   const [onlyService, setOnlyService] = useState({});
   const [userDataOnlyService, setUserDataOnlyService] = useState({});
   const [buttonClick, setButtonClick] = useState(false);
+  const [servicesUserDetails, setServicesUserDetails] = useState([]);
 
   const getSavedServices = useCallback(async () => {
     try {
@@ -106,7 +107,10 @@ export const CardServiceProvider = ({ children }) => {
     setOnlyService,
     userDataOnlyService,
     setUserDataOnlyService,
-    buttonClick, setButtonClick
+    buttonClick, 
+    setButtonClick,
+    servicesUserDetails,
+    setServicesUserDetails
   };
 
   return (
