@@ -1,5 +1,3 @@
-import "../../components/loader1.css";
-import Loader2 from '../../components/loaders/loader2';
 import { useEffect, useState,useContext } from 'react';
 import {busquedaMatchmaking} from '../../api/servicesApi';
 import { UserContext } from '../../contexts/userContext';
@@ -8,6 +6,9 @@ import { CardServiceContext } from "../../contexts/cardServiceContext";
 import { SearchContext } from "../../contexts/searchContext";
 import CardService4 from '../../components/servicios/cards/cardService4';
 import PageHeaderHome from "../../components/headers/pageHerderHome";
+import InvitacionAbuscar from "../../components/servicios/searchFormsTipos/componenteInvitacionAbuscar";
+import NoSeEncontraronServicios from "../../components/servicios/searchFormsTipos/componenteNoSeEncontraronServicios";
+import Cargando from "../../components/servicios/searchFormsTipos/componenteCargando";
 
 const EspecialSearch = () => {
 
@@ -71,25 +72,13 @@ const EspecialSearch = () => {
             <SearchForm onSearch={handleSearch} isLoading={isLoading} idUser={idUser} />
             <PageHeaderHome title="Resultados de búsqueda" />
             {isLoading ? (
-              <div className="loader-container relative ">
-              <h1 className="text-center absolute top-5 left-0 w-full bg-transparent text-black text-2xl">
-                Cargando...
-              </h1>
-              <div className="loader"></div>
-            </div>
+              <Cargando />
             ) : errorSearch? (
-              <div className=" loader-container relative ">
-                <h1 className="text-center absolute top-5 left-0 w-full bg-transparent text-black text-2xl">No se encontraron servicios con los criterios de búsqueda</h1>
-                <br />
-                <Loader2 />
-              </div>
+              <NoSeEncontraronServicios />
             ) : isSearch? (
               <CardService4 />
             ): (
-              <div className=" loader-container relative ">
-                <h1 className="text-center absolute top-5 left-0 w-full bg-transparent text-black text-2xl">
-                  Busca servicios que vayan contigo</h1>
-              </div>
+                  <InvitacionAbuscar />
             )}
             {console.log('Estos son los servicios: ', services)}
           </div>

@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { SearchContext } from '../../../contexts/searchContext';
 import SearchFormsStyle from '../servicesComponentesStyle/searchFormsStyle';
 import FiltroPrecio from './filtroPrecio';
+import SearchInstruccion from '../../headers/searchInstruccion';
 
 const TotrosServicios = () => {
     const {searchParams, handleChange, isLoading} = useContext(SearchContext);
@@ -18,6 +19,7 @@ const TotrosServicios = () => {
         <>
          {searchParams.tipo_servicio === 'Otros servicios' && (
                 <>
+                <SearchInstruccion/>
                   <div className={divGrid}>
                     <div className={divGridSub}>
                       <div className={divGrid}>

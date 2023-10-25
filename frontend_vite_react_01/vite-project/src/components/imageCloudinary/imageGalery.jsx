@@ -48,8 +48,8 @@ const ImageGallery = () => {
               No tienes fotos de tu servicio, ¿Qué esperas para subirlas?
               <span className="flex justify-center mt-2 items-center">
                 <FaCameraRetro size={70} className="center text-gray-400 "/>
-                </span>
-              </p>
+              </span>
+            </p>
               
           ) : (
             images.slice(0, 3).map((image) => (
