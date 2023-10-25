@@ -1,5 +1,6 @@
 const express = require("express");
 const serviceCtrl = require('../controllers/service.controllers');
+const matchCtrl = require('../controllers/match.controller');
 const router = express.Router();
 
 //create service OK
@@ -18,13 +19,13 @@ router.delete("/services/:id", serviceCtrl.deleteService);
 router.put("/services/:id", serviceCtrl.updateService);
 
 // Prueba 01 funcionamiento de matchmaking OK
-router.get("/survey-results", serviceCtrl.procesadorPrueba);
+router.get("/survey-results", matchCtrl.procesadorPrueba);
 
 //Buscar servicios con emparejamiento de usuarios OK
-router.get("/survey-results-array",serviceCtrl.busqueda_servicios);
+router.get("/survey-results-array",matchCtrl.busqueda_servicios);
 
 //Buscar servicios (solo filtro a base de datos) OK
-router.get("/search-services",serviceCtrl.searchServices);
+router.get("/search-services",matchCtrl.searchServices);
 
 //listar los servicios ofrecidos por un usuario
 router.get("/list-services-user",serviceCtrl.listServicesIdUser);

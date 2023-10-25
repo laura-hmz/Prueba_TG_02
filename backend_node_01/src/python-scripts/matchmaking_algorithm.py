@@ -7,9 +7,8 @@ def process_matchmaking(survey_results,ids_vecinos,query_sample):
     # Aquí procesa los resultados de encuestas y devuelve los resultados procesados
     neigh = NearestNeighbors(radius=10)
     neigh.fit(survey_results)
-
     #query_sample = [[1, 0, 0, 0.5, 0, 1.5, 0, 0, 0, 0.5, 1, 0, 0.5, 0, 1.5]]
-
+    
     rng = neigh.radius_neighbors(query_sample)
     distancia = np.asarray(rng[0][0])
     vecinosPos = np.asarray(rng[1][0])
