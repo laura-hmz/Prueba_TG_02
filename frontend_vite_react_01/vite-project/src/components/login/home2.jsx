@@ -5,7 +5,7 @@ const Home2 = () => {
   
     return (
         
-        <section className="antialiased min-h-screen font-sans bg-[#1c1b1b]">
+        <section className="antialiased min-h-screen font-sans bg-gradient-to-br from-[#CC1F33] to-[#000000]">
             <div className="container mx-auto">
                 <div className="flex flex-wrap  relative">
                     <div className="   lg:w-9/10  md:w-9/10 w-full mx-auto relative">
