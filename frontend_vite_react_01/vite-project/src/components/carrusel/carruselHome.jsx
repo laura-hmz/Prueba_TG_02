@@ -23,7 +23,8 @@ const CarruselHome = ({ banners }) => {
             <img
               src={banner.url}
               alt={`Banner ${index + 1}`}
-              className="w-full "
+              className="w-full"
+              loading="lazy"
             />
           </div>
         ))}

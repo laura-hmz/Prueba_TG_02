@@ -3,7 +3,6 @@ import { useContext} from 'react';
 import { UserContext } from './contexts/userContext.jsx';
 import { ServiceProvider } from './contexts/serviceContext';
 import { SearchContextProvider } from './contexts/searchContext.jsx';
-
 import './components/servicios/explorar.jsx';
 import NavBar2 from './components/navbar/navbar2.jsx';
 import Explorar from './components/servicios/explorar.jsx';
@@ -27,7 +26,7 @@ import OtherServiceForm from './components/servicios/forms/otherServiceForm.jsx'
 import RoomServiceForm2 from './components/servicios/forms/roomServiceForm2.jsx';
 import { CardServiceProvider } from './contexts/cardServiceContext.jsx';
 import UserDetails from './views/users/userDetails.jsx';
-//import { ServiceContext } from './contexts/serviceContext.jsx';
+
 
 
 function App() {

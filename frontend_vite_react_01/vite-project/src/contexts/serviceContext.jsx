@@ -78,7 +78,7 @@ export const ServiceProvider = ({ children }) => {
   const getImages = useCallback(async (servicioId) => {
     try {
       const imagenes = await obtenerImagenesPorServicio(servicioId);
-      console.log('Imagenes', imagenes);
+      //console.log('Imagenes', imagenes);
       setImages(imagenes);
     } catch (error) {
       console.error('Error al obtener las imagenes del servicio:', error);

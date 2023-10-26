@@ -13,7 +13,7 @@ const Home2 = () => {
                             <div className="grid mx-auto  flex items-center lg:grid-cols-2 lg:gap-x-12 md:px-10 md:py-8 lg:px-10 lg:py-8  ">
                                 <div className="mb-8 lg:mb-0 md:mb-0  md:ml-4 text-center md:text-left">
                                 <h2 className="   text-5xl font-bold  leading-tight tracking-tight">
-                                    Publica y Adquiere  
+                                    Encuentra y Publica  
                                 </h2>
                                 <h3 className="  mb-10 text-gray-900 text-5xl font-bold leading-tight tracking-tight">
                                 Servicios
@@ -23,7 +23,8 @@ const Home2 = () => {
 
                                 <div className=" mt-4 md:mt-0 lg:mt-0 rounded-lg border-solid border-2 border-gray-300 shadow-2xl">
                                     <img src="https://res.cloudinary.com/dt0ejpyba/image/upload/v1698281702/copia_mpuiek.jpg"
-                                        className="w-full  md:h-[500px] rounded-lg object-cover" alt="" />
+                                        className="w-full  md:h-[500px] rounded-lg object-cover" alt="" 
+                                        loading="lazy"/>
                                 </div>
                             </div>
                     

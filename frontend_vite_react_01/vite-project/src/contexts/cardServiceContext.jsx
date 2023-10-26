@@ -26,7 +26,7 @@ export const CardServiceProvider = ({ children }) => {
       setSavedServiceIds(new Set (savedServicesIdList));
 
       // Mueve el console.log aquí para acceder a serviceSaved después de que se haya establecido
-      console.log('Los servicios guardados son', savedServicesIdList);
+      //console.log('Los servicios guardados son', savedServicesIdList);
     } catch (error) {
       console.error('Error al obtener los servicios:', error);
     }
@@ -75,9 +75,9 @@ export const CardServiceProvider = ({ children }) => {
       savedServiceIds.delete(serviceId);
       deleteServiceSaved2(userData._id, serviceId);
       setButtonClick(false);
-      console.log('user id', userData._id);
-      console.log('service id', serviceId);
-      console.log('buton click', buttonClick);
+      //console.log('user id', userData._id);
+      //console.log('service id', serviceId);
+      //console.log('buton click', buttonClick);
 
     } else {
       // Si no está guardado, agrégalo al conjunto
@@ -88,7 +88,7 @@ export const CardServiceProvider = ({ children }) => {
       };
       createServiceSaved(savedServiceData);
       setButtonClick(true);
-      console.log('lo que se crea', savedServiceIds);
+      //console.log('lo que se crea', savedServiceIds);
     }
   }
 

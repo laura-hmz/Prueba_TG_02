@@ -9,16 +9,18 @@ const Navbar2 = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { logout } = useAuth0();
   const location = useLocation();
-  const linksDesing = "font-poppins  mr-5 text-[16px] text-gray-100 transition-all hover:text-white hover:font-semibold  cursor-pointer";
+  const linksDesing = "font-poppins text-md pointer-events-auto mr-5 text-[16px] text-gray-100 transition-all hover:text-white hover:font-semibold  cursor-pointer";
   const linksDesing2 = "font-poppins font-medium cursor-pointer text-[16px] text-white mb-4";
+
 
   return (
     <div className="fixed top-0 w-full z-50">
       <nav className="w-full flex py-4 justify-between  bg-[#CC1F33] items-center navbar relative">
       
-      <Link to="/Home"className="flex title-font font-medium  hover:bold items-center mr-5 ml-12 text-gray-900  ">
+      <Link 
+        to="/Home"className={`flex title-font font-medium   hover:bold items-center mr-5 ml-12 text-gray-900 ${location.pathname === '/Home' ? 'font-bold border-[#F3B0B7]  border-b-2  text-white ' : 'font-normal'}`}>
         <FaRegGem size={25} className="white-icon"/>
-        <span className={`ml-5 text-xl text-white cursor-pointer ${location.pathname === '/Home' ? ' font-bold underline' : 'hover:font-bold'}`}>
+        <span className={`ml-5 text-xl text-white  cursor-pointer `}>
           Home</span>
         
       </Link>
@@ -26,20 +28,30 @@ const Navbar2 = () => {
       {/* Desktop Navigation */}
       <ul className="list-none sm:flex hidden justify-start items-center flex-1 ml-10">
             <FaGripLinesVertical size={20} className="white-icon mr-5"/>
-            <li className={`${linksDesing} ${location.pathname === '/especialsearch' ? 'font-semibold text-white underline' : 'font-normal'}`}>
-                <Link to='/especialsearch'>Buscar Servicios</Link>
+            <li className={linksDesing}>
+                <Link
+                  className={`py-5 px-2  ${location.pathname === '/especialsearch' ? 'font-semibold border-[#F3B0B7] py-6 border-b-2 bg-[#E03448] text-white ' : 'font-normal'}`}
+                  to='/especialsearch'>Buscar Servicios</Link>
             </li>
-            <li className={`${linksDesing} ${location.pathname === '/offerService' ? 'font-semibold text-white underline' : 'font-normal'}`}>
-                <Link to='/offerService'>Ofrecer Servicios</Link>
+            <li className={linksDesing}>
+                <Link 
+                  className={`py-5 px-2  ${location.pathname === '/offerService' ? 'font-semibold border-[#F3B0B7] py-6 border-b-2 bg-[#E03448] text-white ' : 'font-normal'}`}
+                  to='/offerService'>Ofrecer Servicios</Link>
             </li>
-            <li className={`${linksDesing} ${location.pathname === '/userServices' ? 'font-semibold text-white underline' : 'font-normal'}`}>
-                <Link to='/userServices'>Mis Servicios</Link>
+            <li className={linksDesing}>
+                <Link 
+                  className={`py-5 px-2  ${location.pathname === '/userServices' ? 'font-semibold border-[#F3B0B7] py-6 border-b-2 bg-[#E03448] text-white ' : 'font-normal'}`}
+                  to='/userServices'>Mis Servicios</Link>
             </li>
-            <li className={`${linksDesing} ${location.pathname === '/savedServices' ? 'font-semibold text-white underline' : 'font-normal'}`}>
-                <Link to="/savedServices">Servicios Guardados</Link>
+            <li className={linksDesing}>
+                <Link 
+                   className={`py-5 px-2  ${location.pathname === '/savedServices' ? 'font-semibold border-[#F3B0B7] py-6 border-b-2 bg-[#E03448] text-white ' : 'font-normal'}`}
+                  to="/savedServices">Servicios Guardados</Link>
             </li>
-            <li className={`${linksDesing} ${location.pathname === '/profile' ? 'font-semibold text-white underline' : 'font-normal'}`}>
-                <Link to="/profile">Mi Perfil</Link>
+            <li className={linksDesing}>
+                <Link 
+                   className={`py-5 px-2  ${location.pathname === '/profile' ? 'font-semibold border-[#F3B0B7] py-6 border-b-2 bg-[#E03448] text-white ' : 'font-normal'}`}
+                  to="/profile">Mi Perfil</Link>
             </li>
 
         </ul>

@@ -45,6 +45,7 @@ const ImageCarousel = ({ images }) => {
               src={image.url}
               alt={`Slide ${index + 1}`}
               className="lg:h-60 md:h-16 w-full h-36 mx-auto object-cover object-center"
+              loading="lazy"
             />
           </div>
         ))}

@@ -8,7 +8,7 @@ import { ServiceContext } from '../../contexts/serviceContext';
 import RoomServiceForm2 from '../../components/servicios/forms/roomServiceForm2';
 import OtherServiceForm from '../../components/servicios/forms/otherServiceForm';
 const EdithService = () => {
-  console.log('EdithService');
+  //console.log('EdithService');
   const { id } = useParams();
   const {fetchData, setCurrentOption, tipoServicio, setIdServiceForImg,getImages } = useContext(ServiceContext);
   const [tipoServicioAux, setTipoServicioAux] = useState('');

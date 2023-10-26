@@ -8,7 +8,7 @@ const OfferService = () => {
 
         resetServiceData();
         setCurrentOption('register');
-        console.log('currentOption en OfferService',currentOption);
+        //console.log('currentOption en OfferService',currentOption);
     
       }, [setCurrentOption, currentOption, resetServiceData]);
     return (

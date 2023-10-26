@@ -80,7 +80,7 @@ const EspecialSearch = () => {
             ): (
                   <InvitacionAbuscar />
             )}
-            {console.log('Estos son los servicios: ', services)}
+            
           </div>
         );
       }

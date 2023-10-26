@@ -3,12 +3,7 @@ import {lastServicesAdded } from '../api/servicesApi';
 import CardService4 from '../components/servicios/cards/cardService4';
 import { UserContext } from '../contexts/userContext';
 import { useContext } from 'react';
-
-//import imagen1 from '../images/muak.jpeg';
-//import imagen2 from '../images/copia.png';
 import { CardServiceContext } from '../contexts/cardServiceContext';
-import HomeAnimation from '../components/loaders/animation/homeAnimation';
-//import PageHeader from '../components/headers/pageHeader';
 import PageHeaderHome from '../components/headers/pageHerderHome';
 import CarruselHome from '../components/carrusel/carruselHome';
 
@@ -36,14 +31,13 @@ const Home = () => {
     };
     fetchData();
    }, [userData, setServices, setIsSearch]);
-//<HomeAnimation />
+
     return (
       <>
-      <div className='md:mt-12 mt-10 py-2'></div>
-      <CarruselHome banners={banners} />
-      
-      <PageHeaderHome title="Últimos servicios agregados por otros usuarios"/>
-      {services? <CardService4  />: <h1>AYUDAME DIOS</h1>}
+        <div className='md:mt-12 mt-10 py-2'></div>
+        <CarruselHome banners={banners} />
+        <PageHeaderHome title="Últimos servicios agregados por otros usuarios"/>
+        {services? <CardService4  />: <h1>AYUDAME DIOS</h1>}
       </>
   ) 
 }

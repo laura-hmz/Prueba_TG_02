@@ -15,20 +15,20 @@ export const getServices = async () => {
 
 export const lastServicesAdded = async (id) => {
     const res = await servicesApi.get(`/last-services-added/${id}`)
-    console.log(res.data);
+    //console.log(res.data);
     return res.data;
 }
 
 export const getServicesById = async (id) => {
     const res = await servicesApi.get(`/services/${id}`)
-    console.log(res.data);
+    //console.log(res.data);
     return res.data;
 }
 export const createService = async (service) => {
     try {
       // Realizar una solicitud POST
       const res = await servicesApi.post("/services", service);
-      console.log("Respuesta de la API:", res.data);
+      //console.log("Respuesta de la API:", res.data);
       return res.data;
     } catch (error) {
       // Manejar el error aquí, por ejemplo, imprimirlo en la consola o lanzar una excepción personalizada.
@@ -39,17 +39,17 @@ export const createService = async (service) => {
   
 export const updateService = async (service) => {
     const res = await servicesApi.put(`/services/${service._id}`, service)
-    console.log(res.data);
+    //console.log(res.data);
     return res.data
 }
 export const deleteService = async (id) => {
     const res = await servicesApi.delete(`/services/${id}`)
-    console.log(res.data);
+    //console.log(res.data);
     return res.data
 }
 export const listServicesIdUser = async (id) => {
     const res = await servicesApi.get(`/list-services-user?id=${id}`)
-    console.log(res.data);
+    //console.log(res.data);
     return res.data
 }
 
