@@ -5,7 +5,7 @@ import  {  useEffect, useContext } from 'react';
 import { CardServiceContext } from '../../contexts/cardServiceContext';
 import { useParams } from 'react-router-dom';
 
-import CardUser from '../../components/usuarios/cardUser/CardUser';
+import CardUser from '../../components/usuarios/cardUser/cardUser';
 import CardServicesDetailsUser from '../../components/servicios/cards/cardServicesDetailsUser';
 import PageHeaderHome from '../../components/headers/pageHerderHome';
 const UserDetails = () => {
