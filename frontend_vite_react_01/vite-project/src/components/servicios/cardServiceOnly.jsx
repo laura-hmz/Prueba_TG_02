@@ -2,13 +2,14 @@
 import { useContext } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import {CardServiceContext } from '../../contexts/cardServiceContext';
-//import { UserContext } from '../../contexts/userContext';
+import { UserContext } from '../../contexts/userContext';
 import ImageCarousel from '../carrusel/imageCarrusel';
 import { ServiceContext } from '../../contexts/serviceContext';
 
 const CardServiceOnly = () => {
   const {savedServiceIds, handleClick,onlyService,userDataOnlyService, buttonClick } = useContext(CardServiceContext);
   const {images} = useContext(ServiceContext);
+  const {userData} = useContext(UserContext);
 
   const parrafo = "leading-relaxed lg:text-xl md:text-lg mb-3"
   const titulo = 'title-font text-lg font-medium text-gray-900'
@@ -47,7 +48,7 @@ const CardServiceOnly = () => {
                     />  
                 }
                 <button
-                  className={`absolute top-4 right-4 px-3 border border-gray-100 border-2 py-1 rounded focus:outline-none ${
+                  className={`absolute top-4 right-4 disabled:cursor-not-allowed disabled:bg-gray-400 text-gray-600 px-3 border border-gray-100 border-2 py-1 rounded focus:outline-none ${
                     
                     buttonClick
                       ? 'bg-gray-400 text-gray-600'
@@ -55,6 +56,7 @@ const CardServiceOnly = () => {
                   }`}
                   onClick={() => handleClick(onlyService._id)}
                   style={{ zIndex: 2 }}
+                  disabled={userData._id === userDataOnlyService._id} 
                 >
                   {savedServiceIds.has(onlyService._id) ? '¡Guardado!' : 'Guardar servicio'}
                 </button>

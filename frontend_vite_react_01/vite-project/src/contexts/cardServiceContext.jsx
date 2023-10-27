@@ -25,7 +25,7 @@ export const CardServiceProvider = ({ children }) => {
       const savedServicesIdList = await getSavedServiceList(userData._id);
       setSavedServiceIds(new Set (savedServicesIdList));
 
-      // Mueve el console.log aquí para acceder a serviceSaved después de que se haya establecido
+      
       //console.log('Los servicios guardados son', savedServicesIdList);
     } catch (error) {
       console.error('Error al obtener los servicios:', error);
