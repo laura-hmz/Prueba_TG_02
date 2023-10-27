@@ -12,7 +12,7 @@ import Cargando from "../../components/servicios/searchFormsTipos/componenteCarg
 
 const EspecialSearch = () => {
 
-  const {setServices, setIsSearch, isSearch, services} = useContext(CardServiceContext);
+  const {setServices, setIsSearch, isSearch} = useContext(CardServiceContext);
   const {isLoading, setIsLoading} = useContext(SearchContext);
   const[errorSearch, setErrorSearch] = useState(false);
   const { userData} = useContext(UserContext);

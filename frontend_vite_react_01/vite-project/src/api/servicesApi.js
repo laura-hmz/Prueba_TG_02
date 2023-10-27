@@ -20,10 +20,20 @@ export const lastServicesAdded = async (id) => {
 }
 
 export const getServicesById = async (id) => {
-    const res = await servicesApi.get(`/services/${id}`)
-    //console.log(res.data);
-    return res.data;
-}
+    try {
+      const res = await servicesApi.get(`/services/${id}`);
+      if (res.data && res.data._id) {
+        // Si existe un _id en los datos, entonces se encontró un servicio válido
+        return res.data;
+      } else {
+        return null; // No se encontró un servicio válido
+      }
+    } catch (error) {
+      console.error('Ocurrió un error al obtener el servicio:', error);
+      throw error; 
+    }
+  };
+  
 export const createService = async (service) => {
     try {
       // Realizar una solicitud POST

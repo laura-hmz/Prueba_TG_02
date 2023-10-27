@@ -70,6 +70,7 @@ export const ServiceProvider = ({ children }) => {
       const data = await getServicesById(id);
       setServiceData(data);
       setTipoServicio(data.tipo_servicio);
+      console.log(data);
     } catch (error) {
       console.error('Error al obtener los servicios:', error);
     }
