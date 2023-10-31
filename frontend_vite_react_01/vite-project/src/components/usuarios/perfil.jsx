@@ -4,7 +4,7 @@ import FormsComponentsStyle from '../../components/servicios/servicesComponentes
 import BotonEditar from './usuariosCampos/botonEditar';
 import BotonCancelarU from './usuariosCampos/botonCancelarU';
 const Perfil = () => {
-    const {userDataAux, handleChange,handleSubmit, currentOption,userData} = useContext(UserContext);
+    const {userDataAux, handleChange,handleSubmit, currentOption} = useContext(UserContext);
     const {
         labelClassname,
         selectDesing,
@@ -24,8 +24,10 @@ const Perfil = () => {
         <div className={contenedor}>
             <form  onSubmit={handleSubmit}>
                 <div className='px-7' >
-                    <BotonEditar />
-                    <BotonCancelarU />
+                    <div className='mb-10 md:mb-0'>
+                        <BotonEditar />
+                        <BotonCancelarU />
+                    </div>
                     <div className='text-center'>
                         <div className={divEspace}>
                             <h1 className={tituloServicio}> Información de usuario </h1>

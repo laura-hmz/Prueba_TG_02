@@ -34,7 +34,7 @@ const Home = () => {
 
     return (
       <>
-        <div className='md:mt-12 mt-10 py-2'></div>
+        <div className='md:mt-12 mt-12 py-4'></div>
         <CarruselHome banners={banners} />
         <PageHeaderHome title="Últimos servicios agregados por otros usuarios"/>
         {services? <CardService4  />: <h1>AYUDAME DIOS</h1>}

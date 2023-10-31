@@ -16,14 +16,14 @@ const CarruselHome = ({ banners }) => {
       };
 
   return (
-    <div className="banner-carousel mb-10 md:w-8/9 mx-auto justify-center ">
+    <div className="banner-carousel mb-10 md:w-full  mx-auto justify-center ">
       <Slider {...settings}>
         {banners.map((banner, index) => (
           <div key={index}>
             <img
               src={banner.url}
               alt={`Banner ${index + 1}`}
-              className="w-full"
+              className=" object-cover"
               loading="lazy"
             />
           </div>

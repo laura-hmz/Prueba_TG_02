@@ -78,8 +78,10 @@ const TransportServiceForm3 = ({option}) =>{
         <form  onSubmit={handleSubmit}>
         
             <div className={divDesing}>
+              <div className='mb-10 md:mb-0'>
                 <BotonCancelar />
                 <BotonEditar />
+              </div>
                 <div className={divEspace}>
                     <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio de transporte' : currentOption=== 'register'?'Registrar servicio de transporte': 'Servicio de transporte'} </h1>
                 </div>

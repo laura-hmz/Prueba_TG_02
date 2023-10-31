@@ -84,8 +84,10 @@ const RoomServiceForm2 = ({option}) =>{
         <form  onSubmit={handleSubmit}>
         
             <div className={divDesing}>
-                <BotonCancelar />
-                <BotonEditar />
+                <div className='mb-10 md:mb-0'>
+                    <BotonCancelar />
+                    <BotonEditar />
+                </div>
                 <div className={divEspace}>
                     <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio de habitación' : currentOption=== 'register'?'Registrar servicio de habitación': 'Servicio de habitación u hospedaje'} </h1>
                     <label className={labelClassname} htmlFor="nombre">Nombre del servicio:</label>

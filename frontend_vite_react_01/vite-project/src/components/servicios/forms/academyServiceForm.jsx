@@ -78,13 +78,14 @@ const AcademyServiceForm = ({option}) =>{
 
     <div className={contenedor}>
         <form  onSubmit={handleSubmit}>
-        
-            <div className={divDesing}>
+          <div className={divDesing}>
+              <div className='mb-10 md:mb-0'>
                 <BotonCancelar />
                 <BotonEditar />
-                <div className={divEspace}>
-                    <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar asesoría académica' : currentOption=== 'register'?'Registrar asesoría académica':'Asesoria académica'} </h1>
-                    <label className={labelClassname} htmlFor="nombre">Nombre de la matéria:</label>
+              </div>
+              <div className={divEspace}>
+                <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar asesoría académica' : currentOption=== 'register'?'Registrar asesoría académica':'Asesoria académica'} </h1>
+                <label className={labelClassname} htmlFor="nombre">Nombre de la matéria:</label>
                       <input
                         className={inputDesing}
                         type="text"

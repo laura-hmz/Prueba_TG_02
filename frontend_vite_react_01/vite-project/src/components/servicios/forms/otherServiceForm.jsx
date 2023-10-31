@@ -84,8 +84,10 @@ const OtherServiceForm = ({option}) =>{
     <div className={contenedor}>
         <form  onSubmit={handleSubmit}>
             <div className={divDesing}>
-                <BotonCancelar />
-                <BotonEditar />
+                <div className='mb-10 md:mb-0'>
+                    <BotonCancelar />
+                    <BotonEditar />
+                </div>
                 <div className={divEspace}>
                     <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio' : currentOption=== 'register'? 'Registrar servicio': 'Detalles del servicio'} </h1>
                     <label className={labelClassname} htmlFor="nombre">Nombre del servicio:</label>
