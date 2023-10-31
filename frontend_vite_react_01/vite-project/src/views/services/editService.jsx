@@ -11,12 +11,13 @@ import Advertencia404 from '../../components/avisosPersonalizados/advertenciaPer
 const EdithService = () => {
   //console.log('EdithService');
   const { id } = useParams();
-  const {fetchData, setCurrentOption, tipoServicio, setIdServiceForImg,
+  const {setCurrentOption, tipoServicio, setIdServiceForImg,
     getImages,setServiceData, setTipoServicio} = useContext(ServiceContext);
   //const [tipoServicioAux, setTipoServicioAux] = useState('');
   const [userHasPermissionToEditService, setUserHasPermissionToEditService] = useState(false);
   const { userData } = useContext(UserContext);
   const [servicioExiste, setServicioExiste] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   
 
   useEffect(() => {
@@ -47,8 +48,11 @@ const EdithService = () => {
         }
         
        } catch (error) {
-         console.error('Error al obtener los servicios:', error);
-       }
+        console.error('Error al obtener los servicios:', error);
+       } finally {
+        setIsLoading(false); // Indicador de carga: los datos han sido cargados
+      }
+       
      };
     
      fetchData2();
@@ -58,7 +62,10 @@ const EdithService = () => {
 
   return (
     <>
-      {servicioExiste && userHasPermissionToEditService ? (
+      {isLoading ? (
+        // Indicador de carga mientras se obtienen los datos
+        null
+      ) : servicioExiste && userHasPermissionToEditService ? (
         tipoServicio === 'Servicio de transporte' ? (
           <TransportServiceForms3 />
         ) : tipoServicio === 'Asesorías Académicas' ? (
@@ -69,10 +76,7 @@ const EdithService = () => {
           <OtherServiceForm />
         )
       ) : (
-       
-          
-          <Advertencia404 mensaje={'no encontramos el servicio que deseas editar'}/>
-        
+        <Advertencia404 mensaje={'no encontramos el servicio que deseas editar'} />
       )}
     </>
   );

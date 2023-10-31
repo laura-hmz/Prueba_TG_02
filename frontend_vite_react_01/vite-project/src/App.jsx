@@ -53,7 +53,7 @@ function App() {
       <CardServiceProvider>
       <SearchContextProvider>
         <BrowserRouter>
-        <div className="">
+       
           {isAuthenticated && <NavBar2 />}
           <Routes>
           <Route path='/' element={isAuthenticated ? <Navigate to="/Home" /> : <Home2/>} />
@@ -75,10 +75,11 @@ function App() {
             <Route path='/userServices' element={getReturn(<UserServices/>)} />
             <Route path='/offerService' element={getReturn(<OfferService/>)}/>
             <Route path='/userDetails/:id' element={getReturn(<UserDetails/>)}/>
+            <Route path='*' element={<Navigate to="/Home" />} />
             
 
           </Routes>
-          </div>
+    
         </BrowserRouter>
         </SearchContextProvider>
         </CardServiceProvider>

@@ -9,6 +9,7 @@ import PageHeader from '../../components/headers/pageHeader';
 const UserServices = () => {
     const [services, setServices] = useState([]);
     const { userData } = useContext(UserContext);
+    const [isLoading, setIsLoading] = useState(true)
     //const [nombre, setNombre] = useState('');
 
     useEffect(() => {
@@ -19,6 +20,9 @@ const UserServices = () => {
           setServices(data); 
         } catch (error) {
           console.error('Error al obtener los servicios:', error);
+        }
+        finally {
+          setIsLoading(false); // Indicador de carga: los datos han sido cargados
         }
       };
   
@@ -44,15 +48,16 @@ const UserServices = () => {
   
     return (
       <>
-        <PageHeader title="Mis Servicios"/>
-        {/* Verifica si services es un arreglo antes de pasarlo a CardService3 */}
-        {Array.isArray(services) && services.length > 0 ? (
-        <CardServiceModify services={services} onDeleteService={handleDeleteService}></CardServiceModify>
+        <PageHeader title="Mis Servicios" />
+        {isLoading ? (
+          null
+        ) : Array.isArray(services) && services.length > 0 ? (
+          <CardServiceModify services={services} onDeleteService={handleDeleteService} />
         ) : (
           <FolderLoader />
-      )}
-    </>
-  )
+        )}
+      </>
+    );
   };
 
 export default UserServices
