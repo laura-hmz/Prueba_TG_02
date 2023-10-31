@@ -9,10 +9,10 @@ export const UserProvider = ({ children }) => {
   const [userEmail, setUserEmail] = useState('');
   const [userData, setUserData] = useState(null);
   const { isAuthenticated, user, isLoading } = useAuth0();
+  const [isLoadingUser, setIsLoadingUser] = useState(false);
   const [userExists, setUserExists] = useState(false);
   const [paginaRegistro, setPaginaRegistro] = useState('1');
   const [currentOption, setCurrentOption] = useState('show');
-
   const [userDataAux, setUserDataAux] = useState({
        
     correo: userEmail,
@@ -39,12 +39,14 @@ export const UserProvider = ({ children }) => {
         const userDataFromDatabase = await getUserByEmail(user.email);
         if (userDataFromDatabase.message === undefined) {
           console.log('el usuario si existe en la base de datos')
-          setUserExists(true);
           setUserData(userDataFromDatabase);
+          setUserExists(true);
+          setIsLoadingUser(false);
 
         } else if (userExists === false) {
-            console.log('el usuario no existe en la base de datos')
-            setUserExists(false);
+          console.log('el usuario no existe en la base de datos')
+          setUserExists(false);
+          setIsLoadingUser(false);
         }
         
       }
@@ -85,7 +87,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     // ...
-
+    setIsLoadingUser(true);
     getUserData();
   }, [isAuthenticated, user, getUserData]);
 
@@ -106,10 +108,11 @@ export const UserProvider = ({ children }) => {
     handleChange,
     handleSubmit,
     currentOption,
-    setCurrentOption
+    setCurrentOption,
+    isLoadingUser
   };
 
-  return (
+  return ( 
     <UserContext.Provider 
       value={userContextValue}>
       {children}

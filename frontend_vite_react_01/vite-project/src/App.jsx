@@ -30,60 +30,62 @@ import UserDetails from './views/users/userDetails.jsx';
 
 
 function App() {
-
-  const {isAuthenticated, isLoading, userExists} = useContext(UserContext);
-  if (isLoading) {
+  
+  const {isAuthenticated, isLoading, userExists, isLoadingUser} = useContext(UserContext);
+ 
+  if (isLoading || isLoadingUser && isAuthenticated) {
     return <LoaderInit />;
   }
 
   function getReturn(component) {
-    if (isAuthenticated) {
-      if (userExists) {
+    console.log('user exists', userExists);
+    if (isAuthenticated && userExists) {
         return component;
-      } else {
-        return <UserRegister />;
       }
-    } else {
-      return <Home2 />;
+      if (isAuthenticated && !userExists) {
+        return <Navigate to="/UserRegister" />;
+      }
+      else {
+        return <Navigate to="/login" />;
     }
   }
  
   return (
     <ServiceProvider>
       <CardServiceProvider>
-      <SearchContextProvider>
-        <BrowserRouter>
-       
-          {isAuthenticated && <NavBar2 />}
-          <Routes>
-          <Route path='/' element={isAuthenticated ? <Navigate to="/Home" /> : <Home2/>} />
-            
-            <Route path='/explorar' element={isAuthenticated && userExists ? <Explorar/> :  <Home2/> }/>
-            <Route path='/UserRegister' element={isAuthenticated ? <UserRegister/> : <Home2/> }/>
-            <Route path='/Home' element={getReturn(<Home/>) }/>
-            <Route path='/profile' element={getReturn(<Profile/>)}/>
-            <Route path='/editProfile'  element={getReturn(<EditProfile/>) }/>
-            <Route path='/especialsearch' element={getReturn(<Especialsearch/>)}/>
-            <Route path='/editService/:id' element={getReturn(<EditService/>)}/>
-            <Route path="/register/transport" element={getReturn(<TransportServiceForms3 option="register" />)}/>
-            <Route path="/register/academic-advising" element={getReturn(<AcademyServiceForm option="register" />) } />
-            <Route path="/register/room" element={getReturn(<RoomServiceForm2 option="register"/>)} />
-            <Route path="/register/other" element={getReturn(<OtherServiceForm  option="register"/>)} />    
-            <Route path='/savedServices' element={getReturn(<SavedServices/>)} />
-            <Route path='/searchService' element={ getReturn(<SearchService/>)}/>
-            <Route path='/serviceDetails/:id' element={getReturn(<ServiceDetails/>)}/>
-            <Route path='/userServices' element={getReturn(<UserServices/>)} />
-            <Route path='/offerService' element={getReturn(<OfferService/>)}/>
-            <Route path='/userDetails/:id' element={getReturn(<UserDetails/>)}/>
-            <Route path='*' element={<Navigate to="/Home" />} />
-            
+        <SearchContextProvider>
+          <BrowserRouter>
+        
+            {isAuthenticated && <NavBar2 />}
+            <Routes>
+              <Route path='/' element={isAuthenticated ? <Navigate to="/Home" /> : <Navigate to="/login"/>} />
+          
+              <Route path='/explorar' element={isAuthenticated && userExists ? <Explorar/> :  <Navigate to="/login"/> }/>
+              <Route path='/UserRegister' element={isAuthenticated && !userExists ? <UserRegister/> :isAuthenticated && userExists? <Navigate to="/Home" />: <Navigate to="/login"/> }/>
+              <Route path='/Home' element={getReturn(<Home/>) }/>
+              <Route path='/profile' element={getReturn(<Profile/>)}/>
+              <Route path='/editProfile'  element={getReturn(<EditProfile/>) }/>
+              <Route path='/especialsearch' element={getReturn(<Especialsearch/>)}/>
+              <Route path='/editService/:id' element={getReturn(<EditService/>)}/>
+              <Route path="/register/transport" element={getReturn(<TransportServiceForms3 option="register" />)}/>
+              <Route path="/register/academic-advising" element={getReturn(<AcademyServiceForm option="register" />) } />
+              <Route path="/register/room" element={getReturn(<RoomServiceForm2 option="register"/>)} />
+              <Route path="/register/other" element={getReturn(<OtherServiceForm  option="register"/>)} />    
+              <Route path='/savedServices' element={getReturn(<SavedServices/>)} />
+              <Route path='/searchService' element={ getReturn(<SearchService/>)}/>
+              <Route path='/serviceDetails/:id' element={getReturn(<ServiceDetails/>)}/>
+              <Route path='/userServices' element={getReturn(<UserServices/>)} />
+              <Route path='/offerService' element={getReturn(<OfferService/>)}/>
+              <Route path='/userDetails/:id' element={getReturn(<UserDetails/>)}/>
+              <Route path='*' element={<Navigate to="/Home" />} />
+              <Route path='/login' element={!isAuthenticated ? <Home2/> : <Navigate to="/Home" />} />
 
-          </Routes>
-    
-        </BrowserRouter>
+            </Routes>
+            
+          </BrowserRouter>
         </SearchContextProvider>
-        </CardServiceProvider>
-      </ServiceProvider>
+      </CardServiceProvider>
+    </ServiceProvider>
   
   )
       
