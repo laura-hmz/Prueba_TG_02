@@ -1,4 +1,7 @@
 const serviceSchema = require("../models/service");
+const savedServicesSchema = require("../models/savedServices");
+const Image = require('../models/imageModel');
+const cloudinary = require('../../cloudinaryConfig');
 
 //CRUD BASICO
 const createService = async (req, res) => {
@@ -21,13 +24,48 @@ const getServiceId = async (req, res) => {
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 }
+// const deleteService2 = async (req, res) => {
+//   const { id } = req.params;
+
+//   serviceSchema
+//     .deleteOne({ _id: id })
+//     .then((data) => res.json(data))
+//     .catch((error) => res.json({ message: error }));
+// }
+
 const deleteService = async (req, res) => {
   const { id } = req.params;
-  serviceSchema
-    .deleteOne({ _id: id })
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-}
+  try {
+    const service = await serviceSchema.findById(id);
+    if (!service) {
+      return res.status(404).json({ message: "Servicio no encontrado" });
+    }
+
+    const serviceImages = await Image.find({ servicioId: id });
+    for (const image of serviceImages) {
+      const imagen = await Image.findById(image._id);
+      await cloudinary.uploader.destroy(imagen.public_id);
+      await Image.findByIdAndRemove(image._id);
+    }
+
+    const serviceSavedServices = await savedServicesSchema.find({ id_servicio: id });
+    for (const savedService of serviceSavedServices) {
+      await savedServicesSchema.findByIdAndDelete(savedService._id);
+    }
+
+    // Elimina el servicio principal
+    const result = await serviceSchema.deleteOne({ _id: id });
+    if (!result) {
+      return res.status(404).json({ message: "Error al eliminar el servicio" });
+    }
+
+    res.json({ message: "Servicio eliminado con éxito" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const updateService = async (req, res) => {
   const { id } = req.params;
   const { id_usuario, nombre,descripcion,horarios,tipo_servicio,estado,

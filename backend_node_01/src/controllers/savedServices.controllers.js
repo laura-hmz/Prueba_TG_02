@@ -16,7 +16,7 @@ const deleteServiceSaved = async (req, res) => {
         const { savedServiceId } = req.params;
         const result = await savedServicesSchema.findByIdAndDelete(savedServiceId);
         if (!result) {
-            return res.status(404).json({ message: "Servicio 44 guardado no encontrado" });
+            return res.status(404).json({ message: "Servicio guardado no encontrado" });
         }
         res.json({ message: "Servicio guardado eliminado exitosamente" });
     } catch (error) {
