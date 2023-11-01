@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const removeAccents = require('remove-accents');
+const moment = require('moment-timezone');
 
 const horarioSchema = mongoose.Schema({
     dia_semana: { type: String, required: true },
@@ -62,7 +63,9 @@ const serviceSchema = mongoose.Schema({
   }
 },
 {
-    timestamps: true
+    timestamps: {
+        currentTime: () => moment().tz('America/Bogota').toDate(),
+      },
 }
 );
 

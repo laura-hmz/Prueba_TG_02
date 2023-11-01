@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
-//require("dotenv").config();
+require("dotenv").config();
 const cloudinaryConfig = require('../cloudinaryConfig'); 
 const userRoute = require("./routes/user.routes");
 const serviceRoute = require("./routes/service.routes");
 const savedServicesRoute = require("./routes/savedServices.routes");
 const imageRoute = require("./routes/image.routes");
-const MONGODB_URI='mongodb://localhost:27017/Prueba_TG00'
+//const MONGODB_URI='mongodb://localhost:27017/Prueba_TG00'
 
 // settings
 const app = express();
@@ -37,8 +37,9 @@ app.get("/", (req, res) => {
 
 // mongodb connection
 mongoose
-  .connect(MONGODB_URI)
-  .then(() => console.log("Connected to MongoDB"))
+  .connect(
+    process.env.MONGODB_URI)
+  .then(() => console.log("Connected to MongoDB Atlas"))
   .catch((error) => console.error(error));
 
 // server listening

@@ -81,7 +81,6 @@ function App() {
               <Route path='/login' element={!isAuthenticated ? <Home2/> : <Navigate to="/Home" />} />
 
             </Routes>
-            
           </BrowserRouter>
         </SearchContextProvider>
       </CardServiceProvider>
