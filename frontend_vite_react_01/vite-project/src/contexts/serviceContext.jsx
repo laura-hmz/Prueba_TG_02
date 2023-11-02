@@ -70,7 +70,7 @@ export const ServiceProvider = ({ children }) => {
       const data = await getServicesById(id);
       setServiceData(data);
       setTipoServicio(data.tipo_servicio);
-      console.log(data);
+      //console.log(data);
     } catch (error) {
       console.error('Error al obtener los servicios:', error);
     }
@@ -104,7 +104,7 @@ export const ServiceProvider = ({ children }) => {
           ...prevServiceData,
           caracteristicas_habitacion_1: [...prevServiceData.caracteristicas_habitacion_1, characteristic],
         }));
-        console.log('Caracteristica agregada:', characteristic);
+        //console.log('Caracteristica agregada:', characteristic);
       } else {
         // Si el checkbox se desmarcó, lo eliminamos de la lista
         setServiceData((prevServiceData) => ({

@@ -19,9 +19,9 @@ const HorarioCampo = () => {
      const validateHorario = (horario) => {
         const horaInicio = parseInt(horario.hora_de_inicio, 10); // Convierte a entero
         const horaFinalizacion = parseInt(horario.hora_de_finalizacion, 10);
-        console.log('horaInicio',horaInicio, typeof horaInicio); 
-        console.log('horaFinalizacion',horaFinalizacion);
-        console.log(horaInicio > horaFinalizacion);
+        //console.log('horaInicio',horaInicio, typeof horaInicio); 
+        //console.log('horaFinalizacion',horaFinalizacion);
+        //console.log(horaInicio > horaFinalizacion);
          if (horaInicio >= horaFinalizacion ) {
              return 'Asegurate de que la hora de finalización sea mayor a la de inicio';
          }

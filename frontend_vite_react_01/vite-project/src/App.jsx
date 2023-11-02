@@ -38,7 +38,7 @@ function App() {
   }
 
   function getReturn(component) {
-    console.log('user exists', userExists);
+    //console.log('user exists', userExists);
     if (isAuthenticated && userExists) {
         return component;
       }

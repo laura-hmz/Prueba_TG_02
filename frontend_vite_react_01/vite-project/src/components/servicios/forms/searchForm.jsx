@@ -22,9 +22,9 @@ const SearchForm = ({ onSearch, isLoading, idUser }) => {
       permite_mascota: searchParams.permite_mascota ? searchParams.permite_mascota : ""
     };
     // Envía la solicitud de búsqueda al servidor con los parámetros actualizados
-    console.log('Nuevos parámetros:', sanitizedSearchParams);
-    console.log('idUser EN form', idUser);
-    console.log('El id del cliente', sanitizedSearchParams.id_cliente);
+    //console.log('Nuevos parámetros:', sanitizedSearchParams);
+    //console.log('idUser EN form', idUser);
+    //console.log('El id del cliente', sanitizedSearchParams.id_cliente);
     onSearch(sanitizedSearchParams);
   };
   

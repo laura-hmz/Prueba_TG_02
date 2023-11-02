@@ -1,19 +1,32 @@
 import axios from 'axios';
 
+// const cloudinaryApi2 = axios.create({
+//   baseURL: 'http://localhost:3000/api/',
+//   headers: {
+//     'Content-Type': 'application/json',
+//   }
+// })
+
+// const cloudinaryApi3 = axios.create({
+//   baseURL: 'http://localhost:3000/api/',
+//   headers: {
+//     'Content-Type': 'multipart/form-data',
+//   }
+// })
+
 const cloudinaryApi2 = axios.create({
-  baseURL: 'http://localhost:3000/api/',
+  baseURL: 'https://backend-services-univalle.onrender.com/api/',
   headers: {
-    'Content-Type': 'application/json',
-  }
+      'Content-Type': 'application/json',
+  },
 })
 
 const cloudinaryApi3 = axios.create({
-  baseURL: 'http://localhost:3000/api/',
+  baseURL: 'https://backend-services-univalle.onrender.com/api/',
   headers: {
     'Content-Type': 'multipart/form-data',
-  }
+  },
 })
-
 
 export const subirImagen = async (selectedFile, servicioId) => {
   try {
@@ -24,7 +37,7 @@ export const subirImagen = async (selectedFile, servicioId) => {
       formData.append('servicioId', servicioId);
    
     const res = await cloudinaryApi3.post('/subir-imagen', formData);
-    console.log(res.data)
+    //console.log(res.data)
     return res.data;
   } catch (error) {
     console.error('Error al subir la imagen a Cloudinary', error);
@@ -45,7 +58,7 @@ export const obtenerImagenesPorServicio = async (servicioId) => {
 export const eliminarImagen = async (imagenId) => {
   try {
     const res = await cloudinaryApi2.delete(`/eliminar-imagen/${imagenId}`);
-    console.log(res.data)
+    //console.log(res.data)
     return res.data;
   } catch (error) {
     console.error('Error al eliminar la imagen', error);

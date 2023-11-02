@@ -1,26 +1,33 @@
 import axios from 'axios'
 
+// const usersApi = axios.create({
+//     baseURL: 'http://localhost:3000/api/',
+//     headers: {
+//         'Content-Type': 'application/json',
+//     },
+// })
+
 const usersApi = axios.create({
-    baseURL: 'http://localhost:3000/api/',
+    baseURL: 'https://backend-services-univalle.onrender.com/api/',
     headers: {
         'Content-Type': 'application/json',
     },
-})
+  })
 
 export const getUserByEmail = async (email) => {
     const res = await usersApi.get(`/users/email/${email}`)
-    console.log(res.data);
+    //console.log(res.data);
     return res.data;
 }
 
 export const createUser = async (user) => {
     const res = await usersApi.post('/users', user)
-    console.log(res.data);
+    //console.log(res.data);
     return res.data;
 }
 export const updateUser = async (user) => {
     const res = await usersApi.put(`/users/${user._id}`, user)
-    console.log(res.data);
+    //console.log(res.data);
     return res.data;
 }
 export const getUserId = async (id) => {

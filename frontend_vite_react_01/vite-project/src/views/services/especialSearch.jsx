@@ -44,7 +44,7 @@ const EspecialSearch = () => {
         precioMinimo,
         precioMaximo
       });
-      console.log(results);
+      //console.log(results);
       // Actualiza los resultados y el estado de carga
       if(results.message){
         setErrorSearch(true);

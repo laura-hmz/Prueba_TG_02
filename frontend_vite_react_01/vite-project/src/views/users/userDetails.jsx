@@ -21,7 +21,7 @@ const UserDetails = () => {
       try {
       
         const userId = await getUserId(id);
-        console.log(userId);
+        //console.log(userId);
 
         if (userId === undefined || userId === null) {
           setUserExist(false);

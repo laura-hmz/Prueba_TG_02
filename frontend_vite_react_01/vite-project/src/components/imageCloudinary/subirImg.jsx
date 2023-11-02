@@ -10,8 +10,8 @@ const SubirImg = () => {
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
-    console.log(e.target.files[0]);
-    console.log('Archivo selecionado', selectedFile);
+    //console.log(e.target.files[0]);
+    //console.log('Archivo selecionado', selectedFile);
   };
 
 

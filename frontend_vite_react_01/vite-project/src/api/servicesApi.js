@@ -1,10 +1,16 @@
 import axios from 'axios'
 
+// const servicesApi = axios.create({
+//     baseURL: 'http://localhost:3000/api/',
+//     headers: {
+//         'Content-Type': 'application/json',
+//     },
+// })
 const servicesApi = axios.create({
-    baseURL: 'http://localhost:3000/api/',
-    headers: {
-        'Content-Type': 'application/json',
-    },
+  baseURL: 'https://backend-services-univalle.onrender.com/api/',
+  headers: {
+      'Content-Type': 'application/json',
+  },
 })
 
 export const getServices = async () => {
@@ -69,7 +75,7 @@ export const busquedaMatchmaking = async (searchParams) => {
   
     // Realiza la solicitud GET con la cadena de consulta
     const res = await servicesApi.get(`/survey-results-array?${queryString}`);
-    console.log(queryString);
-    console.log(res.data);
+    //console.log(queryString);
+    //console.log(res.data);
     return res.data;
   };

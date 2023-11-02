@@ -38,13 +38,13 @@ export const UserProvider = ({ children }) => {
         setUserEmail(user.email);
         const userDataFromDatabase = await getUserByEmail(user.email);
         if (userDataFromDatabase.message === undefined) {
-          console.log('el usuario si existe en la base de datos')
+          //console.log('el usuario si existe en la base de datos')
           setUserData(userDataFromDatabase);
           setUserExists(true);
           setIsLoadingUser(false);
 
         } else if (userExists === false) {
-          console.log('el usuario no existe en la base de datos')
+          //console.log('el usuario no existe en la base de datos')
           setUserExists(false);
           setIsLoadingUser(false);
         }
@@ -57,7 +57,7 @@ export const UserProvider = ({ children }) => {
 
   const registerUser = async () => {
     try {
-      console.log('registrando usuario');
+      //console.log('registrando usuario');
       createUser(userDataAux);
       setUserData(userDataAux);
       userExists(true);
@@ -77,12 +77,12 @@ export const UserProvider = ({ children }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Esto es lo que se va a guardar',userDataAux);
+    //console.log('Esto es lo que se va a guardar',userDataAux);
     userDataAux.correo=userEmail;
     setUserData(userDataAux);
     await updateUser(userDataAux);
     setCurrentOption('show');
-    console.log('currrentOption',currentOption);
+    //console.log('currrentOption',currentOption);
   }
 
   useEffect(() => {
