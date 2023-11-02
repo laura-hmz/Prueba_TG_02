@@ -34,7 +34,7 @@ const CardUser = () => {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                     <div className="md:col-span-1  px-2  justify-center flex  items-center ">
-                      <FaUserCircle size={140} className="text-[#0E87CC] mb-3 "/>
+                      <FaUserCircle size={140} className="text-indigo-500 mb-3 "/>
                     </div>
                     <div className="md:col-span-4 p-4">
                       <div className={divGrid}>
