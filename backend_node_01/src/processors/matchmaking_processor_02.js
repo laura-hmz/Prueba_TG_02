@@ -3,7 +3,8 @@ const { PythonShell } = require('python-shell');
 // Función para ejecutar el algoritmo Python
 function procesadorPrueba(arrayOfNumbers, arrayOfIds, querySample) {
     // Ruta al script de Python
-    const pythonScriptPath = '/src/python-scripts/matchmaking_algorithm.py';
+    const pythonScriptPath = '../../python-scripts/matchmaking_algorithm.py
+';
 
     // Opciones para configurar la ejecución
     const options = {
