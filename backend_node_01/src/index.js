@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 
 // configuarcion de cors
 const corsOptions = {
-  origin: 'http://127.0.0.1:5173', // Reemplaza esto con tu origen específico
+  origin: ['http://127.0.0.1:5173','https://servicios-univalle.onrender.com', 'http://localhost:8000'], // Reemplaza esto con tu origen específico
   optionsSuccessStatus: 200 // Algunos navegadores antiguos (IE11) pueden requerir esto
 };
 app.use(cors(corsOptions));
