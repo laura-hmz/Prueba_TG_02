@@ -16,7 +16,8 @@ import { CardServiceContext } from '../../contexts/cardServiceContext';
 //import { ServiceContext } from '../../contexts/serviceContext';
 //import CardService4 from './cards/cardService4';
 //import Loader2 from '../../components/loaders/loader2'
-import EncuestaForm from "../encuesta/encuestaForm";
+//import EncuestaForm from "../encuesta/encuestaForm";
+import HomeAnimation from '../loaders/animation/homeAnimation';
 //import PreguntasForm from "../encuesta/preguntas";
 //import SubirImg from '../imageCloudinary/subirImg';
 //import ImageGallery from '../imageCloudinary/imageGalery';
@@ -39,12 +40,8 @@ const Explorar = () => {
       
         const userId = await getUserId(id);
         setUserDataOnlyService(userId);
-
         const data = await listServicesIdUser(id);
         setServicesUserDetails(data);
-
-
-        
 
       } catch (error) {
         console.error('Error al obtener los servicios:', error);
@@ -56,8 +53,7 @@ const Explorar = () => {
 
   return (
     <>
-      MUAKK
-      <EncuestaForm />
+      <HomeAnimation />
     </>
     
   );

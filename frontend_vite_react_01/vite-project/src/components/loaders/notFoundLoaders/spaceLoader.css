@@ -299,7 +299,7 @@
   /* Consulta de medios para dispositivos móviles */
 @media (max-width: 1199px) {
     .rocket {
-      transform: translateY(40%) scale(0.5); /* Tamaño más pequeño para dispositivos móviles */
+      transform: translateY(90%) scale(0.5); /* Tamaño más pequeño para dispositivos móviles */
     }
   }
   

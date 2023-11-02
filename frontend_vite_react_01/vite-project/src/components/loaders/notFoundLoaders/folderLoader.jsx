@@ -22,12 +22,12 @@ const FolderLoader = () => {
             </div>
 
             <div className={divGridSub}>
-            <div className="container2">
-                <div className="folder">
-                    <div className="top"></div>
-                    <div className="bottom"></div>
-                </div>
-               
+                <div className="container2">
+                    <div className="folder">
+                        <div className="top"></div>
+                        <div className="bottom"></div>
+                    </div>
+                
                 </div>
             </div>
 

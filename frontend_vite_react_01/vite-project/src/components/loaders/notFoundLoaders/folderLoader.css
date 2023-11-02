@@ -24,8 +24,13 @@
 @media (max-width: 767px) {
     .folder {
         animation: float 3s infinite linear;
-        transform: translateY(50px);
+        transform: translateY(0px);
     }
+    .container2 {
+        height: 50vh;
+        width: 50vh;
+    }
+
 }
 
 /* Estilos para escritorio (pantallas más grandes) */
