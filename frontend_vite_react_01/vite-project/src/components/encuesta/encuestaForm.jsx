@@ -28,7 +28,7 @@ const EncuestaForm = () => {
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Esto es lo que se va a guardar',userDataAux);
+        //console.log('Esto es lo que se va a guardar',userDataAux);
         userDataAux.correo=userEmail;
         setPaginaRegistro('2');
       
@@ -84,7 +84,7 @@ const EncuestaForm = () => {
                             onChange={handleChange}
                             required
                             >
-                            <option value="">----</option> 
+                            <option value="">-Selecciona una opción-</option> 
                             <option value="masculino">M</option>
                             <option value="femenino">F</option>
                             <option value="otro">Otro</option>
@@ -100,50 +100,47 @@ const EncuestaForm = () => {
                             onChange={handleChange}
                             required
                             >
-                            <option value="">----</option>
-                            <option value="">Selecciona una ciudad</option>
-                            <option value="Cali">Cali</option>
-                            <option value="Buenaventura">Buenaventura</option>
-                            <option value="Palmira">Palmira</option>
                             <option value="tuluá">Tuluá</option>
-                            <option value="Cartago">Cartago</option>
-                            <option value="Buga">Buga</option>
-                            <option value="Jamundí">Jamundí</option>
-                            <option value="Yumbo">Yumbo</option>
-                            <option value="Candelaria">Candelaria</option>
-                            <option value="Florida">Florida</option>
-                            <option value="El Cerrito">El Cerrito</option>
-                            <option value="Pradera">Pradera</option>
-                            <option value="Sevilla">Sevilla</option>
-                            <option value="Zarzal">Zarzal</option>
-                            <option value="Dagua">Dagua</option>
-                            <option value="Roldanillo">Roldanillo</option>
-                            <option value="La Unión">La Unión</option>
-                            <option value="Guacarí">Guacarí</option>
-                            <option value="Caicedonia">Caicedonia</option>
-                            <option value="Bugalagrande">Bugalagrande</option>
-                            <option value="Ansermanuevo">Ansermanuevo</option>
-                            <option value="Ginebra">Ginebra</option>
-                            <option value="Trujillo">Trujillo</option>
-                            <option value="Andalucía">Andalucía</option>
-                            <option value="San Pedro">San Pedro</option>
-                            <option value="Riofrío">Riofrío</option>
-                            <option value="Toro">Toro</option>
-                            <option value="Yotoco">Yotoco</option>
-                            <option value="Darién">Darién</option>
-                            <option value="Bolívar">Bolívar</option>
-                            <option value="Obando">Obando</option>
-                            <option value="Restrepo">Restrepo</option>
-                            <option value="La Victoria">La Victoria</option>
                             <option value="Alcalá">Alcalá</option>
-                            <option value="La Cumbre">La Cumbre</option>
-                            <option value="Vijes">Vijes</option>
+                            <option value="Andalucía">Andalucía</option>
+                            <option value="Ansermanuevo">Ansermanuevo</option>
+                            <option value="Argelia">Argelia</option>
+                            <option value="Bolívar">Bolívar</option>
+                            <option value="Buga">Buga</option>
+                            <option value="Buenaventura">Buenaventura</option>
+                            <option value="Cali">Cali</option>
+                            <option value="Candelaria">Candelaria</option>
+                            <option value="Caicedonia">Caicedonia</option>
+                            <option value="Cartago">Cartago</option>
+                            <option value="Dagua">Dagua</option>
+                            <option value="Darién">Darién</option>
                             <option value="El Águila">El Águila</option>
                             <option value="El Cairo">El Cairo</option>
+                            <option value="El Cerrito">El Cerrito</option>
                             <option value="El Dovio">El Dovio</option>
-                            <option value="Versalles">Versalles</option>
-                            <option value="Argelia">Argelia</option>
+                            <option value="Florida">Florida</option>
+                            <option value="Ginebra">Ginebra</option>
+                            <option value="Guacarí">Guacarí</option>
+                            <option value="Jamundí">Jamundí</option>
+                            <option value="La Cumbre">La Cumbre</option>
+                            <option value="La Unión">La Unión</option>
+                            <option value="La Victoria">La Victoria</option>
+                            <option value="Obando">Obando</option>
+                            <option value="Palmira">Palmira</option>
+                            <option value="Pradera">Pradera</option>
+                            <option value="Restrepo">Restrepo</option>
+                            <option value="Roldanillo">Roldanillo</option>
+                            <option value="San Pedro">San Pedro</option>
+                            <option value="Sevilla">Sevilla</option>
+                            <option value="Toro">Toro</option>
+                            <option value="Trujillo">Trujillo</option>
                             <option value="Ulloa">Ulloa</option>
+                            <option value="Versalles">Versalles</option>
+                            <option value="Vijes">Vijes</option>
+                            <option value="Yotoco">Yotoco</option>
+                            <option value="Yumbo">Yumbo</option>
+                            <option value="Zarzal">Zarzal</option>
+
                         </select>
                       </div> 
                     </div>
@@ -158,7 +155,7 @@ const EncuestaForm = () => {
                             onChange={handleChange}
                             required
                             >
-                            <option value="">----</option> 
+                            <option value="">-Selecciona una opción-</option> 
                             <option value="ingenieria de sistemas">Ingeniería de sistemas</option>
                             <option value="administracion de empresas">Administración de empresas</option>
                             <option value="ingenieria de alimentos">Ingeniería de alimentos</option>

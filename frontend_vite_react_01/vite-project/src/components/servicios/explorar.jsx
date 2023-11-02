@@ -16,14 +16,14 @@ import { CardServiceContext } from '../../contexts/cardServiceContext';
 //import { ServiceContext } from '../../contexts/serviceContext';
 //import CardService4 from './cards/cardService4';
 //import Loader2 from '../../components/loaders/loader2'
-//import EncuestaForm from "../encuesta/encuestaForm";
+import EncuestaForm from "../encuesta/encuestaForm";
 //import PreguntasForm from "../encuesta/preguntas";
 //import SubirImg from '../imageCloudinary/subirImg';
 //import ImageGallery from '../imageCloudinary/imageGalery';
-import CardUser from '../usuarios/cardUser/cardUser';
-import PageHeaderHome from '../headers/pageHerderHome';
+//import CardUser from '../usuarios/cardUser/cardUser';
+//import PageHeaderHome from '../headers/pageHerderHome';
 //import CardService4 from './cards/cardService4';
-import CardServicesDetailsUser from './cards/cardServicesDetailsUser';
+//import CardServicesDetailsUser from './cards/cardServicesDetailsUser';
 const Explorar = () => {
   //const { userData} = useContext(UserContext);
   //const {setServices, services, setIsSearch} = useContext(CardServiceContext);
@@ -56,9 +56,8 @@ const Explorar = () => {
 
   return (
     <>
-      <CardUser/>
-      <PageHeaderHome title="Servicios ofrecidos por el usuario"/>
-      <CardServicesDetailsUser/>
+      MUAKK
+      <EncuestaForm />
     </>
     
   );

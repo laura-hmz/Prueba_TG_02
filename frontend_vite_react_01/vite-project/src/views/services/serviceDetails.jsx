@@ -6,12 +6,14 @@ import { CardServiceContext } from "../../contexts/cardServiceContext";
 import { ServiceContext } from '../../contexts/serviceContext';
 import CardServiceOnly from '../../components/servicios/cardServiceOnly';
 import Advertencia404 from '../../components/avisosPersonalizados/advertenciaPersonalizada404';
+import BackButton from '../../components/botoneNavegacion/backButton';
 
 const ServiceDetails = () => {
   const { id } = useParams();
   const {setOnlyService,setUserDataOnlyService,setButtonClick,savedServiceIds} = useContext(CardServiceContext);
   const {getImages} = useContext(ServiceContext);
   const [servicioExiste, setServicioExiste] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Realizar una solicitud para obtener los servicios cuando el componente se monta
@@ -36,6 +38,8 @@ const ServiceDetails = () => {
         }
       } catch (error) {
         console.error('Error al obtener los servicios:', error);
+      }finally {
+        setIsLoading(false); 
       }
     };
 
@@ -44,11 +48,15 @@ const ServiceDetails = () => {
 
   return (
     <>
-    {servicioExiste? 
-      <CardServiceOnly />
-      :
-        <Advertencia404 mensaje={'no encontramos el servicio que deseas consultar'}/>
-      }
+      
+      {isLoading ? (
+          null
+        ) : servicioExiste?  (
+          <CardServiceOnly />
+        ) : (
+          <Advertencia404 mensaje={'no encontramos el servicio que deseas consultar'}/>
+        )}
+      
     </>
   );
 };

@@ -35,7 +35,6 @@ const Thabitaciones = () => {
                   <option value="Apartamento">Apartamento</option>
                   <option value="Habitacion">Habitación</option>
                   <option value="Hospedaje">Hospedaje</option>
-                  <option value="Roomie">Roomie</option>
                 </select>
 
               </div>

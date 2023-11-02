@@ -1,8 +1,9 @@
 
 import { useContext } from 'react';
-import { FaUserCircle,FaStar,FaThumbtack } from 'react-icons/fa';
+import { FaUserCircle,FaThumbtack } from 'react-icons/fa';
 import {CardServiceContext } from '../../../contexts/cardServiceContext';
 import SearchFormsStyle from '../../../components/servicios/servicesComponentesStyle/formsComponentsStyle';
+import BackButton from '../../botoneNavegacion/backButton';
 
 const CardUser = () => {
   const {userDataOnlyService } = useContext(CardServiceContext);
@@ -18,11 +19,12 @@ const CardUser = () => {
 
   return (
     <section className="antialiased  font-sans">
-      <div className="container px-7 mt-10 pt-10 mx-auto">
+      <div className="container px-7 mt-16 pt-10 mx-auto">
         <div className="flex flex-wrap  relative">
             <div className="  p-2 lg:w-6/7 md:w-6/8 w-full mx-auto relative">
               <div className="bg-gray-100  shadow-xl border border-gray-100 rounded-lg overflow-hidden relative">
                 <div className="p-2 ml-2 mr-2 lg:p-10 lg:ml-6 lg:mr-6 ">
+                  <div className='mb-14 md:mb-0 lg:mb-0'><BackButton /></div>
                   <div className="mb-4 text-center flex border-b-2 items-center justify-center">
                     <FaThumbtack className="text-yellow-500 text-xl mr-5 mb-2" />
                     <h1 className="text-md md:text-xl lg:text-xl font-bold tracking-widest mb-2 text-gray-500 uppercase">

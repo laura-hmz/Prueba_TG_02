@@ -5,6 +5,7 @@ import {CardServiceContext } from '../../contexts/cardServiceContext';
 import { UserContext } from '../../contexts/userContext';
 import ImageCarousel from '../carrusel/imageCarrusel';
 import { ServiceContext } from '../../contexts/serviceContext';
+import BackButton from '../botoneNavegacion/backButton';
 
 const CardServiceOnly = () => {
   const {savedServiceIds, handleClick,onlyService,userDataOnlyService, buttonClick } = useContext(CardServiceContext);
@@ -15,7 +16,7 @@ const CardServiceOnly = () => {
   const titulo = 'title-font text-lg font-medium text-gray-900'
   return (
     <section className="antialiased  font-sans">
-      <div className="container px-7 mt-10 py-9 mx-auto">
+      <div className="container px-7 mt-16 py-9 mx-auto">
         <div className="flex flex-wrap  relative">
             <div key={onlyService._id} className="  p-4 lg:w-4/5 md:w-4/5 w-full mx-auto relative">
               <div className="bg-white  shadow-xl rounded-lg overflow-hidden relative">
@@ -47,6 +48,7 @@ const CardServiceOnly = () => {
                         loading="lazy"
                     />  
                 }
+                <BackButton />
                 <button
                   className={`absolute top-4 right-4 disabled:cursor-not-allowed disabled:bg-gray-400 text-gray-600 px-3 border border-gray-100 border-2 py-1 rounded focus:outline-none ${
                     

@@ -15,6 +15,7 @@ import HorarioCampo from '../servicesCampos/horarioCampo';
 import Precio from '../servicesCampos/precioCampo';
 import SubirImg from '../../imageCloudinary/subirImg';
 import ImageGallery from '../../imageCloudinary/imageGalery';
+import BackButtonForms from '../../botoneNavegacion/backButtonForms';
 
 
 const OtherServiceForm = ({option}) =>{
@@ -84,10 +85,17 @@ const OtherServiceForm = ({option}) =>{
     <div className={contenedor}>
         <form  onSubmit={handleSubmit}>
             <div className={divDesing}>
-                <div className='mb-10 md:mb-0'>
-                    <BotonCancelar />
-                    <BotonEditar />
+            <div className='mb-10 md:mb-0'>
+              <div className={divGrid }>
+                <div className={divGridSub}>
+                  <BackButtonForms />
                 </div>
+                <div className={divGridSub}>
+                  <BotonCancelar />
+                  <BotonEditar />
+                </div>
+              </div>
+            </div>
                 <div className={divEspace}>
                     <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio' : currentOption=== 'register'? 'Registrar servicio': 'Detalles del servicio'} </h1>
                     <label className={labelClassname} htmlFor="nombre">Nombre del servicio:</label>

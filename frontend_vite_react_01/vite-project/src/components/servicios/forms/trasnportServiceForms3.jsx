@@ -14,12 +14,13 @@ import HorarioCampo from '../servicesCampos/horarioCampo';
 import BotonSubmit from '../servicesCampos/botonSubmit';
 import BotonCancelar from '../servicesCampos/botonCancelar';
 import Precio from '../servicesCampos/precioCampo';
+import BackButtonForms from '../../botoneNavegacion/backButtonForms';
 
 
 const TransportServiceForm3 = ({option}) =>{
     const {serviceData,isUpdated, setIsUpdated,
          currentOption,setCurrentOption, fetchData,horarios,setIsSuccessModalOpen,
-         isSuccessModalOpen,openSuccessModal,getImages} = useContext(ServiceContext);
+         isSuccessModalOpen,openSuccessModal} = useContext(ServiceContext);
 
     const handleUpdateService = async () => {
         try {
@@ -78,10 +79,17 @@ const TransportServiceForm3 = ({option}) =>{
         <form  onSubmit={handleSubmit}>
         
             <div className={divDesing}>
-              <div className='mb-10 md:mb-0'>
-                <BotonCancelar />
-                <BotonEditar />
+            <div className='mb-10 md:mb-0'>
+              <div className={divGrid }>
+                <div className={divGridSub}>
+                  <BackButtonForms />
+                </div>
+                <div className={divGridSub}>
+                  <BotonCancelar />
+                  <BotonEditar />
+                </div>
               </div>
+            </div>
                 <div className={divEspace}>
                     <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio de transporte' : currentOption=== 'register'?'Registrar servicio de transporte': 'Servicio de transporte'} </h1>
                 </div>

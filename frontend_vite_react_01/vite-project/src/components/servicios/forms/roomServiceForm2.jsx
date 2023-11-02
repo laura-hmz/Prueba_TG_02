@@ -15,6 +15,7 @@ import Precio from '../servicesCampos/precioCampo';
 import CaracteristicasHabitacion from '../servicesCampos/caracteristicasHabitacion';
 import SubirImg from '../../imageCloudinary/subirImg';
 import ImageGallery from '../../imageCloudinary/imageGalery';
+import BackButtonForms from '../../botoneNavegacion/backButtonForms';
 
 
 const RoomServiceForm2 = ({option}) =>{
@@ -84,10 +85,17 @@ const RoomServiceForm2 = ({option}) =>{
         <form  onSubmit={handleSubmit}>
         
             <div className={divDesing}>
-                <div className='mb-10 md:mb-0'>
-                    <BotonCancelar />
-                    <BotonEditar />
+            <div className='mb-10 md:mb-0'>
+              <div className={divGrid }>
+                <div className={divGridSub}>
+                  <BackButtonForms />
                 </div>
+                <div className={divGridSub}>
+                  <BotonCancelar />
+                  <BotonEditar />
+                </div>
+              </div>
+            </div>
                 <div className={divEspace}>
                     <h1 className={tituloServicio}> {currentOption=== 'edit' ? 'Editar servicio de habitación' : currentOption=== 'register'?'Registrar servicio de habitación': 'Servicio de habitación u hospedaje'} </h1>
                     <label className={labelClassname} htmlFor="nombre">Nombre del servicio:</label>
@@ -123,7 +131,6 @@ const RoomServiceForm2 = ({option}) =>{
                     <option value="Apartamento">Apartamento</option>
                     <option value="Habitacion">Habitación</option>
                     <option value="Hospedaje">Hospedaje</option>
-                    <option value="Roomie">Roomie</option>
                 </select>
                 </div>
                     </div>
