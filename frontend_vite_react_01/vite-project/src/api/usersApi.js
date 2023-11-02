@@ -22,6 +22,7 @@ export const getUserByEmail = async (email) => {
 
 export const createUser = async (user) => {
     const res = await usersApi.post('/users', user)
+    //console.log('lo que se le manda a la bd', user);
     //console.log(res.data);
     return res.data;
 }

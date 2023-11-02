@@ -100,6 +100,7 @@ const EncuestaForm = () => {
                             onChange={handleChange}
                             required
                             >
+                            <option value="">-Selecciona una opción-</option> 
                             <option value="tuluá">Tuluá</option>
                             <option value="Alcalá">Alcalá</option>
                             <option value="Andalucía">Andalucía</option>

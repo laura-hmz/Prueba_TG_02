@@ -34,6 +34,7 @@ function App() {
   const {isAuthenticated, isLoading, userExists, isLoadingUser} = useContext(UserContext);
  
   if (isLoading || isLoadingUser && isAuthenticated) {
+    //console.log('loading', isLoading, 'loadingUser', isLoadingUser, 'isAuthenticated', isAuthenticated);
     return <LoaderInit />;
   }
 

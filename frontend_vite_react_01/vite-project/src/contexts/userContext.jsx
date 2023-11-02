@@ -37,11 +37,13 @@ export const UserProvider = ({ children }) => {
       if (isAuthenticated) {
         setUserEmail(user.email);
         const userDataFromDatabase = await getUserByEmail(user.email);
+        //setIsLoadingUser(false);
         if (userDataFromDatabase.message === undefined) {
           //console.log('el usuario si existe en la base de datos')
           setUserData(userDataFromDatabase);
           setUserExists(true);
           setIsLoadingUser(false);
+          //console.log('aquii londing user', isLoadingUser);
 
         } else if (userExists === false) {
           //console.log('el usuario no existe en la base de datos')
@@ -59,8 +61,9 @@ export const UserProvider = ({ children }) => {
     try {
       //console.log('registrando usuario');
       createUser(userDataAux);
-      setUserData(userDataAux);
-      userExists(true);
+      setUserExists(true);
+      getUserData();
+     
     } catch (error) {
       console.error('Error al registrarbusuario:', error);
     }

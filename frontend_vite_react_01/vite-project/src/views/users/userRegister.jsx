@@ -4,7 +4,7 @@ import EncuestaForm from "../../components/encuesta/encuestaForm";
 import PreguntasForm from "../../components/encuesta/preguntas";
 
 const UserRegister = () => {
-    const {paginaRegistro } = useContext(UserContext);
+    const {paginaRegistro} = useContext(UserContext);
     //console.log('Esto es lo que se va a guardar REGISTRO',userDataAux);
     return (
         <>
