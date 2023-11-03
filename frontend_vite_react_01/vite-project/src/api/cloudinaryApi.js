@@ -15,14 +15,14 @@ import axios from 'axios';
 // })
 
 const cloudinaryApi2 = axios.create({
-  baseURL: 'https://backend-services-univalle.onrender.com/api/',
+  baseURL: 'https://prueba-backend-tywp.onrender.com/api/',
   headers: {
       'Content-Type': 'application/json',
   },
 })
 
 const cloudinaryApi3 = axios.create({
-  baseURL: 'https://backend-services-univalle.onrender.com/api/',
+  baseURL: 'https://prueba-backend-tywp.onrender.com/api/',
   headers: {
     'Content-Type': 'multipart/form-data',
   },

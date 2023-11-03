@@ -17,12 +17,12 @@ const HorarioCampo = () => {
 
      // Función de validación
      const validateHorario = (horario) => {
-        const horaInicio = parseInt(horario.hora_de_inicio, 10); // Convierte a entero
-        const horaFinalizacion = parseInt(horario.hora_de_finalizacion, 10);
-        //console.log('horaInicio',horaInicio, typeof horaInicio); 
-        //console.log('horaFinalizacion',horaFinalizacion);
-        //console.log(horaInicio > horaFinalizacion);
-         if (horaInicio >= horaFinalizacion ) {
+        const horaInicio = horario.hora_de_inicio // Convierte a entero
+        const horaFinalizacion = horario.hora_de_finalizacion
+        console.log('horaInicio',horaInicio, typeof horaInicio); 
+        console.log('horaFinalizacion',horaFinalizacion);
+        console.log(parseInt(horaInicio)> parseInt(horaFinalizacion));
+         if (parseInt(horaInicio)>= parseInt(horaFinalizacion) ) {
              return 'Asegurate de que la hora de finalización sea mayor a la de inicio';
          }
  
@@ -62,6 +62,7 @@ const HorarioCampo = () => {
     useEffect(() => {
         if (currentOption === 'edit' ) {
             setHorarios(serviceData.horarios || []);
+            console.log('horarios:', serviceData.horarios);
         } else if (currentOption === 'show'&& isUpdated) {
             setHorarios(serviceData.horarios || []);
             
@@ -125,13 +126,13 @@ const HorarioCampo = () => {
                             <select
                                 className={selectDesingHorario}
                                 name='hora_de_inicio'
-                                value={horario.hora_de_inicio || ''}
+                                value={horario.hora_de_inicio !== null ? horario.hora_de_inicio : ''}
                                 disabled={currentOption === 'show'}
                                 required
                                 onChange={(e) => handleHorarioChange(e, index)}
                             >
                                 {/* Opciones de hora de inicio aquí */}
-                                <option value="">----</option>
+                                <option value=''>----</option>
                                 {optionsHoraInicio.map((hora, index) => (
                                     <option key={index} value={index}>{hora}</option>
                                 ))}

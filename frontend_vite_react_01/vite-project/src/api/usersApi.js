@@ -8,7 +8,7 @@ import axios from 'axios'
 // })
 
 const usersApi = axios.create({
-    baseURL: 'https://backend-services-univalle.onrender.com/api/',
+    baseURL: 'https://prueba-backend-tywp.onrender.com/api/',
     headers: {
         'Content-Type': 'application/json',
     },

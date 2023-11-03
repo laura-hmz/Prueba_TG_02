@@ -36,7 +36,7 @@ const AcademyServiceForm = ({option}) =>{
                ...serviceData,
                horarios: horarios,
            }; 
-           updateService(updatedServiceData);
+           await updateService(updatedServiceData);
            setIsUpdated(true);
            setCurrentOption('show');
          }
@@ -54,7 +54,10 @@ const AcademyServiceForm = ({option}) =>{
    useEffect(() => {
        if (currentOption === 'show'&& isUpdated) {
            fetchData(serviceData._id);
-           setIsUpdated(false);}
+           setIsUpdated(false);
+           
+          }
+
 
        else if (option === 'register') {
            //console.log('Data en register:', serviceData);

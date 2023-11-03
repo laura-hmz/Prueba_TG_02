@@ -39,7 +39,7 @@ const OtherServiceForm = ({option}) =>{
                ...serviceData,
                horarios: horarios,
            }; 
-           updateService(updatedServiceData);
+           await updateService(updatedServiceData);
            setIsUpdated(true);
            setCurrentOption('show');
          }
