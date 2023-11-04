@@ -18,9 +18,9 @@ const Navbar2 = () => {
       <h1 className="text-sm bg-[#CC1F33] text-gray-100 py-1 text-center border-b">{user.email}</h1>
       <nav className="w-full flex py-3 justify-between  bg-[#CC1F33] items-center navbar relative">
       <Link 
-        to="/Home"className={`flex title-font font-medium   hover:bold items-center mr-5 ml-12 text-gray-900 ${location.pathname === '/Home' ? 'font-bold border-[#F3B0B7]  border-b-2  text-white ' : 'font-normal'}`}>
+        to="/Home"className={`flex title-font font-medium hover:bold items-center ml-5 md:mr-2 md:ml-8 lg:mr-2 lg:ml-8 text-gray-900 ${location.pathname === '/Home' ? 'font-bold border-[#F3B0B7]  border-b-2  text-white ' : 'font-normal'}`}>
         <FaRegGem size={25} className="white-icon"/>
-        <span className={`ml-5 text-xl text-white  cursor-pointer `}>
+        <span className={`ml-3 text-xl text-white  cursor-pointer `}>
           Home</span>
       </Link>
       {/* Desktop Navigation */}
@@ -65,7 +65,7 @@ const Navbar2 = () => {
         
         
       {/* Mobile Navigation */}
-      <div className="sm:hidden flex flex-1 justify-end items-center mr-8 relative">
+      <div className="sm:hidden flex flex-1 justify-end items-center mr-4 relative">
         <button
           className="w-[28px] h-[28px] text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -78,20 +78,24 @@ const Navbar2 = () => {
           <div className="p-6 bg-[#f0434f] absolute top-[70px] right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar z-10">
             {/* Renderiza las opciones de navegación móvil aquí */}
             <ul className="list-none flex justify-end items-start flex-1 flex-col">
+            <li className={`${linksDesing2} ${location.pathname === "/Home" ? 'font-semibold underline' : 'font-normal'}`}>
+              <Link to="/Home">- Home</Link>
+              </li>
+
               <li className={`${linksDesing2} ${location.pathname === '/especialsearch' ? 'font-semibold underline' : 'font-normal'}`}>
-              <Link to='/especialsearch'>Buscar Servicios</Link>
+              <Link to='/especialsearch'>- Buscar Servicios</Link>
               </li>
               <li className={`${linksDesing2} ${location.pathname === '/userServices' ? 'font-semibold underline' : 'font-normal'}`}>
-                    <Link to='/userServices'>Mis Servicios</Link>
+                    <Link to='/userServices'>- Mis Servicios</Link>
               </li>
               <li className={`${linksDesing2} ${location.pathname === '/savedServices' ? 'font-semibold underline' : 'font-normal'}`}>
-                    <Link to="/savedServices">Servicios Guardados</Link>
+                    <Link to="/savedServices">- Servicios Guardados</Link>
               </li>
               <li className={`${linksDesing2} ${location.pathname === '/offerService' ? 'font-semibold underline' : 'font-normal'}`}>
-                    <Link to='/offerService'>Ofrecer Servicios</Link>
+                    <Link to='/offerService'>- Ofrecer Servicios</Link>
               </li>
               <li className={`${linksDesing2} ${location.pathname === '/profile' ? 'font-semibold underline' : 'font-normal'}`}>
-                    <Link to="/profile">Mi Perfil</Link>
+                    <Link to="/profile">- Mi Perfil</Link>
               </li>
               <button
                 onClick={() => logout({ returnTo: window.location.origin })}

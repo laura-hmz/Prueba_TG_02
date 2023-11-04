@@ -7,12 +7,15 @@ const CarruselHome = ({ banners }) => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 5000,
+        speed: 7000,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: true,
-        autoplay: true, // Habilita el autoplay
-        autoplaySpeed: 3000, // Define la velocidad del autoplay en milisegundos (por ejemplo, 3000 ms = 3 segundos)
+        arrows: false,
+        autoplay: true, 
+        autoplaySpeed: 1000,
+        draggable: false,
+        pauseOnHover: false, 
+        
       };
 
   return (
@@ -23,7 +26,6 @@ const CarruselHome = ({ banners }) => {
             <img
               src={banner.url}
               alt={`Banner ${index + 1}`}
-              className=" object-cover"
               loading="lazy"
             />
           </div>

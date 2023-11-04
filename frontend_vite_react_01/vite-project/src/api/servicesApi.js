@@ -6,10 +6,23 @@ import axios from 'axios'
 //         'Content-Type': 'application/json',
 //     },
 // })
+// const servicesApi2 = axios.create({
+//   baseURL: 'http://localhost:3000/api/',
+//   headers: {
+//     'Content-Type': 'multipart/form-data',
+//   },
+// })
+
 const servicesApi = axios.create({
   baseURL: 'https://prueba-backend-tywp.onrender.com/api/',
   headers: {
       'Content-Type': 'application/json',
+  },
+})
+const servicesApi2 = axios.create({
+  baseURL: 'https://prueba-backend-tywp.onrender.com/api/',
+  headers: {
+    'Content-Type': 'multipart/form-data',
   },
 })
 
@@ -78,4 +91,21 @@ export const busquedaMatchmaking = async (searchParams) => {
     //console.log(queryString);
     //console.log(res.data);
     return res.data;
+  };
+
+  export const cambiarImagenPortada = async (selectedFile, servicioId) => {
+    try {
+    
+      //console.log('selectedFile', selectedFile);
+      const formData = new FormData();
+        formData.append('imagen', selectedFile);
+        //formData.append('servicioId', servicioId);
+        //console.log('formData', formData);
+      const res = await servicesApi2.put(`/services/updateImage/${servicioId}`, formData);
+      //console.log(res.data)
+      return res.data;
+    } catch (error) {
+      console.error('Error al actualizar la imagen', error);
+      throw error;
+    }
   };

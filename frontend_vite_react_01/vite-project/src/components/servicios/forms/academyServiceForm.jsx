@@ -28,7 +28,7 @@ const AcademyServiceForm = ({option}) =>{
                ...serviceData,
                tipo_servicio: "Asesorías Académicas",
            }; 
-           createService(updatedServiceData);
+           await createService(updatedServiceData);
            openSuccessModal();
 
          } else if (currentOption === 'edit') {

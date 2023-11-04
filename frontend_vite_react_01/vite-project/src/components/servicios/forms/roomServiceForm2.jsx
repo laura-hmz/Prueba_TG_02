@@ -31,7 +31,7 @@ const RoomServiceForm2 = ({option}) =>{
                ...serviceData,
                tipo_servicio: "Servicio de habitaciones",
            }; 
-           createService(updatedServiceData);
+           await createService(updatedServiceData);
            openSuccessModal();
 
          } else if (currentOption === 'edit') {

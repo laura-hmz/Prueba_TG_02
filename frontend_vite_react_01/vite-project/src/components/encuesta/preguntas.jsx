@@ -17,7 +17,7 @@ const PreguntasForm = () => {
         "2. ¿Le das importancia a la puntualidad, la responsabilidad y la organización en tu vida y en las personas que te rodean?",
         "3. ¿Estás dispuesto/a a escuchar y respetar las creencias de otras personas, incluso si difieren de las tuyas?",
         "4. ¿Te gustan los videojuegos o temas relacionados con la tecnología?",
-        "5. ¿Te gusta la leer o escribir?",
+        "5. ¿Te gusta leer o escribir?",
         "6. ¿Te interesa debatir sobre temas políticos?",
         "7. ¿Te interesan los deportes/disciplinas o las actividades al aire libre?",
         "8. ¿Te sientes cómodo entablando conversaciones con gente nueva o consideras que tienes buenas habilidades comunicativas?",
@@ -35,7 +35,7 @@ const PreguntasForm = () => {
         const updatedResponsesHabitaciones= [...userDataAux.resultados_encuesta_habitaciones];
         const updatedResponsesAsesorias= [...userDataAux.resultados_encuesta_asesorias];
         const updatedResponsesTransporte= [...userDataAux.resultados_encuesta_transporte];
-        console.log('Estoy en handleResponseChange' );
+        //console.log('Estoy en handleResponseChange' );
         updatedResponses[questionIndex] = value;
     
         if (value==1 && (questionIndex === 0 || questionIndex === 1)) {
@@ -62,13 +62,17 @@ const PreguntasForm = () => {
         
     };
     
-    const handleSubmit = () => {
+    // const handleSubmit = () => {
+    //     // Puedes acceder a userDataAux.resultados_encuesta para enviar las respuestas al servidor o realizar otras acciones.
+    //     console.log("userDataAux FINAL:", userDataAux);
+    //     registerUser();
+        
+    // };
+    const handleSubmit = async () => {
         // Puedes acceder a userDataAux.resultados_encuesta para enviar las respuestas al servidor o realizar otras acciones.
         console.log("userDataAux FINAL:", userDataAux);
-        registerUser();
-        
-    };
-
+        await registerUser(); // Espera a que registerUser termine antes de continuar
+      };
     return (
 
         <div className={contenedor}>

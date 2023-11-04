@@ -1,13 +1,28 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ImagenesUrl from '../../../src/images/imagenesUrl';
 import DeleteConfirmation from '../mensajesAuxliliares/deleteConfirmation'
 import { FaTrash,FaPen } from 'react-icons/fa';
-const CardServiceModify = ({services, onDeleteService}) => {
+import SubirImagenModal from '../mensajesAuxliliares/subirImagenModal';
+const CardServiceModify = ({services, onDeleteService, fetchData}) => {
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
     const [serviceToDelete, setServiceToDelete] = useState(null);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [serviceForImage, setServiceForImage] = useState(null);
     
-
+    const {
+      urlTransporte,
+      urlHabitaciones,
+      urlAsesorias,
+      urlOtrosServicios,
+      
+  } = ImagenesUrl;
+    const handleCambiarPortada = (serviceId) => {
+      setServiceForImage(serviceId);
+      setModalOpen(true);
+    };
+    
     const handleDeleteClick = (serviceId) => {
         setServiceToDelete(serviceId);
         setShowDeleteConfirmation(true);
@@ -31,43 +46,51 @@ const CardServiceModify = ({services, onDeleteService}) => {
           {Array.isArray(services) && services.map((service) => (
             <div key={service._id} className="p-4 md:w-1/3  w-full relative">
               <div className="bg-white shadow-xl rounded-lg overflow-hidden relative">
-              {service.tipo_servicio === 'Servicio de transporte' ? 
-                    <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
-                        src={"https://img.freepik.com/free-photo/taxi-car-smartphone-with-reminder-popup-bell-notification-alert-bubble-chat-online-transportation-service-concept-web-banner-cartoon-icon-symbol-background-3d-illustration_56104-1995.jpg?w=740&t=st=1696590613~exp=1696591213~hmac=2b3b6902a893a0ad2029fbcb520b23052e0f2531802438457ea2edaec7baa04a"}
-                        alt={service._id}
-                        loading="lazy"
-                    />
-                : service.tipo_servicio === 'Servicio de habitaciones' ?
-                    <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
-                        src={"https://img.freepik.com/foto-gratis/vista-modelo-casa-3d_23-2150761062.jpg?w=740&t=st=1697606643~exp=1697607243~hmac=e15ed78a73552e93e0b617b94ec61d78dbfa1357d45d0204a826906c8a32c5e5"}
-                        alt={service._id}
-                        loading="lazy"
-                    /> 
-                : service.tipo_servicio === 'Asesorías Académicas' ?
-                    <img
-                            className="lg:h-48 md:h-36 w-full object-cover object-center"
-                            src={"https://img.freepik.com/psd-gratis/representacion-3d-naturaleza-muerta-telefono_23-2150425344.jpg?w=740&t=st=1697607616~exp=1697608216~hmac=b48370e6d111dc052189f1cb74fafc8027a209efdfa7ae6a96a51b4e0e320f6f"}
-                            alt={service._id}
-                            loading="lazy"
-                        /> 
-                :   <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
-                        src={"https://img.freepik.com/foto-gratis/ilustracion-3d-telefono-inteligente-scooter-entrega-cajas-bolsas-papel_58466-14576.jpg?w=740&t=st=1697607462~exp=1697608062~hmac=f9c4be1e62389c35e5e0b16092d968d1641840572e03bec795123aff3b3109c9"}
-                        alt={service._id}
-                        loading="lazy"
-                    />  
-                }
+            
+                {service.imagenPortada && service.imagenPortada.url ? (
+                  <img
+                    className="lg:h-48 md:h-36 h-36 w-full object-cover object-center"
+                    src={service.imagenPortada.url}
+                    alt={service._id}
+                    loading="lazy"
+                  />
+                ) : (
+                  <img
+                    className="lg:h-48 md:h-36 h-36 w-full object-cover object-center"
+                    src={
+                      service.tipo_servicio === 'Servicio de transporte'
+                        ? urlTransporte
+                        : service.tipo_servicio === 'Servicio de habitaciones'
+                        ? urlHabitaciones
+                        : service.tipo_servicio === 'Asesorías Académicas'
+                        ? urlAsesorias
+                        : urlOtrosServicios
+                    }
+                    alt={service._id}
+                    loading="lazy"
+                  />
+                )}
+
                <div className='absolute top-4 right-4'>
                     <Link to={{ pathname: `/editService/${service._id}` }}>
-                                    <button className={'focus:outline-none bg-indigo-500 text-white hover:bg-indigo-600 py-2 px-4 rounded-full'}
+                                    <button className={'focus:outline-none border-2 border-white bg-indigo-500 text-white hover:bg-indigo-600 py-2 px-4 rounded-full'}
                                     ><FaPen/></button>
                                 </Link>
                     {/* Botón Eliminar */}
-                    <button className={'focus:outline-none bg-red-500 text-white hover:bg-red-600 py-2 px-4 rounded-full '}
+                    <button className={'focus:outline-none border-2 border-white bg-red-500 text-white hover:bg-red-600 py-2 px-4 rounded-full '}
                     onClick={() => handleDeleteClick(service._id)}><FaTrash /> </button>
 
+               </div>
+               <div className='absolute top-24 md:top-36 left-4'>
+                    <button className={'focus:outline-none bg-gray-800 text-xs border border-white text-gray-100 hover:bg-gray-900 py-1 px-2 rounded-full '}
+                      onClick={() => handleCambiarPortada(service._id)}>Cambiar portada</button>
+                    {/* Modal para Subir Imagen */}
+                    <SubirImagenModal
+                      isOpen={modalOpen}
+                      onClose={() => setModalOpen(false)}
+                      serviceId={serviceForImage}
+                      fetchData={fetchData}
+                    />
                </div>
 
                 <div className="p-6">
@@ -89,15 +112,13 @@ const CardServiceModify = ({services, onDeleteService}) => {
                     Ultima vez actualizado: {service.updatedAt}
                   </div>
                   <div className="flex pb-4 items-center flex-wrap">
-                        <Link to={{ pathname: `/serviceDetails/${service._id}` }} className="text-indigo-500 inline-flex items-center cursor-pointer md:mb-2 lg:mb-0">
+                        <Link to={{ pathname: `/serviceDetails/${service._id}` }} className="text-indigo-500 font-semibold underline inline-flex items-center cursor-pointer md:mb-2 lg:mb-0">
                                 Vista previa
                                 <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M5 12h14"></path>
                                     <path d="M12 5l7 7-7 7"></path>
                                 </svg>
                         </Link>
-
-
                     </div>
                 
                 </div>
@@ -121,7 +142,8 @@ const CardServiceModify = ({services, onDeleteService}) => {
 
 CardServiceModify.propTypes = {
   services: PropTypes.array.isRequired,
-  onDeleteService: PropTypes.func.isRequired
+  onDeleteService: PropTypes.func.isRequired,
+  fetchData: PropTypes.func
 }
 
 export default CardServiceModify;

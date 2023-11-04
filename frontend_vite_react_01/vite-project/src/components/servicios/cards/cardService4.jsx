@@ -5,9 +5,17 @@ import { FaUserCircle } from 'react-icons/fa';
 import {deleteServiceSaved2, createServiceSaved} from '../../../api/savedServicesApi';
 import { CardServiceContext } from '../../../contexts/cardServiceContext';
 import { UserContext } from '../../../contexts/userContext';
+import ImagenesUrl from '../../../../src/images/imagenesUrl';
 const CardService4 = () => {
   const {services, userDetails,setSavedServiceIds, savedServiceIds } = useContext(CardServiceContext);
   const { userData } = useContext(UserContext);
+  const {
+    urlTransporte,
+    urlHabitaciones,
+    urlAsesorias,
+    urlOtrosServicios,
+    
+} = ImagenesUrl;
  
   const handleClick = (serviceId) => {
     // Verifica si el servicio ya está guardado
@@ -36,37 +44,32 @@ const CardService4 = () => {
           {Array.isArray(services) && services.map((service) => (
             <div key={service._id} className="p-4 md:w-1/3 w-full relative">
               <div className="bg-white shadow-xl rounded-lg overflow-hidden relative">
-                {service.tipo_servicio === 'Servicio de transporte' ? 
-                    <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
-                        src={"https://img.freepik.com/free-photo/taxi-car-smartphone-with-reminder-popup-bell-notification-alert-bubble-chat-online-transportation-service-concept-web-banner-cartoon-icon-symbol-background-3d-illustration_56104-1995.jpg?w=740&t=st=1696590613~exp=1696591213~hmac=2b3b6902a893a0ad2029fbcb520b23052e0f2531802438457ea2edaec7baa04a"}
-                        alt={service._id}
-                        loading="lazy"
-                    />
-                : service.tipo_servicio === 'Servicio de habitaciones' ?
-                    <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
-                        src={"https://img.freepik.com/foto-gratis/vista-modelo-casa-3d_23-2150761062.jpg?w=740&t=st=1697606643~exp=1697607243~hmac=e15ed78a73552e93e0b617b94ec61d78dbfa1357d45d0204a826906c8a32c5e5"}
-                        alt={service._id}
-                        loading="lazy"
-                    /> 
-                : service.tipo_servicio === 'Asesorías Académicas' ?
-                    <img
-                            className="lg:h-48 md:h-36 w-full object-cover object-center"
-                            src={"https://img.freepik.com/psd-gratis/representacion-3d-naturaleza-muerta-telefono_23-2150425344.jpg?w=740&t=st=1697607616~exp=1697608216~hmac=b48370e6d111dc052189f1cb74fafc8027a209efdfa7ae6a96a51b4e0e320f6f"}
-                            alt={service._id}
-                            loading="lazy"
-                        /> 
-                :   <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
-                        src={"https://img.freepik.com/foto-gratis/ilustracion-3d-telefono-inteligente-scooter-entrega-cajas-bolsas-papel_58466-14576.jpg?w=740&t=st=1697607462~exp=1697608062~hmac=f9c4be1e62389c35e5e0b16092d968d1641840572e03bec795123aff3b3109c9"}
-                        alt={service._id}
-                        loading="lazy"
-                    />  
-                }
+              {service.imagenPortada && service.imagenPortada.url ? (
+                  <img
+                    className="lg:h-48 md:h-36 h-36 w-full object-cover object-center"
+                    src={service.imagenPortada.url}
+                    alt={service._id}
+                    loading="lazy"
+                  />
+                ) : (
+                  <img
+                    className="lg:h-48 md:h-36 h-36 w-full object-cover object-center"
+                    src={
+                      service.tipo_servicio === 'Servicio de transporte'
+                        ? urlTransporte
+                        : service.tipo_servicio === 'Servicio de habitaciones'
+                        ? urlHabitaciones
+                        : service.tipo_servicio === 'Asesorías Académicas'
+                        ? urlAsesorias
+                        : urlOtrosServicios
+                    }
+                    alt={service._id}
+                    loading="lazy"
+                  />
+                )}
                 
                 <button
-                  className={`absolute top-4 right-4 px-3 py-1 rounded focus:outline-none ${
+                  className={`absolute top-4 right-4 px-3 py-1 border-2 border-white rounded focus:outline-none ${
                     savedServiceIds.has(service._id)
                       ? 'bg-gray-400 text-gray-600'
                       : 'bg-[#f0434f] text-white hover:bg-[#ba162d]'
@@ -93,7 +96,7 @@ const CardService4 = () => {
                   </div>
                   
                   <div className="flex pb-4 items-center flex-wrap">
-                  <Link to={{ pathname: `/serviceDetails/${service._id}` }} className="text-indigo-500 inline-flex items-center cursor-pointer md:mb-2 lg:mb-0">
+                  <Link to={{ pathname: `/serviceDetails/${service._id}` }} className="text-indigo-500 font-semibold underline inline-flex items-center cursor-pointer md:mb-2 lg:mb-0">
                         Más información
                         <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 12h14"></path>
@@ -116,9 +119,10 @@ const CardService4 = () => {
                       <div>
                         
                       <Link to={{ pathname: `/userDetails/${userDetails[service._id]?._id}` }}>
-                        <p className="text-m font-bold text-gray-600">
+                        <p className="text-m font-semibold text-indigo-500 underline">
                         {userDetails[service._id]?.nombre || 'Nombre Desconocido'}
                         </p>
+                        
                       </Link>
                         <p className="text-sm text-gray-700">
                           {userDetails[service._id]?.telefono || 'Teléfono desconocido'}

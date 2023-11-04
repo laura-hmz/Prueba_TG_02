@@ -17,11 +17,8 @@ const HorarioCampo = () => {
 
      // Función de validación
      const validateHorario = (horario) => {
-        const horaInicio = horario.hora_de_inicio // Convierte a entero
+        const horaInicio = horario.hora_de_inicio 
         const horaFinalizacion = horario.hora_de_finalizacion
-        console.log('horaInicio',horaInicio, typeof horaInicio); 
-        console.log('horaFinalizacion',horaFinalizacion);
-        console.log(parseInt(horaInicio)> parseInt(horaFinalizacion));
          if (parseInt(horaInicio)>= parseInt(horaFinalizacion) ) {
              return 'Asegurate de que la hora de finalización sea mayor a la de inicio';
          }
@@ -62,7 +59,7 @@ const HorarioCampo = () => {
     useEffect(() => {
         if (currentOption === 'edit' ) {
             setHorarios(serviceData.horarios || []);
-            console.log('horarios:', serviceData.horarios);
+            //console.log('horarios:', serviceData.horarios);
         } else if (currentOption === 'show'&& isUpdated) {
             setHorarios(serviceData.horarios || []);
             

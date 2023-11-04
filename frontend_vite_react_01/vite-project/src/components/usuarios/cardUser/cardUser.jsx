@@ -38,7 +38,7 @@ const CardUser = () => {
                     </div>
                     <div className="md:col-span-4 p-4">
                       <div className={divGrid}>
-                        <div className={divGridSub + 'ml-8 '}>
+                        <div className={divGridSub + 'lg:ml-8 md:ml-8 '}>
                           <h2 className={titulo}>Nombre:</h2>
                           <p className={parrafo}>
                             {userDataOnlyService.nombre || 'Desconocido'}
@@ -52,6 +52,11 @@ const CardUser = () => {
                           <h2 className={titulo}>Sexo:</h2>
                           <p className={parrafo}>
                             {userDataOnlyService.sexo || 'Desconocido'}
+                          </p>
+
+                          <h2 className={titulo}>Residencia:</h2>
+                          <p className={parrafo}>
+                            {userDataOnlyService.ciudad_residencia || 'Desconocido'}
                           </p>
 
                         </div>

@@ -29,7 +29,7 @@ const TransportServiceForm3 = ({option}) =>{
                 ...serviceData,
                 tipo_servicio: "Servicio de transporte",
             }; 
-            createService(updatedServiceData);
+            await createService(updatedServiceData);
             openSuccessModal();
 
           } else if (currentOption === 'edit') {

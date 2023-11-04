@@ -31,7 +31,7 @@ const OtherServiceForm = ({option}) =>{
                ...serviceData,
                tipo_servicio: "Otros servicios",
            }; 
-           createService(updatedServiceData);
+           await createService(updatedServiceData);
            openSuccessModal();
 
          } else if (currentOption === 'edit') {

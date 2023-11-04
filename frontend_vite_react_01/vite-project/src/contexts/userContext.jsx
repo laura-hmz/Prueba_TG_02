@@ -60,9 +60,9 @@ export const UserProvider = ({ children }) => {
   const registerUser = async () => {
     try {
       //console.log('registrando usuario');
-      createUser(userDataAux);
+      await createUser(userDataAux);
       setUserExists(true);
-      getUserData();
+      await getUserData();
      
     } catch (error) {
       console.error('Error al registrarbusuario:', error);
