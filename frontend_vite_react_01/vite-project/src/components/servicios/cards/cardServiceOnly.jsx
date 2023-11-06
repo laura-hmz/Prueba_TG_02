@@ -1,12 +1,12 @@
 
 import { useContext } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
-import {CardServiceContext } from '../../contexts/cardServiceContext';
-import { UserContext } from '../../contexts/userContext';
-import ImageCarousel from '../carrusel/imageCarrusel';
-import { ServiceContext } from '../../contexts/serviceContext';
-import BackButton from '../botoneNavegacion/backButton';
-import ImagenesUrl from '../../../src/images/imagenesUrl'
+import {CardServiceContext } from '../../../contexts/cardServiceContext';
+import { UserContext } from '../../../contexts/userContext';
+import ImageCarousel from '../../carrusel/imageCarrusel';
+import { ServiceContext } from '../../../contexts/serviceContext';
+import BackButton from '../../botoneNavegacion/backButton';
+import ImagenesUrl from '../../../images/imagenesUrl'
 
 const CardServiceOnly = () => {
   const {savedServiceIds, handleClick,onlyService,userDataOnlyService, buttonClick } = useContext(CardServiceContext);
@@ -31,7 +31,7 @@ const CardServiceOnly = () => {
               <div className="bg-white  shadow-xl rounded-lg overflow-hidden relative">
               {onlyService.imagenPortada && onlyService.imagenPortada.url ? (
                   <img
-                    className="lg:h-48 md:h-36 h-36 w-full object-cover object-center"
+                    className="lg:h-70 md:h-60 h-36 w-full object-cover object-center"
                     src={onlyService.imagenPortada.url}
                     alt={onlyService._id}
                     loading="lazy"

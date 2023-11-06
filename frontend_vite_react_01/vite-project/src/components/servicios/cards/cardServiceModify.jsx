@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ImagenesUrl from '../../../src/images/imagenesUrl';
-import DeleteConfirmation from '../mensajesAuxliliares/deleteConfirmation'
+import ImagenesUrl from '../../../images/imagenesUrl';
+import DeleteConfirmation from '../../mensajesAuxliliares/deleteConfirmation'
 import { FaTrash,FaPen } from 'react-icons/fa';
-import SubirImagenModal from '../mensajesAuxliliares/subirImagenModal';
+import SubirImagenModal from '../../mensajesAuxliliares/subirImagenModal';
 const CardServiceModify = ({services, onDeleteService, fetchData}) => {
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
     const [serviceToDelete, setServiceToDelete] = useState(null);

@@ -1,5 +1,5 @@
-//import Loader2 from '../../../components/loaders/loader2';
 import "../../../components/loaders/loader1.css";
+import LoaderReloj from "../../loaders/loaderReloj";
 const Cargando = () => {
     return (
         <>
@@ -7,7 +7,7 @@ const Cargando = () => {
                 <p> Emparejando ... </p>  
                 <div className=" loader-container relative relative mb-5">
                   
-                  <div className="loader"></div>
+                  <LoaderReloj />
                 </div>
               </div>
         </>

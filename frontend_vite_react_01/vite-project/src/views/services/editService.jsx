@@ -12,7 +12,7 @@ const EdithService = () => {
   //console.log('EdithService');
   const { id } = useParams();
   const {setCurrentOption, tipoServicio, setIdServiceForImg,
-    getImages,setServiceData, setTipoServicio} = useContext(ServiceContext);
+    getImages,setServiceData, setTipoServicio,setIsRegisterService} = useContext(ServiceContext);
   //const [tipoServicioAux, setTipoServicioAux] = useState('');
   const [userHasPermissionToEditService, setUserHasPermissionToEditService] = useState(false);
   const { userData } = useContext(UserContext);
@@ -21,12 +21,6 @@ const EdithService = () => {
   
 
   useEffect(() => {
-    // fetchData(id);
-    // setIdServiceForImg(id);
-    // getImages(id);
-    // setCurrentOption('show');
-    //setTipoServicioAux(tipoServicioAux);
-
      const fetchData2 = async () => {
       try {
           
@@ -44,6 +38,7 @@ const EdithService = () => {
           setIdServiceForImg(id);
           getImages(id);
           setCurrentOption('show');
+          setIsRegisterService(false);
 
         }
         
@@ -57,7 +52,7 @@ const EdithService = () => {
     
      fetchData2();
 
-  }, [ getImages, id, setCurrentOption,setIdServiceForImg, setServiceData, setTipoServicio, userData._id]);
+  }, [ getImages, id, setCurrentOption,setIdServiceForImg, setServiceData, setTipoServicio, userData._id, setIsRegisterService]);
   
 
   return (

@@ -4,7 +4,7 @@ import FormsComponentsStyle from '../servicesComponentesStyle/formsComponentsSty
 
 const CaracteristicasHabitacion = () => {
 
-    const {serviceData, handleChange, currentOption} = useContext(ServiceContext);
+    const {serviceData, handleChange, currentOption,isRegisterService} = useContext(ServiceContext);
     const {
         labelClassname,
         labelCheckBox,
@@ -34,7 +34,7 @@ const CaracteristicasHabitacion = () => {
                         (c) => c.nombre === caracteristica.nombre
                       )}
                       onChange={handleChange}
-                      disabled={currentOption === 'show'}
+                      disabled={currentOption === 'show' || isRegisterService}
                     />
                     <span className="ml-2 mr-4">{caracteristica.nombre}</span>
                   </label>

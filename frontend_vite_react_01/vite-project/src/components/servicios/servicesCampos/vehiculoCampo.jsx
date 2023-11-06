@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
 import FormsComponentsStyle from '../servicesComponentesStyle/formsComponentsStyle';
 const VehiculoCampo = () => {
-    const {serviceData, handleChange, currentOption} = useContext(ServiceContext);
+    const {serviceData, handleChange, currentOption, isRegisterService} = useContext(ServiceContext);
     const {
         labelClassname,
         selectDesing,
@@ -19,7 +19,7 @@ const VehiculoCampo = () => {
                 name="tipo_vehiculo_2"
                 value={serviceData.tipo_vehiculo_2 || ''} 
                 onChange={handleChange}
-                disabled={currentOption === 'show'}
+                disabled={currentOption === 'show' || isRegisterService}
                 required
             >
                 <option value="">----</option> 

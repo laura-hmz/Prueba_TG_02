@@ -1,4 +1,4 @@
-import "../../components/loader1.css";
+import "../../components/loaders/loader1.css";
 import CardService4 from "../../components/servicios/cards/cardService4";
 import { CardServiceContext } from "../../contexts/cardServiceContext";
 import { UserContext } from "../../contexts/userContext";
@@ -31,7 +31,6 @@ const SavedServices = () => {
     return (
       <>
         <PageHeader title="Servicios Guardados"/>
-        {/* Verifica si services es un arreglo antes de pasarlo a CardService3 */}
         {isLoading ? (
           null
         ) : Array.isArray(services) && services.length > 0 ? (

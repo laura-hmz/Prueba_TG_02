@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { UserContext } from './userContext';
 import {getServicesById} from '../api/servicesApi';
 import {obtenerImagenesPorServicio} from '../api/cloudinaryApi';
+import { updateService, createService } from '../api/servicesApi';
 
 export const ServiceContext = createContext(null);
 
@@ -15,6 +16,7 @@ export const ServiceProvider = ({ children }) => {
   //para las imagenes
   const [images, setImages] = useState([]);
   const [idServiceForImg, setIdServiceForImg] = useState('');
+  const [isRegisterService, setIsRegisterService] = useState(false);
 
   const [serviceData, setServiceData] = useState({
     id_usuario: '', // Inicializar id_usuario como una cadena vacía
@@ -141,6 +143,35 @@ export const ServiceProvider = ({ children }) => {
     
   }, [serviceData]);
 
+  ///Funcion para registrar / editar servicios
+  const handleUpdateService = async (tipoServicio) => {
+    try {
+      if (currentOption === 'register') {
+       setIsRegisterService(true);
+        const updatedServiceData = {
+            ...serviceData,
+            horarios: horarios,
+            tipo_servicio: tipoServicio,
+        }; 
+        //console.log('isRegisterService',isRegisterService)
+        await createService(updatedServiceData);
+        openSuccessModal();
+        setIsRegisterService(false);
+
+      } else if (currentOption === 'edit') {
+        const updatedServiceData = {
+            ...serviceData,
+            horarios: horarios,
+        }; 
+        await updateService(updatedServiceData);
+        setIsUpdated(true);
+        setCurrentOption('show');
+      }
+    } catch (error) {
+       setIsRegisterService(false);
+       console.error('Error al actualizar/registrar el servicio:', error);
+    }
+};
   const serviceContextValue = {
     serviceData,
     setServiceData,
@@ -165,7 +196,9 @@ export const ServiceProvider = ({ children }) => {
     images,
     getImages,
     idServiceForImg,
-    setIdServiceForImg
+    setIdServiceForImg,
+    isRegisterService, setIsRegisterService,
+    handleUpdateService
 
   };
 

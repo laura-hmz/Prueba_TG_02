@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import FormsComponentsStyle from '../servicesComponentesStyle/formsComponentsStyle';
 import SuccessMessage from '../../../components/mensajesAuxliliares/successRegister';
-import { updateService, createService } from '../../../api/servicesApi';
+//import { updateService, createService } from '../../../api/servicesApi';
 import { useContext } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
 import PropTypes from 'prop-types';
@@ -19,37 +19,13 @@ import BackButtonForms from '../../botoneNavegacion/backButtonForms';
 
 const TransportServiceForm3 = ({option}) =>{
     const {serviceData,isUpdated, setIsUpdated,
-         currentOption,setCurrentOption, fetchData,horarios,setIsSuccessModalOpen,
-         isSuccessModalOpen,openSuccessModal} = useContext(ServiceContext);
+         currentOption,setCurrentOption, fetchData,setIsSuccessModalOpen,
+         isSuccessModalOpen,handleUpdateService} = useContext(ServiceContext);
 
-    const handleUpdateService = async () => {
-        try {
-          if (currentOption === 'register') {
-            const updatedServiceData = {
-                ...serviceData,
-                tipo_servicio: "Servicio de transporte",
-            }; 
-            await createService(updatedServiceData);
-            openSuccessModal();
-
-          } else if (currentOption === 'edit') {
-            const updatedServiceData = {
-                ...serviceData,
-                horarios: horarios,
-            }; 
-            await updateService(updatedServiceData);
-            setIsUpdated(true);
-            setCurrentOption('show');
-          }
-        } catch (error) {
-          console.error('Error al actualizar/registrar el servicio:', error);
-        }
-    };
-      
     const handleSubmit = (e) => {
         e.preventDefault();
         //console.log('Esto es lo que se va a guardar',serviceData);
-        handleUpdateService();
+        handleUpdateService("Servicio de transporte");
     }; 
     
     useEffect(() => {
@@ -82,7 +58,7 @@ const TransportServiceForm3 = ({option}) =>{
             <div className='mb-10 md:mb-0'>
               <div className={divGrid }>
                 <div className={divGridSub}>
-                  <BackButtonForms />
+                <BackButtonForms currentOption={currentOption} />
                 </div>
                 <div className={divGridSub}>
                   <BotonCancelar />

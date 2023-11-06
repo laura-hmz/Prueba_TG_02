@@ -4,9 +4,9 @@ import { getServicesById } from '../../api/servicesApi';
 import { getUserId } from '../../api/usersApi';
 import { CardServiceContext } from "../../contexts/cardServiceContext";
 import { ServiceContext } from '../../contexts/serviceContext';
-import CardServiceOnly from '../../components/servicios/cardServiceOnly';
+import CardServiceOnly from '../../components/servicios/cards/cardServiceOnly';
 import Advertencia404 from '../../components/avisosPersonalizados/advertenciaPersonalizada404';
-import BackButton from '../../components/botoneNavegacion/backButton';
+//import BackButton from '../../components/botoneNavegacion/backButton';
 
 const ServiceDetails = () => {
   const { id } = useParams();

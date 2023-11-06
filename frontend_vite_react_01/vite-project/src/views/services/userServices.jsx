@@ -1,6 +1,6 @@
 import  { useState, useEffect, useContext,useCallback} from 'react';
 import { deleteService,listServicesIdUser } from '../../api/servicesApi';
-import CardServiceModify from '../../components/servicios/cardServiceModify';
+import CardServiceModify from '../../components/servicios/cards/cardServiceModify';
 import { UserContext } from '../../contexts/userContext';
 import FolderLoader from '../../components/loaders/notFoundLoaders/folderLoader';
 import PageHeader from '../../components/headers/pageHeader';

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import FormsComponentsStyle from '../servicesComponentesStyle/formsComponentsStyle';
 import SuccessMessage from '../../../components/mensajesAuxliliares/successRegister';
-import { updateService, createService } from '../../../api/servicesApi';
+//import { updateService, createService } from '../../../api/servicesApi';
 import { useContext } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
 import PropTypes from 'prop-types';
@@ -16,42 +16,16 @@ import Precio from '../servicesCampos/precioCampo';
 import SubirImg from '../../imageCloudinary/subirImg';
 import ImageGallery from '../../imageCloudinary/imageGalery';
 import BackButtonForms from '../../botoneNavegacion/backButtonForms';
-
-
 const OtherServiceForm = ({option}) =>{
     
     const {serviceData,isUpdated, setIsUpdated,
-        currentOption,setCurrentOption, fetchData,horarios,setIsSuccessModalOpen,
-        isSuccessModalOpen,openSuccessModal,handleChange} = useContext(ServiceContext);
+        currentOption,setCurrentOption, fetchData,setIsSuccessModalOpen,
+        isSuccessModalOpen,handleChange,handleUpdateService,isRegisterService} = useContext(ServiceContext);
 
-   const handleUpdateService = async () => {
-       try {
-         if (currentOption === 'register') {
-           const updatedServiceData = {
-               ...serviceData,
-               tipo_servicio: "Otros servicios",
-           }; 
-           await createService(updatedServiceData);
-           openSuccessModal();
-
-         } else if (currentOption === 'edit') {
-           const updatedServiceData = {
-               ...serviceData,
-               horarios: horarios,
-           }; 
-           await updateService(updatedServiceData);
-           setIsUpdated(true);
-           setCurrentOption('show');
-         }
-       } catch (error) {
-         console.error('Error al actualizar/registrar el servicio:', error);
-       }
-   };
-     
    const handleSubmit = (e) => {
        e.preventDefault();
        //console.log('Esto es lo que se va a guardar',serviceData);
-       handleUpdateService();
+       handleUpdateService("Otros servicios");
    }; 
    
    useEffect(() => {
@@ -88,7 +62,7 @@ const OtherServiceForm = ({option}) =>{
             <div className='mb-10 md:mb-0'>
               <div className={divGrid }>
                 <div className={divGridSub}>
-                  <BackButtonForms />
+                <BackButtonForms currentOption={currentOption} />
                 </div>
                 <div className={divGridSub}>
                   <BotonCancelar />
@@ -107,7 +81,7 @@ const OtherServiceForm = ({option}) =>{
                         name="nombre"
                         value={serviceData.nombre || ''}
                         onChange={handleChange}
-                        disabled={currentOption=== 'show'}
+                        disabled={currentOption=== 'show' || isRegisterService}
                         required
                         
                       />
@@ -128,7 +102,7 @@ const OtherServiceForm = ({option}) =>{
                                     name="area_otro_servicio_3"
                                     value={serviceData.area_otro_servicio_3 || ''}
                                     onChange={handleChange}
-                                    disabled={currentOption === 'show'}
+                                    disabled={currentOption === 'show' || isRegisterService}
                                     required
                                 >
                                     <option value="">----</option>
@@ -157,7 +131,6 @@ const OtherServiceForm = ({option}) =>{
                 <HorarioCampo />
                 </div>
 
-                
                 <BotonSubmit />
             </div>
             <SuccessMessage

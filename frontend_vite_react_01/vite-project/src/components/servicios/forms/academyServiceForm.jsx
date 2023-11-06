@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import FormsComponentsStyle from '../servicesComponentesStyle/formsComponentsStyle';
 import SuccessMessage from '../../../components/mensajesAuxliliares/successRegister';
-import { updateService, createService } from '../../../api/servicesApi';
 import { useContext } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
 import PropTypes from 'prop-types';
@@ -18,37 +17,14 @@ import BackButtonForms from '../../botoneNavegacion/backButtonForms';
 const AcademyServiceForm = ({option}) =>{
     
     const {serviceData,isUpdated, setIsUpdated,
-        currentOption,setCurrentOption, fetchData,horarios,setIsSuccessModalOpen,
-        isSuccessModalOpen,openSuccessModal,handleChange} = useContext(ServiceContext);
+        currentOption,setCurrentOption, fetchData,setIsSuccessModalOpen,
+        isSuccessModalOpen,handleChange, 
+        isRegisterService, handleUpdateService} = useContext(ServiceContext);
 
-   const handleUpdateService = async () => {
-       try {
-         if (currentOption === 'register') {
-           const updatedServiceData = {
-               ...serviceData,
-               tipo_servicio: "Asesorías Académicas",
-           }; 
-           await createService(updatedServiceData);
-           openSuccessModal();
-
-         } else if (currentOption === 'edit') {
-           const updatedServiceData = {
-               ...serviceData,
-               horarios: horarios,
-           }; 
-           await updateService(updatedServiceData);
-           setIsUpdated(true);
-           setCurrentOption('show');
-         }
-       } catch (error) {
-         console.error('Error al actualizar/registrar el servicio:', error);
-       }
-   };
      
    const handleSubmit = (e) => {
        e.preventDefault();
-       //console.log('Esto es lo que se va a guardar',serviceData);
-       handleUpdateService();
+       handleUpdateService("Asesorías Académicas");
    }; 
    
    useEffect(() => {
@@ -57,12 +33,8 @@ const AcademyServiceForm = ({option}) =>{
            setIsUpdated(false);
            
           }
-
-
        else if (option === 'register') {
-           //console.log('Data en register:', serviceData);
           setCurrentOption('register');
-
        }
    }, [currentOption, isUpdated, fetchData, serviceData, setIsUpdated, option, setCurrentOption]);
 
@@ -87,7 +59,7 @@ const AcademyServiceForm = ({option}) =>{
             <div className='mb-10 md:mb-0'>
               <div className={divGrid }>
                 <div className={divGridSub}>
-                  <BackButtonForms />
+                  <BackButtonForms currentOption={currentOption} />
                 </div>
                 <div className={divGridSub}>
                   <BotonCancelar />
@@ -107,7 +79,7 @@ const AcademyServiceForm = ({option}) =>{
                         name="nombre"
                         value={serviceData.nombre || ''}
                         onChange={handleChange}
-                        disabled={currentOption=== 'show'}
+                        disabled={currentOption=== 'show' || isRegisterService}
                         required
                         
                       />
@@ -129,7 +101,7 @@ const AcademyServiceForm = ({option}) =>{
                           name="area_0"
                           value={serviceData.area_0 || ''}
                           onChange={handleChange}
-                          disabled={currentOption === 'show'}
+                          disabled={currentOption === 'show' || isRegisterService}
                           required
                       >
                           <option value="">----</option>

@@ -2,15 +2,15 @@ import RegisterCategory from "../../components/servicios/registerCategory"
 import { useEffect,useContext } from 'react';
 import { ServiceContext } from '../../contexts/serviceContext';
 const OfferService = () => {
-    const {setCurrentOption,currentOption,resetServiceData } = useContext(ServiceContext);
+    const {setCurrentOption,currentOption,resetServiceData,setIsRegisterService } = useContext(ServiceContext);
 
     useEffect(() => {
 
         resetServiceData();
         setCurrentOption('register');
-        //console.log('currentOption en OfferService',currentOption);
+        setIsRegisterService(false);
     
-      }, [setCurrentOption, currentOption, resetServiceData]);
+      }, [setCurrentOption, currentOption, resetServiceData, setIsRegisterService]);
     return (
             <RegisterCategory />
     )

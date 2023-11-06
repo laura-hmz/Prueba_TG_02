@@ -4,7 +4,7 @@ import FormsComponentsStyle from '../servicesComponentesStyle/formsComponentsSty
 import { FaTrash, FaPlus } from 'react-icons/fa';
 const HorarioCampo = () => {
     const {serviceData, currentOption, setServiceData, optionsHoraInicio, fetchData, isUpdated
-        , setIsUpdated, horarios, setHorarios} = useContext(ServiceContext);
+        , setIsUpdated, horarios, setHorarios, isRegisterService} = useContext(ServiceContext);
     const {
         labelClassname,
         selectDesingHorario,
@@ -82,7 +82,7 @@ const HorarioCampo = () => {
                         Puedes click al botón *+* para agregar un horario si deseas
                     </div>
                     <button type="button"
-                            disabled={currentOption === 'show'} 
+                            disabled={currentOption === 'show' || isRegisterService} 
                             onClick={agregarHorario} className=" start-end disabled:bg-blue-300 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-3 mt-1 rounded">
                             <FaPlus /> 
                         </button>
@@ -107,7 +107,7 @@ const HorarioCampo = () => {
                                 className={selectDesingHorario}
                                 name='dia_semana'
                                 value={horario.dia_semana || ''}
-                                disabled={currentOption === 'show'}
+                                disabled={currentOption === 'show' || isRegisterService}
                                 required
                                 onChange={(e) => handleHorarioChange(e, index)}
                             >
@@ -124,7 +124,7 @@ const HorarioCampo = () => {
                                 className={selectDesingHorario}
                                 name='hora_de_inicio'
                                 value={horario.hora_de_inicio !== null ? horario.hora_de_inicio : ''}
-                                disabled={currentOption === 'show'}
+                                disabled={currentOption === 'show' || isRegisterService}
                                 required
                                 onChange={(e) => handleHorarioChange(e, index)}
                             >
@@ -139,7 +139,7 @@ const HorarioCampo = () => {
                                 className={selectDesingHorario}
                                 name='hora_de_finalizacion'
                                 value={horario.hora_de_finalizacion || ''}
-                                disabled={currentOption === 'show'}
+                                disabled={currentOption === 'show' || isRegisterService}
                                 required
                                 onChange={(e) => handleHorarioChange(e, index)}
                             >
@@ -154,7 +154,7 @@ const HorarioCampo = () => {
                                 type="button"
                                 className="eliminarHorario bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white font-bold py-1  px-3 rounded "
                                 onClick={() => eliminarHorario(index)}
-                                disabled={currentOption === 'show' || horarios.length <= 1}
+                                disabled={currentOption === 'show' || horarios.length <= 1 || isRegisterService}
                             >
                                 <FaTrash /> 
                             </button>

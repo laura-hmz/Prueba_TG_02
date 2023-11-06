@@ -12,11 +12,9 @@ import UserRegister from './views/users/userRegister.jsx';
 import Home from './views/home.jsx';
 import Home2 from './components/login/home2.jsx'
 import Profile from './views/users/profile.jsx';
-import EditProfile from './views/users/editProfile.jsx';
 import Especialsearch from './views/services/especialSearch.jsx';
 import EditService from './views/services/editService.jsx';
 import SavedServices from './views/services/savedServices.jsx';
-import SearchService from './views/services/searchService.jsx';
 import ServiceDetails from './views/services/serviceDetails.jsx';
 import UserServices from './views/services/userServices.jsx';
 import OfferService from './views/services/offerService.jsx';
@@ -65,7 +63,6 @@ function App() {
               <Route path='/UserRegister' element={isAuthenticated && !userExists ? <UserRegister/> :isAuthenticated && userExists? <Navigate to="/Home" />: <Navigate to="/login"/> }/>
               <Route path='/Home' element={getReturn(<Home/>) }/>
               <Route path='/profile' element={getReturn(<Profile/>)}/>
-              <Route path='/editProfile'  element={getReturn(<EditProfile/>) }/>
               <Route path='/especialsearch' element={getReturn(<Especialsearch/>)}/>
               <Route path='/editService/:id' element={getReturn(<EditService/>)}/>
               <Route path="/register/transport" element={getReturn(<TransportServiceForms3 option="register" />)}/>
@@ -73,7 +70,6 @@ function App() {
               <Route path="/register/room" element={getReturn(<RoomServiceForm2 option="register"/>)} />
               <Route path="/register/other" element={getReturn(<OtherServiceForm  option="register"/>)} />    
               <Route path='/savedServices' element={getReturn(<SavedServices/>)} />
-              <Route path='/searchService' element={ getReturn(<SearchService/>)}/>
               <Route path='/serviceDetails/:id' element={getReturn(<ServiceDetails/>)}/>
               <Route path='/userServices' element={getReturn(<UserServices/>)} />
               <Route path='/offerService' element={getReturn(<OfferService/>)}/>

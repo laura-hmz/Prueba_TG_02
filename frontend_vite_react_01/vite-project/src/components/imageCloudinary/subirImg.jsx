@@ -42,8 +42,8 @@ const SubirImg = () => {
     <>
       {currentOption !== 'register'  && (
     <div className={divEspace}>
-      <h1 className={labelClassname}>Imagenes</h1>
-      <h1 className='text-sm ml-4 mt-2 mb-4 text-gray-500'> Puedes subir máximo 3, activa el boton *Editar* para hacerlo </h1>
+      <h1 className={labelClassname}>Imágenes</h1>
+      <h1 className='text-sm ml-4 mt-2 mb-4 text-gray-500'> ¡Completa tu servicios con algunas imágenes! Puedes subir máximo 3, activa el boton *Editar* para hacerlo </h1>
       {currentOption !== 'edit' || currentOption !== 'register'   && (
         
       <div className="mb-4 mx-auto">

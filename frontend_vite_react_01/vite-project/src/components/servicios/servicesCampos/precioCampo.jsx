@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { ServiceContext } from '../../../contexts/serviceContext'
 import FormsComponentsStyle from '../servicesComponentesStyle/formsComponentsStyle';
 const Precio = () => {
-    const {serviceData, handleChange, currentOption} = useContext(ServiceContext);
+    const {serviceData, handleChange, currentOption,isRegisterService} = useContext(ServiceContext);
     const {
         labelClassname,
         inputDesing,
@@ -22,7 +22,7 @@ const Precio = () => {
                     onChange={handleChange}
                     min="0" 
                     required
-                    disabled={currentOption=== 'show'}
+                    disabled={currentOption=== 'show' || isRegisterService}
                             
                   />
             </div>
