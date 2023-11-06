@@ -5,12 +5,12 @@ const Home2 = () => {
   
     return (
         
-        <section className="antialiased min-h-screen font-sans bg-gradient-to-br from-[#CC1F33] to-[#000000]">
-            <div className="container mx-auto">
-                <div className="flex flex-wrap  relative">
-                    <div className="   lg:w-9/10  md:w-9/10 w-full mx-auto relative">
-                        <div className="bg-white  mt-4   shadow-xl border border-gray-100 rounded-lg px-8 py-4 overflow-hidden relative">
-                            <div className="grid mx-auto  flex items-center lg:grid-cols-2 lg:gap-x-12 md:px-10 md:py-8 lg:px-10 lg:py-8  ">
+        <section className="antialiased min-h-screen font-sans  bg-gradient-to-br from-[#CC1F33] to-[#000000]">
+            <div className="container h-screen mx-auto">
+                <div className="flex flex-wrap justify-center items-center relative">
+                    <div className="   lg:w-10/11 xl:my-32 md:my-0 my-4 md:w-9/10 w-full mx-auto relative">
+                        <div className="bg-white  mt-4  shadow-xl border border-gray-100 rounded-lg px-8 py-4 overflow-hidden relative">
+                            <div className="grid mx-auto flex items-center lg:grid-cols-2 lg:gap-x-12 md:px-10 md:py-8 lg:px-10 lg:py-8  ">
                                 <div className="mb-8 lg:mb-0 md:mb-0  md:ml-4 text-center md:text-left">
                                 <h2 className="   text-5xl font-bold  leading-tight tracking-tight">
                                     Encuentra y Publica  
@@ -23,7 +23,7 @@ const Home2 = () => {
 
                                 <div className=" mt-4 md:mt-0 lg:mt-0 rounded-lg border-solid border-2 border-gray-300 shadow-2xl">
                                     <img src="https://res.cloudinary.com/dt0ejpyba/image/upload/v1698281702/copia_mpuiek.jpg"
-                                        className="w-full  md:h-[500px] rounded-lg object-cover" alt="" 
+                                        className="w-full  h-[350px] md:h-[500px] xl:h-[900px] rounded-lg object-cover" alt="" 
                                         loading="lazy"/>
                                 </div>
                             </div>

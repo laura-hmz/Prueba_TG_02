@@ -29,7 +29,7 @@ const SearchForm = ({ onSearch, isLoading, idUser }) => {
   };
   
   return (
-    <div className="mx-auto max-w-6xl mt-28 md:mt-32 lg:mt-32 p-2 md:p-4 lg:p-6 rounded-lg border border-gray-300 border-solid ">
+    <div className="mx-auto max-w-6xl  mt-28 md:mt-32 lg:mt-32 p-2 md:p-4 lg:p-6 rounded-lg border border-gray-300 border-solid ">
       <form onSubmit={handleSubmit} className='px-4'>
         <div className={divDesing}>
           <h1 className='block uppercase tracking-wide text-lg text-gray-600 font-bold'> Buscador especializado </h1>

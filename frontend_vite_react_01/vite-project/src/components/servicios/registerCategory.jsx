@@ -6,7 +6,7 @@ const buttonStyle = "md:w-60 md:h-60 w-40 h-40 border border-gray-200  rounded-l
 const RegisterCategory = () => {
   return (
     <div className="text-center md:mt-36 mt-28 mb-20 ">
-      <h1 className="mt-4 lg:mt-8  md:ml-4 text-center text-2xl lg:text-4xl font-serif text-gray-600">
+      <h1 className="mt-4 lg:mt-8  md:ml-4 text-center text-2xl xl:text-4xl lg:text-4xl font-serif text-gray-600">
                     ¡Hola! </h1>
                     <h1 className=" lg:mb-8 mt-2 mb-4 text-center text-xl lg:text-3xl font-serif text-gray-500">
                     ¿Qué deseas ofrecer?</h1>
