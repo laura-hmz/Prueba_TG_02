@@ -44,27 +44,31 @@ const CardServicesDetailsUser = () => {
             <div key={service._id} className="p-4 md:w-1/3 w-full relative">
               <div className="bg-white shadow-xl rounded-lg overflow-hidden relative">
               {service.imagenPortada && service.imagenPortada.url ? (
+                <Link to={{ pathname: `/serviceDetails/${service._id}` }}>
                   <img
                     className="lg:h-48 md:h-36 h-36 w-full object-cover object-center"
                     src={service.imagenPortada.url}
                     alt={service._id}
                     loading="lazy"
                   />
+                </Link>
                 ) : (
-                  <img
-                    className="lg:h-48 md:h-36 h-36 w-full object-cover object-center"
-                    src={
-                      service.tipo_servicio === 'Servicio de transporte'
-                        ? urlTransporte
-                        : service.tipo_servicio === 'Servicio de habitaciones'
-                        ? urlHabitaciones
-                        : service.tipo_servicio === 'Asesorías Académicas'
-                        ? urlAsesorias
-                        : urlOtrosServicios
-                    }
-                    alt={service._id}
-                    loading="lazy"
-                  />
+                  <Link to={{ pathname: `/serviceDetails/${service._id}` }}>
+                    <img
+                      className="lg:h-48 md:h-36 h-36 w-full object-cover object-center"
+                      src={
+                        service.tipo_servicio === 'Servicio de transporte'
+                          ? urlTransporte
+                          : service.tipo_servicio === 'Servicio de habitaciones'
+                          ? urlHabitaciones
+                          : service.tipo_servicio === 'Asesorías Académicas'
+                          ? urlAsesorias
+                          : urlOtrosServicios
+                      }
+                      alt={service._id}
+                      loading="lazy"
+                    />
+                  </Link>
                 )}
                 
                 <button
@@ -82,7 +86,7 @@ const CardServicesDetailsUser = () => {
                   <h2 className="tracking-widest  uppercase text-xs title-font font-medium text-gray-400 mb-1">
                     {service.tipo_servicio}
                   </h2>
-                  <h1 className="title-font text-xl capitalize truncate md:text-xl  overflow-hidden font-medium text-gray-700 mb-1">
+                  <h1 className="title-font text-xl uppercase truncate md:text-xl  overflow-hidden font-medium text-gray-700 mb-1">
                     {service.nombre}
                   </h1>
                   <p className="text-xl text-gray-900 mb-1">$ {service.precio} COP</p>

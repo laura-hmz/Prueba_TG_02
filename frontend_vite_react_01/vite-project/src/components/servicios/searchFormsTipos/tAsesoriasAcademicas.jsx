@@ -25,7 +25,7 @@ const TasesoriasAcademicas = () => {
               <input
                 className={inputDesing}
                 type="text"
-                placeholder="Ejemplo: Asesorias de calculo II"
+                placeholder="Ejemplo: inteligencia artificial"
                 id="nombre"
                 name="nombre"
                 value={searchParams.nombre}

@@ -86,18 +86,7 @@ const Thabitaciones = () => {
                       <span className="ml-2 mr-4">Permiten mascotas</span>
                   </label>
               </div>
-              <div className={divGridSub}>
-              <label className={labelCheckBox} htmlFor="ninguno">
-                    <input
-                      type="checkbox"
-                      id="ninguno"
-                      name="ninguno"
-                      onChange={handleChange}
-                      disabled={isLoading}
-                    />
-                      <span className="ml-2 mr-4">Ninguno</span>
-                  </label>
-              </div>
+              
             </div>        
           </>
         )}
