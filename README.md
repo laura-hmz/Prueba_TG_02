@@ -32,16 +32,16 @@ npm run start
 ```
 El servidor estará disponible en http://localhost:3000. Puedes cambiar el puerto en el archivo index.js si es necesario.
 
-###Uso
+### Uso
 Una vez que el servidor está en marcha, puedes acceder a las rutas de la API. Asegúrate de configurar el frontend para consumir estas rutas.
 
-##Frontend
+## Frontend
 El frontend está construido con Express y Vite. Por defecto, está configurado para consumir el backend desplegado en Render. Si deseas cambiar a un backend local, sigue los pasos a continuación.
 
-###Requisitos Previos
+### Requisitos Previos
 Node.js
-###Configuración
-###Instala las dependencias:
+### Configuración
+### Instala las dependencias:
 ```bash
 cd frontend_vite_react_01
 cd vite-project 
@@ -51,20 +51,20 @@ Abre el archivo api/index.js y modifica el baseURL según tu backend local:
 ```bash
 const baseURL = "http://localhost:3000/"; // Cambia el puerto según tu configuración
 ```
-###Inicia el servidor de desarrollo:
+### Inicia el servidor de desarrollo:
 ```bash
 npm run dev
 ```
 El frontend estará disponible en http://localhost:3000.
 
-#Despliegue
-##Backend
+# Despliegue
+## Backend
 El backend está desplegado en Render.com. Asegúrate de configurar las variables de entorno en tu proyecto de Render.
 
-##Frontend
+## Frontend
 El frontend está desplegado en Vercel: prueba-tg-02.vercel.app.
 
-##Consideraciones Importantes:
+## Consideraciones Importantes:
 
 Se recomienda utilizar el navegador Google Chrome, preferiblemente en la versión 119.0.6045.124 o posterior, para garantizar una experiencia óptima del usuario al interactuar con el prototipo en caso de su despliegue.
 
