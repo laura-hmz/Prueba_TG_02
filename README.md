@@ -62,7 +62,8 @@ El frontend estará disponible en http://localhost:3000.
 El backend está desplegado en Render.com. Asegúrate de configurar las variables de entorno en tu proyecto de Render.
 
 ## Frontend
-El frontend está desplegado en Vercel: prueba-tg-02.vercel.app.
+El frontend está desplegado en Vercel: [prueba-tg-02.vercel.app.](https://prueba-tg-02.vercel.app/) 
+Desde ese enlace se puede tener acceso a toda aplicación.
 
 ## Consideraciones Importantes:
 
@@ -72,5 +73,5 @@ Por favor, ten en cuenta que la aplicación puede tardar un poco en iniciar, ya 
 
 La aplicación es accesible tanto desde dispositivos móviles como desde ordenadores que utilicen el navegador Google Chrome. Sin embargo, se aconseja tener precaución con ciertas extensiones que podrían causar conflictos. En caso de experimentar algún problema, no dudes en ponerte en contacto escribiendo a laura.hernandez.munoz@correounivalle.edu.co. Se proporcionará asistencia para garantizar un acceso sin inconvenientes a la aplicación.
 
-https://prueba-tg-02.vercel.app/
+
 
