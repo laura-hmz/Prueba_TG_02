@@ -73,5 +73,8 @@ Por favor, ten en cuenta que la aplicación puede tardar un poco en iniciar, ya 
 
 La aplicación es accesible tanto desde dispositivos móviles como desde ordenadores que utilicen el navegador Google Chrome. Sin embargo, se aconseja tener precaución con ciertas extensiones que podrían causar conflictos. En caso de experimentar algún problema, no dudes en ponerte en contacto escribiendo a laura.hernandez.munoz@correounivalle.edu.co. Se proporcionará asistencia para garantizar un acceso sin inconvenientes a la aplicación.
 
+### Anexos.rar
+En este archivo se encuentran todos los anexos del trabajo escrito para descargar. 
+
 
 
