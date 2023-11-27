@@ -60,6 +60,11 @@ const serviceSchema = mongoose.Schema({
   },
   precio: {
     type: Number
+  },
+  imagenPortada: {
+    url: { type: String, required: false }, // URL de la imagen
+    public_id: { type: String, required: false },
+    title: { type: String, required: false } // Public ID de la imagen en Cloudinary
   }
 },
 {

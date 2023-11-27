@@ -65,3 +65,88 @@ Content-Type: application/json
     "resultados_encuesta": [0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 1.0, 0.5, 0.0, 1.5, 0.0, 1.0, 0.5, 1.5, 0.0]
 }
 
+###
+POST http://localhost:3000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "correo": "santiago.mayor@correounivalle.edu.co",
+  "nombre": "santiago mayor",
+  "sexo": "masculino",
+  "carrera": "ingenieria de sistemas",
+  "semestre": 11,
+  "ciudad_residencia": "tuluá",
+  "edad": 21,
+  "estado": 1,
+  "puntuacion": 0,
+  "resultados_encuesta": [
+    1.5,
+    0,
+    0,
+    0.5,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0.5,
+    0,
+    0.5,
+    1
+  ],
+  "resultados_encuesta_habitaciones": [
+    1.5,
+    0,
+    0,
+    0.5,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0.5,
+    0,
+    0.5,
+    1
+  ],
+  "resultados_encuesta_asesorias": [
+    1.5,
+    0,
+    0,
+    0.5,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0.5,
+    0,
+    0.5,
+    1
+  ],
+  "resultados_encuesta_transporte": [
+    1.5,
+    0,
+    0,
+    0.5,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0.5,
+    0,
+    0.5,
+    1
+  ],
+  "telefono": 11111
+  
+}

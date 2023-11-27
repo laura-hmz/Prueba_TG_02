@@ -2,6 +2,7 @@ const express = require("express");
 const serviceCtrl = require('../controllers/service.controllers');
 const matchCtrl = require('../controllers/match.controller');
 const router = express.Router();
+const { upload } = require('../middlewares/multer'); 
 
 //create service OK
 router.post("/services", serviceCtrl.createService);
@@ -32,5 +33,7 @@ router.get("/survey-results-array",matchCtrl.busqueda_servicios);
 
 //Buscar servicios (solo filtro a base de datos) OK
 router.get("/search-services",matchCtrl.searchServices);
+
+router.put('/services/updateImage/:id', upload.single('imagen'), serviceCtrl.updateServiceImage);
 
 module.exports = router;

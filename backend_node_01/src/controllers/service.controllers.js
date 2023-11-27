@@ -109,7 +109,49 @@ const lastServicesAdded = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 }
+const updateServiceImage = async (req, res) => {
+  const { id } = req.params;
+  //const { newImagenPortada } = req.file;
+  //console.log(req.file)
+  //console.log(id)
+  //console.log(req.params)
+
+  try {
+    // Consulta el servicio actual para obtener la imagen actual, si existe.
+    const existingService = await serviceSchema.findOne({ _id: id });
+
+    if (existingService) {
+      // Verifica si el servicio tenía una imagen en Cloudinary.
+      if (existingService.imagenPortada && existingService.imagenPortada.public_id) {
+        // Utiliza Cloudinary para eliminar la imagen anterior.
+        await cloudinary.uploader.destroy(existingService.imagenPortada.public_id);
+      }
+    }
+
+    // Sube la nueva imagen a Cloudinary y obtiene el resultado.
+    const resultadoSubida = await cloudinary.uploader.upload(req.file.path);
+
+    // Actualiza el campo imagenPortada en el servicio con la nueva información.
+    existingService.imagenPortada = {
+      url: resultadoSubida.secure_url,
+      public_id: resultadoSubida.public_id,
+      title: req.file.originalname
+    };
+
+    // Guarda la actualización en la base de datos.
+    await existingService.save();
+
+    res.json({ message: 'Imagen actualizada con éxito' });
+  } catch (error) {
+    console.error('Error al actualizar la imagen:', error);
+    res.status(500).json({ message: 'Error al actualizar la imagen' });
+  }
+};
+
+
+
 
 module.exports = {
-    createService, getServices, getServiceId, deleteService, updateService, listServicesIdUser, lastServicesAdded
+    createService, getServices, getServiceId, deleteService, 
+    updateServiceImage, updateService, listServicesIdUser, lastServicesAdded
 }

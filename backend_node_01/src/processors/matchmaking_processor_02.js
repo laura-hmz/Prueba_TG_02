@@ -1,11 +1,13 @@
 const { PythonShell } = require('python-shell');
+const path = require('path');
 
 // Función para ejecutar el algoritmo Python
 function procesadorPrueba(arrayOfNumbers, arrayOfIds, querySample) {
     // Ruta al script de Python
-     //const pythonScriptPath = 'C://Users//USER//Documents//GitHub//Prueba_TG_02//backend_node_01//src/python-scripts/matchmaking_algorithm.py';
-     const pythonScriptPath = '/opt/render/project/src/backend_node_01/src/python-scripts/matchmaking_algorithm.py';
-
+    //const pythonScriptPath ='../python-scripts/matchmaking_algorithm.py'; 
+     const pythonScriptPath = path.join(__dirname, 'python-scripts', 'matchmaking_algorithm.py');
+     //const pythonScriptPath = '/opt/render/project/src/backend_node_01/src/python-scripts/matchmaking_algorithm.py';
+    //C:\Users\USER\Documents\GitHub\VercelPrueba\backend_node_01\src\python-scripts
     // Opciones para configurar la ejecución
     const options = {
     mode: 'json', // Configura el modo de comunicación para obtener JSON
