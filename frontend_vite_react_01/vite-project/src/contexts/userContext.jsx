@@ -61,11 +61,16 @@ export const UserProvider = ({ children }) => {
     try {
       //console.log('registrando usuario');
       await createUser(userDataAux);
+     console.log('intento reali<r registro') 
       setUserExists(true);
+      console.log(userExists, 'Dime amigo')
       await getUserData();
+      console.log('usuario a registrar',userDataAux)
      
     } catch (error) {
-      console.error('Error al registrarbusuario:', error);
+      console.log('usuario a registrar ERROR',userDataAux)
+      console.log('Email usuario a registrar',user.email)
+      console.error('Error al registrar usuario:', error);
     }
   }
   const handleChange = (e) => {
