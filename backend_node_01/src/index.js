@@ -32,7 +32,7 @@ app.use("/api", userRoute, serviceRoute,savedServicesRoute,imageRoute);
 
 // routes
 app.get("/", (req, res) => {
-  res.send("Welcome to my API DE MIERDA");
+  res.send("Welcome to Servicios Univalle API!");
 });
 
 // mongodb connection
